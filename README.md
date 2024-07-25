@@ -34,6 +34,7 @@ Main 브랜치 갱신 시
     1.	릴리즈 버전을 낼 때는 Upstream의 dev 브랜치에서 main 브랜치로 PR을 보냅니다.
     2.	모든 사용자가 코드를 재확인한 후 머지(merge)합니다.
 
+
 **Commit Convention**
 
 | Commit Type | Description           |
