@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 const RoutineBoxContainer = styled.div`
   display: flex;
   width: 133px;
@@ -12,7 +13,8 @@ const RoutineBoxImg = styled.div`
   height: 100px;
   align-self: stretch;
   border-radius: 10px;
-  /* background: url(<path-to-image>) lightgray 50% / cover no-repeat; */
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s")
+    lightgray 50% / cover no-repeat;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
   background-color: darkgray;
 `;
