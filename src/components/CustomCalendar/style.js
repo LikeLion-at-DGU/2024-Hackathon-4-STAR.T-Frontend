@@ -155,7 +155,7 @@ export const CalendarContainer = styled.div`
 
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background: #1087ff;
+    /* background: transparent; */
   }
 
   .react-calendar--selectRange .react-calendar__tile--hover {
@@ -232,8 +232,4 @@ export const CalendarContainer = styled.div`
     background-size: contain;
     border: none;
   }
-  /* 
- 
-    루틴 완료 시 해당 스타일 넣어주기
- */
 `;

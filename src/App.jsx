@@ -3,8 +3,9 @@ import { styled, ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style/globalStyle";
 import { theme } from "./style/theme.js";
 import { Outlet } from "react-router-dom";
+import { Footer } from "./components/common/Footer/Footer.jsx";
 
-const BackGround = styled.div`
+const Frame = styled.div`
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -37,13 +38,14 @@ const Content = styled.div`
 
 const Layout = () => {
   return (
-    <BackGround>
+    <Frame>
       <Wrapper>
-        <Content className="content-entry">
+        <Content>
           <Outlet />
+          <Footer />
         </Content>
       </Wrapper>
-    </BackGround>
+    </Frame>
   );
 };
 
