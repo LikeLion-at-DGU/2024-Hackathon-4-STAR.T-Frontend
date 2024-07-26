@@ -15,7 +15,7 @@
     2.	Origin Repository의 Dev 브랜치에서 새로운 브랜치를 생성합니다.
     3.	로컬에서 Fetch하여 새로운 브랜치를 가져옵니다.
     4.	해당 브랜치로 체크아웃(checkout)한 후 기능 개발을 진행합니다.
-    
+
     - 기능 개발: feature/#[Issue 번호]
     - 버그 수정: fix/#[Issue 번호]
     - 리팩토링: refactor/#[Issue 번호]
@@ -33,7 +33,6 @@ Main 브랜치 갱신 시
 
     1.	릴리즈 버전을 낼 때는 Upstream의 dev 브랜치에서 main 브랜치로 PR을 보냅니다.
     2.	모든 사용자가 코드를 재확인한 후 머지(merge)합니다.
-
 
 **Commit Convention**
 
