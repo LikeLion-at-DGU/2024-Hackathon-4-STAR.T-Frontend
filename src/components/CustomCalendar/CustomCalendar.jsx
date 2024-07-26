@@ -1,5 +1,4 @@
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
 import * as S from "./style";
 import { DUMMY_DATE } from "../../constants/Calendar/dummy";
