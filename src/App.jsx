@@ -11,11 +11,9 @@ const BackGround = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
 `;
 
 const Wrapper = styled.div`
-  padding-top: 60px;
   margin: 0 auto;
   width: 100%;
   flex-grow: 1;
@@ -41,7 +39,7 @@ const Layout = () => {
   return (
     <BackGround>
       <Wrapper>
-        <Content>
+        <Content className="content-entry">
           <Outlet />
         </Content>
       </Wrapper>
