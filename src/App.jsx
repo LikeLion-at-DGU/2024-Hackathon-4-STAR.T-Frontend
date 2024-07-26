@@ -15,7 +15,6 @@ const BackGround = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding-top: 60px;
   margin: 0 auto;
   width: 100%;
   flex-grow: 1;

@@ -1,5 +1,4 @@
-import React from "react";
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 const RoutineBoxContainer = styled.div`
   display: flex;
@@ -48,16 +47,3 @@ const RoutineBoxContent = styled.div`
   gap: 5px;
   align-self: stretch;
 `;
-
-function RoutineBox({ title, star }) {
-  return (
-    <RoutineBoxContainer>
-      <RoutineBoxImg></RoutineBoxImg>
-      <RoutineBoxContent>
-        <RoutineBoxTitle>{title}</RoutineBoxTitle>
-        <RoutineBoxStar>{star}</RoutineBoxStar>
-      </RoutineBoxContent>
-    </RoutineBoxContainer>
-  );
-}
-export default RoutineBox;
