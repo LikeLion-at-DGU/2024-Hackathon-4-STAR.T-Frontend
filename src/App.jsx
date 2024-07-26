@@ -1,22 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import RoutineBox from "./components/RoutineBox";
-import CategoryTitle from "./components/CategoryTitle";
+import { theme } from "./style/theme";
+import { GlobalStyle } from "./style/globalStyle";
+import { ThemeProvider } from "styled-components";
 
-function App() {
-  const routineData = {
-    title: "일주일에 한권 책읽기",
-    star: "BTS RM",
-    section: "도전중인 챌린지",
-  };
+export const App = () => {
   return (
     <>
-      <RoutineBox title={routineData.title} star={routineData.star} />
-      <CategoryTitle section={routineData.section}></CategoryTitle>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <h1>STAR.T</h1>
+      </ThemeProvider>
     </>
   );
-}
-
-export default App;
+};
