@@ -6,6 +6,9 @@ export const CategoryWrapper = styled.div`
   height: 20px;
   display: flex;
   flex-direction: row;
+  align-self: flex-start;
+  margin-left: 1rem;
+  margin-top: 2rem;
 `;
 
 export const CategoryLine = styled.svg`

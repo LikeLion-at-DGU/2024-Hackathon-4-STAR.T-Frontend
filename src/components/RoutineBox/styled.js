@@ -1,14 +1,18 @@
 import { styled } from "styled-components";
 
-const RoutineBoxContainer = styled.div`
+export const RoutineBoxContainer = styled.div`
   display: flex;
-  width: 133px;
+  min-width: 133px;
+
   flex-direction: column;
   align-items: flex-start;
+  align-self: flex-start;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
   gap: 5px;
 `;
 
-const RoutineBoxImg = styled.div`
+export const RoutineBoxImg = styled.div`
   height: 100px;
   align-self: stretch;
   border-radius: 10px;
@@ -18,7 +22,7 @@ const RoutineBoxImg = styled.div`
   background-color: darkgray;
 `;
 
-const RoutineBoxTitle = styled.div`
+export const RoutineBoxTitle = styled.div`
   color: var(--Font-Color, #2a2a2a);
 
   /* Korean Body */
@@ -29,7 +33,7 @@ const RoutineBoxTitle = styled.div`
   line-height: normal;
 `;
 
-const RoutineBoxStar = styled.div`
+export const RoutineBoxStar = styled.div`
   color: rgba(42, 42, 42, 0.7);
 
   /* Korean Minimal */
@@ -40,7 +44,7 @@ const RoutineBoxStar = styled.div`
   line-height: normal;
 `;
 
-const RoutineBoxContent = styled.div`
+export const RoutineBoxContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
