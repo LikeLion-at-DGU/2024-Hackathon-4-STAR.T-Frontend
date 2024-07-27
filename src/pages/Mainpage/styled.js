@@ -11,11 +11,11 @@ export const MainTitle = styled.div`
   font-weight: 600;
 `;
 export const RoutineBoxWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
-
-  margin-left: 2rem;
   flex-direction: row;
+  gap: 1rem;
+  margin-left: 0.5rem;
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
@@ -29,8 +29,8 @@ export const RoutineBoxWrapper = styled.div`
   }
 `;
 export const MainContainer = styled.div`
-  width: 100%;
-
+  width: 95%;
+  padding: 0;
   display: flex;
   flex-direction: column;
   margin-bottom: 7.5rem;

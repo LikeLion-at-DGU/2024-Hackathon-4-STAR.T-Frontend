@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
+import { Bannerimages } from "../../constants/HomePage/dummy";
 
 const ImageSlider = () => {
   const [current, setCurrent] = useState(0);
   const slideWidth = 90;
-  const images = S.images;
+  const images = Bannerimages;
   const count = images.length;
 
   useEffect(() => {

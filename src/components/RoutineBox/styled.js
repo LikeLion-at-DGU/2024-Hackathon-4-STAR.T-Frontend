@@ -8,7 +8,7 @@ export const RoutineBoxContainer = styled.div`
   scroll-snap-align: start;
   align-items: flex-start;
   align-self: flex-start;
-  margin-left: 1.5rem;
+
   margin-top: 1rem;
   gap: 5px;
 `;

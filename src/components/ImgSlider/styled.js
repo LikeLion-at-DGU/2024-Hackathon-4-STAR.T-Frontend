@@ -1,12 +1,10 @@
 import { styled } from "styled-components";
-import diet from "../../assets/BannerImg(1).svg";
 
 export const SliderContainer = styled.div`
   position: relative;
   width: 100%;
-
+  margin-top: 1rem;
   overflow: hidden;
-  margin: 1rem;
 `;
 
 export const Slide = styled.div`
@@ -50,26 +48,3 @@ export const SlideRoutineTitle = styled.div`
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
 `;
-
-export const images = [
-  {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s",
-    title: "멋쟁이 사자처럼 중앙 해커톤",
-    Routinetitle: "4조",
-  },
-  {
-    src: "https://i.namu.wiki/i/n2LztcrML9hzPww_iKNeMuh34vg48dkmZmGuMEC_e-DSpNoPGwch9nR9FZz9WfVx6nvv5aSDxqlxEG8iA9tcLQ.webp",
-    title: "토마토마토마토마토",
-    Routinetitle: "4조",
-  },
-  {
-    src: "https://www.dongguk.edu/resources/images/site/contents/img_ethic01.jpg",
-    title: "동대",
-    Routinetitle: "4조",
-  },
-  {
-    src: diet,
-    title: "일주일 다이어트 식단",
-    Routinetitle: "전효성다이어트 아이유다이어트",
-  },
-];
