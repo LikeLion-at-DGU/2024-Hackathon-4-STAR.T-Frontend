@@ -25,8 +25,6 @@ export const CategorySection = styled.div`
 
   /* Korean H2 */
   font-family: AppleSDGothicNeoM00;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+
+  text-align: center;
 `;

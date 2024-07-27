@@ -1,7 +1,7 @@
 import React from "react";
 import RoutineBox from "../../components/RoutineBox/RoutineBox";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
-import ImageSlider from "../../components/SlideImg/SlideImg";
+import ImageSlider from "../../components/ImgSlider/ImgSlider";
 import * as S from "./styled";
 
 const routineDatas = [
@@ -34,7 +34,7 @@ function Mainpage() {
             <S.RoutineBoxWrapper>
               {routineDatas.map((routineData) => (
                 <RoutineBox
-                  key={routineData.id} // Unique key for each RoutineBox
+                  key={routineData.id}
                   title={routineData.title}
                   star={routineData.star}
                 />

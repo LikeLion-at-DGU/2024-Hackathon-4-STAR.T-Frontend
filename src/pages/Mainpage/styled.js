@@ -6,21 +6,32 @@ export const MainTitle = styled.div`
   padding-top: 1rem;
   font-size: 2rem;
   margin-left: 2rem;
-
+  font-family: "Playfair Display", serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
 `;
 export const RoutineBoxWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
+
+  margin-left: 2rem;
   flex-direction: row;
-  overflow-y: hidden; /* 세로 스크롤을 숨깁니다 */
+  overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: thin;
+  scroll-snap-type: x mandatory; /* 가로 방향 스크롤 스냅 설정 */
+
+  /* 스크롤바 숨김 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
 `;
 export const MainContainer = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: column;
+  margin-bottom: 7.5rem;
 `;
