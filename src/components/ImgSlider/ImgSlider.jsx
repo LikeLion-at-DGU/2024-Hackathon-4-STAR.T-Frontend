@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { Bannerimages } from "../../constants/HomePage/dummy";
+import { Link } from "react-router-dom";
 
 const ImageSlider = () => {
   const [current, setCurrent] = useState(0);
   const images = Bannerimages;
   const count = images.length;
 
-  // Assuming the width of each slide is 356px (image width) + 14px (margin: 7px on each side)
   const slideWidth = 356 + 14; // px
 
   useEffect(() => {
@@ -17,7 +17,6 @@ const ImageSlider = () => {
     return () => clearInterval(interval);
   }, [count]);
 
-  // Calculating translateX to center the current slide within the Wrapper
   const translateX = -(current * slideWidth) + 420 / 2 - slideWidth / 2;
 
   return (
@@ -28,11 +27,13 @@ const ImageSlider = () => {
         }}
       >
         {images.map((image, index) => (
-          <S.SlideContent key={index} $active={index === current}>
-            <S.SlideImage src={image.src} alt={`slide-${index}`} />
-            <S.SlideTitle>{image.title}</S.SlideTitle>
-            <S.SlideRoutineTitle>{image.Routinetitle}</S.SlideRoutineTitle>
-          </S.SlideContent>
+          <Link to="/theme" key={index} style={{ textDecoration: "none" }}>
+            <S.SlideContent $active={index === current}>
+              <S.SlideImage src={image.src} alt={`slide-${index}`} />
+              <S.SlideTitle>{image.title}</S.SlideTitle>
+              <S.SlideRoutineTitle>{image.Routinetitle}</S.SlideRoutineTitle>
+            </S.SlideContent>
+          </Link>
         ))}
       </S.Slide>
     </S.SliderContainer>

@@ -4,6 +4,7 @@ export const SliderContainer = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
+  margin-top: 1rem;
 `;
 
 export const Slide = styled.div`
@@ -12,7 +13,7 @@ export const Slide = styled.div`
 `;
 
 export const SlideContent = styled.div`
-  min-width: 356px; // Assuming the actual image width
+  min-width: 356px;
   margin: 0 7px;
   transition: filter 0.5s ease-in-out;
   filter: ${({ $active }) => ($active ? "none" : "blur(2px)")};
