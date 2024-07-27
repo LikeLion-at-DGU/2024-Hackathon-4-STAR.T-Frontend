@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const CategoryWrapper = styled.div`
-  width: 280px;
-  height: 20px;
+  width: 100%;
+
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 `;
 
 export const CategoryLine = styled.svg`
   width: 20px;
-  height: 20px;
+  height: 30px;
 
   flex-shrink: 0;
   stroke-width: 3px;
@@ -20,9 +20,5 @@ export const CategoryLine = styled.svg`
 
 export const CategorySection = styled.div`
   color: var(--Font-Color, #2a2a2a);
-
-  /* Korean H2 */
-  font-family: AppleSDGothicNeoM00;
-
-  text-align: center;
+  font-size: ${(props) => props.fontSize || "16px"} !important;
 `;
