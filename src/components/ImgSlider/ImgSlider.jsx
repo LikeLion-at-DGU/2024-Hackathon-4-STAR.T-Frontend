@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 
 const ImageSlider = () => {
-  const [current, setCurrent] = useState(0); // Current image index
-  const slideWidth = 90; // Each slide takes up 100% of the container width
+  const [current, setCurrent] = useState(0);
+  const slideWidth = 90;
   const images = S.images;
   const count = images.length;
 
-  // Extended images array including clones
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % count); // Loop through images including clones
+      setCurrent((prev) => (prev + 1) % count);
     }, 3000);
     return () => clearInterval(interval);
   }, [count]);

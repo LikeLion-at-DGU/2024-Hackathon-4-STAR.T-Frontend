@@ -7,8 +7,8 @@ export const Layout = styled.div`
   width: 100%;
   max-width: 420px;
   height: 122px;
-  margin-bottom: 30px;
-  position: absolute;
+
+  position: fixed;
   bottom: 0;
   background: linear-gradient(
     180deg,

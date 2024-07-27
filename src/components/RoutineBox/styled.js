@@ -5,6 +5,7 @@ export const RoutineBoxContainer = styled.div`
   min-width: 133px;
 
   flex-direction: column;
+  scroll-snap-align: start;
   align-items: flex-start;
   align-self: flex-start;
   margin-left: 1.5rem;
