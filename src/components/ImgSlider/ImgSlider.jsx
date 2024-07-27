@@ -13,7 +13,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % count);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [count]);
 
@@ -27,7 +27,11 @@ const ImageSlider = () => {
         }}
       >
         {images.map((image, index) => (
-          <Link to="/theme" key={index} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/theme/${index}`}
+            key={index}
+            style={{ textDecoration: "none" }}
+          >
             <S.SlideContent $active={index === current}>
               <S.SlideImage src={image.src} alt={`slide-${index}`} />
               <S.SlideTitle>{image.title}</S.SlideTitle>

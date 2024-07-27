@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Calendar />,
       },
       {
-        path: "/theme",
+        path: "/theme/:imageIndex",
         element: <ThemePage />,
       },
     ],

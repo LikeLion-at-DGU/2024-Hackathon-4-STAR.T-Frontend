@@ -13,7 +13,7 @@ function Mainpage() {
       <S.MainContainer>
         {sectionTitle.map((title) => (
           <div key={title.id}>
-            <CategoryTitle section={title.section} />
+            <CategoryTitle section={title.section} fontSize="20px" />
             <S.RoutineBoxWrapper>
               {DUMMY_DATE.map((data) => (
                 <RoutineBox key={data.id} title={data.title} star={data.star} />
