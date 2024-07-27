@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const CategoryWrapper = styled.div`
@@ -7,7 +6,6 @@ export const CategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  margin-left: 1rem;
   margin-top: 2rem;
 `;
 
