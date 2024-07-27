@@ -1,6 +1,6 @@
 import diet from "../../assets/BannerImg(1).svg";
 
-export const DUMMY_DATE = [
+export const DUMMY_DATA = [
   {
     id: "1",
     title: "일주일에 한권 책읽기",
