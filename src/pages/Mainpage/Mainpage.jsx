@@ -1,5 +1,5 @@
 import React from "react";
-import RoutineBox from "../../components/RoutineBox/RoutineBox";
+import RoutineBox from "../../components/SubRoutineBox/SubRoutineBox";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
 import ImageSlider from "../../components/ImgSlider/ImgSlider";
 import * as S from "./styled";

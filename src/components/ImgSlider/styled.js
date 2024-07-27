@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const SliderContainer = styled.div`
   position: relative;
   width: 100%;
-  margin-top: 1rem;
   overflow: hidden;
 `;
 
@@ -13,7 +12,7 @@ export const Slide = styled.div`
 `;
 
 export const SlideContent = styled.div`
-  min-width: 85%;
+  min-width: 356px; // Assuming the actual image width
   margin: 0 7px;
   transition: filter 0.5s ease-in-out;
   filter: ${({ $active }) => ($active ? "none" : "blur(2px)")};
@@ -29,7 +28,6 @@ export const SlideContent = styled.div`
 export const SlideImage = styled.img`
   width: 100%;
   height: 146px;
-
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
