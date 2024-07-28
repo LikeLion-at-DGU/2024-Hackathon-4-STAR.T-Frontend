@@ -4,7 +4,7 @@ import App from "./App";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import { Calendar } from "./pages/Calendar/Calendar";
 import ThemePage from "./pages/ThemePage/ThemePage";
-
+import StarPage from "./pages/StarPage/StarPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/theme/:imageIndex",
         element: <ThemePage />,
+      },
+      {
+        path: "/star/:id",
+        element: <StarPage />,
       },
     ],
     // errorElement: <NotFound />,

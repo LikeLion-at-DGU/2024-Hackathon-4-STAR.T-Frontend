@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
 
+// export const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 99%;
+// `;
 export const MainTitle = styled.div`
   display: flex;
   align-self: flex-start;
@@ -34,4 +39,7 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 7.5rem;
+`;
+export const CategoryWrapper = styled.div`
+  margin-top: 1rem;
 `;

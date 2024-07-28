@@ -15,5 +15,4 @@ export const ModalOverlay = styled.div`
 export const ModalContent = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background: white; /* 필요한 경우 모달 내용의 배경색 지정 */
 `;

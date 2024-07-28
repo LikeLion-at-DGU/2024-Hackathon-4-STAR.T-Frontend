@@ -2,8 +2,9 @@ import { styled } from "styled-components";
 
 export const Header = styled.div`
   position: relative;
+  width: 100%;
 `;
-export const Bannerimage = styled.img`
+export const BannerImage = styled.img`
   display: block;
   width: 100%;
   height: 282px;
@@ -31,8 +32,13 @@ export const RoutineBoxContainer = styled.div`
   gap: 3rem;
   margin-bottom: 10rem;
 `;
-
-export const descriptionContainer = styled.div`
-  margin-top: 2rem;
+export const ScoreContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+`;
+export const Ranking = styled.div`
   display: flex;
 `;

@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import * as S from "./styled";
 
-const DateRangeCalendar = ({ onDateRangeSelected = () => {} }) => {
+const DateRangeCalendar = ({
+  onDateRangeSelected = () => {},
+  onConfirm = () => {},
+}) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
@@ -94,6 +97,7 @@ const DateRangeCalendar = ({ onDateRangeSelected = () => {} }) => {
     } else {
       console.log("No date selected");
     }
+    onConfirm(selectedStartDate, selectedEndDate);
   };
   return (
     <S.CalendarContainer>
