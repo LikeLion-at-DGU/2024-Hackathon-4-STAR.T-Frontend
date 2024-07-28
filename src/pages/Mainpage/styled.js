@@ -40,5 +40,5 @@ export const MainContainer = styled.div`
   margin-bottom: 7.5rem;
 `;
 export const CategoryWrapper = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
