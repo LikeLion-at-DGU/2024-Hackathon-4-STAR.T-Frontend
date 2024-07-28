@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
 
+// export const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 99%;
+// `;
 export const MainTitle = styled.div`
   display: flex;
   align-self: flex-start;
@@ -11,11 +16,12 @@ export const MainTitle = styled.div`
   font-weight: 600;
 `;
 export const RoutineBoxWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   gap: 1rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
@@ -35,4 +41,7 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 7.5rem;
+`;
+export const CategoryWrapper = styled.div`
+  margin-top: 1rem;
 `;

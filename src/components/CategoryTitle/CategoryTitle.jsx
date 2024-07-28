@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styled";
 
-function CategoryTitle({ section }) {
+function CategoryTitle({ section, fontSize }) {
   return (
     <S.CategoryWrapper>
       <S.CategoryLine
@@ -16,7 +16,7 @@ function CategoryTitle({ section }) {
           strokeLinecap="round"
         />
       </S.CategoryLine>
-      <S.CategorySection>{section}</S.CategorySection>
+      <S.CategorySection fontSize={fontSize}>{section}</S.CategorySection>
     </S.CategoryWrapper>
   );
 }
