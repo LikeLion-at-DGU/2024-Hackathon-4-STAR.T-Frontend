@@ -25,9 +25,12 @@ export const RoutineBoxWrapper = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  scroll-snap-type: x mandatory; /* 가로 방향 스크롤 스냅 설정 */
+  justify-content: center;
+
+  /* 스크롤바 숨김 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
   }
