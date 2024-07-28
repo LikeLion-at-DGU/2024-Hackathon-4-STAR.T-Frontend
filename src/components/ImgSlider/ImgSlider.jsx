@@ -17,7 +17,7 @@ const ImageSlider = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [count]);
-  //화면 조정될 때마다 다시 이미지 중앙 맞추기
+
   const updateTranslateX = () => {
     if (sliderContainerRef.current) {
       const containerWidth = sliderContainerRef.current.offsetWidth;
@@ -27,9 +27,13 @@ const ImageSlider = () => {
   };
 
   useEffect(() => {
+    updateTranslateX(); // 처음 마운트될 때 중앙으로 설정
+    window.addEventListener("resize", updateTranslateX);
+    return () => window.removeEventListener("resize", updateTranslateX); // 메모리 누수 방지
+  }, [current]);
+
+  useEffect(() => {
     updateTranslateX();
-    window.addEventListener("resize", updateTranslateX); // 윈도우 크기 변경될 때마다 중앙으로 설정
-    return () => window.removeEventListener("resize", updateTranslateX); // (메모리누수방지기능)
   }, [current]);
 
   return (
