@@ -3,6 +3,7 @@ import React from "react";
 import App from "./App";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import { Calendar } from "./pages/Calendar/Calendar";
+import { Login } from "./pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/calendar",
         element: <Calendar />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
     // errorElement: <NotFound />,
