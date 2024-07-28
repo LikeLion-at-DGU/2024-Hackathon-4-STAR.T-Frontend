@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup,
   main, menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-
+ 
 
     margin: 0;
     border: 0;
@@ -41,6 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     background-image: url("/background.svg");
     background-size: 100%;
     background-repeat: repeat;
+    overflow-x: hidden; 
   }
   menu, ol, ul {
     list-style: none;
