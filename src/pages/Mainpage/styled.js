@@ -26,7 +26,6 @@ export const RoutineBoxWrapper = styled.div`
   overflow-x: auto;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
-
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {

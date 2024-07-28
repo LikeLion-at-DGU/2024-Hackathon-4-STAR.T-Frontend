@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup,
   main, menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-
+ 
 
     margin: 0;
     border: 0;
