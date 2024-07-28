@@ -85,19 +85,16 @@ const DateRangeCalendar = ({ onDateRangeSelected = () => {} }) => {
   const handleConfirm = () => {
     if (selectedStartDate && selectedEndDate) {
       console.log(
-        `${selectedStartDate.toISOString().split("T")[0]}~${
-          selectedEndDate.toISOString().split("T")[0]
-        }`
+        `${selectedStartDate.toLocaleDateString()}~${selectedEndDate.toLocaleDateString()}`
       );
       onDateRangeSelected(selectedStartDate, selectedEndDate); //props에 저장
     } else if (selectedStartDate) {
-      console.log(`${selectedStartDate.toISOString().split("T")[0]}~`);
+      console.log(`${selectedStartDate.toLocaleDateString()}~`);
       onDateRangeSelected(selectedStartDate, null);
     } else {
       console.log("No date selected");
     }
   };
-
   return (
     <S.CalendarContainer>
       <S.CalendarHeader>

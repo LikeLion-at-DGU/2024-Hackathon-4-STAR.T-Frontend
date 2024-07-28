@@ -11,7 +11,7 @@ export const MainTitle = styled.div`
   font-weight: 600;
 `;
 export const RoutineBoxWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
@@ -20,11 +20,10 @@ export const RoutineBoxWrapper = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
-  scroll-snap-type: x mandatory; /* 가로 방향 스크롤 스냅 설정 */
+  scroll-snap-type: x mandatory;
 
-  /* 스크롤바 숨김 */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
   }

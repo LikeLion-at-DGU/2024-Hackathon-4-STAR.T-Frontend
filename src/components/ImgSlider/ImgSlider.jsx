@@ -13,7 +13,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % count);
-    }, 2000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [count]);
 
