@@ -25,7 +25,7 @@ const ImageSlider = () => {
       setTranslateX(-(current * slideWidth) + centerPosition);
     }
   };
-
+  //화면 조정 될때마다 다시 translateX 갱신
   useEffect(() => {
     updateTranslateX(); // 처음 마운트될 때 중앙으로 설정
     window.addEventListener("resize", updateTranslateX);
