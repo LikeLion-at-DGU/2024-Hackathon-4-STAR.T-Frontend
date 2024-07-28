@@ -1,14 +1,15 @@
-import diet from "../../assets/BannerImg(1).svg";
-
+import diet from "../../assets/BannerImage(1).svg";
+import star1 from "../../assets/star1.svg";
 export const DUMMY_DATA = [
   {
     id: "1",
     title: "일주일에 한권 책읽기",
     star: "BTS RM",
+    src: star1,
   },
-  { id: "2", title: "아이유다이어트", star: "아이유" },
-  { id: "3", title: "전효성다이어트", star: "전효성" },
-  { id: "4", title: "원푸드다이어트", star: "멋사" },
+  { id: "2", title: "아이유다이어트", star: "아이유", src: star1 },
+  { id: "3", title: "전효성다이어트", star: "전효성", src: star1 },
+  { id: "4", title: "원푸드다이어트", star: "멋사", src: star1 },
 ];
 
 export const sectionTitle = [

@@ -22,7 +22,7 @@ export const RoutineBoxImg = styled.div`
   background-size: cover;
   background-position: center;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  margin: 5px 7px 0px 7px;
+  margin: 12px 7px 0px 7px;
 `;
 
 export const TitleContainer = styled.div`

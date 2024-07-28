@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
-import { Bannerimages } from "../../constants/HomePage/dummy";
-import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
 import * as S from "./styled";
-import { Routinetitle } from "../../constants/ThemePage/dummy";
+import { DUMMY_DATA } from "../../constants/HomePage/dummy";
+import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
+import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
 import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
 import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
-const ThemePage = () => {
-  const { imageIndex } = useParams();
-  const index = parseInt(imageIndex, 10);
-  const selectedImage = Bannerimages[index];
+import { Routinetitle } from "../../constants/ThemePage/dummy"; //메인루틴박스 데이터
+import UserScore from "../../components/UserScore/UserScore";
+
+const StarPage = () => {
+  const { id } = useParams();
+  const selectedStar = DUMMY_DATA.find((star) => star.id === id);
+
+  if (!selectedStar) {
+    return <div>스타 정보를 찾을 수 없습니다.</div>;
+  }
+
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isCheckVisible, setIsCheckVisible] = useState(false);
   const [dateRange, setDateRange] = useState("");
@@ -36,19 +42,24 @@ const ThemePage = () => {
     const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
     setTerm(differenceInDays);
   };
+
   return (
     <>
       <S.Header>
-        {selectedImage.src ? (
-          <S.Bannerimage src={selectedImage.src} alt={selectedImage.title} />
+        {selectedStar.src ? (
+          <S.BannerImage src={selectedStar.src} alt={selectedStar.title} />
         ) : (
           <div>이미지가 없습니다</div>
         )}
-        <S.BannerTitle>{selectedImage.title} </S.BannerTitle>
+        <S.BannerTitle>{selectedStar.star}</S.BannerTitle>
       </S.Header>
-      <S.descriptionContainer>
-        <CategoryTitle section={selectedImage.description} fontSize="15px" />
-      </S.descriptionContainer>
+      <S.ScoreContainer>
+        <CategoryTitle section={"나의 점수"} fontSize="15px" />
+        <S.Ranking>
+          <UserScore />
+          <div>(상위10%)</div>
+        </S.Ranking>
+      </S.ScoreContainer>
       <S.RoutineBoxContainer>
         {Routinetitle.map((item) => (
           <MainRoutineBox
@@ -78,4 +89,4 @@ const ThemePage = () => {
   );
 };
 
-export default ThemePage;
+export default StarPage;

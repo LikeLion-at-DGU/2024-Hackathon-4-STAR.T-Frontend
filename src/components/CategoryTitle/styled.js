@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const CategoryWrapper = styled.div`
-  width: 100%;
+
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  margin-top: 1.5rem;
+  align-items: center;
 `;
 
 export const CategoryLine = styled.svg`

@@ -43,6 +43,7 @@ export const RoutineBoxStar = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
 `;
 
 export const RoutineBoxContent = styled.div`
