@@ -13,14 +13,14 @@ export const MainTitle = styled.div`
 export const RoutineBoxWrapper = styled.div`
   width: 100%;
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   gap: 1rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
   scroll-snap-type: x mandatory; /* 가로 방향 스크롤 스냅 설정 */
-  justify-content: center;
 
   /* 스크롤바 숨김 */
   -ms-overflow-style: none; /* IE and Edge */

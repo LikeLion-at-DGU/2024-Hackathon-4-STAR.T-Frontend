@@ -29,5 +29,5 @@ export const RoutineBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-bottom: 8rem;
+  margin-bottom: 10rem;
 `;

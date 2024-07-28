@@ -5,7 +5,7 @@ import { Bannerimages } from "../../constants/HomePage/dummy";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
 import * as S from "./styled";
 import { Routinetitle } from "../../constants/ThemePage/dummy";
-
+import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
 const ThemePage = () => {
   const { imageIndex } = useParams();
   const index = parseInt(imageIndex, 10);
@@ -31,6 +31,7 @@ const ThemePage = () => {
             content={item.content}
           />
         ))}
+        <DateRangeCalendar />
       </S.RoutineBoxContainer>
     </>
   );
