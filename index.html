@@ -7,6 +7,9 @@
     <title>STAR.T</title>
   </head>
   <body>
+    <script>
+      window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
