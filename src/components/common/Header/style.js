@@ -7,10 +7,13 @@ export const Header = styled.div`
   height: 6rem;
   padding: ${(props) => props.$padding};
   margin: ${(props) => props.$margin};
+
+  color: ${(props) => props.color || "initial"};
+
 `;
 
 export const Title = styled.p`
   font-size: 2rem;
   font-weight: bold;
-  color: black;
+  color: inherit;
 `;

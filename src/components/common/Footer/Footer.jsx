@@ -41,7 +41,7 @@ export const Footer = () => {
           </svg>
           <p>검색</p>
         </S.ItemBox>
-        <S.ItemBox>
+        <S.ItemBox onClick={() => navigate("/randomDice")}>
           <img src={RandomImg} alt="" />
         </S.ItemBox>
         <S.ItemBox onClick={() => navigate("/calendar")}>
@@ -60,7 +60,7 @@ export const Footer = () => {
           </svg>
           <p>캘린더</p>
         </S.ItemBox>
-        <S.ItemBox>
+        <S.ItemBox onClick={() => navigate("/mypage")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
