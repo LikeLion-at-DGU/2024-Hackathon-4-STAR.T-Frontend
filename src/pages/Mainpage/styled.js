@@ -16,7 +16,7 @@ export const MainTitle = styled.div`
   font-weight: 600;
 `;
 export const RoutineBoxWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
@@ -36,7 +36,7 @@ export const RoutineBoxWrapper = styled.div`
   }
 `;
 export const MainContainer = styled.div`
-  width: 95%;
+  width: 90%;
   padding: 0;
   display: flex;
   flex-direction: column;
