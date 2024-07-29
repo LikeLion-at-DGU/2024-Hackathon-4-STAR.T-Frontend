@@ -1,5 +1,6 @@
 import diet from "../../assets/BannerImage(1).svg";
 import star1 from "../../assets/star1.svg";
+
 export const DUMMY_DATA = [
   {
     id: "1",

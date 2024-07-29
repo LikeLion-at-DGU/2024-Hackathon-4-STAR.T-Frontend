@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
-  height: 2rem;
-  padding: 60px 1.5rem;
+  height: 6rem;
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 `;
 
 export const Title = styled.p`
