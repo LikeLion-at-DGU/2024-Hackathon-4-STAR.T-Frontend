@@ -57,7 +57,7 @@ const StarPage = () => {
         <CategoryTitle section={"나의 점수"} fontSize="15px" />
         <S.Ranking>
           <UserScore />
-          <div>(상위10%)</div>
+          <div className="Percentage">(상위10%)</div>
         </S.Ranking>
       </S.ScoreContainer>
       <S.RoutineBoxContainer>

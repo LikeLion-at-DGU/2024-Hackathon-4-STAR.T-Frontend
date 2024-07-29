@@ -18,6 +18,31 @@ export const RandomDice = () => {
   const [rolling, setRolling] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("#fff");
   const [showContent, setShowContent] = useState(false);
+  const [containerStyle, setContainerStyle] = useState({
+    justifyContent: "center",
+    alignItems: "center",
+  });
+  useEffect(() => {
+    const handleResize = () => {
+      console.log(window.innerWidth);
+      if (window.innerWidth > 768) {
+        setContainerStyle({
+          justifyContent: "center",
+          alignItems: "center",
+        });
+      } else {
+        setContainerStyle({
+          justifyContent: "flex-start", // 예시: 작은 화면에서는 flex-start로 정렬
+          alignItems: "center",
+        });
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     let interval;
@@ -46,6 +71,13 @@ export const RandomDice = () => {
   };
 
   const textColor = !showContent ? "black" : "white";
+
+  //다시 돌리기 기능
+  const handleAgainClick = () => {
+    navigate("/randomDice");
+    window.location.reload();
+  };
+
   return (
     <S.Layout
       style={{
@@ -59,7 +91,12 @@ export const RandomDice = () => {
       >
         랜덤 루틴
       </Header>
-      <S.Container>
+      <S.Container
+        style={{
+          justifyContent: containerStyle.justifyContent,
+          alignItems: containerStyle.alignItems,
+        }}
+      >
         <S.Gif
           style={{
             backgroundImage: `url(${currentImage})`,
@@ -86,7 +123,9 @@ export const RandomDice = () => {
             <button className="Add" onClick={() => navigate("/calendar")}>
               내 캘린더에 추가
             </button>
-            <button className="Again">다시 돌리기</button>
+            <button className="Again" onClick={handleAgainClick}>
+              다시 돌리기
+            </button>
           </div>
         )}
       </S.Container>

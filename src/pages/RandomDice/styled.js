@@ -16,13 +16,12 @@ export const Layout = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-self: center;
   height: 100%;
-  align-self: center;
+  flex-grow: 0.5;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 
   .coment {
     width: 65%;
@@ -98,12 +97,12 @@ export const Gif = styled.div`
 `;
 export const ThrowButton = styled.button`
   display: flex;
-  width: 100%;
+  width: 80%;
   justify-content: center;
   align-items: center;
   font-size: 1.3rem;
   height: 45px;
-  padding: 6px 90px;
+  padding: 6px 70px;
   gap: 10px;
   border-radius: 25px;
   background-color: #78a1b5;

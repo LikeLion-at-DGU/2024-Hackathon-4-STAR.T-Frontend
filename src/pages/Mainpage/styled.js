@@ -21,7 +21,7 @@ export const RoutineBoxWrapper = styled.div`
   align-items: flex-start;
   flex-direction: row;
   gap: 1rem;
-  margin-left: 1rem;
+
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
