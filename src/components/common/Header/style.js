@@ -7,7 +7,9 @@ export const Header = styled.div`
   height: 6rem;
   padding: ${(props) => props.$padding};
   margin: ${(props) => props.$margin};
+
   color: ${(props) => props.color || "initial"};
+
 `;
 
 export const Title = styled.p`
