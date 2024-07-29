@@ -8,4 +8,6 @@ export const ScoreContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 5px;
+  flex-shrink: 1;
+  width: auto;
 `;

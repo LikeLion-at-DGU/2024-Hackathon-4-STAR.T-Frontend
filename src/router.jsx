@@ -5,6 +5,7 @@ import Mainpage from "./pages/Mainpage/Mainpage";
 import { Calendar } from "./pages/Calendar/Calendar";
 import ThemePage from "./pages/ThemePage/ThemePage";
 import StarPage from "./pages/StarPage/StarPage";
+import MyPage from "./pages/MyPage/MyPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/star/:id",
         element: <StarPage />,
+      },
+      {
+        path: "/mypage",
+        element: <MyPage />,
       },
     ],
     // errorElement: <NotFound />,
