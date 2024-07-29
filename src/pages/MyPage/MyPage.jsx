@@ -21,7 +21,9 @@ export const MyPage = () => {
 
   return (
     <S.Layout>
-      <Header>마이페이지</Header>
+      <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
+        마이페이지
+      </Header>
       <S.MypageWrapper>
         <div className="MyStar">나의 최애</div>
         {DUMMY_DATA.length === 0 ? (

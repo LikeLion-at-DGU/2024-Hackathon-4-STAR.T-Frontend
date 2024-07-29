@@ -6,6 +6,7 @@ import { Calendar } from "./pages/Calendar/Calendar";
 import { Login } from "./pages/Login/Login";
 import ThemePage from "./pages/ThemePage/ThemePage";
 import StarPage from "./pages/StarPage/StarPage";
+import { RandomDice } from "./pages/RandomDice/RandomDice";
 
 import MyPage from "./pages/MyPage/MyPage";
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <MyPage />,
+      },
+      {
+        path: "/randomDice",
+        element: <RandomDice />,
       },
     ],
     // errorElement: <NotFound />,
