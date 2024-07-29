@@ -51,7 +51,7 @@ export const LoginContainer = styled.div`
   gap: 1rem;
 `;
 
-export const LoginView = styled.a`
+export const LoginView = styled.button`
   display: flex;
   justify-content: center;
 `;
