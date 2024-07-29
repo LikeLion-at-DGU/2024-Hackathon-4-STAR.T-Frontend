@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import { MyStar } from "../../components/MyStar/MyStar";
 import { DUMMY_DATA } from "../../constants/StarPage/dummy";
 import { useNavigate } from "react-router-dom";
+import { Logout } from "../../components/Logout/Logout";
+import Modal from "../../components/Modal/Modal";
+
 export const MyPage = () => {
   const navigate = useNavigate();
+  const [isLogoutVisible, setisLogoutVisible] = useState(false);
+
+  const handleCloseModal = () => {
+    setisLogoutVisible(false);
+  };
+
+  const handleLogoutClick = () => {
+    setisLogoutVisible(true);
+  };
 
   return (
     <S.Layout>
@@ -30,8 +42,15 @@ export const MyPage = () => {
         <button className="Privacy" onClick={() => navigate("/")}>
           맞춤형 루틴 수정
         </button>
-        <button className="Privacy">로그아웃</button>
+        <button className="Privacy" onClick={handleLogoutClick}>
+          로그아웃
+        </button>
       </S.MypageWrapper>
+      {isLogoutVisible && (
+        <Modal onClose={handleCloseModal}>
+          <Logout onClose={handleCloseModal} />
+        </Modal>
+      )}
     </S.Layout>
   );
 };

@@ -4,13 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const StarImg = styled.img`
   display: flex;
-  width: 56px;
-  height: 56px;
+  width: 65px;
+  height: 65px;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 10px;

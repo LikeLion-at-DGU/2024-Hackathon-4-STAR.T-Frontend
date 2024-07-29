@@ -16,7 +16,7 @@ export const Layout = styled.div`
   .MyStar {
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
   }
 
   .Privacy {
