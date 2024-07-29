@@ -41,7 +41,7 @@ export const Footer = () => {
           </svg>
           <p>검색</p>
         </S.ItemBox>
-        <S.ItemBox>
+        <S.ItemBox onClick={() => navigate("/randomDice")}>
           <img src={RandomImg} alt="" />
         </S.ItemBox>
         <S.ItemBox onClick={() => navigate("/calendar")}>
