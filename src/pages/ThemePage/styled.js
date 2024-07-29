@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const Header = styled.div`
   position: relative;
+  width: 100%;
 `;
 export const Bannerimage = styled.img`
   display: block;

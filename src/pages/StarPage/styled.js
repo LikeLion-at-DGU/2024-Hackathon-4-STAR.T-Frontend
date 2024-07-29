@@ -34,11 +34,15 @@ export const RoutineBoxContainer = styled.div`
 `;
 export const ScoreContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 98%;
   align-items: center;
   justify-content: space-between;
   margin-top: 1.5rem;
 `;
 export const Ranking = styled.div`
   display: flex;
+
+  .Percentage {
+    margin: 0 0.3rem;
+  }
 `;
