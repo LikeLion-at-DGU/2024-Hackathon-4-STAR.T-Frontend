@@ -5,6 +5,8 @@ import KAKAO from "../../assets/KakaoLogin.svg";
 import GOOGLE from "../../assets/GoogleLogin.svg";
 
 export const Login = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   return (
     <S.Layout
       style={{
@@ -20,12 +22,16 @@ export const Login = () => {
         <S.ImageFame src={LOGO_BACKGROUND} />
       </S.LogoContainr>
       <S.LoginContainer>
-        <S.LoginView href="https://www.kakao.com">
-          <S.ImageFame src={KAKAO} />
-        </S.LoginView>
-        <S.LoginView href="https://www.google.com">
-          <S.ImageFame src={GOOGLE} />
-        </S.LoginView>
+        <form method="POST" action={`${BASE_URL}/accounts/kakao/login/`}>
+          <S.LoginView>
+            <S.ImageFame src={KAKAO} />
+          </S.LoginView>
+        </form>
+        <form method="POST" action={`${BASE_URL}/accounts/google/login/`}>
+          <S.LoginView>
+            <S.ImageFame src={GOOGLE} />
+          </S.LoginView>
+        </form>
       </S.LoginContainer>
     </S.Layout>
   );
