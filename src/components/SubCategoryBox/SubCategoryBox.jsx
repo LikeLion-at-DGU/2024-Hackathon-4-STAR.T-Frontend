@@ -1,15 +1,13 @@
 import * as S from "./styled";
 
-const SearchCategoryBox = ({
-  src,
-  category,
-  onClick,
-  subCategoryId,
-  sectionId,
-}) => {
+const SubCategoryBox = ({ src, category, star, career }) => {
   return (
-    <S.Container src={src} onClick={() => onClick(sectionId, subCategoryId)}>
+    <S.Container src={src}>
       <div>{category}</div>
+      <div className="StarInfo">
+        <div>{star}</div>
+        <div>{career}</div>
+      </div>
       <svg
         className="Icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,4 +27,4 @@ const SearchCategoryBox = ({
   );
 };
 
-export default SearchCategoryBox;
+export default SubCategoryBox;
