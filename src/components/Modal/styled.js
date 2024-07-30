@@ -6,6 +6,7 @@ export const ModalOverlay = styled.div`
   right: 0;
   bottom: 0;
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;

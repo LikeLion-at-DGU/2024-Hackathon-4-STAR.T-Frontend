@@ -29,15 +29,18 @@ export const Container = styled.div`
     gap: 10px;
     border-radius: 15px;
     background-color: #c7c7c7;
+    color: black;
   }
-  #confirm-logout:hover {
+  #confirm-logout:hover,
+  #cancel-logout:hover,
+  #confirm-logout:focus,
+  #cancel-logout:focus,
+  #confirm-logout:active,
+  #cancel-logout:active {
     color: white !important;
     background-color: #78a1b5 !important;
   }
-  #cancel-logout:hover {
-    color: white !important;
-    background-color: #78a1b5 !important;
-  }
+
   .ConfirmButton {
     display: flex;
     flex-direction: row;

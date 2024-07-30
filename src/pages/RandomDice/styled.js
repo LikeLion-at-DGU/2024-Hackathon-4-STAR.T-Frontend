@@ -1,8 +1,13 @@
 import { styled } from "styled-components";
 export const Layout = styled.div`
   display: flex;
+  position: relative; /* Ensure that gradient background is positioned relative to this container */
+  overflow: hidden; /* Ensure content does not overflow the container */
+  z-index: 1; /* Ensure content is above the background */
+  background-color: transparent; /* Allow background to show through */
   width: 100%;
   min-height: 100vh;
+
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;
@@ -22,6 +27,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  z-index: 2;
 
   .coment {
     width: 65%;

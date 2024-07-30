@@ -5,11 +5,11 @@ export const Header = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 6rem;
+  z-index: 2;
   padding: ${(props) => props.$padding};
   margin: ${(props) => props.$margin};
 
   color: ${(props) => props.color || "initial"};
-
 `;
 
 export const Title = styled.p`

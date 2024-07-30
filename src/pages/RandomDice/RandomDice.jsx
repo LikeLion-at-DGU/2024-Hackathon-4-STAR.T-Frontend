@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
+import DiceBackground from "../../assets/DiceBackground.svg";
 import star1 from "../../assets/star1.svg";
 import { useNavigate } from "react-router-dom";
-
+import GradientBackground from "../../components/GradientBackground/GradientBackground";
 // 이미지 배열 (실제 이미지 URL 또는 소스 파일을 사용)
 const images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s",
@@ -14,9 +15,9 @@ const images = [
 
 export const RandomDice = () => {
   const navigate = useNavigate();
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [currentImage, setCurrentImage] = useState(DiceBackground);
   const [rolling, setRolling] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("#fff");
+  //   const [backgroundColor, setBackgroundColor] = useState("#fff");
   const [showContent, setShowContent] = useState(false);
   const [containerStyle, setContainerStyle] = useState({
     justifyContent: "center",
@@ -57,7 +58,7 @@ export const RandomDice = () => {
         clearInterval(interval);
         const randomImage = images[Math.floor(Math.random() * images.length)];
         setCurrentImage(randomImage);
-        setBackgroundColor("#78A1B5");
+        // setBackgroundColor("#78A1B5");
         setRolling(false);
         setShowContent(true);
       }, 3000);
@@ -79,11 +80,8 @@ export const RandomDice = () => {
   };
 
   return (
-    <S.Layout
-      style={{
-        backgroundColor: backgroundColor,
-      }}
-    >
+    <S.Layout>
+      <GradientBackground showContent={showContent} />
       <Header
         $margin={"1rem 0 0 0"}
         $padding={"1rem 1rem 0 1rem"}
