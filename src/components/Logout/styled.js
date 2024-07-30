@@ -13,17 +13,31 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-
+  .ment {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+  }
   #confirm-logout,
   #cancel-logout {
-    color: #78a1b5;
-    border-radius: 10px;
-    border: 1px solid #78a1b5;
-    padding: 0.5rem;
-    background-color: #78a1b5;
-    color: white;
+    display: flex;
+    width: 80px;
+    height: 32px;
+    padding: 9px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    background-color: #c7c7c7;
   }
-
+  #confirm-logout:hover {
+    color: white !important;
+    background-color: #78a1b5 !important;
+  }
+  #cancel-logout:hover {
+    color: white !important;
+    background-color: #78a1b5 !important;
+  }
   .ConfirmButton {
     display: flex;
     flex-direction: row;

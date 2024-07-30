@@ -23,7 +23,7 @@ export const Footer = () => {
           </svg>
           <p>홈</p>
         </S.ItemBox>
-        <S.ItemBox>
+        <S.ItemBox onClick={() => navigate("/search")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
