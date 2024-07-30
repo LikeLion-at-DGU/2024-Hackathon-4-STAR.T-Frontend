@@ -3,6 +3,7 @@ import LOGIN_BACKGROUND from "../../assets/loginBackground.svg";
 import LOGO_BACKGROUND from "../../assets/logoContainer.svg";
 import KAKAO from "../../assets/KakaoLogin.svg";
 import GOOGLE from "../../assets/GoogleLogin.svg";
+import { TITLE_TEXT } from "../../constants/Text/title";
 
 export const Login = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -14,8 +15,8 @@ export const Login = () => {
       }}
     >
       <S.TitleFrame>
-        <S.TitleText>당신의 스타와 함께하는</S.TitleText>
-        <S.TitleText>건강한 습관</S.TitleText>
+        <S.TitleText>{TITLE_TEXT[0]}</S.TitleText>
+        <S.TitleText>{TITLE_TEXT[1]}</S.TitleText>
       </S.TitleFrame>
 
       <S.LogoContainr>
