@@ -21,7 +21,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 
   .coment {
     width: 65%;
@@ -42,6 +42,7 @@ export const Container = styled.div`
     width: 100%;
     font-size: 12px;
     color: white;
+    text-align: center;
   }
 
   .content {

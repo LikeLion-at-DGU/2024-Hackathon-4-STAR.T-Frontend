@@ -11,9 +11,14 @@ export const Container = styled.div`
   border-radius: 15px;
   background: url(${(props) => props.src}) lightgray 0px -32.406px / 100% 389.193%
     no-repeat;
-  cursor: pointer;
 
   .Icon {
     margin-left: auto;
+  }
+  .StarInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 `;
