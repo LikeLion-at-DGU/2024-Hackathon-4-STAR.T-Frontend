@@ -25,10 +25,8 @@ export const RoutineBoxImg = styled.div`
 
 export const RoutineBoxTitle = styled.div`
   color: var(--Font-Color, #2a2a2a);
-
-  /* Korean Body */
-  font-family: AppleSDGothicNeoL00;
-  font-size: 13px;
+  font-family: "AppleSDGothicNeoL";
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -38,7 +36,7 @@ export const RoutineBoxStar = styled.div`
   color: rgba(42, 42, 42, 0.7);
 
   /* Korean Minimal */
-  font-family: AppleSDGothicNeoM00;
+  font-family: "AppleSDGothicNeoM";
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

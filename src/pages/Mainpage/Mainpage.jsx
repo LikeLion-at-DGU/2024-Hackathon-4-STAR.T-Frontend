@@ -4,11 +4,15 @@ import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
 import ImageSlider from "../../components/ImgSlider/ImgSlider";
 import * as S from "./styled";
 import { DUMMY_DATA, sectionTitle } from "../../constants/HomePage/dummy";
-
+import Logo1 from "../../assets/images/MainLogoImg.svg";
+import Logo2 from "../../assets/images/MainLogoImg(2).svg";
 function Mainpage() {
   return (
     <>
-      <S.MainTitle>STAR.T</S.MainTitle>
+      <S.MainTitle>
+        <S.ImageFame src={Logo1} />
+        <S.ImageFame src={Logo2} />
+      </S.MainTitle>
       <ImageSlider />
       <S.MainContainer>
         {sectionTitle.map((title) => (
