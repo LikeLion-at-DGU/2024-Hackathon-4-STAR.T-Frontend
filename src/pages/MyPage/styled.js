@@ -75,7 +75,6 @@ export const StarImg = styled.img`
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 10px;
-  background: lightgray 0px -9.133px / 100% 150.476% no-repeat;
 `;
 
 export const info = styled.div`
