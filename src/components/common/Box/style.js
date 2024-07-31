@@ -8,4 +8,9 @@ export const Box = styled.div`
   border-radius: 15px;
   border: 1px solid var(--Main-Color-2, #c4d9e2);
   background: rgba(196, 217, 226, 0.5);
+  font-family: "AppleSDGothicNeoL";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
