@@ -25,6 +25,15 @@ export const MyPage = () => {
         마이페이지
       </Header>
       <S.MypageWrapper>
+        <S.Container>
+          <S.StarImg src={""} />
+          <S.info>
+            <div>닉네임</div>
+            {/* 수정필요 */}
+          </S.info>
+        </S.Container>
+      </S.MypageWrapper>
+      <S.MypageWrapper>
         <div className="MyStar">나의 최애</div>
         {DUMMY_DATA.length === 0 ? (
           <div className="emptytext">챌린지를 시작해보세요!</div>

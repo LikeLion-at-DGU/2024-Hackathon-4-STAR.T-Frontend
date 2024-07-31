@@ -31,7 +31,6 @@ const SubCategoryPage = () => {
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         {selectedSection.title.category}/{selectedSubCategory.category}
       </Header>
-      <SubCategoryBox />
     </S.Layout>
   );
 };
