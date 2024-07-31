@@ -57,3 +57,9 @@ export const LoginView = styled.button`
 `;
 
 export const ImageFame = styled.img``;
+
+export const CategoryView = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+`;

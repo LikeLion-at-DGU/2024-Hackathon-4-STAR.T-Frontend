@@ -37,3 +37,5 @@ export const Login = () => {
     </S.Layout>
   );
 };
+
+// 루틴까지 설정된 유저인지 검증하는 로직 필요

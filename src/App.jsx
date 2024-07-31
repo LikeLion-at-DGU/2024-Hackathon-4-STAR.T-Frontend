@@ -42,7 +42,11 @@ const Layout = () => {
       <Wrapper>
         <Content>
           <Outlet />
-          {location.pathname !== "/login" ? <Footer /> : <></>}
+          {location.pathname === "/login" || location.pathname === "/signup" ? (
+            <></>
+          ) : (
+            <Footer />
+          )}
         </Content>
       </Wrapper>
     </Frame>
