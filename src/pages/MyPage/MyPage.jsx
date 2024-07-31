@@ -6,6 +6,7 @@ import { DUMMY_DATA } from "../../constants/StarPage/dummy";
 import { useNavigate } from "react-router-dom";
 import { Logout } from "../../components/Logout/Logout";
 import Modal from "../../components/Modal/Modal";
+import LOGO from "../../assets/images/MainLogoImg.svg";
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -26,9 +27,9 @@ export const MyPage = () => {
       </Header>
       <S.MypageWrapper>
         <S.Container>
-          <S.StarImg src={""} />
+          <S.StarImg src={LOGO} />
           <S.info>
-            <div>닉네임</div>
+            <div>박세호</div>
             {/* 수정필요 */}
           </S.info>
         </S.Container>
