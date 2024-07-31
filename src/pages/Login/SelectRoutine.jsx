@@ -22,6 +22,7 @@ export const SelectRoutine = () => {
           </Box>
         ))}
       </S.CategoryView>
+
       <S.SelectView>
         <Button
           width="50%"
