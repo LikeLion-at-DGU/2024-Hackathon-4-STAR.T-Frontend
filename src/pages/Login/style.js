@@ -12,6 +12,8 @@ export const Layout = styled.div`
   overflow: hidden;
   z-index: 1;
   background-color: transparent;
+  background-repeat: none;
+  background-size: cover;
   transition: background-color 1.8s ease;
 `;
 
