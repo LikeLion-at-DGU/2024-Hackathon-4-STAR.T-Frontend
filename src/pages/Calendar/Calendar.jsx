@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export const Calendar = () => {
   const fetchData = async () => {
-    res = await getMonthCalenar();
+    const res = await getMonthCalenar();
     console.log(res);
   };
   useEffect(() => {
