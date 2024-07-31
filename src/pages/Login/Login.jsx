@@ -4,16 +4,13 @@ import LOGO_BACKGROUND from "../../assets/logoContainer.svg";
 import KAKAO from "../../assets/KakaoLogin.svg";
 import GOOGLE from "../../assets/GoogleLogin.svg";
 import { TITLE_TEXT } from "../../constants/Text/title";
-
+import GradientBackground from "../../components/GradientBackground/GradientBackground";
 export const Login = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+  const showContent = true;
   return (
-    <S.Layout
-      style={{
-        backgroundImage: `url(${LOGIN_BACKGROUND})`,
-      }}
-    >
+    <S.Layout>
+      <GradientBackground showContent={showContent} />
       <S.TitleFrame>
         <S.TitleText>{TITLE_TEXT[0]}</S.TitleText>
         <S.TitleText>{TITLE_TEXT[1]}</S.TitleText>

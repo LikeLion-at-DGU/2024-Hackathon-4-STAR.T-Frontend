@@ -3,13 +3,16 @@ import styled from "styled-components";
 export const Layout = styled.div`
   width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: transparent;
+  transition: background-color 1.8s ease;
 `;
 
 export const TitleFrame = styled.div`
@@ -19,6 +22,7 @@ export const TitleFrame = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 0.5rem;
+  z-index: 2;
 `;
 
 export const TitleText = styled.p`
@@ -30,6 +34,7 @@ export const TitleText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  z-index: 2;
 `;
 
 export const LogoContainr = styled.div`
@@ -40,6 +45,7 @@ export const LogoContainr = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 `;
 
 export const LoginContainer = styled.div`
@@ -49,14 +55,18 @@ export const LoginContainer = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  z-index: 2;
 `;
 
 export const LoginView = styled.button`
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
-export const ImageFame = styled.img``;
+export const ImageFame = styled.img`
+  z-index: 2;
+`;
 
 export const CategoryView = styled.div`
   display: grid;

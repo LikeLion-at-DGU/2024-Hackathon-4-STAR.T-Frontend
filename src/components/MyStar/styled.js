@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   width: 100%;
   gap: 20px;
+  align-items: center;
 `;
 
 export const StarImg = styled.img`

@@ -6,7 +6,7 @@ export const Layout = styled.div`
   flex-direction: column;
   justify-content: space-around;
   gap: 5px;
-
+  margin-bottom: 9rem;
   @media (min-height: 720px) {
     justify-content: flex-start;
     gap: 40px;
@@ -43,4 +43,46 @@ export const MypageWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
+
+  .button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+`;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+`;
+
+export const StarImg = styled.img`
+  display: flex;
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 10px;
+  background: lightgray 0px -9.133px / 100% 150.476% no-repeat;
+`;
+
+export const info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  flex-grow: 2;
+  font-size: 1.3rem;
 `;
