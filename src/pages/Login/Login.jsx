@@ -1,8 +1,7 @@
 import * as S from "./style";
-import LOGIN_BACKGROUND from "../../assets/loginBackground.svg";
+
 import LOGO_BACKGROUND from "../../assets/logoContainer.svg";
-import KAKAO from "../../assets/KakaoLogin.svg";
-import GOOGLE from "../../assets/GoogleLogin.svg";
+import KAKAO from "../../assets/images/kakaoLogin.svg";
 import { TITLE_TEXT } from "../../constants/Text/title";
 import GradientBackground from "../../components/GradientBackground/GradientBackground";
 export const Login = () => {
@@ -11,23 +10,20 @@ export const Login = () => {
   return (
     <S.Layout>
       <GradientBackground showContent={showContent} />
-      <S.TitleFrame>
-        <S.TitleText>{TITLE_TEXT[0]}</S.TitleText>
-        <S.TitleText>{TITLE_TEXT[1]}</S.TitleText>
-      </S.TitleFrame>
+      <S.LogoFrame>
+        <S.TitleFrame>
+          <S.TitleText>{TITLE_TEXT[0]}</S.TitleText>
+          <S.TitleText>{TITLE_TEXT[1]}</S.TitleText>
+        </S.TitleFrame>
 
-      <S.LogoContainr>
-        <S.ImageFame src={LOGO_BACKGROUND} />
-      </S.LogoContainr>
+        <S.LogoContainr>
+          <S.ImageFame src={LOGO_BACKGROUND} />
+        </S.LogoContainr>
+      </S.LogoFrame>
       <S.LoginContainer>
         <form method="POST" action={`${BASE_URL}/accounts/kakao/login/`}>
           <S.LoginView>
             <S.ImageFame src={KAKAO} />
-          </S.LoginView>
-        </form>
-        <form method="POST" action={`${BASE_URL}/accounts/google/login/`}>
-          <S.LoginView>
-            <S.ImageFame src={GOOGLE} />
           </S.LoginView>
         </form>
       </S.LoginContainer>

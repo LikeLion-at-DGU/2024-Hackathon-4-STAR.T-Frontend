@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Layout = styled.div`
   width: 100%;
@@ -7,7 +7,7 @@ export const Layout = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -24,7 +24,16 @@ export const TitleFrame = styled.div`
   gap: 0.5rem;
   z-index: 2;
 `;
-
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 export const TitleText = styled.p`
   color: var(--naver-text, #fff);
   text-align: center;
@@ -35,8 +44,20 @@ export const TitleText = styled.p`
   font-weight: 400;
   line-height: normal;
   z-index: 2;
+  opacity: 0;
+  animation: ${fadeInUp} 1s forwards;
+  &:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(2) {
+    animation-delay: 1.5s;
+  }
 `;
-
+export const LogoFrame = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+`;
 export const LogoContainr = styled.div`
   width: 100%;
   height: 40%;
