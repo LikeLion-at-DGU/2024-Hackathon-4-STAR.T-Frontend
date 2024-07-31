@@ -28,38 +28,31 @@ const router = createBrowserRouter([
       {
         path: "/calendar",
         element: <Calendar />,
-        loader: loader,
       },
 
       {
         path: "/theme/:imageIndex",
         element: <ThemePage />,
-        loader: loader,
       },
       {
         path: "/star/:id",
         element: <StarPage />,
-        loader: loader,
       },
       {
         path: "/mypage",
         element: <MyPage />,
-        loader: loader,
       },
       {
         path: "/randomDice",
         element: <RandomDice />,
-        loader: loader,
       },
       {
         path: "/search",
         element: <SearchPage />,
-        loader: loader,
       },
       {
         path: "/subcategory/:sectionId/:subCategoryId",
         element: <SubCategoryPage />,
-        loader: loader,
       },
     ],
     // errorElement: <NotFound />,
