@@ -2,10 +2,16 @@ import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import { CustomCalendar } from "../../components/CustomCalendar/CustomCalendar";
 import { getMonthCalenar } from "../../apis/calendar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Calendar = () => {
-  useEffect(() => {}, []);
+  const fetchData = async () => {
+    res = await getMonthCalenar();
+    console.log(res);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
