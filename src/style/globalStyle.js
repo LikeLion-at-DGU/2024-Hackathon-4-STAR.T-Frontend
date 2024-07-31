@@ -1,10 +1,26 @@
 import { createGlobalStyle } from "styled-components";
+import AppleSDGothicNeoL from "../assets/font/AppleSDGothicNeoL.ttf";
+import AppleSDGothicNeoSB from "../assets/font/AppleSDGothicNeoSB.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 
   :root {
     --vh: 100%;
    }
+
+   @font-face {
+    font-family: 'AppleSDGothicNeoL';
+    src: url(${AppleSDGothicNeoL}) format('truetype');
+    /* font-weight: 600;  */
+    /* font-style: normal; */
+  }
+  
+  @font-face {
+    font-family: 'AppleSDGothicNeoSB';
+    src: url(${AppleSDGothicNeoSB}) format('truetype');
+    /* font-weight: 400;  */
+    /* font-style: normal; */
+  }
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, 

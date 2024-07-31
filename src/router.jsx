@@ -10,6 +10,7 @@ import { RandomDice } from "./pages/RandomDice/RandomDice";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPage from "./pages/MyPage/MyPage";
 import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
+import { SelectRoutine } from "./pages/Login/SelectRoutine";
 import { loader } from "./utils/loader";
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/signup",
+        element: <SelectRoutine />,
+      },
+      {
         path: "",
         element: <Mainpage />,
         loader: loader,
@@ -28,31 +33,38 @@ const router = createBrowserRouter([
       {
         path: "/calendar",
         element: <Calendar />,
+        loader: loader,
       },
 
       {
         path: "/theme/:imageIndex",
         element: <ThemePage />,
+        loader: loader,
       },
       {
         path: "/star/:id",
         element: <StarPage />,
+        loader: loader,
       },
       {
         path: "/mypage",
         element: <MyPage />,
+        loader: loader,
       },
       {
         path: "/randomDice",
         element: <RandomDice />,
+        loader: loader,
       },
       {
         path: "/search",
         element: <SearchPage />,
+        loader: loader,
       },
       {
         path: "/subcategory/:sectionId/:subCategoryId",
         element: <SubCategoryPage />,
+        loader: loader,
       },
     ],
     // errorElement: <NotFound />,
