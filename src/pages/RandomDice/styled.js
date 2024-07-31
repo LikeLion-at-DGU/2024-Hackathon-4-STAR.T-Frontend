@@ -1,13 +1,12 @@
 import { styled } from "styled-components";
 export const Layout = styled.div`
   display: flex;
-  position: relative; /* Ensure that gradient background is positioned relative to this container */
-  overflow: hidden; /* Ensure content does not overflow the container */
-  z-index: 1; /* Ensure content is above the background */
-  background-color: transparent; /* Allow background to show through */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: transparent;
   width: 100%;
   min-height: 100vh;
-
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;

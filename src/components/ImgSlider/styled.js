@@ -40,6 +40,11 @@ export const SlideTitle = styled.div`
   text-align: center;
   font-size: 1rem;
   color: #333;
+  font-family: "AppleSDGothicNeoL";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 export const SlideRoutineTitle = styled.div`
@@ -47,4 +52,10 @@ export const SlideRoutineTitle = styled.div`
   text-align: center;
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
+
+  font-family: "AppleSDGothicNeoM00";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;

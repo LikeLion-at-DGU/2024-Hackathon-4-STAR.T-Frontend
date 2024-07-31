@@ -16,6 +16,8 @@ export const CategoryLine = styled.svg`
 `;
 
 export const CategorySection = styled.div`
-  color: var(--Font-Color, #2a2a2a);
+  color: #2a2a2a;
+
+  font-family: "AppleSDGothicNeoM00";
   font-size: ${(props) => props.fontSize || "16px"} !important;
 `;
