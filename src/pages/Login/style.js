@@ -11,6 +11,7 @@ export const Layout = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background-image: url(${(props) => props.$url});
   background-color: transparent;
   background-repeat: none;
   background-size: cover;

@@ -14,11 +14,7 @@ export const SelectRoutine = () => {
     getData();
   }, []);
   return (
-    <S.Layout
-      style={{
-        backgroundImage: `url(${BACKGROUND})`,
-      }}
-    >
+    <S.Layout $url={BACKGROUND}>
       <S.TitleView>
         <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
         <S.CustomP color="white">{TITLE[1]}</S.CustomP>
