@@ -25,19 +25,10 @@ export const BannerTitle = styled.div`
   color: white;
   font-weight: 600;
 `;
-export const RoutineBoxContainer = styled.div`
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-bottom: 10rem;
-`;
 
 export const descriptionContainer = styled.div`
   margin-top: 2rem;
   display: flex;
-
   width: 90%;
   align-items: flex-start;
-
 `;
