@@ -102,7 +102,7 @@ export const TitleView = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 7.5%;
-  gap: 2rem;
+  gap: 1rem;
 `;
 
 export const CutomTitle = styled.p`

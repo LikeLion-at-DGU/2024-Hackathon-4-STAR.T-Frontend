@@ -1,5 +1,5 @@
 import * as S from "./style";
-import BACKGROUND from "../../assets/loginBackground.svg";
+import BACKGROUND from "../../assets/background.svg";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { Box } from "../../components/common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
@@ -36,14 +36,14 @@ export const SelectRoutine = () => {
           width="50%"
           height="40px"
           $radius="15px"
-          $background="#78A1B5"
+          $background="rgba(196, 217, 226, 0.50)"
           onClick={() => {
             console.log("select zone");
           }}
         >
           <S.CustomP color="white">확인</S.CustomP>
         </Button>
-        <Button
+        {/* <Button
           width="50%"
           height="40px"
           $radius="15px"
@@ -53,7 +53,7 @@ export const SelectRoutine = () => {
           }}
         >
           <S.CustomP color="black">건너뛰기</S.CustomP>
-        </Button>
+        </Button> */}
       </S.SelectView>
     </S.Layout>
   );
