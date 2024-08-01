@@ -8,7 +8,8 @@ import { useEffect } from "react";
 
 export const SelectRoutine = () => {
   const getData = async () => {
-    await getUserStatus();
+    const res = await getUserStatus();
+    console.log(res.data[0].is_new_user);
   };
   useEffect(() => {
     getData();
@@ -39,18 +40,11 @@ export const SelectRoutine = () => {
         >
           <S.CustomP color="white">확인</S.CustomP>
         </Button>
-        {/* <Button
-          width="50%"
-          height="40px"
-          $radius="15px"
-          $background="rgba(196, 217, 226, 0.50)"
-          onClick={() => {
-            console.log("select zone");
-          }}
-        >
-          <S.CustomP color="black">건너뛰기</S.CustomP>
-        </Button> */}
       </S.SelectView>
     </S.Layout>
   );
 };
+
+// 비동기 상태 돌리고
+// 이행 && new_user 이면 -> routine 선택
+// 아니면 main 리다이렉트
