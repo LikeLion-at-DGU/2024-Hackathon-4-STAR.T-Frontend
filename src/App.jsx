@@ -2,7 +2,7 @@ import React from "react";
 import { styled, ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style/globalStyle";
 import { theme } from "./style/theme.js";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "./components/common/Footer/Footer.jsx";
 import { RecoilRoot } from "recoil";
 
@@ -38,6 +38,8 @@ const Content = styled.div`
 `;
 
 const Layout = () => {
+  const location = useLocation();
+
   return (
     <Frame>
       <Wrapper>
