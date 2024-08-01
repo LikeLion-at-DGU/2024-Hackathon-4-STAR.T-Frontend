@@ -9,11 +9,11 @@ export const useMoveonTheme = () => {
   useEffect(() => {
     const fetchThemeData = async () => {
       try {
-        const res = await ThemeContent();
-        console.log("response:", res);
-        setTheme(res.data);
+        const res = await ThemeContent(theme_id);
+        console.log("response:", res.data);
+        setTheme(res.data || {});
       } catch (error) {
-        console.error(error);
+        console.error("error:", error);
       }
     };
 
