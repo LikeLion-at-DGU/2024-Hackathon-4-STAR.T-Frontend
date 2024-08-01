@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
 import { useMoveonTheme } from "../../hooks/useTheme";
@@ -37,9 +37,13 @@ const ThemePage = () => {
     setIsCheckVisible(false);
   };
 
-  const differenceInTime = endDay.getTime() - startDay.getTime();
-  const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
-  setTerm(differenceInDays);
+  useEffect(() => {
+    if (startDay && endDay) {
+      const differenceInTime = endDay.getTime() - startDay.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
+      setTerm(differenceInDays);
+    }
+  }, [startDay, endDay]);
 
   if (!theme) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리

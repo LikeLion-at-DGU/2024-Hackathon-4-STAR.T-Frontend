@@ -17,7 +17,7 @@ export const useMoveonTheme = () => {
 
   useEffect(() => {
     fetchThemeData();
-  }, []);
+  }, [theme_id]);
 
   return { theme };
 };
