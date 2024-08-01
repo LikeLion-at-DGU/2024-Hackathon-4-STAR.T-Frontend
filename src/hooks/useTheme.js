@@ -8,8 +8,8 @@ export const useMoveonTheme = () => {
   const fetchThemeData = async () => {
     try {
       const res = await getThemeContent(theme_id);
-      console.log("response:", res.data);
-      setTheme(res.data);
+      console.log("response:", res);
+      setTheme(res);
     } catch (error) {
       console.error("error:", error);
     }
@@ -17,7 +17,7 @@ export const useMoveonTheme = () => {
 
   useEffect(() => {
     fetchThemeData();
-  }, []);
+  }, [theme_id]);
 
   return theme;
 };

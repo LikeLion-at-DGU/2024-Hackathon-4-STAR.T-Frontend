@@ -41,6 +41,10 @@ const ThemePage = () => {
   const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
   setTerm(differenceInDays);
 
+  if (!theme) {
+    return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
+  }
+
   return (
     <>
       <S.Header>
