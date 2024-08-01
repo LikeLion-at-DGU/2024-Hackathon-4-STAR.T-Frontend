@@ -10,4 +10,8 @@ export const Button = styled.button`
   margin: ${(props) => props.$margin};
   border-radius: ${(props) => props.$radius};
   background: ${(props) => props.$background};
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 `;

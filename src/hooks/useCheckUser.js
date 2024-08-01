@@ -3,7 +3,9 @@ import { getUserStatus } from "../apis/signup";
 import { useNavigate } from "react-router-dom";
 
 export const useCheckUser = () => {
-  const [status, setStatus] = useState(null);
+  // const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(true);
+
   const navigate = useNavigate();
 
   const getData = async () => {
@@ -16,7 +18,7 @@ export const useCheckUser = () => {
         navigate("/");
       }
     } catch (error) {
-      console.error("Error fetching user status:", error);
+      console.log(error);
     }
   };
 
