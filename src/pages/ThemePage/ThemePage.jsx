@@ -24,10 +24,10 @@ const ThemePage = () => {
     useRecoilState(CalendarVisible);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
   const { theme } = useMoveonTheme();
-  console.log("{theme}:", { theme });
+
   console.log("theme:", theme);
-  const { themeData } = theme.data;
-  console.log("themeData:", { themeData });
+  const themeData = theme && theme.data ? theme.data : null;
+  console.log("themeData:", themeData);
   const [term, setTerm] = useState(0);
 
   const handlePlusButtonClick = () => {
@@ -47,7 +47,7 @@ const ThemePage = () => {
     }
   }, [startDay, endDay]);
 
-  if (!theme) {
+  if (!themeData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
 
