@@ -1,12 +1,8 @@
 import { redirect } from "react-router-dom";
 
 export const loader = () => {
-  // console.log(Cookies.get());
-  // console.log(accessToken);
-
-  if (true) {
-    // return redirect("/login");
+  if (sessionStorage.getItem("signed")) {
     return null;
   }
-  return null;
+  return redirect("/login");
 };

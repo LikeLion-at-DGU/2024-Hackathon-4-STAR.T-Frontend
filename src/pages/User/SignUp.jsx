@@ -4,10 +4,28 @@ import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { Box } from "../../components/common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
 import { useCheckUser } from "../../hooks/useCheckUser";
+import { categoryState } from "../../stores/category";
+import { useRecoilState } from "recoil";
+import { postAddRoutines } from "../../apis/signup";
 
-export const SelectRoutine = () => {
+export const SignUp = () => {
   const status = useCheckUser();
-
+  const [categoryStatus, setCategoryStatus] = useRecoilState(categoryState);
+  const handleClick = (index) => {
+    setCategoryStatus((prevStatus) =>
+      prevStatus.map((status, i) => (i === index ? !status : status))
+    );
+  };
+  const isAnyCategorySelected = categoryStatus.some((status) => status);
+  const handleSubmit = () => {
+    const preferredRoutineCategories = [];
+    categoryStatus.map((status, i) => {
+      if (status === true) {
+        preferredRoutineCategories.push(i + 1);
+      }
+    });
+    postAddRoutines(preferredRoutineCategories);
+  };
   return status ? (
     <S.Layout $url={BACKGROUND}>
       <S.TitleView>
@@ -16,7 +34,11 @@ export const SelectRoutine = () => {
       </S.TitleView>
       <S.CategoryView>
         {ROUTINE_CATEGORY.map((category, index) => (
-          <Box onClick={() => console.log("state management part")} key={index}>
+          <Box
+            onClick={() => handleClick(index)}
+            $select={categoryStatus[index]}
+            key={index}
+          >
             {category}
           </Box>
         ))}
@@ -27,9 +49,8 @@ export const SelectRoutine = () => {
           height="40px"
           $radius="15px"
           $background="rgba(196, 217, 226, 0.50)"
-          onClick={() => {
-            console.log("select zone");
-          }}
+          onClick={handleSubmit}
+          $isDisabled={!isAnyCategorySelected}
         >
           <S.CustomP color="white">확인</S.CustomP>
         </Button>
