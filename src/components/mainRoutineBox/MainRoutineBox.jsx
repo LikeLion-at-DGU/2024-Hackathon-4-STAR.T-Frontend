@@ -2,14 +2,7 @@ import React from "react";
 import * as S from "./styled";
 import plusButton from "../../assets/plusButton.svg";
 
-function MainRoutineBox({
-  src,
-  title,
-  subtitle,
-  content,
-  term,
-  onPlusButtonClick,
-}) {
+function MainRoutineBox({ src, title, subtitle, content, onPlusButtonClick }) {
   return (
     <S.BoxContainer>
       <S.RoutineBoxImg src={src} alt={title} />
@@ -28,7 +21,6 @@ function MainRoutineBox({
       </S.TitleContainer>
       <S.BoxContent>
         <div>{content}</div>
-        <div>{term}일</div>
       </S.BoxContent>
     </S.BoxContainer>
   );
