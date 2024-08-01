@@ -21,7 +21,7 @@ const ThemePage = () => {
     theme_title = "",
     theme_content = "",
     routine = [],
-  } = theme;
+  } = theme || {};
 
   return (
     <>
