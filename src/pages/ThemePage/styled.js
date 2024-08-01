@@ -32,3 +32,11 @@ export const descriptionContainer = styled.div`
   width: 90%;
   align-items: flex-start;
 `;
+
+export const RoutineBoxContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 10rem;
+`;
