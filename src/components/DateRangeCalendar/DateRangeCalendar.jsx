@@ -1,17 +1,16 @@
-// src/components/DateRangeCalendar.jsx
-
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as S from "./styled";
+import { postRoutineDate } from "../../apis/Theme";
+import { useDateRange } from "../../hooks/useDateRange";
 
-const DateRangeCalendar = ({
-  onDateRangeSelected = () => {},
-  onConfirm = () => {},
-}) => {
+const DateRangeCalendar = ({ onConfirm = () => {} }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
 
+  const { term, handleCalendarConfirm } = useDateRange();
+
+  //루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
     if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
       setSelectedStartDate(date);
@@ -28,6 +27,7 @@ const DateRangeCalendar = ({
     }
   };
 
+  //루틴 목표날짜 지정
   const renderDays = () => {
     const days = [];
     const startOfMonth = new Date(
@@ -79,25 +79,35 @@ const DateRangeCalendar = ({
     return days;
   };
 
+  //월 결정
   const handleMonthChange = (direction) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + direction);
     setCurrentDate(newDate);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
-      console.log(
-        `${selectedStartDate.toLocaleDateString()}~${selectedEndDate.toLocaleDateString()}`
-      );
-      onDateRangeSelected(selectedStartDate, selectedEndDate); //props에 저장
+      const start_date = selectedStartDate.toISOString().split("T")[0];
+      const end_date = selectedEndDate.toISOString().split("T")[0];
+
+      handleCalendarConfirm(selectedStartDate, selectedEndDate);
+      await postRoutineDate(start_date, end_date, term);
+      onConfirm({
+        start_date,
+        end_date,
+        duration_days: term,
+      });
     } else if (selectedStartDate) {
-      console.log(`${selectedStartDate.toLocaleDateString()}~`);
-      onDateRangeSelected(selectedStartDate, null);
+      const start_date = selectedStartDate.toISOString().split("T")[0];
+      onConfirm({
+        start_date,
+        end_date: null,
+        duration_days: 0,
+      });
     } else {
       console.log("No date selected");
     }
-    onConfirm(selectedStartDate, selectedEndDate);
   };
   return (
     <S.CalendarContainer>
