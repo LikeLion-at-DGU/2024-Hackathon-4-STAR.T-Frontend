@@ -1,17 +1,22 @@
 import { instance } from "./instance";
 
-export const ThemeContent = async (theme_id) => {
-  return await instance.get(`/api/theme/${theme_id}`);
+export const getThemeContent = async (theme_id) => {
+  try {
+    const res = await instance.get(`/api/theme/${theme_id}`);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const postRoutineDate = async (startDate, endDate, term) => {
+export const postRoutineRegister = async (start_date, end_date) => {
   try {
-    await instance.post(`/api/add_routine/${id}`, {
-      start_date: startDate,
-      end_date: endDate,
-      duration_days: term,
+    const res = await instance.post(`/api/add_routine/${id}`, {
+      start_date: start_date,
+      end_date: end_date,
     });
-  } catch (error) {
-    console.log(error);
+    return res;
+  } catch (err) {
+    console.log(err);
   }
 };

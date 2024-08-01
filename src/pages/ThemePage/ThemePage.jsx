@@ -1,47 +1,83 @@
+import React, { useState } from "react";
 import * as S from "./styled";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
-import { useModal } from "../../hooks/UseModal";
-import { useDateRange } from "../../hooks/useDateRange";
 import { useMoveonTheme } from "../../hooks/useTheme";
-import { RoutineBoxContainer } from "../../components/ThemePage/RoutineBoxContainer/RoutineBoxContainer";
-// import { ModalManage } from "../../components/ThemePage/ModalManage";
+
+import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
+import Modal from "../../components/Modal/Modal";
+import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
+import { CheckUp } from "../../components/CheckUp/CheckUp";
+import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
+
+import {
+  routineStart,
+  routineEnd,
+  CalendarVisible,
+  CheckVisible,
+} from "../../stores/routineRegister";
 
 const ThemePage = () => {
+  const startDay = useRecoilValue(routineStart);
+  const endDay = useRecoilValue(routineEnd);
+  console.log(startDay, endDay);
+  const [isCalendarVisible, setIsCalendarVisible] =
+    useRecoilState(CalendarVisible);
+  const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
   const { theme } = useMoveonTheme();
   console.log(theme.data);
-  const { handleCalendarConfirm } = useDateRange();
-  const {
-    isCalendarVisible,
-    isCheckVisible,
-    OpenCalendar,
-    closeAll,
-    openCheck,
-  } = useModal();
 
-  const {
-    theme_img = "",
-    theme_title = "",
-    theme_content = "",
-    routine = [],
-  } = theme || {};
+  const [term, setTerm] = useState(0);
+
+  const handlePlusButtonClick = () => {
+    setIsCalendarVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsCalendarVisible(false);
+    setIsCheckVisible(false);
+  };
+
+  const differenceInTime = endDay.getTime() - startDay.getTime();
+  const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
+  setTerm(differenceInDays);
 
   return (
     <>
       <S.Header>
-        <S.Bannerimage src={theme_img} alt={theme_title} />
-        <S.BannerTitle>{theme_title} </S.BannerTitle>
+        <S.Bannerimage src={theme.theme_image} alt={theme.theme_title} />
+        <S.BannerTitle>{theme.theme_title} </S.BannerTitle>
       </S.Header>
       <S.descriptionContainer>
-        <CategoryTitle section={theme_content} fontSize="15px" />
+        <CategoryTitle section={theme.theme_content} fontSize="15px" />
       </S.descriptionContainer>
-      <RoutineBoxContainer routine={routine} onPlusButtonClick={OpenCalendar} />
-      <ModalManage
-        isCalendarVisible={isCalendarVisible}
-        isCheckVisible={isCheckVisible}
-        closeAll={closeAll}
-        handleCalendarConfirm={handleCalendarConfirm}
-        openCheck={openCheck}
-      />
+      <S.RoutineBoxContainer>
+        {theme.routine ? (
+          theme.routine.map((item) => (
+            <MainRoutineBox
+              src={item.image ? item.image : item.video_url}
+              key={item.id}
+              title={item.title}
+              subtitle={item.sub_title}
+              content={item.content}
+              term={item.term}
+              onPlusButtonClick={handlePlusButtonClick}
+            />
+          ))
+        ) : (
+          <p>데이터를 불러오는 중입니다...</p>
+        )}
+      </S.RoutineBoxContainer>
+      {isCalendarVisible && (
+        <Modal onClose={handleCloseModal}>
+          <DateRangeCalendar />
+        </Modal>
+      )}
+      {isCheckVisible && (
+        <Modal onClose={handleCloseModal}>
+          <CheckUp term={term} />
+        </Modal>
+      )}
     </>
   );
 };
