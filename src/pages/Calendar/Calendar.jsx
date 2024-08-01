@@ -2,10 +2,10 @@ import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import { CustomCalendar } from "../../components/CustomCalendar/CustomCalendar";
 import { getMonthCalenar } from "../../apis/calendar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Calendar = () => {
-    const fetchData = async () => {
+  const fetchData = async () => {
     const res = await getMonthCalenar();
     console.log(res);
   };

@@ -3,17 +3,12 @@ import BACKGROUND from "../../assets/background.svg";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { Box } from "../../components/common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
-import { getUserStatus } from "../../apis/signup";
-import { useEffect } from "react";
+import { useCheckUser } from "../../hooks/useCheckUser";
 
 export const SelectRoutine = () => {
-  const getData = async () => {
-    await getUserStatus();
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  return (
+  const status = useCheckUser();
+
+  return status ? (
     <S.Layout $url={BACKGROUND}>
       <S.TitleView>
         <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
@@ -26,7 +21,6 @@ export const SelectRoutine = () => {
           </Box>
         ))}
       </S.CategoryView>
-
       <S.SelectView>
         <Button
           width="50%"
@@ -39,18 +33,9 @@ export const SelectRoutine = () => {
         >
           <S.CustomP color="white">확인</S.CustomP>
         </Button>
-        {/* <Button
-          width="50%"
-          height="40px"
-          $radius="15px"
-          $background="rgba(196, 217, 226, 0.50)"
-          onClick={() => {
-            console.log("select zone");
-          }}
-        >
-          <S.CustomP color="black">건너뛰기</S.CustomP>
-        </Button> */}
       </S.SelectView>
     </S.Layout>
+  ) : (
+    <div>로딩중...</div>
   );
 };
