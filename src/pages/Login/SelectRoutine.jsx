@@ -3,18 +3,12 @@ import BACKGROUND from "../../assets/background.svg";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { Box } from "../../components/common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
-import { getUserStatus } from "../../apis/signup";
-import { useEffect } from "react";
+import { useCheckUser } from "../../hooks/useCheckUser";
 
 export const SelectRoutine = () => {
-  const getData = async () => {
-    const res = await getUserStatus();
-    console.log(res.data[0].is_new_user);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  return (
+  const status = useCheckUser();
+
+  return status ? (
     <S.Layout $url={BACKGROUND}>
       <S.TitleView>
         <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
@@ -27,7 +21,6 @@ export const SelectRoutine = () => {
           </Box>
         ))}
       </S.CategoryView>
-
       <S.SelectView>
         <Button
           width="50%"
@@ -42,9 +35,7 @@ export const SelectRoutine = () => {
         </Button>
       </S.SelectView>
     </S.Layout>
+  ) : (
+    <div>로딩중...</div>
   );
 };
-
-// 비동기 상태 돌리고
-// 이행 && new_user 이면 -> routine 선택
-// 아니면 main 리다이렉트
