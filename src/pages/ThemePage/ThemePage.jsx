@@ -39,8 +39,6 @@ const ThemePage = () => {
         closeAll={closeAll}
         handleCalendarConfirm={handleCalendarConfirm}
         openCheck={openCheck}
-        dateRange={dateRange}
-        term={term}
       />
     </>
   );
