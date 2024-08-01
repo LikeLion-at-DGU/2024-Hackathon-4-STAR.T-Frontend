@@ -11,7 +11,7 @@ export const getUserStatus = async () => {
 
 export const postAddRoutines = async (preferred_routine_categories) => {
   try {
-    const res = await instance.post("/api/accounts/custom-routines", {
+    const res = await instance.post("/api/accounts/custom-routines/", {
       preferred_routine_categories,
     });
     console.log(res);
