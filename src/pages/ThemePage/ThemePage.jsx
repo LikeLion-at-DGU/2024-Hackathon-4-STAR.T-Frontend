@@ -41,7 +41,7 @@ const ThemePage = () => {
 
   useEffect(() => {
     if (startDay && endDay) {
-      const differenceInTime = endDay.getTime() - startDay.getTime();
+      const differenceInTime = endDay.getTime() - startDay.getTime(); //endDay와 startDay는 객체여야함.
       const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
       setTerm(differenceInDays);
     }
@@ -50,6 +50,12 @@ const ThemePage = () => {
   if (!themeData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
 
   return (
     <>
@@ -87,8 +93,8 @@ const ThemePage = () => {
       {isCheckVisible && (
         <Modal onClose={handleCloseModal}>
           <CheckUp
-            startDay={startDay}
-            endDay={endDay}
+            startDay={formatDate(startDay)}
+            endDay={formatDate(endDay)}
             term={term}
             onClose={() => setIsCheckVisible(false)}
           />
