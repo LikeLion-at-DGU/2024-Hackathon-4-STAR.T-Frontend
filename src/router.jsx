@@ -12,6 +12,7 @@ import { RandomDice } from "./pages/RandomDice/RandomDice";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPage from "./pages/MyPage/MyPage";
 import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
+import { Loading } from "./pages/Loading/Loading";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/subcategory/:sectionId/:subCategoryId",
         element: <SubCategoryPage />,
+      },
+      {
+        path: "/loading",
+        element: <Loading />,
       },
     ],
     // errorElement: <NotFound />,

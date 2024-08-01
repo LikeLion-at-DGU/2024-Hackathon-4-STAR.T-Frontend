@@ -51,7 +51,7 @@ export const MyPage = () => {
       </S.MypageWrapper>
       <S.MypageWrapper>
         <div className="MyStar">개인정보</div>
-        <button className="Privacy" onClick={() => navigate("/")}>
+        <button className="Privacy" onClick={() => navigate("/loading")}>
           맞춤형 루틴 수정
         </button>
         <button className="Privacy" onClick={handleLogoutClick}>
