@@ -4,6 +4,7 @@ import { GlobalStyle } from "./style/globalStyle";
 import { theme } from "./style/theme.js";
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "./components/common/Footer/Footer.jsx";
+import { RecoilRoot } from "recoil";
 
 const Frame = styled.div`
   width: 100vw;
@@ -57,12 +58,12 @@ const Layout = () => {
 
 function App() {
   return (
-    <>
+    <RecoilRoot>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Layout />
       </ThemeProvider>
-    </>
+    </RecoilRoot>
   );
 }
 

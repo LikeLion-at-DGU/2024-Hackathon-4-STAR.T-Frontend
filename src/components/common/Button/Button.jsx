@@ -10,6 +10,8 @@ export const Button = (props) => {
       $radius={props.$radius}
       $background={props.$background}
       onClick={props.onClick}
+      $isDisabled={props.$isDisabled}
+      disabled={props.$isDisabled}
     >
       {props.children}
     </S.Button>
