@@ -22,3 +22,4 @@ export const useMoveonTheme = () => {
 
   return theme;
 };
+//res.data에 뭐 들어가는지 확인
