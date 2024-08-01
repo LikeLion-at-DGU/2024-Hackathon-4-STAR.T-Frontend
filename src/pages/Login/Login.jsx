@@ -7,7 +7,6 @@ import GradientBackground from "../../components/GradientBackground/GradientBack
 export const Login = () => {
   return (
     <S.Layout>
-
       <GradientBackground showContent={showContent} />
 
       <S.LogoFrame>
