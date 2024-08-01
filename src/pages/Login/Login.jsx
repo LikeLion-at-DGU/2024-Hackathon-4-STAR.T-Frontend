@@ -2,22 +2,12 @@ import * as S from "./style";
 import LOGO_BACKGROUND from "../../assets/logoContainer.svg";
 import KAKAO from "../../assets/images/kakaoLogin.svg";
 import { TITLE_TEXT } from "../../constants/Text/title";
-<<<<<<< HEAD
-import Star from "../../assets/Loginstar (2).svg";
-=======
 import Star from "../../assets/Loginstar.svg";
->>>>>>> 283b6af62f327979791bcfde4da62b265c69b927
 import GradientBackground from "../../components/GradientBackground/GradientBackground";
 export const Login = () => {
   return (
     <S.Layout>
-
       <GradientBackground showContent={showContent} />
-<<<<<<< HEAD
-      <S.ShootingStar />
-      <S.ShootingStar />
-=======
->>>>>>> 283b6af62f327979791bcfde4da62b265c69b927
 
       <S.LogoFrame>
         <S.TitleFrame>
