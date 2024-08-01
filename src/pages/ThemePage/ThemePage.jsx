@@ -4,7 +4,7 @@ import { useModal } from "../../hooks/UseModal";
 import { useDateRange } from "../../hooks/useDateRange";
 import { useMoveonTheme } from "../../hooks/useTheme";
 import { RoutineBoxContainer } from "../../components/ThemePage/RoutineBoxContainer/RoutineBoxContainer";
-
+import { ModalManage } from "../../components/ThemePage/ModalManage";
 const ThemePage = () => {
   const { theme } = useMoveonTheme();
   const { term, dateRange, handleCalendarConfirm } = useDateRange();
@@ -33,7 +33,7 @@ const ThemePage = () => {
         <CategoryTitle section={theme_content} fontSize="15px" />
       </S.descriptionContainer>
       <RoutineBoxContainer routine={routine} onPlusButtonClick={OpenCalendar} />
-      <ModalManager
+      <ModalManage
         isCalendarVisible={isCalendarVisible}
         isCheckVisible={isCheckVisible}
         closeAll={closeAll}
