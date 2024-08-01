@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getThemeContent } from "../apis/Theme";
 
 export const useMoveonTheme = () => {
-  const [theme, setTheme] = useState([]);
+  const [theme, setTheme] = useState(null);
   const { theme_id } = useParams();
   const fetchThemeData = async () => {
     try {

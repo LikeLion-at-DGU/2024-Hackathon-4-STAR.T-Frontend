@@ -6,6 +6,7 @@ export const getThemeContent = async (theme_id) => {
     return res;
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };
 
@@ -18,5 +19,6 @@ export const postRoutineRegister = async (start_date, end_date) => {
     return res;
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };
