@@ -2,10 +2,17 @@ import React from "react";
 import * as S from "./styled";
 import plusButton from "../../assets/plusButton.svg";
 
-function MainRoutineBox({ title, subtitle, content, onPlusButtonClick }) {
+function MainRoutineBox({
+  src,
+  title,
+  subtitle,
+  content,
+  term,
+  onPlusButtonClick,
+}) {
   return (
     <S.BoxContainer>
-      <S.RoutineBoxImg />
+      <S.RoutineBoxImg src={src} />
 
       <S.TitleContainer>
         <S.MainTitleContainer>
@@ -19,7 +26,10 @@ function MainRoutineBox({ title, subtitle, content, onPlusButtonClick }) {
         </S.MainTitleContainer>
         <S.SubTitle>{subtitle}</S.SubTitle>
       </S.TitleContainer>
-      <S.BoxContent dangerouslySetInnerHTML={{ __html: content }} />
+      <S.BoxContent>
+        <div>{content}</div>
+        <div>{term}일</div>
+      </S.BoxContent>
     </S.BoxContainer>
   );
 }

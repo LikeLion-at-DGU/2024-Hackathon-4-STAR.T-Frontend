@@ -12,15 +12,11 @@ export const BoxContainer = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
 `;
 
-export const RoutineBoxImg = styled.div`
+export const RoutineBoxImg = styled.img`
   width: 320px;
   height: 160px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s")
-    lightgray 0px -37.078px / 100% 288.584% no-repeat;
-  background-size: cover;
-  background-position: center;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin: 12px 7px 0px 7px;
 `;
@@ -57,8 +53,4 @@ export const BoxContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
-  ul {
-    list-style-type: disc; /* 점 모양 */
-    margin: 0;
-  }
 `;
