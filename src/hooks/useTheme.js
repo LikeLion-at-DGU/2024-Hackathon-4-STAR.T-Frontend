@@ -19,5 +19,5 @@ export const useMoveonTheme = () => {
     fetchThemeData();
   }, [theme_id]);
 
-  return theme;
+  return { theme };
 };
