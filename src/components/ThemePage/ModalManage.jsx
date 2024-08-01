@@ -1,12 +1,13 @@
-import Modal from "../../components/Modal";
 import DateRangeCalendar from "../DateRangeCalendar/DateRangeCalendar";
+import { useState } from "react";
 import { CheckUp } from "../CheckUp/CheckUp";
+import Modal from "../Modal/Modal";
 
 export const ModalManage = ({
   isCalendarVisible,
   isCheckVisible,
   closeAll,
-  handleCalendarConfirm,
+  handleCalendarConfirm: handleCalendarConfirmProp,
   openCheck,
 }) => {
   const [routineData, setRoutineData] = useState([]);
@@ -33,6 +34,7 @@ export const ModalManage = ({
           <DateRangeCalendar
             onConfirm={(startDate, endDate) => {
               handleCalendarConfirm(startDate, endDate);
+              handleCalendarConfirmProp(startDate, endDate);
             }}
           />
         </Modal>
