@@ -5,9 +5,11 @@ import { useDateRange } from "../../hooks/useDateRange";
 import { useMoveonTheme } from "../../hooks/useTheme";
 import { RoutineBoxContainer } from "../../components/ThemePage/RoutineBoxContainer/RoutineBoxContainer";
 import { ModalManage } from "../../components/ThemePage/ModalManage";
+
 const ThemePage = () => {
   const { theme } = useMoveonTheme();
-  const { term, dateRange, handleCalendarConfirm } = useDateRange();
+  console.log(theme.data);
+  const { handleCalendarConfirm } = useDateRange();
   const {
     isCalendarVisible,
     isCheckVisible,
