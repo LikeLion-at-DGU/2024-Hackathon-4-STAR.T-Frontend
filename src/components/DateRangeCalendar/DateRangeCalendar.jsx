@@ -92,32 +92,19 @@ const DateRangeCalendar = () => {
     newDate.setMonth(currentDate.getMonth() + direction);
     setCurrentDate(newDate);
   };
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // 1부터 12까지의 월
-    const day = String(date.getDate()).padStart(2, "0"); // 1부터 31까지의 일
-    return `${year}.${month}.${day}`;
-  };
 
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
-      const formattedDate1 = formatDate(selectedStartDate);
-      const formattedDate2 = formatDate(selectedEndDate);
-      console.log("시작:", formattedDate1);
-      console.log("끝:", formattedDate2);
-
       try {
         const response = await postRoutineRegister(
-          formattedDate1,
-          formattedDate2
+          selectedStartDate,
+          selectedEndDate
         );
         console.log(response);
       } catch (error) {
         console.error(error);
       }
 
-      setSelectedStartDate(formattedDate1);
-      setSelectedEndDate(formattedDate2); //문자열로 저장
       setIsCalendarVisible(false);
       setIsCheckVisible(true);
     } else if (selectedStartDate) {
