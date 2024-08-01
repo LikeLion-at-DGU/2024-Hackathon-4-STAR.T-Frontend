@@ -46,7 +46,7 @@ const ImageSlider = () => {
       >
         {images.map((image, index) => (
           <Link
-            to={`/theme/${index}`}
+            to={`/theme/${image.theme_id}`}
             key={index}
             style={{ textDecoration: "none" }}
           >

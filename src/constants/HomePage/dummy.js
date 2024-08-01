@@ -25,6 +25,7 @@ export const Bannerimages = [
     title: "멋쟁이 사자처럼 중앙 해커톤",
     Routinetitle: "동국대학교 4조",
     description: "STAR.T- 스타들의 루틴을 따라하며 건강한 습관을 가져보세요!",
+    theme_id: 1,
   },
 
   {
@@ -32,6 +33,7 @@ export const Bannerimages = [
     title: "토마토마토마토마토",
     Routinetitle: "4조",
     description: "먹고싶다",
+    theme_id: 2,
   },
   {
     src: "https://www.dongguk.edu/resources/images/site/contents/img_ethic01.jpg",
