@@ -24,7 +24,8 @@ const ThemePage = () => {
     useRecoilState(CalendarVisible);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
   const { theme } = useMoveonTheme();
-  console.log({ theme });
+  const themeData = theme.data;
+  console.log(themeData);
 
   const [term, setTerm] = useState(0);
 
@@ -45,29 +46,31 @@ const ThemePage = () => {
     }
   }, [startDay, endDay]);
 
-  if (!theme) {
+  if (!themeData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
 
   return (
     <>
       <S.Header>
-        <S.Bannerimage src={theme.theme_image} alt={theme.theme_title} />
-        <S.BannerTitle>{theme.theme_title} </S.BannerTitle>
+        <S.Bannerimage
+          src={themeData.theme_image}
+          alt={themeData.theme_title}
+        />
+        <S.BannerTitle>{themeData.theme_title} </S.BannerTitle>
       </S.Header>
       <S.descriptionContainer>
-        <CategoryTitle section={theme.theme_content} fontSize="15px" />
+        <CategoryTitle section={themeData.theme_content} fontSize="15px" />
       </S.descriptionContainer>
       <S.RoutineBoxContainer>
-        {theme.routine ? (
-          theme.routine.map((item) => (
+        {themeData.routine ? (
+          themeData.routine.map((item) => (
             <MainRoutineBox
               src={item.image ? item.image : item.video_url}
               key={item.id}
               title={item.title}
               subtitle={item.sub_title}
               content={item.content}
-              term={item.term}
               onPlusButtonClick={handlePlusButtonClick}
             />
           ))
