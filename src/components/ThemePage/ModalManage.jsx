@@ -1,3 +1,4 @@
+
 import DateRangeCalendar from "../DateRangeCalendar/DateRangeCalendar";
 import { useState } from "react";
 import { CheckUp } from "../CheckUp/CheckUp";
@@ -47,3 +48,4 @@ export const ModalManage = ({
     </>
   );
 };
+
