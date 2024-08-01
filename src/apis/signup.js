@@ -14,8 +14,9 @@ export const postAddRoutines = async (preferred_routine_categories) => {
     const res = await instance.post("/api/accounts/custom-routines/", {
       preferred_routine_categories,
     });
-    console.log(res);
-    return redirect("/");
+    if (res.status == 200) {
+      return true;
+    }
   } catch (err) {
     throw err;
   }

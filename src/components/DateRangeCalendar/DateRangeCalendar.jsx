@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import * as S from "./styled";
-import { postRoutineDate } from "../../apis/Theme";
-import { useDateRange } from "../../hooks/useDateRange";
+import {
+  routineStart,
+  routineEnd,
+  CalendarVisible,
+  CheckVisible,
+} from "../../stores/routineRegister";
+import { useRecoilState } from "recoil";
+import { postRoutineRegister } from "../../apis/Theme";
 
-const DateRangeCalendar = ({ onConfirm = () => {} }) => {
+const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedStartDate, setSelectedStartDate] = useState(null);
-  const [selectedEndDate, setSelectedEndDate] = useState(null);
-
-  const { term, handleCalendarConfirm } = useDateRange();
+  // const [selectedStartDate, setSelectedStartDate] = useState(null);
+  // const [selectedEndDate, setSelectedEndDate] = useState(null);
+  const [selectedStartDate, setSelectedStartDate] =
+    useRecoilState(routineStart);
+  const [selectedEndDate, setSelectedEndDate] = useRecoilState(routineEnd);
+  const [, setIsCalendarVisible] = useRecoilState(CalendarVisible);
+  const [, setIsCheckVisible] = useRecoilState(CheckVisible);
 
   //루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
@@ -79,7 +88,7 @@ const DateRangeCalendar = ({ onConfirm = () => {} }) => {
     return days;
   };
 
-  //월 결정
+  //월 이동
   const handleMonthChange = (direction) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + direction);
@@ -88,23 +97,22 @@ const DateRangeCalendar = ({ onConfirm = () => {} }) => {
 
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
-      const start_date = selectedStartDate.toISOString().split("T")[0];
-      const end_date = selectedEndDate.toISOString().split("T")[0];
-
-      handleCalendarConfirm(selectedStartDate, selectedEndDate);
-      await postRoutineDate(start_date, end_date, term);
-      onConfirm({
-        start_date,
-        end_date,
-        duration_days: term,
-      });
+      console.log(
+        `${selectedStartDate.toLocaleDateString()}~${selectedEndDate.toLocaleDateString()}`
+      );
+      try {
+        const start_date = selectedStartDate.toISOString().split("T")[0];
+        const end_date = selectedEndDate.toISOString().split("T")[0];
+        const response = await postRoutineRegister(start_date, end_date);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsCalendarVisible(false);
+      setIsCheckVisible(true);
     } else if (selectedStartDate) {
-      const start_date = selectedStartDate.toISOString().split("T")[0];
-      onConfirm({
-        start_date,
-        end_date: null,
-        duration_days: 0,
-      });
+      console.log(`${selectedStartDate.toLocaleDateString()}~`);
+      // const start_date = selectedStartDate.toISOString().split("T")[0];
     } else {
       console.log("No date selected");
     }

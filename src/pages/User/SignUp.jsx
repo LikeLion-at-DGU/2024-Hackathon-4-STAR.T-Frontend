@@ -7,9 +7,11 @@ import { useCheckUser } from "../../hooks/useCheckUser";
 import { categoryState } from "../../stores/category";
 import { useRecoilState } from "recoil";
 import { postAddRoutines } from "../../apis/signup";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const status = useCheckUser();
+  const navigate = useNavigate();
   const [categoryStatus, setCategoryStatus] = useRecoilState(categoryState);
   const handleClick = (index) => {
     setCategoryStatus((prevStatus) =>
@@ -17,14 +19,17 @@ export const SignUp = () => {
     );
   };
   const isAnyCategorySelected = categoryStatus.some((status) => status);
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const preferredRoutineCategories = [];
     categoryStatus.map((status, i) => {
       if (status === true) {
         preferredRoutineCategories.push(i + 1);
       }
     });
-    postAddRoutines(preferredRoutineCategories);
+    const isSuccess = await postAddRoutines(preferredRoutineCategories);
+    if (isSuccess) {
+      navigate("/setInfo");
+    }
   };
   return status ? (
     <S.Layout $url={BACKGROUND}>
