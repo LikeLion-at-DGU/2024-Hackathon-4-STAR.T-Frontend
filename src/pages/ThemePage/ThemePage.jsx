@@ -26,9 +26,8 @@ const ThemePage = () => {
   const { theme } = useMoveonTheme();
   console.log("{theme}:", { theme });
   console.log("theme:", theme);
-  const themeData = { theme }.theme.data;
-  console.log("themeData:", themeData);
-
+  const { themeData } = theme.data;
+  console.log("themeData:", { themeData });
   const [term, setTerm] = useState(0);
 
   const handlePlusButtonClick = () => {
@@ -48,7 +47,7 @@ const ThemePage = () => {
     }
   }, [startDay, endDay]);
 
-  if (!themeData) {
+  if (!theme) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
 
