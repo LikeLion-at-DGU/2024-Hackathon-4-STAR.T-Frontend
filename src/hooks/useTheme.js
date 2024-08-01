@@ -9,7 +9,7 @@ export const useMoveonTheme = () => {
     try {
       const res = await getThemeContent(theme_id);
       console.log("response:", res);
-      setTheme({ test: "test" });
+      setTheme(res);
     } catch (error) {
       console.error("error:", error);
     }
