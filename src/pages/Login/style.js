@@ -11,6 +11,7 @@ export const Layout = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background-image: url(${(props) => props.$url});
   background-color: transparent;
   background-repeat: none;
   background-size: cover;
@@ -102,7 +103,7 @@ export const TitleView = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 7.5%;
-  gap: 2rem;
+  gap: 1rem;
 `;
 
 export const CutomTitle = styled.p`
