@@ -4,7 +4,7 @@ import { useModal } from "../../hooks/UseModal";
 import { useDateRange } from "../../hooks/useDateRange";
 import { useMoveonTheme } from "../../hooks/useTheme";
 import { RoutineBoxContainer } from "../../components/ThemePage/RoutineBoxContainer/RoutineBoxContainer";
-import { ModalManage } from "../../components/ThemePage/ModalManage";
+// import { ModalManage } from "../../components/ThemePage/ModalManage";
 
 const ThemePage = () => {
   const { theme } = useMoveonTheme();
