@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/theme/:imageIndex",
+        path: "/theme/:theme_id",
         element: <ThemePage />,
         loader: loader,
       },
