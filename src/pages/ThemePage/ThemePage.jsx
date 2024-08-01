@@ -26,7 +26,7 @@ const ThemePage = () => {
   const { theme } = useMoveonTheme();
   console.log("{theme}:", { theme });
   console.log("theme:", theme);
-  const themeData = theme.data;
+  const themeData = { theme }.theme.data;
   console.log("themeData:", themeData);
 
   const [term, setTerm] = useState(0);
@@ -68,7 +68,7 @@ const ThemePage = () => {
         {themeData.routine ? (
           themeData.routine.map((item) => (
             <MainRoutineBox
-              src={item.image ? item.image : item.video_url}
+              src={item.image || item.video_url}
               key={item.id}
               title={item.title}
               subtitle={item.sub_title}
