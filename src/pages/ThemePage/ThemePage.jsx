@@ -24,8 +24,10 @@ const ThemePage = () => {
     useRecoilState(CalendarVisible);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
   const { theme } = useMoveonTheme();
-  const themeData = theme.data;
-  console.log(themeData);
+  console.log("{theme}:", { theme });
+  console.log("theme:", theme);
+  const themeData = { theme }.data;
+  console.log("themeData:", themeData);
 
   const [term, setTerm] = useState(0);
 
