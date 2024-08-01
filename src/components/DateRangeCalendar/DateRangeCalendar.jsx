@@ -11,8 +11,6 @@ import { postRoutineRegister } from "../../apis/Theme";
 
 const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  // const [selectedStartDate, setSelectedStartDate] = useState(null);
-  // const [selectedEndDate, setSelectedEndDate] = useState(null);
   const [selectedStartDate, setSelectedStartDate] =
     useRecoilState(routineStart);
   const [selectedEndDate, setSelectedEndDate] = useRecoilState(routineEnd);
@@ -94,16 +92,22 @@ const DateRangeCalendar = () => {
     newDate.setMonth(currentDate.getMonth() + direction);
     setCurrentDate(newDate);
   };
+  const formatDate = (date) => {
+    return new Intl.DateTimeFormat("ko-KR").format(date).replace(/\./g, ".");
+  };
 
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
-      console.log(
-        `${selectedStartDate.toLocaleDateString()}~${selectedEndDate.toLocaleDateString()}`
-      );
+      const formattedDate1 = formatDate(selectedStartDate);
+      const formattedDate2 = formatDate(selectedEndDate);
+      console.log("시작:", formattedDate1);
+      console.log("끝:", formattedDate2);
+
       try {
-        const start_date = selectedStartDate.toISOString().split("T")[0];
-        const end_date = selectedEndDate.toISOString().split("T")[0];
-        const response = await postRoutineRegister(start_date, end_date);
+        const response = await postRoutineRegister(
+          formattedDate1,
+          formattedDate2
+        );
         console.log(response);
       } catch (error) {
         console.error(error);

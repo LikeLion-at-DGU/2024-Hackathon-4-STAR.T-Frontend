@@ -86,7 +86,12 @@ const ThemePage = () => {
       )}
       {isCheckVisible && (
         <Modal onClose={handleCloseModal}>
-          <CheckUp term={term} />
+          <CheckUp
+            startDay={startDay}
+            endDay={endDay}
+            term={term}
+            onClose={() => setIsCheckVisible(false)}
+          />
         </Modal>
       )}
     </>
