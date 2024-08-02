@@ -21,3 +21,18 @@ export const postAddRoutines = async (preferred_routine_categories) => {
     throw err;
   }
 };
+
+export const postSetInfo = async (nickname) => {
+  try {
+    const res = await instance.post("/api/accounts/info/", {
+      nickname,
+    });
+    if (res.status == 200) {
+      sessionStorage.setItem("signed", "true");
+      return true;
+    }
+  } catch (err) {
+    console.log(err);
+    // throw err;
+  }
+};
