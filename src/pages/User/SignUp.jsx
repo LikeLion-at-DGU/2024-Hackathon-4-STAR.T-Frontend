@@ -28,7 +28,7 @@ export const SignUp = () => {
     });
     const isSuccess = await postAddRoutines(preferredRoutineCategories);
     if (isSuccess) {
-      navigate("/setInfo");
+      navigate("/info");
     }
   };
   return status ? (
