@@ -5,6 +5,7 @@ import DiceBackground from "../../assets/DiceBackground.svg";
 import star1 from "../../assets/star1.svg";
 import { useNavigate } from "react-router-dom";
 import GradientBackground from "../../components/GradientBackground/GradientBackground";
+import { getRandomRoutine } from "../../apis/random";
 // 이미지 배열 (실제 이미지 URL 또는 소스 파일을 사용)
 const images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s",
@@ -17,7 +18,7 @@ export const RandomDice = () => {
   const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(DiceBackground);
   const [rolling, setRolling] = useState(false);
-  //   const [backgroundColor, setBackgroundColor] = useState("#fff");
+  const [data, setData] = useState({});
   const [showContent, setShowContent] = useState(false);
   const [containerStyle, setContainerStyle] = useState({
     justifyContent: "center",
@@ -54,9 +55,11 @@ export const RandomDice = () => {
       }, 100); //0.1초 마다 이미지 변경
 
       // 3초 후에 이미지 결정
-      setTimeout(() => {
+      setTimeout(async () => {
         clearInterval(interval);
-        const randomImage = images[Math.floor(Math.random() * images.length)];
+        const res = getRandomRoutine();
+        const randomImage = res.image;
+        setData(res);
         setCurrentImage(randomImage);
         // setBackgroundColor("#78A1B5");
         setRolling(false);
@@ -107,11 +110,8 @@ export const RandomDice = () => {
           </div>
         ) : (
           <div className="content">
-            <div className="title">송혜교 다이어트</div>
-            <div className="description">
-              아침, 점심은 일반식으로 살이찌기 쉬운 저녁은 칼로리 낮은 두부 섭취
-              장기 다이어트용 식단
-            </div>
+            <div className="title">{res.title}</div>
+            <div className="description">{res.content}</div>
           </div>
         )}
         {!showContent ? (
