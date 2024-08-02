@@ -21,7 +21,7 @@ export const LogoContainr = styled.div`
   justify-content: center;
   margin-top: 4rem;
 `;
-export const formWrapper = styled.form`
+export const formWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;

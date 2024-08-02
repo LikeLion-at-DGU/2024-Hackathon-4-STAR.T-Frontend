@@ -4,7 +4,6 @@ import App from "./App";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import { Calendar } from "./pages/Calendar/Calendar";
 import { Login } from "./pages/User/Login";
-import { Info } from "./pages/User/Info";
 import { SignUp } from "./pages/User/SignUp";
 import ThemePage from "./pages/ThemePage/ThemePage";
 import StarPage from "./pages/StarPage/StarPage";
@@ -27,8 +26,8 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/setInfo",
-        element: <Info />,
+        path: "/info",
+        element: <Loading />,
       },
       {
         path: "",
@@ -62,10 +61,6 @@ const router = createBrowserRouter([
       {
         path: "/subcategory/:sectionId/:subCategoryId",
         element: <SubCategoryPage />,
-      },
-      {
-        path: "/loading",
-        element: <Loading />,
       },
     ],
     // errorElement: <NotFound />,
