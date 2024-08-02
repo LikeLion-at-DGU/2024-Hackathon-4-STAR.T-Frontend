@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import Back from "../../assets/background.svg";
 
 export const Header = styled.div`
   position: relative;
@@ -27,6 +28,14 @@ export const BannerTitle = styled.div`
   font-size: 1.8rem;
   color: white;
   font-weight: 600;
+  .profession {
+    color: var(--naver-text, #fff);
+    font-family: "AppleSDGothicNeoL";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 `;
 export const RoutineBoxContainer = styled.div`
   margin-top: 2rem;
@@ -48,4 +57,43 @@ export const Ranking = styled.div`
   .Percentage {
     margin: 0 0.3rem;
   }
+`;
+
+export const ClearCantainr = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+  background-image: url(${Back});
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+`;
+
+export const ClearMain = styled.div`
+  display: flex;
+  position: relative;
+
+  .textOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    transform: translate(-50%, -50%);
+  }
+`;
+export const shareBtn = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 196.505px;
+  height: 39.301px;
+  border-radius: 19px;
+  border: 1.228px solid #c4d9e2;
+  background: rgba(196, 217, 226, 0.5);
 `;

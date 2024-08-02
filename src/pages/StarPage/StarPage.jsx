@@ -63,12 +63,13 @@ const StarPage = () => {
         <S.BannerImage src={starData.photo} alt={starData.name} />
         <S.BannerTitle>
           <div>{starData.name}</div>
-          <div>{starData.profession}</div>
+          <div className="profession">{starData.profession}</div>
         </S.BannerTitle>
       </S.Header>
       <StarHeader
-        usercount={starData.routines_added_count}
+        usercount={starData.routines_count.user_count}
         totalcount={starData.routines_count.total_count}
+        completecount={starData.routines_added_count}
       />
       <S.RoutineBoxContainer>
         {starData.routines.length > 0 ? (
