@@ -4,12 +4,12 @@ export const CategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  align-items: stretch;
+  align-items: cen;
 `;
 
 export const CategoryLine = styled.svg`
   width: 20px;
-  height: auto;
+  height: 25px;
   flex-shrink: 0;
   stroke-width: 3px;
   stroke: var(--Main-Color, #78a1b5);
