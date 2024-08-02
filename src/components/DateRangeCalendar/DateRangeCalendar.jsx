@@ -22,7 +22,6 @@ const DateRangeCalendar = () => {
   const id = useRecoilValue(registerID);
 
   const timeZone = "Asia/Seoul";
-
   const getZonedDate = (date) => addHours(new Date(date), 9);
 
   const handleDateClick = (date) => {
