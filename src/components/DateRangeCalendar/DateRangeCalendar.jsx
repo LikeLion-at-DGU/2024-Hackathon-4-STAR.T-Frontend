@@ -23,12 +23,8 @@ const DateRangeCalendar = () => {
 
   const timeZone = "Asia/Seoul";
 
-  // 한국 시간대로 변환된 날짜 생성 함수
-  const getZonedDate = (date) => {
-    return addHours(new Date(date), 9); // 한국 시간으로 변환
-  };
+  const getZonedDate = (date) => addHours(new Date(date), 9);
 
-  // 루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
     const zonedDate = getZonedDate(date);
     if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
@@ -46,7 +42,6 @@ const DateRangeCalendar = () => {
     }
   };
 
-  // 루틴 목표날짜 지정
   const renderDays = () => {
     const days = [];
     const startOfMonth = new Date(
@@ -99,7 +94,6 @@ const DateRangeCalendar = () => {
     return days;
   };
 
-  // 월 이동
   const handleMonthChange = (direction) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + direction);
@@ -120,17 +114,19 @@ const DateRangeCalendar = () => {
           formattedEndDate,
           id
         );
-        if (response.status == 200 || response.status == 201) {
-          setSelectedStartDate(formattedStartDate);
-          setSelectedEndDate(formattedEndDate);
+        if (response.status === 200 || response.status === 201) {
+          setSelectedStartDate(selectedStartDate);
+          setSelectedEndDate(selectedEndDate);
           setIsCalendarVisible(false);
           setIsCheckVisible(true);
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000); //
         } else {
-          console.error("Failed to register routine:", response.message);
+          console.error("Failed to register routine:", response.statusText);
         }
       } catch (error) {
-        console.error(error);
+        console.error("Error during API call:", error);
       }
     } else {
       console.log("No date selected");
@@ -146,7 +142,7 @@ const DateRangeCalendar = () => {
             &lt;
           </S.CalendarHeaderButton>
           <S.CalendarHeaderTitle>
-            {currentDate.toLocaleString("default", { month: "long" })}{" "}
+            {currentDate.toLocaleString("default", { month: "long" })}
           </S.CalendarHeaderTitle>
           <S.CalendarHeaderButton onClick={() => handleMonthChange(1)}>
             &gt;
