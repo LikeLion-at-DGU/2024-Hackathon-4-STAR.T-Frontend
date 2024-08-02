@@ -9,6 +9,7 @@ import {
 } from "../../stores/routineRegister";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { postRoutineRegister } from "../../apis/register";
+import { utcToZonedTime, format } from "date-fns-tz";
 
 const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -18,24 +19,33 @@ const DateRangeCalendar = () => {
   const [, setIsCalendarVisible] = useRecoilState(CalendarVisible);
   const [, setIsCheckVisible] = useRecoilState(CheckVisible);
   const id = useRecoilValue(registerID);
-  //루틴 목표날짜 startdate,enddate에 넣기
+
+  const timeZone = "Asia/Seoul";
+
+  // 한국 시간대로 변환된 날짜 생성 함수
+  const getZonedDate = (date) => {
+    return utcToZonedTime(date, timeZone);
+  };
+
+  // 루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
+    const zonedDate = getZonedDate(date);
     if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
-      setSelectedStartDate(date);
+      setSelectedStartDate(zonedDate);
       setSelectedEndDate(null);
     } else if (
       selectedStartDate &&
       !selectedEndDate &&
-      date > selectedStartDate
+      zonedDate > selectedStartDate
     ) {
-      setSelectedEndDate(date);
+      setSelectedEndDate(zonedDate);
     } else {
-      setSelectedStartDate(date);
+      setSelectedStartDate(zonedDate);
       setSelectedEndDate(null);
     }
   };
 
-  //루틴 목표날짜 지정
+  // 루틴 목표날짜 지정
   const renderDays = () => {
     const days = [];
     const startOfMonth = new Date(
@@ -59,17 +69,18 @@ const DateRangeCalendar = () => {
         currentDate.getMonth(),
         day
       );
+      const zonedDate = getZonedDate(date);
       const isSelectedStart =
         selectedStartDate &&
-        date.toDateString() === selectedStartDate.toDateString();
+        zonedDate.toDateString() === selectedStartDate.toDateString();
       const isSelectedEnd =
         selectedEndDate &&
-        date.toDateString() === selectedEndDate.toDateString();
+        zonedDate.toDateString() === selectedEndDate.toDateString();
       const isInRange =
         selectedStartDate &&
         selectedEndDate &&
-        date > selectedStartDate &&
-        date < selectedEndDate;
+        zonedDate > selectedStartDate &&
+        zonedDate < selectedEndDate;
 
       days.push(
         <S.Day
@@ -87,7 +98,7 @@ const DateRangeCalendar = () => {
     return days;
   };
 
-  //월 이동
+  // 월 이동
   const handleMonthChange = (direction) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + direction);
@@ -96,36 +107,35 @@ const DateRangeCalendar = () => {
 
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
-      const formattedStartDate = selectedStartDate.toISOString().split("T")[0];
-      const formattedEndDate = selectedEndDate.toISOString().split("T")[0];
+      const formattedStartDate = format(selectedStartDate, "yyyy-MM-dd", {
+        timeZone,
+      });
+      const formattedEndDate = format(selectedEndDate, "yyyy-MM-dd", {
+        timeZone,
+      });
       try {
         const response = await postRoutineRegister(
           formattedStartDate,
           formattedEndDate,
           id
         );
-
-        console.log(response);
-
         if (response.status == 200 || response.status == 201) {
-          // 예시: 서버 응답이 성공적인 경우
           setSelectedStartDate(formattedStartDate);
           setSelectedEndDate(formattedEndDate);
           setIsCalendarVisible(false);
           setIsCheckVisible(true);
+          window.location.reload();
         } else {
           console.error("Failed to register routine:", response.message);
         }
       } catch (error) {
         console.error(error);
       }
-    } else if (selectedStartDate) {
-      const formattedStartDate = selectedStartDate.toISOString().split("T")[0];
-      console.log(`${formattedStartDate}~`);
     } else {
       console.log("No date selected");
     }
   };
+
   return (
     <S.CalendarContainer>
       <S.CalendarHeader>

@@ -17,6 +17,10 @@ import {
   registerID,
 } from "../../stores/routineRegister";
 
+// 새로운 라이브러리 임포트
+import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
+
 // 이미지 배열
 const images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s",
@@ -67,13 +71,11 @@ export const RandomDice = () => {
     }
   }, [startDay, endDay]);
 
-  // 날짜 포맷팅
+  // 날짜 포맷팅 (한국 시간으로 변환)
   const formatDate = (date) => {
-    const dateObj = typeof date === "string" ? new Date(date) : date;
-    const year = dateObj.getFullYear();
-    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObj.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
+    const timeZone = "Asia/Seoul";
+    const zonedDate = utcToZonedTime(new Date(date), timeZone); // 한국 시간으로 변환
+    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
 
   // 주사위 굴리기 로직
