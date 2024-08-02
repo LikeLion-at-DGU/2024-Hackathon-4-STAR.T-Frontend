@@ -26,7 +26,6 @@ export const RandomDice = () => {
   });
   useEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth);
       if (window.innerWidth > 768) {
         setContainerStyle({
           justifyContent: "center",
@@ -117,7 +116,7 @@ export const RandomDice = () => {
             <div className="description">{data.content}</div>
           </div>
         )}
-        {!showContent && !data ? (
+        {!showContent ? (
           <S.ThrowButton onClick={handleRollClick}>주사위 돌리기</S.ThrowButton>
         ) : (
           <div className="buttons">
