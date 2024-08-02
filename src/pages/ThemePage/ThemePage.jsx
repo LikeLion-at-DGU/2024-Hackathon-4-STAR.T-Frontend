@@ -39,9 +39,12 @@ const ThemePage = () => {
     setIsCheckVisible(false);
   };
 
+  //객체로 term계산
   useEffect(() => {
     if (startDay && endDay) {
-      const differenceInTime = endDay.getTime() - startDay.getTime(); //endDay와 startDay는 객체여야함.
+      const startDate = new Date(startDay);
+      const endDate = new Date(endDay);
+      const differenceInTime = endDate.getTime() - startDate.getTime();
       const differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1;
       setTerm(differenceInDays);
     }
