@@ -16,6 +16,8 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
+import { format } from "date-fns";
+import { addHours } from "date-fns";
 
 // 이미지 배열
 const images = [
@@ -67,13 +69,10 @@ export const RandomDice = () => {
     }
   }, [startDay, endDay]);
 
-  // 날짜 포맷팅
+  // 날짜 포맷팅 (한국 시간으로 변환)
   const formatDate = (date) => {
-    const dateObj = typeof date === "string" ? new Date(date) : date;
-    const year = dateObj.getFullYear();
-    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObj.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
+    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
+    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
 
   // 주사위 굴리기 로직
