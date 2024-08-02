@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-export const loader = () => {
-  if (true) {
-    // return redirect("/login");
-    return null;
-  }
-=======
 import { redirect } from "react-router-dom";
 
 export const loader = () => {
@@ -12,5 +5,4 @@ export const loader = () => {
     return null;
   }
   return redirect("/login");
->>>>>>> 04817d95703f91847fc7e3bcc5a68b969228d5a0
 };

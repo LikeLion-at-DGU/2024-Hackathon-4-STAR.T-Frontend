@@ -3,7 +3,7 @@ import Back from "../../assets/background.svg";
 
 export const Layout = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
 
@@ -78,6 +78,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-top: 1rem;
+  margin-bottom: 8rem;
   width: 80%;
 
   .backBtn {
@@ -103,5 +104,8 @@ export const Wrapper = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+  }
+  .content {
+    color: white;
   }
 `;
