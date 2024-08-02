@@ -30,7 +30,6 @@ export const MyPage = () => {
           <S.StarImg src={LOGO} />
           <S.info>
             <div>박세호</div>
-            {/* 수정필요 */}
           </S.info>
         </S.Container>
       </S.MypageWrapper>
