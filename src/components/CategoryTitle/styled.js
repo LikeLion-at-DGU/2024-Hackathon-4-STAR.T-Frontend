@@ -4,12 +4,12 @@ export const CategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  align-items: center;
+  align-items: stretch;
 `;
 
 export const CategoryLine = styled.svg`
   width: 20px;
-  height: 30px;
+  height: auto;
   flex-shrink: 0;
   stroke-width: 3px;
   stroke: var(--Main-Color, #78a1b5);
@@ -20,4 +20,6 @@ export const CategorySection = styled.div`
 
   font-family: "AppleSDGothicNeoM00";
   font-size: ${(props) => props.fontSize || "16px"} !important;
+  display: flex;
+  align-items: center;
 `;

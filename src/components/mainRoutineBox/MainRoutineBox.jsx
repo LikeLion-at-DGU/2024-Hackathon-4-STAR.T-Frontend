@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./styled";
 import plusButton from "../../assets/plusButton.svg";
-
 function MainRoutineBox({
   id,
   src,
