@@ -108,7 +108,7 @@ const DateRangeCalendar = () => {
 
         console.log(response);
 
-        if (response.status == 200) {
+        if (response.status == 200 || response.status == 201) {
           // 예시: 서버 응답이 성공적인 경우
           setSelectedStartDate(formattedStartDate);
           setSelectedEndDate(formattedEndDate);
