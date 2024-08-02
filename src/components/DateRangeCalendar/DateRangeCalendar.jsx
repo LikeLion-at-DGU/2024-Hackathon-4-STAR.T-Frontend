@@ -96,20 +96,26 @@ const DateRangeCalendar = () => {
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
       try {
+        const formattedStartDate = selectedStartDate
+          .toISOString()
+          .split("T")[0];
+        const formattedEndDate = selectedEndDate.toISOString().split("T")[0];
         const response = await postRoutineRegister(
-          selectedStartDate,
-          selectedEndDate
+          formattedStartDate,
+          formattedEndDate
         );
+
         console.log(response);
       } catch (error) {
         console.error(error);
       }
-
+      setSelectedStartDate(formattedStartDate);
+      setSelectedEndDate(formattedEndDate);
       setIsCalendarVisible(false);
       setIsCheckVisible(true);
     } else if (selectedStartDate) {
-      console.log(`${selectedStartDate.toLocaleDateString()}~`);
-      // const start_date = selectedStartDate.toISOString().split("T")[0];
+      const formattedStartDate = selectedStartDate.toISOString().split("T")[0];
+      console.log(`${formattedStartDate}~`);
     } else {
       console.log("No date selected");
     }
