@@ -26,7 +26,6 @@ export const RandomDice = () => {
   });
   useEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth);
       if (window.innerWidth > 768) {
         setContainerStyle({
           justifyContent: "center",
@@ -57,11 +56,14 @@ export const RandomDice = () => {
       // 3초 후에 이미지 결정
       setTimeout(async () => {
         clearInterval(interval);
-        const res = getRandomRoutine();
-        const randomImage = res.image;
-        setData(res);
-        setCurrentImage(randomImage);
-        // setBackgroundColor("#78A1B5");
+        try {
+          const res = await getRandomRoutine();
+          const randomImage = res.image;
+          setCurrentImage(randomImage);
+          setData(res);
+        } catch (err) {
+          throw err;
+        }
         setRolling(false);
         setShowContent(true);
       }, 3000);
@@ -110,8 +112,8 @@ export const RandomDice = () => {
           </div>
         ) : (
           <div className="content">
-            <div className="title">{res.title}</div>
-            <div className="description">{res.content}</div>
+            <div className="title">{data.title}</div>
+            <div className="description">{data.content}</div>
           </div>
         )}
         {!showContent ? (
