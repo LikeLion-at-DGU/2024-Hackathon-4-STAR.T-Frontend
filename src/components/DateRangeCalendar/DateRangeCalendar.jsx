@@ -95,11 +95,9 @@ const DateRangeCalendar = () => {
 
   const handleConfirm = async () => {
     if (selectedStartDate && selectedEndDate) {
+      const formattedStartDate = selectedStartDate.toISOString().split("T")[0];
+      const formattedEndDate = selectedEndDate.toISOString().split("T")[0];
       try {
-        const formattedStartDate = selectedStartDate
-          .toISOString()
-          .split("T")[0];
-        const formattedEndDate = selectedEndDate.toISOString().split("T")[0];
         const response = await postRoutineRegister(
           formattedStartDate,
           formattedEndDate
