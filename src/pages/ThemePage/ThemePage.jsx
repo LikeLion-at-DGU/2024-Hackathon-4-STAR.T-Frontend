@@ -54,9 +54,10 @@ const ThemePage = () => {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
   const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    const dateObj = typeof date === "string" ? new Date(date) : date;
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(dateObj.getDate()).padStart(2, "0");
     return `${year}.${month}.${day}`;
   };
 
