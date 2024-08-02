@@ -104,13 +104,19 @@ const DateRangeCalendar = () => {
         );
 
         console.log(response);
+
+        if (response.success) {
+          // 예시: 서버 응답이 성공적인 경우
+          setSelectedStartDate(formattedStartDate);
+          setSelectedEndDate(formattedEndDate);
+          setIsCalendarVisible(false);
+          setIsCheckVisible(true);
+        } else {
+          console.error("Failed to register routine:", response.message);
+        }
       } catch (error) {
         console.error(error);
       }
-      setSelectedStartDate(formattedStartDate);
-      setSelectedEndDate(formattedEndDate);
-      setIsCalendarVisible(false);
-      setIsCheckVisible(true);
     } else if (selectedStartDate) {
       const formattedStartDate = selectedStartDate.toISOString().split("T")[0];
       console.log(`${formattedStartDate}~`);
