@@ -16,7 +16,7 @@ function MainRoutineBox({
     }
   };
   return (
-    <S.BoxContainer id={id}>
+    <S.BoxContainer>
       <S.RoutineBoxImg src={src} alt={title} />
 
       <S.TitleContainer>
