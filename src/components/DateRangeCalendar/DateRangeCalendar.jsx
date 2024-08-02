@@ -107,7 +107,6 @@ const DateRangeCalendar = () => {
         );
 
         console.log(response);
-
         if (response.status == 200 || response.status == 201) {
           // 예시: 서버 응답이 성공적인 경우
           setSelectedStartDate(formattedStartDate);
@@ -126,6 +125,11 @@ const DateRangeCalendar = () => {
     } else {
       console.log("No date selected");
     }
+
+    setSelectedStartDate(formattedStartDate);
+    setSelectedEndDate(formattedEndDate);
+    setIsCalendarVisible(false);
+    setIsCheckVisible(true);
   };
   return (
     <S.CalendarContainer>
