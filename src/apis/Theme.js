@@ -9,16 +9,3 @@ export const getThemeContent = async (theme_id) => {
     throw err;
   }
 };
-
-export const postRoutineRegister = async (start_date, end_date) => {
-  try {
-    const res = await instance.post(`/api/add_routine/${id}`, {
-      start_date: start_date,
-      end_date: end_date,
-    });
-    return res;
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-};
