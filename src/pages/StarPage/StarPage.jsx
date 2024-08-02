@@ -15,8 +15,7 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
-import { format } from "date-fns";
-import { addHours } from "date-fns";
+import { format, addHours } from "date-fns";
 
 const StarPage = () => {
   const { starP } = useMoveonStarP();
@@ -67,9 +66,12 @@ const StarPage = () => {
           <div>{starData.profession}</div>
         </S.BannerTitle>
       </S.Header>
-      <StarHeader />
+      <StarHeader
+        usercount={starData.routines_added_count}
+        totalcount={starData.routines_count.total_count}
+      />
       <S.RoutineBoxContainer>
-        {starData.routines && starData.routines.length > 0 ? (
+        {starData.routines.length > 0 ? (
           starData.routines.map((item) => (
             <MainRoutineBox
               src={item.image || item.video_url}

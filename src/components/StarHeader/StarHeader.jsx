@@ -16,14 +16,16 @@ const ProgressingBar = () => {
     </S.ProgressingBarWrapper>
   );
 };
-export const StarHeader = () => {
+export const StarHeader = ({ usercount, totalcount }) => {
   return (
     <>
       <S.layout>
         <div className="progress">
           <img src={checkBadge} />
           <S.ProgressContainr>
-            <div>달성 진행중 2/7</div>
+            <div>
+              달성 진행중 {usercount}/{totalcount}
+            </div>
             <ProgressingBar />
           </S.ProgressContainr>
         </div>
