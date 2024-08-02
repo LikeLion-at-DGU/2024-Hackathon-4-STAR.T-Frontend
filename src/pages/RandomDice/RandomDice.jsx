@@ -16,10 +16,8 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
-
-// 새로운 라이브러리 임포트
 import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+import { addHours } from "date-fns";
 
 // 이미지 배열
 const images = [
@@ -73,8 +71,7 @@ export const RandomDice = () => {
 
   // 날짜 포맷팅 (한국 시간으로 변환)
   const formatDate = (date) => {
-    const timeZone = "Asia/Seoul";
-    const zonedDate = utcToZonedTime(new Date(date), timeZone); // 한국 시간으로 변환
+    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
     return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
 

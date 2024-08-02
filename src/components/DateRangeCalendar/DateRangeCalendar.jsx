@@ -9,7 +9,8 @@ import {
 } from "../../stores/routineRegister";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { postRoutineRegister } from "../../apis/register";
-import { utcToZonedTime, format } from "date-fns-tz";
+import { format } from "date-fns";
+import { addHours } from "date-fns";
 
 const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -24,7 +25,7 @@ const DateRangeCalendar = () => {
 
   // 한국 시간대로 변환된 날짜 생성 함수
   const getZonedDate = (date) => {
-    return utcToZonedTime(date, timeZone);
+    return addHours(new Date(date), 9); // 한국 시간으로 변환
   };
 
   // 루틴 목표날짜 startdate,enddate에 넣기

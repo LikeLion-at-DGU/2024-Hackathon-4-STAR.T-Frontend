@@ -14,8 +14,8 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
-import { format, addDays } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+import { format } from "date-fns";
+import { addHours } from "date-fns";
 
 const ThemePage = () => {
   const startDay = useRecoilValue(routineStart);
@@ -55,9 +55,8 @@ const ThemePage = () => {
   }
 
   const formatDate = (date) => {
-    const timeZone = "Asia/Seoul";
-    const zonedDate = utcToZonedTime(new Date(date), timeZone);
-    return format(zonedDate, "yyyy.MM.dd");
+    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
+    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
 
   return (
