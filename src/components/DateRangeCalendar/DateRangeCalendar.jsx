@@ -5,9 +5,10 @@ import {
   routineEnd,
   CalendarVisible,
   CheckVisible,
+  registerID,
 } from "../../stores/routineRegister";
-import { useRecoilState } from "recoil";
-import { postRoutineRegister } from "../../apis/Theme";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { postRoutineRegister } from "../../apis/register";
 
 const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -16,7 +17,7 @@ const DateRangeCalendar = () => {
   const [selectedEndDate, setSelectedEndDate] = useRecoilState(routineEnd);
   const [, setIsCalendarVisible] = useRecoilState(CalendarVisible);
   const [, setIsCheckVisible] = useRecoilState(CheckVisible);
-
+  const id = useRecoilValue(registerID);
   //루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
     if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
@@ -100,10 +101,21 @@ const DateRangeCalendar = () => {
       try {
         const response = await postRoutineRegister(
           formattedStartDate,
-          formattedEndDate
+          formattedEndDate,
+          id
+          // 안되면 전역상태로 id관리 하기
         );
 
         console.log(response);
+        if (response.status == 200 || response.status == 201) {
+          // 예시: 서버 응답이 성공적인 경우
+          setSelectedStartDate(formattedStartDate);
+          setSelectedEndDate(formattedEndDate);
+          setIsCalendarVisible(false);
+          setIsCheckVisible(true);
+        } else {
+          console.error("Failed to register routine:", response.message);
+        }
       } catch (error) {
         console.error(error);
       }

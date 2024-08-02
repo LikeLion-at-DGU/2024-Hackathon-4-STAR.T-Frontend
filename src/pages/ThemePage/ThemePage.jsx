@@ -6,14 +6,14 @@ import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
 import Modal from "../../components/Modal/Modal";
 import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
-import { useRecoilValue } from "recoil";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 
 import {
   routineStart,
   routineEnd,
   CalendarVisible,
   CheckVisible,
+  registerID,
 } from "../../stores/routineRegister";
 
 const ThemePage = () => {
@@ -23,6 +23,7 @@ const ThemePage = () => {
   const [isCalendarVisible, setIsCalendarVisible] =
     useRecoilState(CalendarVisible);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
+  const setID = useSetRecoilState(registerID);
   const { theme } = useMoveonTheme();
 
   console.log("theme:", theme);
@@ -30,8 +31,9 @@ const ThemePage = () => {
   console.log("themeData:", themeData);
   const [term, setTerm] = useState(0);
 
-  const handlePlusButtonClick = () => {
+  const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
+    setID(routineId);
   };
 
   const handleCloseModal = () => {
@@ -83,7 +85,7 @@ const ThemePage = () => {
               title={item.title}
               subtitle={item.sub_title}
               content={item.content}
-              onPlusButtonClick={handlePlusButtonClick}
+              onPlusButtonClick={() => handlePlusButtonClick(item.id)}
             />
           ))
         ) : (
