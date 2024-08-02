@@ -5,6 +5,7 @@ import Logo2 from "../../assets/images/loading_logo(2).svg";
 import PrivacyContainer from "../../components/PrivacyContainer/PrivacyContainer";
 import { postSetInfo } from "../../apis/signup";
 import { useNavigate } from "react-router-dom";
+import { AGREE_TEXT } from "../../constants/Text/title";
 
 export const Loading = () => {
   const texts = ["이용약관", "개인정보 처리방침"];
@@ -77,10 +78,31 @@ export const Loading = () => {
           {selectedText && (
             <>
               <div className="title">{selectedText}</div>
-              <div className="content"></div>
+
+              {AGREE_TEXT.map((text, key) => (
+                <div
+                  key={key}
+                  style={{
+                    marginBottom: "2rem",
+                    textAlign: "left",
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "start",
+                  }}
+                  className="content"
+                >
+                  <p>{text}</p>
+                </div>
+              ))}
             </>
           )}
-          <button className="backBtn" onClick={handleBackBtnClick}>
+          <button
+            style={{
+              marginBottom: "2rem",
+            }}
+            className="backBtn"
+            onClick={handleBackBtnClick}
+          >
             뒤로가기
           </button>
         </S.Wrapper>
