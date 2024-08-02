@@ -7,7 +7,6 @@ import Modal from "../../components/Modal/Modal";
 import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
-
 import {
   routineStart,
   routineEnd,
@@ -15,6 +14,8 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
+import { format } from "date-fns";
+import { addHours } from "date-fns";
 
 const ThemePage = () => {
   const startDay = useRecoilValue(routineStart);
@@ -38,7 +39,7 @@ const ThemePage = () => {
     setIsCheckVisible(false);
   };
 
-  //객체로 term계산
+  //객체로 term 계산
   useEffect(() => {
     if (startDay && endDay) {
       const startDate = new Date(startDay);
@@ -52,12 +53,10 @@ const ThemePage = () => {
   if (!themeData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
+
   const formatDate = (date) => {
-    const dateObj = typeof date === "string" ? new Date(date) : date;
-    const year = dateObj.getFullYear();
-    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObj.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
+    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
+    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
 
   return (

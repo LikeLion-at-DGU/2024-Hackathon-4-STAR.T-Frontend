@@ -18,6 +18,9 @@ export const BannerImage = styled.img`
 `;
 export const BannerTitle = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
+
   bottom: 70px;
   left: 10px;
   z-index: 2;
