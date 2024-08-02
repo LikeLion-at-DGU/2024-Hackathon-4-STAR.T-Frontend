@@ -19,3 +19,8 @@ export const CheckVisible = atom({
   key: "CheckVisible",
   default: false,
 });
+
+export const registerID = atom({
+  key: "registerID",
+  default: null,
+});

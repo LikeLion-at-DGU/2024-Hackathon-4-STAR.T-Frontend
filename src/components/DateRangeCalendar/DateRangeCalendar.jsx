@@ -5,10 +5,10 @@ import {
   routineEnd,
   CalendarVisible,
   CheckVisible,
+  registerID,
 } from "../../stores/routineRegister";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { postRoutineRegister } from "../../apis/register";
-import { useParams } from "react-router-dom";
 
 const DateRangeCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -17,8 +17,7 @@ const DateRangeCalendar = () => {
   const [selectedEndDate, setSelectedEndDate] = useRecoilState(routineEnd);
   const [, setIsCalendarVisible] = useRecoilState(CalendarVisible);
   const [, setIsCheckVisible] = useRecoilState(CheckVisible);
-  const { params } = useParams();
-
+  const id = useRecoilValue(registerID);
   //루틴 목표날짜 startdate,enddate에 넣기
   const handleDateClick = (date) => {
     if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
@@ -103,7 +102,7 @@ const DateRangeCalendar = () => {
         const response = await postRoutineRegister(
           formattedStartDate,
           formattedEndDate,
-          params
+          id
           // 안되면 전역상태로 id관리 하기
         );
 
