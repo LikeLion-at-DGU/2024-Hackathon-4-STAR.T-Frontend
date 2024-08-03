@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import BACKGROUND from "../../assets/background.svg";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
   justify-content: flex-start;
   margin-top: 1rem;
-  background-image: url(${BACKGROUND});
-
+  padding: 3rem;
+  background-color: #78a1b5;
+  margin-bottom: 30rem;
   width: 100%;
 
   .backBtn {
@@ -27,10 +28,10 @@ export const Wrapper = styled.div`
 
   .title {
     color: #fff;
-    align-self: flex-start;
+    align-self: center;
     padding: 1rem;
     font-family: "AppleSDGothicNeoM";
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
