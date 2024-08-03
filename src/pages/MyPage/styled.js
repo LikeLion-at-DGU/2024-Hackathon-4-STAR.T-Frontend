@@ -62,7 +62,7 @@ export const MypageWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
-  margin-bottom: 8rem;
+
   .button {
     background: none;
     border: none;
