@@ -24,11 +24,10 @@ export const CustomCalendar = ({ setWeekPosition, setDay }) => {
       if (res.completed_days.length > 0) {
         setData(res.completed_days);
         console.log(res.completed_days);
-      } else {
-        setData([]);
       }
     } catch (err) {
       console.error("Error fetching calendar data:", err);
+      setData([]);
     }
   };
 
