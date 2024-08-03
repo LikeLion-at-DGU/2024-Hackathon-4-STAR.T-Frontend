@@ -12,7 +12,7 @@ export const getMyPContent = async () => {
 
 export const patchroutineCategory = async (prefer_routine) => {
   try {
-    const response = await instance.patch("/api/accounts/custom-routines", {
+    const response = await instance.patch("/api/accounts/custom-routines/", {
       prefer_routine,
     });
     if (response.status == 200) {
