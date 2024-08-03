@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
   background-image: url(${Back});
   background-repeat: none;
   background-size: cover;
-
+  margin-bottom: 7rem;
+  padding: 2rem;
   .backBtn {
     border-radius: 15px;
     background: var(--Main-Color, #78a1b5);
