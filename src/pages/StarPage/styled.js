@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   min-height: 100vh;
+  background-size: cover;
   flex-direction: column;
   background-image: url(${Back});
 `;
@@ -106,8 +107,7 @@ export const shareBtn = styled.div`
 
   .ImgSave {
     display: flex;
-    width: 160px;
-    height: 32px;
+
     padding: 6px;
     justify-content: center;
     align-items: center;

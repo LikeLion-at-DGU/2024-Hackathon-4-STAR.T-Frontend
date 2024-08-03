@@ -5,7 +5,6 @@ import IconChecked from "../../assets/IconChecked.svg";
 
 const PrivacyContainer = ({ text, onArrowClick }) => {
   const [isChecked, setIsChecked] = useState(false);
-
   const handleChange = () => {
     setIsChecked(!isChecked);
   };
