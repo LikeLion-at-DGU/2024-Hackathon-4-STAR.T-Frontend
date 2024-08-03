@@ -15,7 +15,7 @@ export const Layout = styled.div`
     rgba(255, 255, 255, 0.9) 30.1%
   );
   backdrop-filter: blur(3px);
-  z-index: 2;
+  z-index: 1000;
 `;
 
 export const Container = styled.div`
