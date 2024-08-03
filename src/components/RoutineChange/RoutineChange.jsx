@@ -1,5 +1,6 @@
 import BACKGROUND from "../../assets/background.svg";
 import React, { useState, useEffect } from "react";
+import * as S from "./styled";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { useNavigate } from "react-router-dom";
 import { Box } from "../common/Box/Box";
