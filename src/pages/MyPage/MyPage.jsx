@@ -6,7 +6,7 @@ import { MyStar } from "../../components/MyStar/MyStar";
 import { Logout } from "../../components/Logout/Logout";
 import Modal from "../../components/Modal/Modal";
 import LOGO from "../../assets/images/MainLogoImg.svg";
-import { useMyInfo } from "../../hooks/useMyInfo";
+import { useMyInfo } from "../../apis/mypage";
 import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
 
@@ -14,11 +14,16 @@ export const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setisLogoutVisible] = useState(false);
   const [isSubscribeVisible, setisSubscribeVisible] = useState(false);
-  const myData = myinfo && myinfo.data ? myinfo.data : null;
   const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [routineVisible, setRoutineVisible] = useState(false);
+  const myData = myinfo && myinfo.data ? myinfo.data : null;
   console.log(myData);
+
+  if (!myData) {
+    return <p>데이터를 불러오는 중입니다...</p>; // myinfo.data가 null인 경우 처리
+  }
+
   const handleCloseModal = () => {
     setisLogoutVisible(false);
     setisSubscribeVisible(false);
