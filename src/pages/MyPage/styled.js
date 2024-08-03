@@ -62,7 +62,7 @@ export const MypageWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
-
+  margin-bottom: 8rem;
   .button {
     background: none;
     border: none;
@@ -104,4 +104,17 @@ export const info = styled.div`
   gap: 5px;
   flex-grow: 2;
   font-size: 1.3rem;
+`;
+export const subscribeBox = styled.div`
+  width: 330px;
+  height: 180px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: 1px solid #78a1b5;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 `;
