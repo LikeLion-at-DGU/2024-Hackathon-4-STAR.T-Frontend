@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./styled";
+import BACKGROUND from "../../assets/background.svg";
+
 import { Header } from "../../components/common/Header/Header";
 import { MyStar } from "../../components/MyStar/MyStar";
 import { Logout } from "../../components/Logout/Logout";
@@ -7,6 +9,9 @@ import Modal from "../../components/Modal/Modal";
 import LOGO from "../../assets/images/MainLogoImg.svg";
 import { useMyInfo } from "../../hooks/useMyInfo";
 import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
+import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
+import { Box } from "../../components/common/Box/Box";
+
 export const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setisLogoutVisible] = useState(false);
@@ -14,7 +19,7 @@ export const MyPage = () => {
   const myData = myinfo && myinfo.data ? myinfo.data : null;
   const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
-
+  console.log(myData);
   const handleCloseModal = () => {
     setisLogoutVisible(false);
     setisSubscribeVisible(false);
@@ -36,6 +41,39 @@ export const MyPage = () => {
 
   const handleBackBtnClick = () => {
     setIsPrivacyVisible(false);
+  };
+
+  const changeRoutine = () => {
+    return (
+      <S.RoutineLayout $url={BACKGROUND}>
+        <S.TitleView>
+          <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
+        </S.TitleView>
+        <S.CategoryView>
+          {ROUTINE_CATEGORY.map((category, index) => (
+            <Box
+              onClick={() => handleClick(index)}
+              $select={categoryStatus[index]}
+              key={index}
+            >
+              {category}
+            </Box>
+          ))}
+        </S.CategoryView>
+        <S.SelectView>
+          <Button
+            width="50%"
+            height="40px"
+            $radius="15px"
+            $background="rgba(196, 217, 226, 0.50)"
+            onClick={handleSubmit}
+            $isDisabled={!isAnyCategorySelected}
+          >
+            <S.CustomP color="white">확인</S.CustomP>
+          </Button>
+        </S.SelectView>
+      </S.RoutineLayout>
+    );
   };
 
   return (
@@ -69,7 +107,7 @@ export const MyPage = () => {
       </S.MypageWrapper>
       <S.MypageWrapper>
         <div className="MyStar">개인정보</div>
-        <button className="Privacy" onClick={""}>
+        <button className="Privacy" onClick={() => <changeRoutine />}>
           맞춤형 루틴 수정
         </button>
         <button className="Privacy" onClick={handleSubscribeClick}>
