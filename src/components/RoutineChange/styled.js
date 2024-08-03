@@ -2,16 +2,15 @@ import styled from "styled-components";
 import BACKGROUND from "../../assets/background.svg";
 
 export const RoutineLayout = styled.div`
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 3rem;
   background-image: url(${BACKGROUND});
-  @media (min-height: 720px) {
-    justify-content: flex-start;
-    gap: 2rem;
-  }
+  background-repeat: none;
+  background-size: cover;
+  gap: 3rem;
 `;
 
 export const CategoryView = styled.div`
@@ -26,6 +25,7 @@ export const CutomTitle = styled.p`
   font-weight: 400;
   line-height: normal;
   color: black;
+  padding: 2rem;
 `;
 export const SelectView = styled.div`
   width: 100%;

@@ -1,18 +1,18 @@
 import styled from "styled-components";
-
+import Back from "../../assets/background.svg";
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: center;
-  justify-content: flex-start;
-  margin-top: 1rem;
-  padding: 3rem;
-  background-color: #78a1b5;
-  margin-bottom: 30rem;
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(${Back});
+  background-repeat: none;
+  background-size: cover;
 
   .backBtn {
+    border-radius: 15px;
+    background: var(--Main-Color, #78a1b5);
     display: flex;
     width: 160px;
     height: 32px;
@@ -23,7 +23,6 @@ export const Wrapper = styled.div`
     gap: 10px;
     flex-shrink: 0;
     border-radius: 15px;
-    background-color: #78a1b5;
   }
 
   .title {
