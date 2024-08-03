@@ -1,5 +1,6 @@
 import * as S from "./style";
 import NON_CHECK_IMG from "@/assets/images/non-check.svg";
+import CHECK_IMG from "@/assets/images/check.svg";
 import { useRecoilState } from "recoil";
 import { routines, schedules } from "@/stores/todo";
 import { useEffect } from "react";
@@ -9,27 +10,64 @@ export const Todo = ({ day }) => {
   const [routineData, setRoutineData] = useRecoilState(routines);
   const [scheduleData, setScheduleData] = useRecoilState(schedules);
   const fetchData = async () => {
-    const res = await getTodayData("2024-08-03");
-    console.log(res);
+    try {
+      const res = await getTodayData("2024-08-03");
+      console.log(res);
+      if (res.routines.length > 0) {
+        setRoutineData(res.routines);
+      }
+      if (res.schedules.length > 0) {
+        setScheduleData(res.schedules);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const submitData = async () => {};
+  const submitData = () => {
+    console.log("test");
+  };
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <S.TodoLayout>
-      <S.ListFrame>
-        <S.CheckFrame>
-          <S.ButtonView onClick={submitData}>
-            <S.ImgView src={NON_CHECK_IMG} />
-          </S.ButtonView>
-        </S.CheckFrame>
-        <S.TextFrame>
-          <S.TitleView>타이틀변수</S.TitleView>
-          <S.SubTitleView>서브타이틀변수</S.SubTitleView>
-        </S.TextFrame>
-      </S.ListFrame>
+      {routineData &&
+        routineData.map((routine) => (
+          <S.ListFrame key={routine.id}>
+            <S.CheckFrame>
+              <S.ButtonView onClick={submitData}>
+                {routine.completed ? (
+                  <S.ImgView src={CHECK_IMG} />
+                ) : (
+                  <S.ImgView src={NON_CHECK_IMG} />
+                )}
+              </S.ButtonView>
+            </S.CheckFrame>
+            <S.TextFrame>
+              <S.TitleView>{routine.routine_title}</S.TitleView>
+              <S.SubTitleView>{routine.routine_content}</S.SubTitleView>
+            </S.TextFrame>
+          </S.ListFrame>
+        ))}
+      {scheduleData &&
+        scheduleData.map((schedule) => (
+          <S.ListFrame key={schedule.id}>
+            <S.CheckFrame>
+              <S.ButtonView onClick={submitData}>
+                {schedule.completed ? (
+                  <S.ImgView src={CHECK_IMG} />
+                ) : (
+                  <S.ImgView src={NON_CHECK_IMG} />
+                )}
+              </S.ButtonView>
+            </S.CheckFrame>
+            <S.TextFrame>
+              <S.TitleView>{schedule.title}</S.TitleView>
+              <S.SubTitleView>{schedule.description}</S.SubTitleView>
+            </S.TextFrame>
+          </S.ListFrame>
+        ))}
     </S.TodoLayout>
   );
 };

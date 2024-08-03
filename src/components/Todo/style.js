@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TodoLayout = styled.div`
+  margin-top: 1rem;
   width: 90%;
   min-height: 250px;
   border-radius: 15px;
