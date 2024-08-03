@@ -10,15 +10,13 @@ export const TodoLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 10;
+  z-index: 100;
   left: 2.5%;
   position: absolute;
   background-color: white;
-  /* margin-bottom: ${(props) => `${props.height / 2}px`}; */
   top: ${(props) => `${props.top}px`};
   @media (min-height: 800px) {
     top: ${(props) => `${props.top - 25}px`};
-    /* margin-bottom: ${(props) => `${props.height / 2}px`}; */
   }
 `;
 
@@ -26,7 +24,6 @@ export const ListFrame = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  height: 50px;
 `;
 
 export const CheckFrame = styled.div``;
