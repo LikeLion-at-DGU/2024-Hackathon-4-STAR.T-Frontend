@@ -8,13 +8,10 @@ export const RoutineLayout = styled.div`
   flex-direction: column;
   gap: 3rem;
   background-image: url(${BACKGROUND});
-`;
-export const TitleView = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 7.5%;
-  gap: 1rem;
+  @media (min-height: 720px) {
+    justify-content: flex-start;
+    gap: 2rem;
+  }
 `;
 
 export const CategoryView = styled.div`

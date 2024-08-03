@@ -48,6 +48,7 @@ const ChangeRoutine = () => {
         selectedCategories.push(i + 1);
       }
     });
+    console.log("patch 값:", selectedCategories);
     const isSuccess = await patchroutineCategory(selectedCategories);
     if (isSuccess) {
       navigate("/mypage");
@@ -59,9 +60,7 @@ const ChangeRoutine = () => {
 
   return (
     <S.RoutineLayout>
-      <S.TitleView>
-        <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
-      </S.TitleView>
+      <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
       <S.CategoryView>
         {ROUTINE_CATEGORY.map((category, index) => (
           <Box
