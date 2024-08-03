@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 export const TodoLayout = styled.div`
   margin-top: 1rem;
-  width: 90%;
   min-height: 250px;
+  width: 90%;
   border-radius: 15px;
   padding: 1rem;
   border: 1px solid #c4d9e2;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  z-index: 10;
+  left: 5%;
+  position: absolute;
+  background-color: white;
 `;
 
 export const ListFrame = styled.div`
