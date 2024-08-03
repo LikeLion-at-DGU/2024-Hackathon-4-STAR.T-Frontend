@@ -4,6 +4,7 @@ import Back from "../../assets/background.svg";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  min-height: 100vh;
   flex-direction: column;
   background-image: url(${Back});
 `;
@@ -50,20 +51,6 @@ export const RoutineBoxContainer = styled.div`
   gap: 3rem;
   margin-bottom: 10rem;
 `;
-export const ScoreContainer = styled.div`
-  display: flex;
-  width: 98%;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-`;
-export const Ranking = styled.div`
-  display: flex;
-
-  .Percentage {
-    margin: 0 0.3rem;
-  }
-`;
 
 export const ClearCantainr = styled.div`
   margin-top: 2rem;
@@ -87,6 +74,7 @@ export const ClearMain = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  color: white;
 
   .imgContainr {
     position: relative;
@@ -117,6 +105,13 @@ export const shareBtn = styled.div`
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
   background: rgba(196, 217, 226, 0.5);
+
+  & > button {
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    background-color: #78a1b5;
+  }
 `;
 export const shareContainr = styled.div`
   display: flex;
