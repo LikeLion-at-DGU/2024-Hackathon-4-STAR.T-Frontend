@@ -118,3 +118,10 @@ export const shareBtn = styled.div`
   border: 1.228px solid #c4d9e2;
   background: rgba(196, 217, 226, 0.5);
 `;
+export const shareContainr = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`;
