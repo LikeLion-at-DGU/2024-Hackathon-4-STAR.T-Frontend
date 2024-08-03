@@ -1,6 +1,12 @@
 import { styled } from "styled-components";
 import Back from "../../assets/background.svg";
 
+export const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-image: url(${Back});
+`;
 export const Header = styled.div`
   position: relative;
   width: 100%;
@@ -62,9 +68,11 @@ export const Ranking = styled.div`
 export const ClearCantainr = styled.div`
   margin-top: 2rem;
   display: flex;
+  height: 100%;
+
   flex-direction: column;
   margin-bottom: 10rem;
-  background-image: url(${Back});
+
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -75,9 +83,10 @@ export const ClearMain = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
+  flex: 1;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   .imgContainr {
     position: relative;
