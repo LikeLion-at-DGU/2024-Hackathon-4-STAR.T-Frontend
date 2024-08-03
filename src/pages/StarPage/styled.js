@@ -114,7 +114,6 @@ export const shareBtn = styled.div`
     gap: 10px;
     flex-shrink: 0;
     text-align: center;
-    color: white;
     border-radius: 15px;
     border: 1px solid #c4d9e2;
     background: rgba(196, 217, 226, 0.5);
@@ -136,7 +135,6 @@ export const shareContainr = styled.div`
     gap: 10px;
     flex-shrink: 0;
     text-align: center;
-    color: white;
     border-radius: 15px;
     border: 1px solid #c4d9e2;
     background: rgba(196, 217, 226, 0.5);
