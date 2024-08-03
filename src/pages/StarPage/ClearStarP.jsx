@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { useMoveonStarP } from "../../hooks/useStar";
 import shareIcon from "../../assets/shareIcon.svg";
@@ -22,9 +21,11 @@ const ClearStarP = () => {
       </S.Header>
       <S.ClearCantainr>
         <S.ClearMain>
-          <img src={ClearStarPIcon} />
-          <div>총 {starData.routines_added_count}회</div>
-          <div className="textOverlay">루틴 완료 달성!</div>
+          <div className="imgContainr">
+            <img src={ClearStarPIcon} />
+            <div> {starData.routines_added_count}회</div>
+            <div className="textOverlay">루틴 완료 달성!</div>
+          </div>
         </S.ClearMain>
         <S.shareBtn>
           <button>

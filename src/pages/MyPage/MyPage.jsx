@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { Logout } from "../../components/Logout/Logout";
 import Modal from "../../components/Modal/Modal";
 import LOGO from "../../assets/images/MainLogoImg.svg";
-
 export const MyPage = () => {
   const navigate = useNavigate();
   const [isLogoutVisible, setisLogoutVisible] = useState(false);

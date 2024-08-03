@@ -7,7 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
-
+import ClearStarP from "./ClearStarP";
 import {
   routineStart,
   routineEnd,
@@ -27,6 +27,7 @@ const StarPage = () => {
   const setID = useSetRecoilState(registerID);
   const starData = starP && starP.data ? starP.data : null;
   const [term, setTerm] = useState(0);
+  const [isClearStarPVisible, setIsClearStarPVisible] = useState(false);
 
   const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
@@ -49,6 +50,17 @@ const StarPage = () => {
     }
   }, [startDay, endDay]);
 
+  useEffect(() => {
+    if (
+      starData &&
+      starData.routines_count.user_count ===
+        starData.routines_count.total_count &&
+      !isClearStarPVisible
+    ) {
+      setIsClearStarPVisible(true);
+    }
+  }, [starData]);
+
   if (!starData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
   }
@@ -57,6 +69,11 @@ const StarPage = () => {
     const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
     return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
+
+  if (isClearStarPVisible) {
+    return <ClearStarP />;
+  }
+
   return (
     <>
       <S.Header>
