@@ -1,4 +1,3 @@
-import BACKGROUND from "../../assets/background.svg";
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
@@ -59,7 +58,7 @@ const ChangeRoutine = () => {
   }, [categoryStatus]);
 
   return (
-    <S.RoutineLayout $url={BACKGROUND}>
+    <S.RoutineLayout>
       <S.TitleView>
         <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
       </S.TitleView>

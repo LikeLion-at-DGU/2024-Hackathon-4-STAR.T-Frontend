@@ -42,7 +42,7 @@ const MyPage = () => {
   const handleBackBtnClick = () => setIsPrivacyVisible(false);
 
   return (
-    <S.Layout $url={BACKGROUND}>
+    <S.Layout>
       {isPrivacyVisible ? (
         <WrapperContent
           selectedText={selectedContent}
