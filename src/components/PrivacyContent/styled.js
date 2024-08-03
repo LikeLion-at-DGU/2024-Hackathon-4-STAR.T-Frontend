@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BACKGROUND from "../../assets/background.svg";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,7 +7,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-top: 1rem;
-  margin-bottom: 8rem;
+  background-image: url(${BACKGROUND});
+
   width: 100%;
 
   .backBtn {
