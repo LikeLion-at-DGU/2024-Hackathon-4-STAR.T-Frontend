@@ -8,3 +8,12 @@ export const getMonthCalendar = async (month) => {
     throw err;
   }
 };
+
+export const getTodayData = async (day) => {
+  try {
+    const res = await instance.get(`/api/calendar/daily/${day}/`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
