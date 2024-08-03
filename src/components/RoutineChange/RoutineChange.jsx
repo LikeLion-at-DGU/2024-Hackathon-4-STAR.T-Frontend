@@ -1,7 +1,10 @@
 import BACKGROUND from "../../assets/background.svg";
+import React, { useState, useEffect } from "react";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { useNavigate } from "react-router-dom";
 import { Box } from "../common/Box/Box";
+import { Button } from "../../components/common/Button";
+
 import { patchroutineCategory, getRoutineCategory } from "../../apis/mypage";
 const ChangeRoutine = () => {
   const navigate = useNavigate();
@@ -12,16 +15,24 @@ const ChangeRoutine = () => {
     try {
       const getData = await getRoutineCategory();
       console.log("getData:", getData);
-      setCategoryStatus(getData.prefer_routine);
+      const initialStatus = ROUTINE_CATEGORY.map((_, index) =>
+        getData.preferred_routine_categories.some(
+          (preferred) => preferred.id - 1 === index
+        )
+      );
+
+      setCategoryStatus(initialStatus);
     } catch (err) {
       console.log(err);
-      throw err;
     }
   };
 
   useEffect(() => {
     initialCategory();
   }, []);
+  //initialStatus는 true,false로 구성된 배열
+
+  // [{id:1, name:name},{id, name}...]
 
   const handleClick = (index) => {
     setCategoryStatus((prevStatus) =>
@@ -30,9 +41,12 @@ const ChangeRoutine = () => {
   };
 
   const handleSubmit = async () => {
-    const selectedCategories = categoryStatus
-      .map((status, i) => (status ? i + 1 : null))
-      .filter((id) => id !== null);
+    const selectedCategories = [];
+    categoryStatus.map((status, i) => {
+      if (status === true) {
+        selectedCategories.push(i + 1);
+      }
+    });
     const isSuccess = await patchroutineCategory(selectedCategories);
     if (isSuccess) {
       navigate("/mypage");

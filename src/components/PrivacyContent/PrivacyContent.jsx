@@ -8,17 +8,7 @@ const WrapperContent = ({ selectedText, onBackBtnClick, contentsNumber }) => (
         <div className="title">{selectedText}</div>
 
         {AGREE_TEXT[contentsNumber].map((text, key) => (
-          <div
-            key={key}
-            style={{
-              marginBottom: "2rem",
-              textAlign: "left",
-              display: "flex",
-              width: "100%",
-              justifyContent: "start",
-            }}
-            className="content"
-          >
+          <div key={key} className="content">
             <p>{text}</p>
           </div>
         ))}
