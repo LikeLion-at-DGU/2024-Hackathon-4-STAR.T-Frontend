@@ -14,6 +14,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPage from "./pages/MyPage/MyPage";
 import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
 import SharePage from "@/pages/Share/Share";
+import { Test } from "./pages/TestPage/Test";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
       {
         path: "/share",
         element: <SharePage />,
+        loader: loader,
+      },
+      {
+        path: "/test",
+        element: <Test />,
       },
     ],
     // errorElement: <NotFound />,
