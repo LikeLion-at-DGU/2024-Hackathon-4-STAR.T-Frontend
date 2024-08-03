@@ -1,12 +1,13 @@
 import BACKGROUND from "../../assets/background.svg";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
 import { useNavigate } from "react-router-dom";
-
+import { Box } from "../common/Box/Box";
 import { patchroutineCategory, getRoutineCategory } from "../../apis/mypage";
-const changeRoutine = () => {
+const ChangeRoutine = () => {
   const navigate = useNavigate();
   const [isAnyCategorySelected, setIsAnyCategorySelected] = useState(false);
   const [categoryStatus, setCategoryStatus] = useState([]);
+
   const initialCategory = async () => {
     try {
       const getData = await getRoutineCategory();
@@ -72,4 +73,4 @@ const changeRoutine = () => {
     </S.RoutineLayout>
   );
 };
-export default changeRoutine;
+export default ChangeRoutine;
