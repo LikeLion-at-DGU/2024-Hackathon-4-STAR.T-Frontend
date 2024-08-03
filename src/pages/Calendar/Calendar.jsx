@@ -8,7 +8,6 @@ import { useState } from "react";
 
 export const Calendar = () => {
   const [status, setStatus] = useRecoilState(todoStatus);
-  const [day, setDay] = useState("");
   const [weekPosition, setWeekPosition] = useState(0); // 주의 위치를 저장하는 상태
 
   return (
@@ -16,8 +15,8 @@ export const Calendar = () => {
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         캘린더
       </Header>
-      <CustomCalendar setWeekPosition={setWeekPosition} setDay={setDay} />
-      {status && <Todo day={day} top={weekPosition} openTodo={setStatus} />}
+      <CustomCalendar setWeekPosition={setWeekPosition} />
+      {status && <Todo top={weekPosition} openTodo={setStatus} />}
     </S.Layout>
   );
 };
