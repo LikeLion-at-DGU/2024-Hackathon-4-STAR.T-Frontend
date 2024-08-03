@@ -17,3 +17,16 @@ export const getTodayData = async (day) => {
     throw err;
   }
 };
+
+export const postPersonal = async (title, description, date) => {
+  try {
+    const res = await instance.post(`/api/calendar/daily/${date}/`, {
+      title,
+      description,
+      date,
+    });
+    console.log(res);
+  } catch (err) {
+    throw err;
+  }
+};
