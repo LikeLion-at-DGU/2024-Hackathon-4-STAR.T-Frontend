@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Layout = styled.div`
+  pointer-events: ${(props) => props.$isModalOpen && "all"};
+
   margin-bottom: 8rem;
   position: relative;
   width: 90%;

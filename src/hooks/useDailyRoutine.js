@@ -11,11 +11,16 @@ export const useDailyRoutine = (date) => {
     const fetchData = async () => {
       try {
         const response = await getTodayData(date);
+        console.log(response);
         if (response.routines.length > 0) {
           setRoutineData(response.routines);
+        } else {
+          setRoutineData([]);
         }
         if (response.schedules.length > 0) {
           setScheduleData(response.schedules);
+        } else {
+          setScheduleData([]);
         }
       } catch (error) {
         console.error("데이터 가져오기 오류:", error);

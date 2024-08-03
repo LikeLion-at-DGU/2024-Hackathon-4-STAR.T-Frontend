@@ -1,15 +1,16 @@
 import Calendar from "react-calendar";
 import { useSetRecoilState } from "recoil";
 import { useState, useEffect, useRef } from "react";
-import { format, addHours, startOfWeek, endOfWeek } from "date-fns";
+import { format, addHours } from "date-fns";
 import * as S from "./style";
 import { getMonthCalendar } from "../../apis/calendar";
-import { todoStatus } from "@/stores/calendar";
+import { todoStatus, day } from "@/stores/calendar";
 
-export const CustomCalendar = ({ setWeekPosition, setDay }) => {
+export const CustomCalendar = ({ setWeekPosition }) => {
   const [value, setValue] = useState(new Date());
   const [month, setMonth] = useState(format(new Date(), "yyyy-MM"));
   const [data, setData] = useState([]);
+  const setDay = useSetRecoilState(day);
   const setStatus = useSetRecoilState(todoStatus);
   const calendarRef = useRef(null);
 
@@ -26,7 +27,7 @@ export const CustomCalendar = ({ setWeekPosition, setDay }) => {
         console.log(res.completed_days);
       }
     } catch (err) {
-      console.error("Error fetching calendar data:", err);
+      setData([]);
     }
   };
 
