@@ -5,10 +5,12 @@ import Logo2 from "../../assets/images/loading_logo(2).svg";
 import PrivacyContainer from "../../components/PrivacyContainer/PrivacyContainer";
 import { postSetInfo } from "../../apis/signup";
 import { useNavigate } from "react-router-dom";
-import { AGREE_TEXT } from "../../constants/Text/title";
-
+import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
+import { useRecoilState } from "recoil";
+import { pageNumberState } from "../../stores/Privacy";
 export const Loading = () => {
   const texts = ["이용약관", "개인정보 처리방침"];
+  const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
   const [nickname, setNickname] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(true);
   const [selectedText, setSelectedText] = useState(null);
@@ -17,6 +19,11 @@ export const Loading = () => {
   const handleArrowClick = (text) => {
     setIsFormVisible(false);
     setSelectedText(text);
+    if (text === "이용약관") {
+      setPageNumber(0);
+    } else {
+      setPageNumber(1);
+    }
   };
 
   const handleBackBtnClick = () => {
@@ -74,38 +81,11 @@ export const Loading = () => {
           </button>
         </S.formWrapper>
       ) : (
-        <S.Wrapper>
-          {selectedText && (
-            <>
-              <div className="title">{selectedText}</div>
-
-              {AGREE_TEXT.map((text, key) => (
-                <div
-                  key={key}
-                  style={{
-                    marginBottom: "2rem",
-                    textAlign: "left",
-                    display: "flex",
-                    width: "100%",
-                    justifyContent: "start",
-                  }}
-                  className="content"
-                >
-                  <p>{text}</p>
-                </div>
-              ))}
-            </>
-          )}
-          <button
-            style={{
-              marginBottom: "2rem",
-            }}
-            className="backBtn"
-            onClick={handleBackBtnClick}
-          >
-            뒤로가기
-          </button>
-        </S.Wrapper>
+        <WrapperContent
+          selectedText={selectedText}
+          onBackBtnClick={handleBackBtnClick}
+          contentsNumber={pageNumber}
+        />
       )}
     </S.Layout>
   );
