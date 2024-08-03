@@ -6,8 +6,8 @@ import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalen
 import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
-import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import ClearStarP from "./ClearStarP";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import {
   routineStart,
   routineEnd,
@@ -50,15 +50,15 @@ const StarPage = () => {
     }
   }, [startDay, endDay]);
 
-  useEffect(() => {
-    if (
-      starData &&
-      starData.routines_added_count === starData.routines_count.total_count &&
-      !isClearStarPVisible
-    ) {
-      setIsClearStarPVisible(true);
-    }
-  }, [starData]);
+  // useEffect(() => {
+  //   if (
+  //     starData &&
+  //     starData.routines_added_count === starData.routines_count.total_count &&
+  //     !isClearStarPVisible
+  //   ) {
+  //     setIsClearStarPVisible(true);
+  //   }
+  // }, [starData]);
 
   if (!starData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
@@ -86,6 +86,7 @@ const StarPage = () => {
         usercount={starData.routines_count.user_count}
         totalcount={starData.routines_count.total_count}
         completecount={starData.routines_added_count}
+        onClick={() => setIsClearStarPVisible(true)}
       />
       <S.RoutineBoxContainer>
         {starData.routines.length > 0 ? (
