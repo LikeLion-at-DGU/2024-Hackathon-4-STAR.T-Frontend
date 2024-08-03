@@ -43,15 +43,21 @@ const ChangeRoutine = () => {
 
   const handleSubmit = async () => {
     const selectedCategories = [];
-    categoryStatus.map((status, i) => {
-      if (status === true) {
+    categoryStatus.forEach((status, i) => {
+      if (status) {
         selectedCategories.push(i + 1);
       }
     });
     console.log("patch 값:", selectedCategories);
-    const isSuccess = await patchroutineCategory(selectedCategories);
-    if (isSuccess) {
-      navigate("/mypage");
+
+    try {
+      const isSuccess = await patchroutineCategory(selectedCategories);
+      console.log("isSuccess값:", isSuccess);
+      if (isSuccess) {
+        navigate("/mypage");
+      }
+    } catch (err) {
+      console.error("Error updating categories:", err);
     }
   };
   useEffect(() => {

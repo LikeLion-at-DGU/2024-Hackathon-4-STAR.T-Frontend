@@ -2,15 +2,15 @@ import styled from "styled-components";
 import BACKGROUND from "../../assets/background.svg";
 
 export const RoutineLayout = styled.div`
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 3rem;
-  width: 100%;
-  min-height: 765px;
-  background-size: cover;
   background-image: url(${BACKGROUND});
+  background-repeat: none;
+  background-size: cover;
+  gap: 3rem;
 `;
 
 export const CategoryView = styled.div`
