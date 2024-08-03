@@ -10,10 +10,10 @@ export const getMyPContent = async () => {
   }
 };
 
-export const patchroutineCategory = async (prefer_routine) => {
+export const patchroutineCategory = async (preferred_routine_categories) => {
   try {
     const response = await instance.patch("/api/accounts/custom-routines/", {
-      prefer_routine,
+      preferred_routine_categories,
     });
     if (response.status == 200) {
       return true;
