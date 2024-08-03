@@ -29,7 +29,9 @@ const ClearStarP = ({ onBack }) => {
         </S.ClearMain>
         <S.shareContainr>
           <S.shareBtn>
+
             <button className="ImgSave">
+
               이미지 저장하고 공유하기
               <img src={shareIcon} />
             </button>

@@ -1,36 +1,34 @@
+import React, { useState } from "react";
 import * as S from "./style";
-import NON_CHECK_IMG from "@/assets/images/non-check.svg";
-import { useRecoilState } from "recoil";
-import { routines, schedules } from "@/stores/todo";
-import { useEffect } from "react";
-import { getTodayData } from "@/apis/calendar";
-// 날짜 받아오기
-export const Todo = ({ day }) => {
-  const [routineData, setRoutineData] = useRecoilState(routines);
-  const [scheduleData, setScheduleData] = useRecoilState(schedules);
-  const fetchData = async () => {
-    const res = await getTodayData("2024-08-03");
-    console.log(res);
-  };
-  const submitData = async () => {};
-  useEffect(() => {
-    fetchData();
-  }, []);
+import { Item } from "./Item";
+import { useDailyRoutine } from "@/hooks/useDailyRoutine";
+import PLUS_BTN from "@/assets/images/plusBtn.svg";
 
+export const Todo = ({ top, day }) => {
+  const { routineData, scheduleData } = useDailyRoutine(day);
+  const [height, setHeight] = useState(window.screen.availHeight);
+  const startRef = React.useRef(null);
+  React.useEffect(() => {
+    setHeight(window.screen.availHeight);
+    if (top) {
+      startRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [top, height]);
   return (
-    <S.TodoLayout>
-      <S.ListFrame>
-        <S.CheckFrame>
-          <S.ButtonView onClick={submitData}>
-            <S.ImgView src={NON_CHECK_IMG} />
-          </S.ButtonView>
-        </S.CheckFrame>
-        <S.TextFrame>
-          <S.TitleView>타이틀변수</S.TitleView>
-          <S.SubTitleView>서브타이틀변수</S.SubTitleView>
-        </S.TextFrame>
-      </S.ListFrame>
+    <S.TodoLayout top={top} ref={startRef} height={height}>
+      <S.TitleFrame>
+        <S.TitleView>{day}</S.TitleView>
+      </S.TitleFrame>
+      {routineData.map((routine) => (
+        <Item key={routine.id} item={routine} isRoutine={true} />
+      ))}
+      {scheduleData.map((schedule) => (
+        <Item key={schedule.id} item={schedule} isRoutine={false} />
+      ))}
+
+      <S.PlusBtnFrame>
+        <S.ImgView src={PLUS_BTN} onClick={() => console.log(height)} />
+      </S.PlusBtnFrame>
     </S.TodoLayout>
   );
 };
-// List 수만큼 돌리기

@@ -1,13 +1,17 @@
 import Calendar from "react-calendar";
-import { useState, useEffect } from "react";
-import { format, addHours } from "date-fns";
+import { useSetRecoilState } from "recoil";
+import { useState, useEffect, useRef } from "react";
+import { format, addHours, startOfWeek, endOfWeek } from "date-fns";
 import * as S from "./style";
 import { getMonthCalendar } from "../../apis/calendar";
+import { todoStatus } from "@/stores/calendar";
 
-export const CustomCalendar = () => {
+export const CustomCalendar = ({ setWeekPosition, setDay }) => {
   const [value, setValue] = useState(new Date());
   const [month, setMonth] = useState(format(new Date(), "yyyy-MM"));
   const [data, setData] = useState([]);
+  const setStatus = useSetRecoilState(todoStatus);
+  const calendarRef = useRef(null);
 
   const getActiveMonth = (activeStartDate) => {
     const zonedDate = addHours(activeStartDate, 9); // 9시간 더하기
@@ -30,13 +34,33 @@ export const CustomCalendar = () => {
     getData();
   }, [month]);
 
+  // 새로운 onChange 핸들러
+  const handleDateChange = (date) => {
+    setValue(date);
+    setStatus(true); // 날짜 클릭 시 상태를 true로 설정
+    setTimeout(() => {
+      const calendarNode = calendarRef.current;
+      if (calendarNode) {
+        const activeTile = calendarNode.querySelector(
+          ".react-calendar__tile--active"
+        );
+        if (activeTile) {
+          const rect = activeTile.getBoundingClientRect();
+          const yPos = rect.top + window.scrollY; // y좌표 (상대적 위치를 절대적 위치로 변환)
+          setWeekPosition(yPos + 50);
+        }
+      }
+    }, 0);
+    setDay(format(date, "yyyy-MM-dd"));
+  };
+
   return (
-    <S.CalendarContainer>
+    <S.CalendarContainer ref={calendarRef}>
       <Calendar
         onActiveStartDateChange={({ activeStartDate }) =>
           getActiveMonth(activeStartDate)
         }
-        onChange={setValue}
+        onChange={handleDateChange} // onChange 핸들러 추가
         value={value}
         minDate={new Date(2024, 0, 1)}
         minDetail="month"
