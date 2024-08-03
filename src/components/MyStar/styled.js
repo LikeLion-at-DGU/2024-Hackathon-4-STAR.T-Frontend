@@ -6,6 +6,10 @@ export const Container = styled.div`
   width: 100%;
   gap: 20px;
   align-items: center;
+  .count {
+    display: flex;
+    margin-right: 1rem;
+  }
 `;
 
 export const StarImg = styled.img`
