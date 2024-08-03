@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styled";
 import checkBadge from "../../assets/checkbadge.svg";
-import progressingBar from "../../assets/progressingBar.svg";
+import progressingBar from "../../assets/ProgressingBar.svg";
 import completeBar from "../../assets/completeBar.svg";
 import ShareIcon from "../../assets/shareIcon.svg";
 
