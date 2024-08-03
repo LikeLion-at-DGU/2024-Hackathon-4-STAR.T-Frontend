@@ -72,12 +72,24 @@ export const ClearCantainr = styled.div`
 
 export const ClearMain = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 
+  .imgContainr {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
   .textOverlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 55%;
+    left: 49.5%;
     z-index: 2;
     font-weight: bold;
     text-align: center;
