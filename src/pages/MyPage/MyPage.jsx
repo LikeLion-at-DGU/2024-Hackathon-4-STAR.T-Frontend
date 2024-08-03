@@ -6,7 +6,7 @@ import { MyStar } from "../../components/MyStar/MyStar";
 import { Logout } from "../../components/Logout/Logout";
 import Modal from "../../components/Modal/Modal";
 import LOGO from "../../assets/images/MainLogoImg.svg";
-import { useMyInfo } from "../../apis/mypage";
+import { useMyInfo } from "../../hooks/useMyInfo";
 import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
 
