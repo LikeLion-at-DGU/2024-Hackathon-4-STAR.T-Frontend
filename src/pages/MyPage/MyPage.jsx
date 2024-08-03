@@ -41,10 +41,12 @@ const MyPage = () => {
   const handlePrivacyClick = (content) => {
     setSelectedContent(content);
     setIsPrivacyVisible(true);
+    console.log(content);
   };
 
   const handleRoutineChangeClick = () => {
     setRoutineVisible(true);
+    console.log("맞춤형루틴 true");
   };
 
   const handleBackBtnClick = () => {
