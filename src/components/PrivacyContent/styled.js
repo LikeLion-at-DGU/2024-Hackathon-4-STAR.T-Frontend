@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   margin-top: 1rem;
   margin-bottom: 8rem;
-  width: 80%;
+  width: 100%;
 
   .backBtn {
     display: flex;
@@ -35,5 +35,10 @@ export const Wrapper = styled.div`
   }
   .content {
     color: white;
+    margin-bottom: 2rem;
+    text-align: left;
+    display: flex;
+    width: 100%;
+    justify-content: start;
   }
 `;

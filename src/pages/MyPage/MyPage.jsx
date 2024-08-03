@@ -10,7 +10,7 @@ import { useMyInfo } from "../../hooks/useMyInfo";
 import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
 
-export const MyPage = () => {
+const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setisLogoutVisible] = useState(false);
   const [isSubscribeVisible, setisSubscribeVisible] = useState(false);
@@ -111,7 +111,7 @@ export const MyPage = () => {
       )}
       {isSubscribeVisible && (
         <Modal onClose={handleCloseModal}>
-          <div>오픈예정입니다.</div>
+          <S.subscribeBox>오픈예정입니다.</S.subscribeBox>
         </Modal>
       )}
       {isPrivacyVisible && (
