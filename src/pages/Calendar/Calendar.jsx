@@ -12,7 +12,7 @@ export const Calendar = () => {
   const [weekPosition, setWeekPosition] = useState(0); // 주의 위치를 저장하는 상태
 
   return (
-    <S.Layout>
+    <S.Layout $isModalOpen={status}>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         캘린더
       </Header>

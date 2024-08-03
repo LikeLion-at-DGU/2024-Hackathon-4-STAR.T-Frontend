@@ -1,7 +1,7 @@
 import Calendar from "react-calendar";
 import { useSetRecoilState } from "recoil";
 import { useState, useEffect, useRef } from "react";
-import { format, addHours, startOfWeek, endOfWeek } from "date-fns";
+import { format, addHours } from "date-fns";
 import * as S from "./style";
 import { getMonthCalendar } from "../../apis/calendar";
 import { todoStatus } from "@/stores/calendar";
@@ -24,6 +24,8 @@ export const CustomCalendar = ({ setWeekPosition, setDay }) => {
       if (res.completed_days.length > 0) {
         setData(res.completed_days);
         console.log(res.completed_days);
+      } else {
+        console.log("complete : 0");
       }
     } catch (err) {
       console.error("Error fetching calendar data:", err);
