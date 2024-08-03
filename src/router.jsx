@@ -13,6 +13,7 @@ import StarPage from "./pages/StarPage/StarPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPage from "./pages/MyPage/MyPage";
 import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
+import SharePage from "@/pages/Share/Share";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         path: "/subcategory/:sectionId/:subCategoryId",
         element: <SubCategoryPage />,
         loader: loader,
+      },
+      {
+        path: "/share",
+        element: <SharePage />,
       },
     ],
     // errorElement: <NotFound />,
