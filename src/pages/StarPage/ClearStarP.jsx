@@ -11,7 +11,7 @@ const ClearStarP = () => {
   }
 
   return (
-    <>
+    <S.Wrapper>
       <S.Header>
         <S.BannerImage src={starData.photo} alt={starData.name} />
         <S.BannerTitle>
@@ -23,9 +23,9 @@ const ClearStarP = () => {
         <S.ClearMain>
           <div className="imgContainr">
             <img src={ClearStarPIcon} />
-            <div> {starData.routines_added_count}회</div>
-            <div className="textOverlay">루틴 완료 달성!</div>
+            <div className="textOverlay">{starData.routines_added_count}회</div>
           </div>
+          <div>루틴 완료 달성!</div>
         </S.ClearMain>
         <S.shareBtn>
           <button>
@@ -34,7 +34,7 @@ const ClearStarP = () => {
           </button>
         </S.shareBtn>
       </S.ClearCantainr>
-    </>
+    </S.Wrapper>
   );
 };
 export default ClearStarP;

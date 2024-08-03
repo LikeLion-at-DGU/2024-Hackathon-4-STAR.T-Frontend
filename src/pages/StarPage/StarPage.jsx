@@ -53,8 +53,7 @@ const StarPage = () => {
   useEffect(() => {
     if (
       starData &&
-      starData.routines_count.user_count ===
-        starData.routines_count.total_count &&
+      starData.routines_added_count === starData.routines_count.total_count &&
       !isClearStarPVisible
     ) {
       setIsClearStarPVisible(true);
