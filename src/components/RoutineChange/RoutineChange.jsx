@@ -17,7 +17,7 @@ const ChangeRoutine = () => {
       const getData = await getRoutineCategory();
       console.log("getData:", getData);
       const initialStatus = ROUTINE_CATEGORY.map((_, index) =>
-        getData.preferred_routine_categories.some(
+        getData.data.preferred_routine_categories.some(
           (preferred) => preferred.id - 1 === index
         )
       );
