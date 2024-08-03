@@ -5,17 +5,19 @@ import progressingBar from "../../assets/progressingBar.svg";
 import completeBar from "../../assets/completeBar.svg";
 import ShareIcon from "../../assets/shareIcon.svg";
 
-const ProgressingBar = ({ userroutinecount, totalroutinecount }) => {
-  return (
-    <S.ProgressingBarWrapper>
-      {Array.from({ length: totalroutinecount }).map((_, index) => {
-        const imgSrc = index < userroutinecount ? completeBar : progressingBar;
-        return <img key={index} src={imgSrc} alt={`Progress ${index}`} />;
-      })}
-    </S.ProgressingBarWrapper>
-  );
-};
+
 export const StarHeader = ({ usercount, totalcount, completecount }) => {
+
+  const ProgressingBar = ({ userroutinecount, totalroutinecount }) => {
+    return (
+      <S.ProgressingBarWrapper>
+        {Array.from({ length: totalroutinecount }).map((_, index) => {
+          const imgSrc = index < userroutinecount ? completeBar : progressingBar;
+          return <img key={index} src={imgSrc} alt={`Progress ${index}`} />;
+        })}
+      </S.ProgressingBarWrapper>
+    );
+  };
   return (
     <>
       <S.layout>
