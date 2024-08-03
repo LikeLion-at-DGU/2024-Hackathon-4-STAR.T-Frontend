@@ -7,11 +7,10 @@ export const RoutineLayout = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 3rem;
+  width: 100%;
+  min-height: 765px;
+  background-size: cover;
   background-image: url(${BACKGROUND});
-  @media (min-height: 720px) {
-    justify-content: flex-start;
-    gap: 2rem;
-  }
 `;
 
 export const CategoryView = styled.div`
@@ -26,6 +25,7 @@ export const CutomTitle = styled.p`
   font-weight: 400;
   line-height: normal;
   color: black;
+  padding: 2rem;
 `;
 export const SelectView = styled.div`
   width: 100%;
