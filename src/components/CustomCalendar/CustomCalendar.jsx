@@ -25,7 +25,7 @@ export const CustomCalendar = ({ setWeekPosition, setDay }) => {
         setData(res.completed_days);
         console.log(res.completed_days);
       } else {
-        console.log("complete : 0");
+        setData([]);
       }
     } catch (err) {
       console.error("Error fetching calendar data:", err);
