@@ -10,13 +10,14 @@ export const Calendar = () => {
   const status = useRecoilValue(todoStatus);
   const [day, setDay] = useState("");
   const [weekPosition, setWeekPosition] = useState(0); // 주의 위치를 저장하는 상태
+
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         캘린더
       </Header>
       <CustomCalendar setWeekPosition={setWeekPosition} setDay={setDay} />
-      {status && <Todo day={day} weekPosition={weekPosition} />}
+      {status && <Todo day={day} top={weekPosition} />}
     </S.Layout>
   );
 };

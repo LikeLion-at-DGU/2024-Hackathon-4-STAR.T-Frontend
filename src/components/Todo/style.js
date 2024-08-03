@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const TodoLayout = styled.div`
   margin-top: 1rem;
-  min-height: 250px;
-  width: 90%;
+  min-height: ${(props) => `${props.height / 2}px`};
+  width: 95%;
   border-radius: 15px;
   padding: 1rem;
   border: 1px solid #c4d9e2;
@@ -11,15 +11,21 @@ export const TodoLayout = styled.div`
   flex-direction: column;
   gap: 1rem;
   z-index: 10;
-  left: 5%;
+  left: 2.5%;
   position: absolute;
   background-color: white;
+  /* margin-bottom: ${(props) => `${props.height / 2}px`}; */
+  top: ${(props) => `${props.top}px`};
+  @media (min-height: 800px) {
+    top: ${(props) => `${props.top - 25}px`};
+    /* margin-bottom: ${(props) => `${props.height / 2}px`}; */
+  }
 `;
 
 export const ListFrame = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 1rem;
   height: 50px;
 `;
 
@@ -27,7 +33,9 @@ export const CheckFrame = styled.div``;
 
 export const ButtonView = styled.button``;
 
-export const ImgView = styled.img``;
+export const ImgView = styled.img`
+  cursor: pointer;
+`;
 
 export const TextFrame = styled.div``;
 
@@ -47,4 +55,17 @@ export const SubTitleView = styled.p`
   line-height: normal;
 `;
 
-export const PlusBtnFrame = styled.div``;
+export const PlusBtnFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+`;
+
+export const TitleFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Title = styled.h2``;
