@@ -23,6 +23,7 @@ const ChangeRoutine = () => {
       );
 
       setCategoryStatus(initialStatus);
+      console.log("initialStatus:", initialStatus);
     } catch (err) {
       console.log(err);
     }
