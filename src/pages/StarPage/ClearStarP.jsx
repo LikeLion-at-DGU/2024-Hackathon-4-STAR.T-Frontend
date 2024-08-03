@@ -3,7 +3,7 @@ import { useMoveonStarP } from "../../hooks/useStar";
 import shareIcon from "../../assets/shareIcon.svg";
 import ClearStarPIcon from "../../assets/ClearStarPIcon.svg";
 
-const ClearStarP = () => {
+const ClearStarP = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
@@ -27,12 +27,15 @@ const ClearStarP = () => {
           </div>
           <div>루틴 완료 달성!</div>
         </S.ClearMain>
-        <S.shareBtn>
-          <button>
-            공유하기
-            <img src={shareIcon} />
-          </button>
-        </S.shareBtn>
+        <S.shareContainr>
+          <S.shareBtn>
+            <button>
+              이미지 저장하고 공유하기
+              <img src={shareIcon} />
+            </button>
+          </S.shareBtn>
+          <button onClick={onBack}>뒤로가기</button>
+        </S.shareContainr>
       </S.ClearCantainr>
     </S.Wrapper>
   );
