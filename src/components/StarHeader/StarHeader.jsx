@@ -25,10 +25,12 @@ export const StarHeader = ({ usercount, totalcount, completecount }) => {
             <div>
               달성 진행중 {usercount}/{totalcount}
             </div>
+
             <ProgressingBar
               userroutinecount={usercount}
               totalroutinecount={totalcount}
             />
+
           </S.ProgressContainr>
         </div>
         <S.ShareContainr>
