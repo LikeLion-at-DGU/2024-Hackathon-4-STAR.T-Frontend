@@ -36,3 +36,4 @@ const ClearStarP = () => {
     </>
   );
 };
+export default ClearStarP;
