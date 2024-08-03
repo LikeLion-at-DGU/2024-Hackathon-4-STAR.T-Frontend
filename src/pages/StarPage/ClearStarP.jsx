@@ -34,7 +34,9 @@ const ClearStarP = ({ onBack }) => {
               <img src={shareIcon} />
             </button>
           </S.shareBtn>
-          <button onClick={onBack}>뒤로가기</button>
+          <button className="backBtn" onClick={onBack}>
+            뒤로가기
+          </button>
         </S.shareContainr>
       </S.ClearCantainr>
     </S.Wrapper>

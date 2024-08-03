@@ -55,8 +55,6 @@ export const RoutineBoxContainer = styled.div`
 export const ClearCantainr = styled.div`
   margin-top: 2rem;
   display: flex;
-  height: 100%;
-
   flex-direction: column;
   margin-bottom: 10rem;
 
@@ -106,11 +104,20 @@ export const shareBtn = styled.div`
   border: 1.228px solid #c4d9e2;
   background: rgba(196, 217, 226, 0.5);
 
-  & > button {
+  .ImgSave {
+    display: flex;
+    width: 160px;
+    height: 32px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
     text-align: center;
     color: white;
     border-radius: 15px;
-    background-color: #78a1b5;
+    border: 1px solid #c4d9e2;
+    background: rgba(196, 217, 226, 0.5);
   }
 `;
 export const shareContainr = styled.div`
@@ -119,4 +126,19 @@ export const shareContainr = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  .backBtn {
+    display: flex;
+    width: 160px;
+    height: 32px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid #c4d9e2;
+    background: rgba(196, 217, 226, 0.5);
+  }
 `;
