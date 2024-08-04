@@ -1,28 +1,48 @@
-export const DUMMY_DATA = [
-  {
-    id: "1",
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s",
-    category: "축구",
-  },
+import BaseBall from "@/assets/baseball.svg";
+import Soccer from "@/assets/soccer.svg";
+import BasketBall from "@/assets/basketball.svg";
+import Kpop from "@/assets/k-pop.svg";
+import Animation from "@/assets/animation.svg";
+import Pop from "@/assets/pop.svg";
+import Rapper from "@/assets/rapper.svg";
+import actor from "@/assets/actor.svg";
 
+export const categories = [
   {
-    id: "2",
-    src: "https://i.namu.wiki/i/n2LztcrML9hzPww_iKNeMuh34vg48dkmZmGuMEC_e-DSpNoPGwch9nR9FZz9WfVx6nvv5aSDxqlxEG8iA9tcLQ.webp",
-    category: "야구",
+    title: "스포츠",
+    sectionId: "1",
+    items: [
+      { src: Soccer, category: "축구", subCategoryId: "1", sectionId: "1" },
+      { src: BaseBall, category: "야구", subCategoryId: "2", sectionId: "1" },
+      { src: BasketBall, category: "농구", subCategoryId: "3", sectionId: "1" },
+    ],
   },
   {
-    id: "3",
-    src: "https://www.dongguk.edu/resources/images/site/contents/img_ethic01.jpg",
-    category: "농구",
+    title: "가수",
+    sectionId: "2",
+    items: [
+      { src: Kpop, category: "K-pop", subCategoryId: "1", sectionId: "2" },
+      { src: Pop, category: "Pop", subCategoryId: "2", sectionId: "2" },
+      { src: Rapper, category: "래퍼", subCategoryId: "3", sectionId: "2" },
+    ],
   },
-];
-
-export const data = [
-  { id: "1", category: "K-pop" },
-  { id: "2", category: "보이그룹" },
-];
-
-export const Title = [
-  { id: "1", category: "스포츠" },
-  { id: "2", category: "가수" },
+  {
+    title: "Entertainment",
+    sectionId: "3",
+    items: [
+      { src: actor, category: "배우", subCategoryId: "1", sectionId: "3" },
+      {
+        src: Animation,
+        category: "애니메이션",
+        subCategoryId: "2",
+        sectionId: "3",
+      },
+      {
+        src: actor,
+        category: "영화캐릭터",
+        subCategoryId: "3",
+        sectionId: "3",
+      },
+    ],
+  },
 ];
