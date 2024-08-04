@@ -16,13 +16,7 @@ const WrapperContent = ({ selectedText, onBackBtnClick, contentsNumber }) => {
           ))}
         </>
       )}
-      <button
-        style={{
-          marginBottom: "2rem",
-        }}
-        className="backBtn"
-        onClick={onBackBtnClick}
-      >
+      <button className="backBtn" onClick={onBackBtnClick}>
         뒤로가기
       </button>
     </S.Wrapper>

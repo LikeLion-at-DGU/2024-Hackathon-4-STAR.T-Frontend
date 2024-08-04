@@ -5,8 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   align-items: flex-start;
   width: 100%;
-  padding: 1rem;
-
+  padding-bottom: 1rem;
   .Checkbox {
     display: none;
   }
