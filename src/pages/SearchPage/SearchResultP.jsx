@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSearchResult } from "@/hooks/useSearchResult";
 import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
 import { useNavigate } from "react-router-dom";
 import { SearchBox } from "@/components/SearchBox/SearchBox";
 
 export const SearchResultP = () => {
+  console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
-  const { result } = useSearchResult();
-  const resultData = result.data;
+  const { search } = useSearchResult();
+  const resultData = search.data;
   console.log("resultData:", resultData);
   const Category = Object.keys(resultData);
 
-  const moveonStarPage = (id) => {
-    navigate(`/api/celeb/${id}/`);
+  const moveonStarPage = (url) => {
+    navigate(`/api/celeb/${url}/`);
   };
 
   const handlesearchClick = (data) => {
@@ -26,21 +27,25 @@ export const SearchResultP = () => {
       </Header>
       <S.Container>
         <SearchBox onsearchResult={handlesearchClick} />
-        {Category.map((key, index) => (
-          <S.CategoryWrapper key={index}>
-            <div className="Title">{Category[index]}</div>
-            {resultData[key].map((item) => (
-              <SearchResultStar
-                key={item.id}
-                id={item.id}
-                src={item.src}
-                name={item.title}
-                profession={item.profession}
-                onClick={() => moveonStarPage(item.url)}
-              />
-            ))}
-          </S.CategoryWrapper>
-        ))}
+        {Category && Category.length > 0 ? (
+          Category.map((key, index) => (
+            <S.CategoryWrapper key={index}>
+              <div className="Title">{Category[index]}</div>
+              {resultData[key].map((item) => (
+                <SearchResultStar
+                  key={item.id}
+                  id={item.id}
+                  src={item.src}
+                  name={item.title}
+                  profession={item.profession}
+                  onClick={() => moveonStarPage(item.url)}
+                />
+              ))}
+            </S.CategoryWrapper>
+          ))
+        ) : (
+          <div>검색 결과가 없습니다.</div>
+        )}
       </S.Container>
     </S.Layout>
   );
