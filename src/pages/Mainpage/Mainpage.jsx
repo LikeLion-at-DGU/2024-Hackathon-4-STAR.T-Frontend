@@ -38,6 +38,7 @@ function Mainpage() {
                   img={data.image}
                   title={data.title}
                   star={data.celeb_name}
+                  url={data.url}
                 />
               ))}
             </S.RoutineBoxWrapper>
