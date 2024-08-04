@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import SearchBox from "@/components/SearchBox/SearchBox";
 
 export const SearchResultP = () => {
+  const { search } = useSearchResult();
+
   console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
 
-  const { search } = useSearchResult();
   const resultData = search && search.data ? search.data : null;
   console.log("resultData:", resultData);
   const Category = Object.keys(resultData);
