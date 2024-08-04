@@ -18,11 +18,11 @@ export const DUMMY_DATA = [
 ];
 
 export const data = [
-  { id: "1", category: "걸그룹" },
+  { id: "1", category: "K-pop" },
   { id: "2", category: "보이그룹" },
 ];
 
 export const Title = [
   { id: "1", category: "스포츠" },
-  { id: "2", category: "K-pop" },
+  { id: "2", category: "가수" },
 ];

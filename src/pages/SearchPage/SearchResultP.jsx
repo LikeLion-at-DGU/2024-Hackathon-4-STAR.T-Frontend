@@ -8,7 +8,7 @@ export const SearchResultP = () => {
   console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
   const { search } = useSearchResult();
-  const resultData = search.data;
+  const resultData = search && search.data ? search.data : null;
   console.log("resultData:", resultData);
   const Category = Object.keys(resultData);
 
