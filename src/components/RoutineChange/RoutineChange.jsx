@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
-import { useNavigate } from "react-router-dom";
 import { Box } from "../common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
 
 import { patchroutineCategory, getRoutineCategory } from "../../apis/mypage";
 const ChangeRoutine = ({ onCategoriesUpdate }) => {
-  const navigate = useNavigate();
   const [isAnyCategorySelected, setIsAnyCategorySelected] = useState(false);
   const [categoryStatus, setCategoryStatus] = useState([]);
 
