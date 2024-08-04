@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import SearchBox from "../../components/SearchBox/SearchBox";
-import { DUMMY_DATA, data, Title } from "../../constants/Search/dummy";
 import { useNavigate } from "react-router-dom";
 import SearchCategoryBox from "@/components/SearchCategoryBox/SearchCategoryBox";
 import BaseBall from "@/assets/baseball.svg";

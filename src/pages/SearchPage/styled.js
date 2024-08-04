@@ -30,10 +30,11 @@ export const CategoryWrapper = styled.div`
 
   .Title {
     color: #000;
-    font-family: "AppleSDGothicNeoM00";
+    font-family: "AppleSDGothicNeoM";
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-bottom: 1rem;
   }
 `;
