@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as S from "./styled";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ImageSlider = ({ ThemeImg }) => {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const count = ThemeImg.length;
@@ -34,6 +35,11 @@ const ImageSlider = ({ ThemeImg }) => {
     updateTranslateX();
   }, [current]);
 
+  const handleMoveonTheme = (url) => {
+    console.log(`Navigating to theme with theme_id: ${url}`);
+    navigate(`/theme/${url}`);
+  };
+
   return (
     <S.SliderContainer ref={sliderContainerRef}>
       <S.Slide
@@ -42,29 +48,23 @@ const ImageSlider = ({ ThemeImg }) => {
           transition: "transform 0.5s ease-out",
         }}
       >
-        {ThemeImg.map((item, index) => {
-          const themeUrl = `/api/theme/${item.url}`;
-          console.log(`Generated URL for slide ${index + 1}: ${themeUrl}`);
-          return (
-            <Link
-              to={themeUrl}
-              key={index + 1}
-              style={{ textDecoration: "none" }}
-            >
-              <S.SlideContent $active={index === current}>
-                <S.SlideImage src={item.image} alt={`slide-${index}`} />
-                <S.SlideTitle>{item.title}</S.SlideTitle>
-                <div className="routineTitle">
-                  {item.routine_title.map((title, titleIndex) => (
-                    <S.SlideRoutineTitle key={titleIndex}>
-                      {title}
-                    </S.SlideRoutineTitle>
-                  ))}
-                </div>
-              </S.SlideContent>
-            </Link>
-          );
-        })}
+        {ThemeImg.map((item, index) => (
+          <S.SlideContent
+            key={item.url || index + 1}
+            $active={index === current}
+            onClick={() => handleMoveonTheme(item.url)}
+          >
+            <S.SlideImage src={item.image} alt={`slide-${index}`} />
+            <S.SlideTitle>{item.title}</S.SlideTitle>
+            <div className="routineTitle">
+              {item.routine_title.map((title, titleIndex) => (
+                <S.SlideRoutineTitle key={titleIndex}>
+                  {title}
+                </S.SlideRoutineTitle>
+              ))}
+            </div>
+          </S.SlideContent>
+        ))}
       </S.Slide>
     </S.SliderContainer>
   );
