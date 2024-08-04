@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  console.log("ThemeImg:", ThemeImg);
   const count = ThemeImg.length;
-  console.log(count);
   const slideWidth = 356 + 14; // px
   const sliderContainerRef = useRef(null);
 
@@ -44,25 +42,25 @@ const ImageSlider = ({ ThemeImg }) => {
           transition: "transform 0.5s ease-out",
         }}
       >
-        {ThemeImg.map((item, index) => (
-          <Link
-            to={`/api/theme/${item.id}`}
-            key={item.id}
-            style={{ textDecoration: "none" }}
-          >
-            <S.SlideContent $active={index === current}>
-              <S.SlideImage src={item.image} alt={`slide-${index}`} />
-              <S.SlideTitle>{item.title}</S.SlideTitle>
-              <div className="routineTitle">
-                {item.routine_title.map((title, titleIndex) => (
-                  <S.SlideRoutineTitle key={titleIndex}>
-                    {title}
-                  </S.SlideRoutineTitle>
-                ))}
-              </div>
-            </S.SlideContent>
-          </Link>
-        ))}
+        {ThemeImg.map((item, index) => {
+          const themeUrl = `/api/theme/${item.id}`;
+          console.log(`Generated URL for slide ${index}: ${themeUrl}`);
+          return (
+            <Link to={themeUrl} key={index} style={{ textDecoration: "none" }}>
+              <S.SlideContent $active={index === current}>
+                <S.SlideImage src={item.image} alt={`slide-${index}`} />
+                <S.SlideTitle>{item.title}</S.SlideTitle>
+                <div className="routineTitle">
+                  {item.routine_title.map((title, titleIndex) => (
+                    <S.SlideRoutineTitle key={titleIndex}>
+                      {title}
+                    </S.SlideRoutineTitle>
+                  ))}
+                </div>
+              </S.SlideContent>
+            </Link>
+          );
+        })}
       </S.Slide>
     </S.SliderContainer>
   );
