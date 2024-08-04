@@ -4,12 +4,12 @@ import NON_CHECK_IMG from "@/assets/images/non-check.svg";
 import CHECK_IMG from "@/assets/images/check.svg";
 import { patchPersonal } from "@/apis/calendar";
 
-export const Item = ({ item, isRoutine }) => {
+export const Item = ({ item, isRoutine, date }) => {
   const handleSubmit = async (isRoutine, id, isCompleted) => {
     if (isRoutine) {
       console.log("routine 로직 아직!");
     } else {
-      await patchPersonal(id, !isCompleted);
+      await patchPersonal(id, !isCompleted, date);
     }
   };
 

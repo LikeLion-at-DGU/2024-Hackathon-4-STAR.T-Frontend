@@ -33,7 +33,7 @@ export const postPersonal = async (title, description, date) => {
   }
 };
 
-export const patchPersonal = async (personalID, isCompleted) => {
+export const patchPersonal = async (personalID, isCompleted, date) => {
   try {
     const res = await instance.patch(`/api/calendar/daily/${date}/`, {
       id: personalID,

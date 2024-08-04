@@ -37,10 +37,15 @@ export const Todo = ({ top, openTodo }) => {
         </S.TitleView>
       </S.TitleFrame>
       {routineData.map((routine) => (
-        <Item key={routine.id} item={routine} isRoutine={true} />
+        <Item key={routine.id} item={routine} isRoutine={true} date={today} />
       ))}
       {scheduleData.map((schedule) => (
-        <Item key={schedule.id} item={schedule} isRoutine={false} />
+        <Item
+          key={schedule.id}
+          item={schedule}
+          isRoutine={false}
+          date={today}
+        />
       ))}
 
       <S.PlusBtnFrame>
