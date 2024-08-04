@@ -1,5 +1,5 @@
 import * as S from "./styled";
-
+//서브카테고리페이지 헤더
 const SearchCategoryBox = ({
   src,
   category,

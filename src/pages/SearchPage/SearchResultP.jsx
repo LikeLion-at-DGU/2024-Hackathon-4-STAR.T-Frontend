@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useSearchResult } from "@/hooks/useSearchResult";
+import React, { useEffect, useState } from "react";
 import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
 import { useNavigate, useParams } from "react-router-dom";
 import { getSearchContent } from "@/apis/search";
@@ -9,8 +8,10 @@ import { Header } from "@/components/common/Header/Header";
 
 export const SearchResultP = () => {
   const { data } = useParams();
+  const [searchData, setSearchData] = useState({});
   const getSearchData = async () => {
     const search = await getSearchContent(data);
+    setSearchData(search.data);
     console.log("search:", search);
   };
   useEffect(() => {
@@ -20,9 +21,7 @@ export const SearchResultP = () => {
   console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
 
-  const moveonStarPage = (id) => {
-    navigate(`/star/${id}`);
-  };
+  const filteredKeys = Object.keys(searchData);
 
   const handlesearchClick = (data) => {
     navigate(`/search/data/${data}`);
@@ -35,6 +34,22 @@ export const SearchResultP = () => {
       </Header>
       <S.Container>
         <SearchBox onsearchResult={handlesearchClick} />
+        {filteredKeys.map((key, index) => (
+          <S.CategoryWrapper key={index}>
+            <div className="Title">{key}</div>
+
+            {searchData[key].map((item) => (
+              <SearchResultStar
+                key={item.id}
+                id={item.url}
+                src={item.image}
+                name={item.title}
+                profession={item.profession}
+                type={key}
+              />
+            ))}
+          </S.CategoryWrapper>
+        ))}
       </S.Container>
     </S.Layout>
   );
