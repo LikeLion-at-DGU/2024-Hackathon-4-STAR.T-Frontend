@@ -9,13 +9,14 @@ import { useMainData } from "@/hooks/useMain";
 
 function Mainpage() {
   const { mainData } = useMainData();
+  console.log("mainData:", mainData);
   return (
     <>
       <S.MainTitle>
         <S.ImageFame src={Logo1} />
         <S.ImageFame src={Logo2} />
       </S.MainTitle>
-      <ImageSlider ThemeImg={[mainData.theme]} />
+      <ImageSlider ThemeImg={mainData.theme} />
       <S.MainContainer>
         {mainData.map((title, index) => (
           <div key={index}>

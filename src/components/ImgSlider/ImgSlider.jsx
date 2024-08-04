@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
+  console.log(ThemeImg);
   const count = ThemeImg.length;
+  console.log(count);
   const slideWidth = 356 + 14; // px
   const sliderContainerRef = useRef(null);
 
@@ -42,18 +44,16 @@ const ImageSlider = ({ ThemeImg }) => {
           transition: "transform 0.5s ease-out",
         }}
       >
-        {ThemeImg.map((index) => (
+        {ThemeImg.map((item, index) => (
           <Link
-            to={`/theme/${url}`}
+            to={`/api/theme/${item.url}`}
             key={index}
             style={{ textDecoration: "none" }}
           >
             <S.SlideContent $active={index === current}>
-              <S.SlideImage src={ThemeImg.image} alt={`slide-${index}`} />
-              <S.SlideTitle>{ThemeImg.title}</S.SlideTitle>
-              <S.SlideRoutineTitle>
-                {ThemeImg.routine_title}
-              </S.SlideRoutineTitle>
+              <S.SlideImage src={item.image} alt={`slide-${index}`} />
+              <S.SlideTitle>{item.title}</S.SlideTitle>
+              <S.SlideRoutineTitle>{item.routine_title}</S.SlideRoutineTitle>
             </S.SlideContent>
           </Link>
         ))}

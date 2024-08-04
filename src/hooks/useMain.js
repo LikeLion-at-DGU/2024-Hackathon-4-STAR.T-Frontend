@@ -4,7 +4,7 @@ import { getMainContent } from "@/apis/main";
 export const useMainData = () => {
   const [mainData, setMainData] = useState([]);
 
-  const fetchThemeData = async () => {
+  const fetchMainData = async () => {
     try {
       const res = await getMainContent();
       console.log("response:", res);
@@ -17,7 +17,7 @@ export const useMainData = () => {
   };
 
   useEffect(() => {
-    fetchThemeData();
+    fetchMainData();
   }, []);
 
   return { mainData }; //객체로 담아서 전달해주기
