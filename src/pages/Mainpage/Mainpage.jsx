@@ -16,6 +16,7 @@ function Mainpage() {
   }
 
   const themeData = mainData.theme;
+  const filteredKeys = Object.keys(mainData).filter((key) => key !== "theme");
   return (
     <>
       <S.MainTitle>
@@ -24,7 +25,7 @@ function Mainpage() {
       </S.MainTitle>
       <ImageSlider ThemeImg={themeData} />
       <S.MainContainer>
-        {Object.keys(mainData).map((key, index) => (
+        {filteredKeys.map((key, index) => (
           <div key={index}>
             <S.CategoryWrapper>
               <CategoryTitle section={key} fontSize="20px" />

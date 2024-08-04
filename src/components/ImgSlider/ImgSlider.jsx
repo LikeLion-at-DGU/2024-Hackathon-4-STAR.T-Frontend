@@ -46,8 +46,8 @@ const ImageSlider = ({ ThemeImg }) => {
       >
         {ThemeImg.map((item, index) => (
           <Link
-            to={`/api/theme/${item.url}`}
-            key={index}
+            to={`/api/theme/${item.id}`}
+            key={item.id}
             style={{ textDecoration: "none" }}
           >
             <S.SlideContent $active={index === current}>
