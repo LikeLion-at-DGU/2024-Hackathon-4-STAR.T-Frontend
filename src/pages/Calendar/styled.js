@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
   pointer-events: ${(props) => props.$isModalOpen && "all"};
-
+  min-height: 100vh;
   margin-bottom: 8rem;
   position: relative;
   width: 90%;
@@ -18,7 +18,9 @@ export const Layout = styled.div`
 
 export const TodoWrapper = styled.div`
   margin-top: 1rem;
-  min-height: ${(props) => `${props.height / 2}px`};
+  /* min-height: ${(props) => `${props.height / 2.5}px`}; */
+  /* 최소 높이 320px 정도 잡고 시작 */
+  min-height: 300px;
   width: 95%;
   border-radius: 15px;
   padding: 1rem;
@@ -32,6 +34,7 @@ export const TodoWrapper = styled.div`
   background-color: white;
   top: ${(props) => `${props.top}px`};
   @media (min-height: 800px) {
+    min-height: 320px;
     top: ${(props) => `${props.top - 25}px`};
   }
 `;

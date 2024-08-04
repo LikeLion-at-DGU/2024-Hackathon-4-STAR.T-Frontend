@@ -16,10 +16,7 @@ export const Todo = () => {
   const onClose = () => {
     setModalStatus(false);
   };
-  const handleModalClose = (event) => {
-    openTodo(false);
-    event.stopPropagation(); // 여기서 이벤트 전파를 중지
-  };
+
   return (
     <S.TodoLayout>
       {routineData.map((routine) => (
@@ -33,7 +30,11 @@ export const Todo = () => {
           date={today}
         />
       ))}
-
+      {routineData.length < 1 && scheduleData.length < 1 && (
+        <S.AddTextFrame>
+          <S.TitleView>새 루틴을 등록해보세요!</S.TitleView>
+        </S.AddTextFrame>
+      )}
       <S.PlusBtnFrame>
         <S.ImgView src={PLUS_BTN} onClick={() => setModalStatus(true)} />
       </S.PlusBtnFrame>

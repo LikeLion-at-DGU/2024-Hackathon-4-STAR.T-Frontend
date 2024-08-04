@@ -9,3 +9,8 @@ export const day = atom({
   key: "day",
   default: "",
 });
+
+export const pMonth = atom({
+  key: "pMonth",
+  default: "",
+});
