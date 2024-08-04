@@ -57,11 +57,9 @@ const ImageSlider = ({ ThemeImg }) => {
             <S.SlideImage src={item.image} alt={`slide-${index}`} />
             <S.SlideTitle>{item.title}</S.SlideTitle>
             <div className="routineTitle">
-              {item.routine_title.map((title, titleIndex) => (
-                <S.SlideRoutineTitle key={titleIndex}>
-                  {title}
-                </S.SlideRoutineTitle>
-              ))}
+              <S.SlideRoutineTitle>
+                {item.routine_title.join(",")}
+              </S.SlideRoutineTitle>
             </div>
           </S.SlideContent>
         ))}

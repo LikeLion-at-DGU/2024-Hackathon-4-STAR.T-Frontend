@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import SearchBox from "../../components/SearchBox/SearchBox";
@@ -62,10 +63,10 @@ const SearchPage = () => {
   };
 
   //모아보기
-  const moveOnCategoryPage = (sectionId, subCategoryId) => {
-    navigate(`/subcategory/${sectionId}/${subCategoryId}`);
+  const handleCategoryClick = (sectionTitle, subCategory) => {
+    const data = subCategory.category; //subCategory는 배열
+    navigate(`/subcategory/${sectionTitle}/${subCategory.category}`);
   };
-
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
@@ -81,9 +82,7 @@ const SearchPage = () => {
                 key={item.subCategoryId}
                 src={item.src}
                 category={item.category}
-                subCategoryId={item.subCategoryId}
-                sectionId={item.sectionId}
-                onClick={moveOnCategoryPage}
+                onClick={() => handleCategoryClick(category.title, item)}
               />
             ))}
           </S.CategoryWrapper>

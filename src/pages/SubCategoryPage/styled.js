@@ -13,3 +13,18 @@ export const Layout = styled.div`
     height: 640px;
   }
 `;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 8rem;
+`;
+export const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+`;
