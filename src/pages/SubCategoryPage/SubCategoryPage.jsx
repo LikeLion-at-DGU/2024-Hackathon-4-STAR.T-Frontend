@@ -26,30 +26,26 @@ const SubCategoryPage = () => {
     return <div>Loading...</div>;
   }
 
-  const filteredKeys = Object.keys(searchData);
+  const { celeb } = searchData;
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         {`${section} / ${subCategory}`}
       </Header>
       <S.Container>
-        {searchData ? (
-          filteredKeys.map((key, index) => (
-            <S.CategoryWrapper key={index}>
-              <div className="Title">{key}</div>
-
-              {searchData[key].map((item) => (
-                <SearchResultStar
-                  key={item.id}
-                  id={item.url}
-                  src={item.image}
-                  name={item.title}
-                  profession={item.profession}
-                  type={key}
-                />
-              ))}
-            </S.CategoryWrapper>
-          ))
+        {celeb ? (
+          <S.CategoryWrapper>
+            {celeb.map((item) => (
+              <SearchResultStar
+                key={item.id}
+                id={item.url}
+                src={item.image}
+                name={item.title}
+                profession={item.profession}
+                type={"celeb"}
+              />
+            ))}
+          </S.CategoryWrapper>
         ) : (
           <div>Loading...</div>
         )}
