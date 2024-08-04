@@ -17,8 +17,7 @@ export const RoutineBoxImg = styled.div`
   height: 100px;
   align-self: stretch;
   border-radius: 10px;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s")
-    lightgray 50% / cover no-repeat;
+
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
   background-color: darkgray;
 `;
@@ -30,6 +29,15 @@ export const RoutineBoxTitle = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const RoutineBoxStar = styled.div`
