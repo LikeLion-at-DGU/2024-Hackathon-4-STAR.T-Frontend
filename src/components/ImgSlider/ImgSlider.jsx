@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  console.log(ThemeImg);
+  console.log("ThemeImg:", ThemeImg);
   const count = ThemeImg.length;
   console.log(count);
   const slideWidth = 356 + 14; // px
@@ -53,7 +53,13 @@ const ImageSlider = ({ ThemeImg }) => {
             <S.SlideContent $active={index === current}>
               <S.SlideImage src={item.image} alt={`slide-${index}`} />
               <S.SlideTitle>{item.title}</S.SlideTitle>
-              <S.SlideRoutineTitle>{item.routine_title}</S.SlideRoutineTitle>
+              <div className="routineTitle">
+                {item.routine_title.map((title, titleIndex) => (
+                  <S.SlideRoutineTitle key={titleIndex}>
+                    {title}
+                  </S.SlideRoutineTitle>
+                ))}
+              </div>
             </S.SlideContent>
           </Link>
         ))}

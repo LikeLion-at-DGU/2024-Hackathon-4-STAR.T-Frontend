@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getMainContent } from "@/apis/main";
 
 export const useMainData = () => {
-  const [mainData, setMainData] = useState([]);
+  const [mainData, setMainData] = useState(null);
 
   const fetchMainData = async () => {
     try {
