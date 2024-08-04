@@ -1,12 +1,13 @@
 import React from "react";
 import { useSearchResult } from "@/hooks/useSearchResult";
 import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SearchBox from "@/components/SearchBox/SearchBox";
 
 export const SearchResultP = () => {
-  const { search } = useSearchResult();
-
+  const { data } = useParams();
+  const { search } = useSearchResult(data);
+  console.log("data:", data);
   console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
 

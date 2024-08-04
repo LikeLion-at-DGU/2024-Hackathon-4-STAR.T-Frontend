@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { getSearchContent } from "@/apis/search";
-import { useParams } from "react-router-dom";
 
-export const useSearchResult = () => {
+export const useSearchResult = (data) => {
   console.log("useSearchResult훅 불러오기 성공");
   const [search, setSearch] = useState(null);
-  const { data } = useParams();
-  console.log("data 값", data);
+
   const fetchSearchData = async () => {
     try {
       const res = await getSearchContent(data);
