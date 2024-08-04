@@ -68,10 +68,12 @@ export const ModalLayout = styled.div`
 `;
 
 export const ModalTitle = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
 `;
 
 export const ModalBtn = styled.button`
@@ -90,13 +92,31 @@ export const ModalBtn = styled.button`
   line-height: normal;
 `;
 
-export const ModalInput = styled.input`
+export const ModalTitleInput = styled.input`
   width: 100%;
-  padding: 1rem;
-  text-align: center;
-  ::placeholder {
-    text-align: center;
-    color: gray;
+  text-align: left;
+
+  font-family: AppleSDGothicNeoL;
+  height: 30px;
+  font-size: 24px;
+  color: black;
+  &::placeholder {
+    color: black;
+  }
+`;
+
+export const ModalSubInput = styled.input`
+  width: 100%;
+  /* padding: 1rem; */
+  text-align: left;
+  font-family: AppleSDGothicNeoL;
+  padding-left: 0.2rem;
+
+  height: 20px;
+  font-size: 16px;
+  color: rgba(42, 42, 42, 0.7);
+  &::placeholder {
+    color: rgba(42, 42, 42, 0.7);
   }
 `;
 

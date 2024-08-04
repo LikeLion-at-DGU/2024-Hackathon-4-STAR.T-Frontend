@@ -16,6 +16,7 @@ import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
 import SharePage from "@/pages/Share/Share";
 import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
+import { NotFound } from "./pages/NotFound/NotFount";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
         element: <SearchResultP />,
       },
     ],
-    // errorElement: <NotFound />,
+    errorElement: <NotFound />,
   },
 ]);
 

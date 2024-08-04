@@ -21,13 +21,13 @@ export const AddModal = ({ day, onClose }) => {
   return (
     <S.ModalLayout>
       <S.ModalTitle>
-        <S.ModalInput
-          placeholder="할 일을 입력하세요."
+        <S.ModalTitleInput
+          placeholder="제목"
           value={task}
           onChange={handleTaskChange}
         />
-        <S.ModalInput
-          placeholder="상세 정보를 입력하세요."
+        <S.ModalSubInput
+          placeholder="소제목"
           value={details}
           onChange={handleDetailsChange}
         />
