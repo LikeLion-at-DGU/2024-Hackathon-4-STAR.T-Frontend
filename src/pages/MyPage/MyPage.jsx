@@ -17,13 +17,16 @@ const MyPage = () => {
   const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [routineVisible, setRoutineVisible] = useState(false);
+  const [categoriesUpdated, setCategoriesUpdated] = useState(false);
 
   const myData = myinfo?.data || null;
 
   if (!myData) {
     return <p>데이터를 불러오는 중입니다...</p>; // myinfo.data가 null인 경우 처리
   }
-
+  const handleCategoriesUpdate = () => {
+    setRoutineVisible(false);
+  };
   const handleCloseModal = () => {
     setIsLogoutVisible(false);
     setIsSubscribeVisible(false);
@@ -50,7 +53,7 @@ const MyPage = () => {
           contentsNumber={selectedContent === "이용약관" ? "0" : "1"}
         />
       ) : routineVisible ? (
-        <ChangeRoutine />
+        <ChangeRoutine onCategoriesUpdate={handleCategoriesUpdate} />
       ) : (
         <>
           <S.Layout>
