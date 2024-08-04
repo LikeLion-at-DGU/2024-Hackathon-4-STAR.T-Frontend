@@ -19,12 +19,41 @@ export const getTodayData = async (day) => {
 };
 
 export const postPersonal = async (title, description, date) => {
+  console.log(date);
   try {
     const res = await instance.post(`/api/calendar/daily/${date}/`, {
       title,
       description,
-      date,
     });
+    if (res.status == 201 || res.status == 200) {
+      alert("등록완료!");
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const patchPersonal = async (personalID, isCompleted, date) => {
+  try {
+    const res = await instance.patch(`/api/calendar/daily/${date}/`, {
+      id: personalID,
+      completed: isCompleted,
+    });
+    console.log(res);
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const patchRoutine = async (routineID, isCompleted, date) => {
+  try {
+    const res = await instance.patch(
+      `/api/calendar/daily/${date}/update_routine/`,
+      {
+        routine_id: routineID,
+        complete: isCompleted,
+      }
+    );
     console.log(res);
   } catch (err) {
     throw err;

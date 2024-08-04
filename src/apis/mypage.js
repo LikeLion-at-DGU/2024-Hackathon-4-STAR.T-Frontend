@@ -17,7 +17,7 @@ export const patchroutineCategory = async (preferred_routine_categories) => {
     preferred_routine_categories
   );
   try {
-    const response = await instance.patch("/api/accounts/custom-routines/", {
+    const response = await instance.put("/api/accounts/custom-routines/", {
       preferred_routine_categories,
     });
 
