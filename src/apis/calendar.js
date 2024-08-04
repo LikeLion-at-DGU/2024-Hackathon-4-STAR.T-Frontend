@@ -44,3 +44,18 @@ export const patchPersonal = async (personalID, isCompleted, date) => {
     throw err;
   }
 };
+
+export const patchRoutine = async (routineID, isCompleted, date) => {
+  try {
+    const res = await instance.patch(
+      `/api/calendar/daily/${date}/update_routine/`,
+      {
+        routine_id: routineID,
+        complete: isCompleted,
+      }
+    );
+    console.log(res);
+  } catch (err) {
+    throw err;
+  }
+};
