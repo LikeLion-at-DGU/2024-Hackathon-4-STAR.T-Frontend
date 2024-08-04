@@ -143,7 +143,7 @@ export const CalendarContainer = styled.div`
     bottom: 0;
     height: 1px;
     width: 50%; /* or 100px */
-    border-bottom: 2px solid #78a1b5 !important;
+    /* border-bottom: 2px solid #78a1b5 !important; */
   }
 
   .react-calendar__tile--now {

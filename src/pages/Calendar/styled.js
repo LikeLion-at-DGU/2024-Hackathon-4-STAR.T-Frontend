@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
   pointer-events: ${(props) => props.$isModalOpen && "all"};
-
+  min-height: 100vh;
   margin-bottom: 8rem;
   position: relative;
   width: 90%;
@@ -15,3 +15,34 @@ export const Layout = styled.div`
     width: 90%;
   }
 `;
+
+export const TodoWrapper = styled.div`
+  margin-top: 1rem;
+  /* min-height: ${(props) => `${props.height / 2.5}px`}; */
+  /* 최소 높이 320px 정도 잡고 시작 */
+  min-height: 300px;
+  width: 95%;
+  border-radius: 15px;
+  padding: 1rem;
+  border: 1px solid #c4d9e2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 100;
+  left: 2.5%;
+  position: absolute;
+  background-color: white;
+  top: ${(props) => `${props.top}px`};
+  @media (min-height: 800px) {
+    min-height: 320px;
+    top: ${(props) => `${props.top - 25}px`};
+  }
+`;
+
+export const TitleFrame = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const ButtonView = styled.button``;

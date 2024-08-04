@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import * as S from "./style";
 import { Item } from "./Item";
@@ -8,34 +8,17 @@ import PLUS_BTN from "@/assets/images/plusBtn.svg";
 import Modal from "@/components/Modal/Modal";
 import { day } from "@/stores/calendar";
 
-export const Todo = ({ top, openTodo }) => {
+export const Todo = () => {
   const today = useRecoilValue(day);
   const { routineData, scheduleData } = useDailyRoutine(today);
-  const [height, setHeight] = useState(window.screen.availHeight);
   const [modalStatus, setModalStatus] = useState(false);
-  const startRef = React.useRef(null);
+
   const onClose = () => {
     setModalStatus(false);
   };
-  React.useEffect(() => {
-    setHeight(window.screen.availHeight);
-    if (top) {
-      startRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [top, height]);
+
   return (
-    <S.TodoLayout top={top} ref={startRef} height={height}>
-      <S.TitleFrame>
-        <S.ButtonView
-          style={{
-            cursor: "pointer",
-            color: "#78A1B5",
-          }}
-          onClick={() => openTodo(false)}
-        >
-          close
-        </S.ButtonView>
-      </S.TitleFrame>
+    <S.TodoLayout>
       {routineData.map((routine) => (
         <Item key={routine.id} item={routine} isRoutine={true} date={today} />
       ))}
@@ -47,7 +30,11 @@ export const Todo = ({ top, openTodo }) => {
           date={today}
         />
       ))}
-
+      {routineData.length < 1 && scheduleData.length < 1 && (
+        <S.AddTextFrame>
+          <S.TitleView>새 루틴을 등록해보세요!</S.TitleView>
+        </S.AddTextFrame>
+      )}
       <S.PlusBtnFrame>
         <S.ImgView src={PLUS_BTN} onClick={() => setModalStatus(true)} />
       </S.PlusBtnFrame>

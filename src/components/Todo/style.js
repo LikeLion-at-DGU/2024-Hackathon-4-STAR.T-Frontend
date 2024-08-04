@@ -1,23 +1,10 @@
 import styled from "styled-components";
 
 export const TodoLayout = styled.div`
-  margin-top: 1rem;
-  min-height: ${(props) => `${props.height / 2}px`};
-  width: 95%;
-  border-radius: 15px;
-  padding: 1rem;
-  border: 1px solid #c4d9e2;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 100;
-  left: 2.5%;
-  position: absolute;
-  background-color: white;
-  top: ${(props) => `${props.top}px`};
-  @media (min-height: 800px) {
-    top: ${(props) => `${props.top - 25}px`};
-  }
 `;
 
 export const ListFrame = styled.div`
@@ -37,7 +24,7 @@ export const ImgView = styled.img`
 export const TextFrame = styled.div``;
 
 export const TitleView = styled.p`
-  font-family: AppleSDGothicNeoL00;
+  font-family: AppleSDGothicNeoL;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -45,7 +32,7 @@ export const TitleView = styled.p`
 `;
 
 export const SubTitleView = styled.p`
-  font-family: AppleSDGothicNeoM00;
+  font-family: AppleSDGothicNeoL;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -55,6 +42,7 @@ export const SubTitleView = styled.p`
 export const PlusBtnFrame = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 20px;
   width: 100%;
   padding: 1rem 0;
 `;
@@ -110,4 +98,9 @@ export const ModalInput = styled.input`
     text-align: center;
     color: gray;
   }
+`;
+
+export const AddTextFrame = styled.div`
+  display: flex;
+  justify-content: center;
 `;
