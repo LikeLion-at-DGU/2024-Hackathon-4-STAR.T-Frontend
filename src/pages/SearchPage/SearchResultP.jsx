@@ -9,6 +9,7 @@ export const SearchResultP = () => {
   const { search } = useSearchResult(data);
   console.log("data:", data);
   console.log("검색완료페이지 이동성공");
+  console.log("search:", search);
   const navigate = useNavigate();
 
   const resultData = search && search.data ? search.data : null;
