@@ -1,7 +1,9 @@
 import React from "react";
 import * as S from "./styled";
 import Arrow from "@/assets/Arrow.svg";
+import { useNavigate } from "react-router-dom";
 export const SearchResultStar = ({ src, name, profession, id, type }) => {
+  const navigate = useNavigate();
   const handleClick = () => {
     let url = "";
     switch (type) {
