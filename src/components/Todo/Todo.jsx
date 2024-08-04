@@ -48,7 +48,7 @@ export const Todo = ({ top, openTodo }) => {
       </S.PlusBtnFrame>
       {modalStatus && (
         <Modal onClose={onClose}>
-          <AddModal day={day} onClose={onClose} />
+          <AddModal day={today} onClose={onClose} />
         </Modal>
       )}
     </S.TodoLayout>

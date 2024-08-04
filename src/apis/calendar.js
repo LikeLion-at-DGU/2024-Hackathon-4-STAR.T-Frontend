@@ -19,11 +19,11 @@ export const getTodayData = async (day) => {
 };
 
 export const postPersonal = async (title, description, date) => {
+  console.log(date);
   try {
     const res = await instance.post(`/api/calendar/daily/${date}/`, {
       title,
       description,
-      date,
     });
     console.log(res);
   } catch (err) {
