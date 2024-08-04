@@ -9,7 +9,7 @@ function RoutineBox({ id, title, star }) {
     console.log(`Navigating to star with id: ${id}`);
     navigate(`/star/${id}`);
   };
-  
+
   return (
     <S.RoutineBoxContainer>
       <S.RoutineBoxImg></S.RoutineBoxImg>
