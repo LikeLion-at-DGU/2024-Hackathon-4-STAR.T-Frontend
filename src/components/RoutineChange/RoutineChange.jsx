@@ -6,7 +6,7 @@ import { Box } from "../common/Box/Box";
 import { Button } from "../../components/common/Button/Button";
 
 import { patchroutineCategory, getRoutineCategory } from "../../apis/mypage";
-const ChangeRoutine = () => {
+const ChangeRoutine = ({ onCategoriesUpdate }) => {
   const navigate = useNavigate();
   const [isAnyCategorySelected, setIsAnyCategorySelected] = useState(false);
   const [categoryStatus, setCategoryStatus] = useState([]);
@@ -54,7 +54,7 @@ const ChangeRoutine = () => {
       const isSuccess = await patchroutineCategory(selectedCategories);
       console.log("isSuccess값:", isSuccess);
       if (isSuccess === true) {
-        navigate("/mypage");
+        onCategoriesUpdate();
       }
     } catch (err) {
       console.error("Error updating categories:", err);

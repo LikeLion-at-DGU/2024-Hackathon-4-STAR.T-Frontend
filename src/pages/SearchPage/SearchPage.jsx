@@ -10,7 +10,7 @@ const SearchPage = () => {
 
   //검색결과확인
   const handlesearchClick = (data) => {
-    navigate(`/api/search?data=${data}`);
+    navigate(`/search/data/${data}`);
   };
 
   //모아보기
