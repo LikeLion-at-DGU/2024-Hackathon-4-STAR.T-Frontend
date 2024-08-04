@@ -16,3 +16,4 @@ export const RoutineBoxContainer = ({ routine, onPlusButtonClick }) => {
     ))}
   </S.RoutineBoxContainer>;
 };
+//어디서 쓰는거지...? 확인 후 안쓰면 버리자. 뭔가 정리하려다 실패한것 같음.

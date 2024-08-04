@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import SearchBox from "../../components/SearchBox/SearchBox";
-import SearchCategoryBox from "../../components/SearchCategoryBox/SearchCategoryBox";
 import { DUMMY_DATA, data, Title } from "../../constants/Search/dummy";
 import { useNavigate } from "react-router-dom";
-
+import SearchCategoryBox from "@/components/SearchCategoryBox/SearchCategoryBox";
 const SearchPage = () => {
   const navigate = useNavigate();
 
+  //검색결과확인
+  const handlesearchClick = (data) => {
+    navigate(`/api/search?data=${data}`);
+  };
+
+  //모아보기
   const moveOnCategoryPage = (sectionId, subCategoryId) => {
     navigate(`/subcategory/${sectionId}/${subCategoryId}`);
   };
@@ -23,7 +28,7 @@ const SearchPage = () => {
         검색
       </Header>
       <S.Container>
-        <SearchBox />
+        <SearchBox onsearchResult={handlesearchClick} />
         {sections.map((section, index) => (
           <S.CategoryWrapper key={index}>
             <div className="Title">{section.title.category}</div>
