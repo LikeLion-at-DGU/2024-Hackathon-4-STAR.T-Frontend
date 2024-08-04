@@ -56,7 +56,6 @@ export const BoxContent = styled.div`
   font-size: 14px;
   overflow-x: hidden;
   overflow-y: auto;
-  white-space: nowrap;
   scroll-snap-type: y mandatory;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
