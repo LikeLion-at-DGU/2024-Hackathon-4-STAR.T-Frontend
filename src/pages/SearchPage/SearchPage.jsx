@@ -17,7 +17,6 @@ const SearchPage = () => {
 
   //모아보기
   const handleCategoryClick = (sectionTitle, subCategory) => {
-    const data = subCategory.category; //subCategory는 배열
     navigate(`/subcategory/${sectionTitle}/${subCategory.category}`);
   };
   return (
