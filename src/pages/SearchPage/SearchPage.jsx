@@ -18,6 +18,16 @@ const SearchPage = () => {
     navigate(`/subcategory/${sectionId}/${subCategoryId}`);
   };
 
+  const data = [
+    { id: "1", category: "K-pop" },
+    { id: "2", category: "보이그룹" },
+  ];
+
+  const Title = [
+    { id: "1", category: "스포츠" },
+    { id: "2", category: "가수" },
+  ];
+
   const sections = [
     { title: Title[0], data: DUMMY_DATA },
     { title: Title[1], data: data },
