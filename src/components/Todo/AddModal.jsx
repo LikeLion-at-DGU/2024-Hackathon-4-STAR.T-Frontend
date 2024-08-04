@@ -17,6 +17,7 @@ export const AddModal = ({ day, onClose }) => {
     onClose();
     await postPersonal(task, details, day);
   };
+  console.log(day);
   return (
     <S.ModalLayout>
       <S.ModalTitle>
