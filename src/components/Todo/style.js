@@ -1,23 +1,8 @@
 import styled from "styled-components";
 
 export const TodoLayout = styled.div`
-  margin-top: 1rem;
-  min-height: ${(props) => `${props.height / 2}px`};
-  width: 95%;
-  border-radius: 15px;
-  padding: 1rem;
-  border: 1px solid #c4d9e2;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 100;
-  left: 2.5%;
-  position: absolute;
-  background-color: white;
-  top: ${(props) => `${props.top}px`};
-  @media (min-height: 800px) {
-    top: ${(props) => `${props.top - 25}px`};
-  }
+  width: 100%;
+  min-height: 100%;
 `;
 
 export const ListFrame = styled.div`

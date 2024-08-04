@@ -4,19 +4,46 @@ import { CustomCalendar } from "../../components/CustomCalendar/CustomCalendar";
 import { Todo } from "@/components/Todo/Todo";
 import { useRecoilState } from "recoil";
 import { todoStatus } from "@/stores/calendar";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const Calendar = () => {
+  const startRef = useRef(null);
   const [status, setStatus] = useRecoilState(todoStatus);
+  const [height, setHeight] = useState(window.screen.availHeight);
   const [weekPosition, setWeekPosition] = useState(0); // 주의 위치를 저장하는 상태
+  useEffect(() => {
+    setHeight(window.screen.availHeight);
+    if (weekPosition) {
+      startRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [top, height]);
 
+  const handleModalClose = (event) => {
+    setStatus(false);
+    event.stopPropagation(); // 여기서 이벤트 전파를 중지
+  };
   return (
     <S.Layout $isModalOpen={status}>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         캘린더
       </Header>
       <CustomCalendar setWeekPosition={setWeekPosition} />
-      {status && <Todo top={weekPosition} openTodo={setStatus} />}
+      {status && (
+        <S.TodoWrapper top={weekPosition} ref={startRef} height={height}>
+          <S.TitleFrame>
+            <S.ButtonView
+              style={{
+                cursor: "pointer",
+                color: "#78A1B5",
+              }}
+              onClick={handleModalClose}
+            >
+              close
+            </S.ButtonView>
+          </S.TitleFrame>
+          <Todo />
+        </S.TodoWrapper>
+      )}
     </S.Layout>
   );
 };
