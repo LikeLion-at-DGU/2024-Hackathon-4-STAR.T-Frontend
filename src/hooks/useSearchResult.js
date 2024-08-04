@@ -16,8 +16,10 @@ export const useSearchResult = () => {
   };
 
   useEffect(() => {
-    fetchSearchData();
-  }, []);
+    if (data) {
+      fetchSearchData();
+    }
+  }, [data]);
 
   return { search }; //객체로 담아서 전달해주기
 };
