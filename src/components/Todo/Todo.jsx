@@ -23,6 +23,10 @@ export const Todo = ({ top, openTodo }) => {
       startRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [top, height]);
+  const handleModalClose = (event) => {
+    openTodo(false);
+    event.stopPropagation(); // 여기서 이벤트 전파를 중지
+  };
   return (
     <S.TodoLayout top={top} ref={startRef} height={height}>
       <S.TitleFrame>
@@ -31,7 +35,7 @@ export const Todo = ({ top, openTodo }) => {
             cursor: "pointer",
             color: "#78A1B5",
           }}
-          onClick={() => openTodo(false)}
+          onClick={handleModalClose}
         >
           close
         </S.ButtonView>
