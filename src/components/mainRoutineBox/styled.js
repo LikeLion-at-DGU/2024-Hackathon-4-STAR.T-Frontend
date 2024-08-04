@@ -5,7 +5,7 @@ export const BoxContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 350px;
-  height: 362px;
+  height: 400px;
   flex-shrink: 0;
   border-radius: 10px;
   background: rgba(196, 217, 226, 0.5);
@@ -50,10 +50,17 @@ export const SubTitle = styled.div`
 export const BoxContent = styled.div`
   display: flex;
   width: 90%;
+  height: 70px;
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
 `;

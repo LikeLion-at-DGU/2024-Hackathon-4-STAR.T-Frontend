@@ -44,9 +44,13 @@ const ImageSlider = ({ ThemeImg }) => {
       >
         {ThemeImg.map((item, index) => {
           const themeUrl = `/api/theme/${item.url}`;
-          console.log(`Generated URL for slide ${index}: ${themeUrl}`);
+          console.log(`Generated URL for slide ${index + 1}: ${themeUrl}`);
           return (
-            <Link to={themeUrl} key={index} style={{ textDecoration: "none" }}>
+            <Link
+              to={themeUrl}
+              key={index + 1}
+              style={{ textDecoration: "none" }}
+            >
               <S.SlideContent $active={index === current}>
                 <S.SlideImage src={item.image} alt={`slide-${index}`} />
                 <S.SlideTitle>{item.title}</S.SlideTitle>
