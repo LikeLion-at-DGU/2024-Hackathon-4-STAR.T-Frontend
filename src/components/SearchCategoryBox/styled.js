@@ -9,9 +9,10 @@ export const Container = styled.div`
   gap: 191px;
   align-self: stretch;
   border-radius: 15px;
-  background: url(${(props) => props.src}) lightgray 0px -32.406px / 100% 389.193%
-    no-repeat;
+  background: url(${(props) => props.src}) lightgray no-repeat;
   cursor: pointer;
+  background-size: cover;
+  color: white;
 
   .Icon {
     margin-left: auto;

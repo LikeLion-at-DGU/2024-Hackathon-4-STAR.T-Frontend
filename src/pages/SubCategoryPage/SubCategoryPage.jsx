@@ -5,6 +5,12 @@ import { useParams } from "react-router-dom";
 import { DUMMY_DATA, data, Title } from "../../constants/Search/dummy";
 //
 const SubCategoryPage = () => {
+  const Title = [
+    { id: "1", category: "스포츠" },
+    { id: "2", category: "가수" },
+    { id: "3", category: "Entertainment" },
+  ];
+
   const sections = [
     { title: Title[0], data: DUMMY_DATA },
     { title: Title[1], data: data },

@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSearchResult } from "@/hooks/useSearchResult";
 import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
 import { useNavigate, useParams } from "react-router-dom";
+import { getSearchContent } from "@/apis/search";
+import * as S from "./styled";
 import SearchBox from "@/components/SearchBox/SearchBox";
+import { Header } from "@/components/common/Header/Header";
 
 export const SearchResultP = () => {
   const { data } = useParams();
-  const { search } = useSearchResult(data);
+  const getSearchData = async () => {
+    const search = await getSearchContent(data);
+    console.log("search:", search);
+  };
+  useEffect(() => {
+    getSearchData();
+  }, [data]);
   console.log("data:", data);
   console.log("검색완료페이지 이동성공");
-  console.log("search:", search);
   const navigate = useNavigate();
-
-  const resultData = search && search.data ? search.data : null;
-  console.log("resultData:", resultData);
-  const Category = Object.keys(resultData);
 
   const moveonStarPage = (id) => {
     navigate(`/star/${id}`);
@@ -31,25 +35,6 @@ export const SearchResultP = () => {
       </Header>
       <S.Container>
         <SearchBox onsearchResult={handlesearchClick} />
-        {Category.length > 0 ? (
-          Category.map((key, index) => (
-            <S.CategoryWrapper key={index}>
-              <div className="Title">{Category[index]}</div>
-              {resultData[key].map((item) => (
-                <SearchResultStar
-                  key={item.id}
-                  id={item.id}
-                  src={item.src}
-                  name={item.title}
-                  profession={item.profession}
-                  onClick={() => moveonStarPage(item.url)}
-                />
-              ))}
-            </S.CategoryWrapper>
-          ))
-        ) : (
-          <div>검색 결과가 없습니다.</div>
-        )}
       </S.Container>
     </S.Layout>
   );
