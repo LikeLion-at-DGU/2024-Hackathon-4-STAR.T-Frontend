@@ -10,21 +10,27 @@ import { useMainData } from "@/hooks/useMain";
 function Mainpage() {
   const { mainData } = useMainData();
   console.log("mainData:", mainData);
+
+  if (!mainData) {
+    return <div>Loading...</div>;
+  }
+
+  const themeData = mainData.theme;
   return (
     <>
       <S.MainTitle>
         <S.ImageFame src={Logo1} />
         <S.ImageFame src={Logo2} />
       </S.MainTitle>
-      <ImageSlider ThemeImg={mainData.theme} />
+      <ImageSlider ThemeImg={themeData} />
       <S.MainContainer>
-        {mainData.map((title, index) => (
+        {Object.keys(mainData).map((key, index) => (
           <div key={index}>
             <S.CategoryWrapper>
-              <CategoryTitle section={title} fontSize="20px" />
+              <CategoryTitle section={key} fontSize="20px" />
             </S.CategoryWrapper>
             <S.RoutineBoxWrapper>
-              {title.map((data) => (
+              {mainData[key].map((data) => (
                 <RoutineBox
                   key={data.id}
                   id={data.id}
