@@ -10,6 +10,7 @@ const SearchPage = () => {
 
   //검색결과확인
   const handlesearchClick = (data) => {
+    console.log("searchPage에 들어오는 data값", data);
     navigate(`/search/data/${data}`);
   };
 
