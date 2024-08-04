@@ -25,6 +25,13 @@ export const SlideContent = styled.div`
   justify-content: center;
   transform: ${({ $active }) => ($active ? "scale(1)" : "scale(0.8)")};
   transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  .routineTitle {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    overflow: hidden;
+  }
 `;
 
 export const SlideImage = styled.img`
