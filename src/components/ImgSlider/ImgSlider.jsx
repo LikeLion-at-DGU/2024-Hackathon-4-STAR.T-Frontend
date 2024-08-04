@@ -43,7 +43,7 @@ const ImageSlider = ({ ThemeImg }) => {
         }}
       >
         {ThemeImg.map((item, index) => {
-          const themeUrl = `/api/theme/${item.id}`;
+          const themeUrl = `/api/theme/${item.url}`;
           console.log(`Generated URL for slide ${index}: ${themeUrl}`);
           return (
             <Link to={themeUrl} key={index} style={{ textDecoration: "none" }}>
