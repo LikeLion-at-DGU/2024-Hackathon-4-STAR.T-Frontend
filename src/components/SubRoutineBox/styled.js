@@ -25,20 +25,22 @@ export const RoutineBoxImg = styled.div`
 
 export const RoutineBoxTitle = styled.div`
   color: var(--Font-Color, #2a2a2a);
-
-  /* Korean Body */
-  font-family: AppleSDGothicNeoL00;
+  width: 100%;
+  font-family: "AppleSDGothicNeoL";
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const RoutineBoxStar = styled.div`
   color: rgba(42, 42, 42, 0.7);
 
   /* Korean Minimal */
-  font-family: AppleSDGothicNeoM00;
+  font-family: "AppleSDGothicNeoM";
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -48,6 +50,7 @@ export const RoutineBoxStar = styled.div`
 
 export const RoutineBoxContent = styled.div`
   display: flex;
+  width: 133px;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
