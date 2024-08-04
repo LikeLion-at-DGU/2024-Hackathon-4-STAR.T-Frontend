@@ -1,7 +1,7 @@
 import * as S from "./styled";
 import React, { useState } from "react";
 
-const SearchBox = (onsearchResult) => {
+const SearchBox = ({ onsearchResult }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
@@ -9,7 +9,9 @@ const SearchBox = (onsearchResult) => {
   };
 
   const handleSearchClick = () => {
-    onsearchResult(inputValue);
+    if (onsearchResult && typeof onsearchResult === "function") {
+      onsearchResult(inputValue);
+    }
   };
   return (
     <S.Container>

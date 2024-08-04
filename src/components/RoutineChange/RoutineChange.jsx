@@ -53,13 +53,14 @@ const ChangeRoutine = () => {
     try {
       const isSuccess = await patchroutineCategory(selectedCategories);
       console.log("isSuccess값:", isSuccess);
-      if (isSuccess) {
+      if (isSuccess === true) {
         navigate("/mypage");
       }
     } catch (err) {
       console.error("Error updating categories:", err);
     }
   };
+
   useEffect(() => {
     setIsAnyCategorySelected(categoryStatus.some((status) => status));
   }, [categoryStatus]);

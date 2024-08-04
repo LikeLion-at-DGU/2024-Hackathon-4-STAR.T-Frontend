@@ -10,7 +10,7 @@ export const RoutineLayout = styled.div`
   background-image: url(${BACKGROUND});
   background-repeat: none;
   background-size: cover;
-  gap: 3rem;
+  gap: 4rem;
 `;
 
 export const CategoryView = styled.div`

@@ -25,7 +25,7 @@ export const formWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 2rem;
   align-items: center;
   width: 80%;
@@ -36,7 +36,7 @@ export const formWrapper = styled.div`
     height: 50px;
     padding: 14px 21px;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #78a1b5;
@@ -52,7 +52,7 @@ export const formWrapper = styled.div`
     line-height: normal;
     display: flex;
     align-self: flex-start;
-    padding: 1rem;
+    padding-bottom: 1rem;
   }
 
   .confirmBtn {
@@ -70,5 +70,6 @@ export const formWrapper = styled.div`
   }
   .containr {
     width: 100%;
+    gap: 2rem;
   }
 `;
