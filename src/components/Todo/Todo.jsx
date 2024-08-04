@@ -26,7 +26,7 @@ export const Todo = ({ top, openTodo }) => {
   return (
     <S.TodoLayout top={top} ref={startRef} height={height}>
       <S.TitleFrame>
-        <S.TitleView
+        <S.ButtonView
           style={{
             cursor: "pointer",
             color: "#78A1B5",
@@ -34,7 +34,7 @@ export const Todo = ({ top, openTodo }) => {
           onClick={() => openTodo(false)}
         >
           close
-        </S.TitleView>
+        </S.ButtonView>
       </S.TitleFrame>
       {routineData.map((routine) => (
         <Item key={routine.id} item={routine} isRoutine={true} date={today} />
