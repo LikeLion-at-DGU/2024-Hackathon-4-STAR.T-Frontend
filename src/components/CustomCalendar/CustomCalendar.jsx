@@ -1,5 +1,5 @@
 import Calendar from "react-calendar";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilState } from "recoil";
 import { useState, useEffect, useRef } from "react";
 import { format, addHours } from "date-fns";
 import * as S from "./style";
@@ -20,6 +20,7 @@ export const CustomCalendar = ({ setWeekPosition }) => {
   };
 
   const getData = async () => {
+    setStatus(false);
     try {
       const res = await getMonthCalendar(month);
       if (res.completed_days.length > 0) {
