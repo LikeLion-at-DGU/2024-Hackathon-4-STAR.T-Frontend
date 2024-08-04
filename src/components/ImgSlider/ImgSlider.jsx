@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as S from "./styled";
-import { Bannerimages } from "../../constants/HomePage/dummy";
 import { Link } from "react-router-dom";
 
-const ImageSlider = () => {
+const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  const images = Bannerimages;
-  const count = images.length;
+  console.log(ThemeImg);
+  const count = ThemeImg.length;
+  console.log(count);
   const slideWidth = 356 + 14; // px
   const sliderContainerRef = useRef(null);
 
@@ -44,16 +44,16 @@ const ImageSlider = () => {
           transition: "transform 0.5s ease-out",
         }}
       >
-        {images.map((image, index) => (
+        {ThemeImg.map((item, index) => (
           <Link
-            to={`/theme/${image.theme_id}`}
+            to={`/api/theme/${item.url}`}
             key={index}
             style={{ textDecoration: "none" }}
           >
             <S.SlideContent $active={index === current}>
-              <S.SlideImage src={image.src} alt={`slide-${index}`} />
-              <S.SlideTitle>{image.title}</S.SlideTitle>
-              <S.SlideRoutineTitle>{image.Routinetitle}</S.SlideRoutineTitle>
+              <S.SlideImage src={item.image} alt={`slide-${index}`} />
+              <S.SlideTitle>{item.title}</S.SlideTitle>
+              <S.SlideRoutineTitle>{item.routine_title}</S.SlideRoutineTitle>
             </S.SlideContent>
           </Link>
         ))}
