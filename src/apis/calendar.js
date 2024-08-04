@@ -51,7 +51,7 @@ export const patchRoutine = async (routineID, isCompleted, date) => {
       `/api/calendar/daily/${date}/update_routine/`,
       {
         routine_id: routineID,
-        complete: isCompleted,
+        completed: isCompleted,
       }
     );
     console.log(res);
