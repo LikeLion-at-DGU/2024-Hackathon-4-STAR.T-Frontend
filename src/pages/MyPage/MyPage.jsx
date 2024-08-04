@@ -17,7 +17,6 @@ const MyPage = () => {
   const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [routineVisible, setRoutineVisible] = useState(false);
-  const [categoriesUpdated, setCategoriesUpdated] = useState(false);
 
   const myData = myinfo?.data || null;
 

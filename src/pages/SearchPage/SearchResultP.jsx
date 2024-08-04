@@ -2,22 +2,23 @@ import React from "react";
 import { useSearchResult } from "@/hooks/useSearchResult";
 import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
 import { useNavigate } from "react-router-dom";
-import { SearchBox } from "@/components/SearchBox/SearchBox";
+import SearchBox from "@/components/SearchBox/SearchBox";
 
 export const SearchResultP = () => {
   console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
+
   const { search } = useSearchResult();
   const resultData = search && search.data ? search.data : null;
   console.log("resultData:", resultData);
   const Category = Object.keys(resultData);
 
-  const moveonStarPage = (url) => {
-    navigate(`/api/celeb/${url}/`);
+  const moveonStarPage = (id) => {
+    navigate(`/star/${id}`);
   };
 
   const handlesearchClick = (data) => {
-    navigate(`/api/search?data=${data}`);
+    navigate(`/search/data/${data}`);
   };
 
   return (
