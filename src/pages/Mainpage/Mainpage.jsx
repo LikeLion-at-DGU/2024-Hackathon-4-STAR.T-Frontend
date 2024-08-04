@@ -35,6 +35,7 @@ function Mainpage() {
                 <RoutineBox
                   key={data.id}
                   id={data.id}
+                  img={data.image}
                   title={data.title}
                   star={data.celeb_name}
                 />

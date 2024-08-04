@@ -1,10 +1,26 @@
 import * as S from "./styled";
+import React, { useState } from "react";
 
-const SearchBox = () => {
+const SearchBox = ({ onsearchResult }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    onsearchResult(inputValue);
+  };
   return (
     <S.Container>
-      <input type="text" placeholder="Search" className="SearchInput" />
-      <button>
+      <input
+        type="text"
+        placeholder="Search"
+        className="SearchInput"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleSearchClick}>
         <svg
           className="SearchIcon"
           xmlns="http://www.w3.org/2000/svg"

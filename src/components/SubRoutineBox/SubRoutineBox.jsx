@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./styled";
 import { useNavigate } from "react-router-dom";
 
-function RoutineBox({ id, title, star }) {
+function RoutineBox({ id, title, star, img }) {
   const navigate = useNavigate();
 
   const handleStarClick = () => {
@@ -12,7 +12,7 @@ function RoutineBox({ id, title, star }) {
 
   return (
     <S.RoutineBoxContainer>
-      <S.RoutineBoxImg></S.RoutineBoxImg>
+      <S.RoutineBoxImg src={img} />
       <S.RoutineBoxContent>
         <S.RoutineBoxTitle>{title}</S.RoutineBoxTitle>
         <S.RoutineBoxStar onClick={handleStarClick}>{star}</S.RoutineBoxStar>

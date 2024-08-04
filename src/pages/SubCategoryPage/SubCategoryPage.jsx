@@ -3,7 +3,7 @@ import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import { useParams } from "react-router-dom";
 import { DUMMY_DATA, data, Title } from "../../constants/Search/dummy";
-
+//
 const SubCategoryPage = () => {
   const sections = [
     { title: Title[0], data: DUMMY_DATA },
