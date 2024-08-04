@@ -29,7 +29,7 @@ export const SearchResultP = () => {
       </Header>
       <S.Container>
         <SearchBox onsearchResult={handlesearchClick} />
-        {Category && Category.length > 0 ? (
+        {Category.length > 0 ? (
           Category.map((key, index) => (
             <S.CategoryWrapper key={index}>
               <div className="Title">{Category[index]}</div>
