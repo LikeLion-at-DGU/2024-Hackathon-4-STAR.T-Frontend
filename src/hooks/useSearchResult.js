@@ -3,7 +3,7 @@ import { getSearchContent } from "@/apis/search";
 
 export const useSearchResult = (data) => {
   console.log("useSearchResult훅 불러오기 성공");
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState(null); ///
 
   const fetchSearchData = async () => {
     try {
