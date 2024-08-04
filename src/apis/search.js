@@ -2,8 +2,7 @@ import { instance } from "./instance";
 
 export const getSearchContent = async (data) => {
   try {
-    const encodedData = encodeURIComponent(data);
-    const res = await instance.get(`/api/search?data=${encodedData}`);
+    const res = await instance.get(`/api/search?data=${data}`);
     return res;
   } catch (err) {
     console.log(err);
