@@ -18,7 +18,6 @@ export const SearchResultP = () => {
     getSearchData();
   }, [data]);
   console.log("data:", data);
-  console.log("검색완료페이지 이동성공");
   const navigate = useNavigate();
 
   const filteredKeys = Object.keys(searchData);
@@ -28,7 +27,7 @@ export const SearchResultP = () => {
   };
 
   return (
-    <S.Layout>
+    <S.LayoutResult>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         검색
       </Header>
@@ -51,6 +50,6 @@ export const SearchResultP = () => {
           </S.CategoryWrapper>
         ))}
       </S.Container>
-    </S.Layout>
+    </S.LayoutResult>
   );
 };

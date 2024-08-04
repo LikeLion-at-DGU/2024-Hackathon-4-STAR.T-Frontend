@@ -1,41 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styled";
+import { getSearchContent } from "@/apis/search";
 import { Header } from "../../components/common/Header/Header";
 import { useParams } from "react-router-dom";
-import { DUMMY_DATA, data, Title } from "../../constants/Search/dummy";
-//
+import { SearchResultStar } from "@/components/MyStar/SearchResultStar";
 const SubCategoryPage = () => {
-  const Title = [
-    { id: "1", category: "스포츠" },
-    { id: "2", category: "가수" },
-    { id: "3", category: "Entertainment" },
-  ];
+  const { sectionTitle, subCategory } = useParams();
+  const [searchData, setSearchData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getSearchContent(subCategory);
+        setSearchData(res.data);
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    };
 
-  const sections = [
-    { title: Title[0], data: DUMMY_DATA },
-    { title: Title[1], data: data },
-  ];
+    fetchData();
+  }, [subCategory]);
 
-  const { sectionId, subCategoryId } = useParams();
-  const parsedSectionId = parseInt(sectionId, 10); //dummy에 문자열로 해놔서 일단 넣어뒀습니다.
-  const parsedSubCategoryId = parseInt(subCategoryId, 10);
-
-  console.log("sectionId:", sectionId);
-  console.log("subCategoryId:", subCategoryId);
-
-  const selectedSection = sections.find(
-    (section) => parseInt(section.title.id, 10) === parsedSectionId
-  );
-
-  const selectedSubCategory = selectedSection.data.find(
-    (category) => parseInt(category.id, 10) === parsedSubCategoryId
-  );
-
+  const filteredKeys = Object.keys(searchData);
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
-        {selectedSection.title.category}/{selectedSubCategory.category}
+        {`${sectionTitle} / ${subCategory}`}
       </Header>
+      <S.Container>
+        {searchData ? (
+          filteredKeys.map((key, index) => (
+            <S.CategoryWrapper key={index}>
+              <div className="Title">{key}</div>
+
+              {searchData[key].map((item) => (
+                <SearchResultStar
+                  key={item.id}
+                  id={item.url}
+                  src={item.image}
+                  name={item.title}
+                  profession={item.profession}
+                  type={key}
+                />
+              ))}
+            </S.CategoryWrapper>
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
+      </S.Container>
     </S.Layout>
   );
 };
