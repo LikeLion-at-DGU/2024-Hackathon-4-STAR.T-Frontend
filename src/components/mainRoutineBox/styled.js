@@ -53,4 +53,7 @@ export const BoxContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
