@@ -110,7 +110,7 @@ export const ModalSubInput = styled.input`
   /* padding: 1rem; */
   text-align: left;
   font-family: AppleSDGothicNeoL;
-  padding-left: 0.2rem;
+  /* padding-left: 0.2rem; */
 
   height: 20px;
   font-size: 16px;

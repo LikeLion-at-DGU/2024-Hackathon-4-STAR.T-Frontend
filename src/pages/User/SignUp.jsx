@@ -1,67 +1,95 @@
-import * as S from "./style";
-import BACKGROUND from "../../assets/background.svg";
-import { ROUTINE_CATEGORY, TITLE } from "../../constants/Category/data";
-import { Box } from "../../components/common/Box/Box";
-import { Button } from "../../components/common/Button/Button";
-import { useCheckUser } from "../../hooks/useCheckUser";
-import { categoryState } from "../../stores/category";
-import { useRecoilState } from "recoil";
-import { postAddRoutines } from "../../apis/signup";
+import * as S from "./styledSignup";
+import React, { useState } from "react";
+import Logo1 from "../../assets/images/loading_logo(1).svg";
+import Logo2 from "../../assets/images/loading_logo(2).svg";
+import PrivacyContainer from "../../components/PrivacyContainer/PrivacyContainer";
+import { postSetInfo } from "../../apis/signup";
 import { useNavigate } from "react-router-dom";
-
-export const SignUp = () => {
-  const status = useCheckUser();
+import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
+import { useRecoilState } from "recoil";
+import { pageNumberState } from "../../stores/Privacy";
+import { useCheckUser } from "@/hooks/useCheckUser";
+export const Signup = () => {
+  const isSigned = useCheckUser();
+  const texts = ["이용약관", "개인정보 처리방침"];
+  const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
+  const [nickname, setNickname] = useState("");
+  const [isFormVisible, setIsFormVisible] = useState(true);
+  const [selectedText, setSelectedText] = useState(null);
   const navigate = useNavigate();
-  const [categoryStatus, setCategoryStatus] = useRecoilState(categoryState);
-  const handleClick = (index) => {
-    setCategoryStatus((prevStatus) =>
-      prevStatus.map((status, i) => (i === index ? !status : status))
-    );
-  };
-  const isAnyCategorySelected = categoryStatus.some((status) => status);
-  const handleSubmit = async () => {
-    const preferredRoutineCategories = [];
-    categoryStatus.map((status, i) => {
-      if (status === true) {
-        preferredRoutineCategories.push(i + 1);
-      }
-    });
-    const isSuccess = await postAddRoutines(preferredRoutineCategories);
-    if (isSuccess) {
-      navigate("/info");
+
+  const handleArrowClick = (text) => {
+    setIsFormVisible(false);
+    setSelectedText(text);
+    if (text === "이용약관") {
+      setPageNumber(0);
+    } else {
+      setPageNumber(1);
     }
   };
-  return status ? (
-    <S.Layout $url={BACKGROUND}>
-      <S.TitleView>
-        <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
-        <S.CustomP color="white">{TITLE[1]}</S.CustomP>
-      </S.TitleView>
-      <S.CategoryView>
-        {ROUTINE_CATEGORY.map((category, index) => (
-          <Box
-            onClick={() => handleClick(index)}
-            $select={categoryStatus[index]}
-            key={index}
-          >
-            {category}
-          </Box>
-        ))}
-      </S.CategoryView>
-      <S.SelectView>
-        <Button
-          width="50%"
-          height="40px"
-          $radius="15px"
-          $background="rgba(196, 217, 226, 0.50)"
-          onClick={handleSubmit}
-          $isDisabled={!isAnyCategorySelected}
-        >
-          <S.CustomP color="white">확인</S.CustomP>
-        </Button>
-      </S.SelectView>
-    </S.Layout>
-  ) : (
-    <div>로딩중...</div>
+
+  const handleBackBtnClick = () => {
+    setIsFormVisible(true);
+    setSelectedText(null);
+  };
+
+  const handleNicknameChange = (event) => {
+    setNickname(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    if (nickname.trim() === "") {
+      console.log("error");
+    }
+    const isSuccess = await postSetInfo(nickname);
+    if (isSuccess) {
+      navigate("/singup/info");
+    } else {
+      console.log("서버 설정 실패");
+    }
+  };
+
+  return (
+    isSigned && (
+      <S.Layout>
+        <S.LogoContainr>
+          <img src={Logo1} alt="Logo 1" />
+          <img src={Logo2} alt="Logo 2" />
+        </S.LogoContainr>
+        {isFormVisible ? (
+          <S.formWrapper method="post">
+            <div className="containr">
+              <div className="userPrivacy">닉네임 설정</div>
+              <input
+                className="Inputform"
+                type="text"
+                placeholder="이름을 입력하세요"
+                value={nickname}
+                onChange={handleNicknameChange}
+              />
+            </div>
+            <div className="containr">
+              <div className="userPrivacy">개인정보 이용약관</div>
+              {texts.map((text, index) => (
+                <PrivacyContainer
+                  key={index}
+                  text={text}
+                  onArrowClick={handleArrowClick}
+                />
+              ))}
+            </div>
+            <button onClick={handleSubmit} className="confirmBtn">
+              확인
+            </button>
+          </S.formWrapper>
+        ) : (
+          <WrapperContent
+            selectedText={selectedText}
+            onBackBtnClick={handleBackBtnClick}
+            contentsNumber={pageNumber}
+          />
+        )}
+      </S.Layout>
+    )
   );
 };
