@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
 import * as S from "./styled";
@@ -11,15 +11,21 @@ const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const { starP } = useMoveonStarP();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  useEffect(() => {
+    setIsButtonVisible(true);
+  }, []);
   const handleCapture = async () => {
     setIsButtonVisible(false);
 
-    setTimeout(async () => {
+    try {
       const canvas = await html2canvas(captureRef.current);
       await captureScreenshot(canvas);
-
+    } catch (err) {
+      console.log("캡처 중 오류가 발생했습니다.");
+    } finally {
       setIsButtonVisible(true);
-    }, 500);
+    }
   };
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {

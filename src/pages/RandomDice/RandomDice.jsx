@@ -106,6 +106,7 @@ export const RandomDice = () => {
   const handleAgainClick = () => {
     setRolling(true);
     setShowContent(false);
+    clickCalendarButton(false);
   };
 
   const handleAddCalendar = () => {
