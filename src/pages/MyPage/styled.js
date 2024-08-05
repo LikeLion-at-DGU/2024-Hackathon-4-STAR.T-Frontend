@@ -59,7 +59,7 @@ export const Layout = styled.div`
 export const MypageWrapper = styled.div`
   display: flex;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
