@@ -8,14 +8,15 @@ export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useState(new Set());
 
   const handleSubmit = async (isRoutine, id, isChecked) => {
+    const updatedCheckItems = new Set(checkItems);
+
     if (isChecked) {
-      checkItems.add(id);
-      setCheckItems(checkItems);
-      console.log(checkItems);
-    } else if (!isChecked) {
-      checkItems.delete(id);
-      setCheckItems(checkItems);
+      updatedCheckItems.add(id);
+    } else {
+      updatedCheckItems.delete(id);
     }
+
+    setCheckItems(updatedCheckItems);
 
     try {
       let res;
@@ -34,7 +35,9 @@ export const Item = ({ item, isRoutine, date }) => {
     <S.ListFrame>
       <S.CheckFrame>
         <S.ButtonView
-          onClick={() => handleSubmit(isRoutine, item.id, !item.completed)}
+          onClick={() =>
+            handleSubmit(isRoutine, item.id, !checkItems.has(item.id))
+          }
         >
           <S.ImgView
             src={checkItems.has(item.id) ? CHECK_IMG : NON_CHECK_IMG}
@@ -44,7 +47,7 @@ export const Item = ({ item, isRoutine, date }) => {
       <S.TextFrame>
         <S.TitleView>{isRoutine ? item.routine_title : item.title}</S.TitleView>
         <S.SubTitleView>
-          {isRoutine ? item.celebrity_name : item.description}
+          {isRoutine ? item.routine_content : item.description}
         </S.SubTitleView>
       </S.TextFrame>
     </S.ListFrame>
