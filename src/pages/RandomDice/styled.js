@@ -19,16 +19,17 @@ export const Layout = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  min-height: 100vh;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
   z-index: 2;
-  margin-bottom: 1rem;
+  margin-bottom: 8rem;
   @media (min-height: 800px) {
     justify-content: center;
     align-items: flex-start;
+    margin-bottom: 10rem;
   }
 
   .celebrity {
@@ -74,7 +75,7 @@ export const Container = styled.div`
   .buttons {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     justify-content: center;
     align-items: center;
 
@@ -82,8 +83,9 @@ export const Container = styled.div`
   }
   .Add {
     display: flex;
-    width: 180px;
+    width: 100%;
     height: 32px;
+    padding: 5px;
 
     justify-content: center;
     align-items: center;
@@ -95,11 +97,12 @@ export const Container = styled.div`
 
   .Again {
     display: flex;
-    width: 180px;
+    width: 100%;
     height: 32px;
-
+    padding: 5px;
     justify-content: center;
     align-items: center;
+
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #c4d9e2;
