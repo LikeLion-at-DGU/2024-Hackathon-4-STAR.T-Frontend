@@ -9,17 +9,16 @@ import { useRecoilState } from "recoil";
 export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useRecoilState(nowItems);
 
-  // item.completed가 true일 때 checkItems에 추가
+  // 컴포넌트가 마운트될 때 completed 상태를 Recoil 상태에 반영
   useEffect(() => {
-    if (item.completed) {
-      const updatedCheckItems = checkItems.some(
-        (checkItem) => checkItem.id === item.id && checkItem.date === date
-      )
-        ? checkItems
-        : [...checkItems, { id: item.id, date }];
-      setCheckItems(updatedCheckItems);
+    const isItemChecked = checkItems.some(
+      (checkItem) => checkItem.id === item.id && checkItem.date === date
+    );
+
+    if (item.completed && !isItemChecked) {
+      setCheckItems((prevItems) => [...prevItems, { id: item.id, date }]);
     }
-  }, [item.completed, item.id, date, checkItems, setCheckItems]);
+  }, [item, date, checkItems, setCheckItems]);
 
   const handleSubmit = async (isRoutine, id, isChecked) => {
     try {
@@ -31,13 +30,13 @@ export const Item = ({ item, isRoutine, date }) => {
       }
 
       // 서버 응답이 성공적일 경우 상태 업데이트
-      const updatedCheckItems = isChecked
-        ? [...checkItems, { id, date }]
-        : checkItems.filter(
-            (checkItem) => !(checkItem.id === id && checkItem.date === date)
-          );
-
-      setCheckItems(updatedCheckItems);
+      setCheckItems((prevItems) =>
+        isChecked
+          ? [...prevItems, { id, date }]
+          : prevItems.filter(
+              (checkItem) => !(checkItem.id === id && checkItem.date === date)
+            )
+      );
 
       console.log(res);
     } catch (error) {
@@ -49,15 +48,13 @@ export const Item = ({ item, isRoutine, date }) => {
     (checkItem) => checkItem.id === item.id && checkItem.date === date
   );
 
-  const isChecked = isItemChecked ? true : item.completed;
-
   return (
     <S.ListFrame>
       <S.CheckFrame>
         <S.ButtonView
-          onClick={() => handleSubmit(isRoutine, item.id, !isChecked)}
+          onClick={() => handleSubmit(isRoutine, item.id, !isItemChecked)}
         >
-          <S.ImgView src={isChecked ? CHECK_IMG : NON_CHECK_IMG} />
+          <S.ImgView src={isItemChecked ? CHECK_IMG : NON_CHECK_IMG} />
         </S.ButtonView>
       </S.CheckFrame>
       <S.TextFrame>
