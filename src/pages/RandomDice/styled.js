@@ -117,6 +117,7 @@ export const Container = styled.div`
     padding: 5px;
     justify-content: center;
     align-items: center;
+    color: black;
 
     flex-shrink: 0;
     border-radius: 15px;

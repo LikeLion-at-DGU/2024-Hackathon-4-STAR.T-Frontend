@@ -107,6 +107,7 @@ const DateRangeCalendar = () => {
       const formattedEndDate = format(selectedEndDate, "yyyy-MM-dd", {
         timeZone,
       });
+      console.log("formatted날짜까지 들어옴");
       try {
         const response = await postRoutineRegister(
           formattedStartDate,
