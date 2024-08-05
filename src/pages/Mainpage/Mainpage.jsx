@@ -1,7 +1,7 @@
 import React from "react";
 import RoutineBox from "../../components/SubRoutineBox/SubRoutineBox";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
-import ImageSlider from "../../components/ImgSlider/ImgSlider";
+import ImageSlider from "@/components/ImgSlider/ImgSlider";
 import * as S from "./styled";
 import Logo1 from "../../assets/images/MainLogoImg.svg";
 import Logo2 from "../../assets/images/MainLogoImg(2).svg";
@@ -9,7 +9,6 @@ import { useMainData } from "@/hooks/useMain";
 
 function Mainpage() {
   const { mainData } = useMainData();
-  console.log("mainData:", mainData);
 
   if (!mainData) {
     return <div>Loading...</div>;
