@@ -6,6 +6,7 @@ import Animation from "@/assets/animation.svg";
 import Pop from "@/assets/pop.svg";
 import Rapper from "@/assets/rapper.svg";
 import actor from "@/assets/actor.svg";
+import movieChar from "@/assets/movieChar.svg";
 
 export const categories = [
   {
@@ -38,7 +39,7 @@ export const categories = [
         sectionId: "3",
       },
       {
-        src: actor,
+        src: movieChar,
         category: "영화캐릭터",
         subCategoryId: "3",
         sectionId: "3",

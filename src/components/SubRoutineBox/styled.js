@@ -12,13 +12,10 @@ export const RoutineBoxContainer = styled.div`
   margin-top: 1rem;
   gap: 5px;
 `;
-
-export const RoutineBoxImg = styled.div`
+export const RoutineBoxImg = styled.img`
   height: 100px;
   align-self: stretch;
   border-radius: 10px;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1Qh1wxZdS3QDFdjpSPK0FysKm0EHjxmsXg&s")
-    lightgray 50% / cover no-repeat;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
   background-color: darkgray;
 `;
