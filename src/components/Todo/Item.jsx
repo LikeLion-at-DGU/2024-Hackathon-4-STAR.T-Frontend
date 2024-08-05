@@ -84,7 +84,7 @@ export const Item = ({ item, isRoutine, date }) => {
         <S.TitleView>{isRoutine ? item.routine_title : item.title}</S.TitleView>
         <S.SubTitleView>
           {isRoutine ? (
-            <Link to={item.celebrity_id}>{item.celebrity_name} </Link>
+            <Link to={`/star/${item.celebrity_id}`}>{item.celebrity_name}</Link>
           ) : (
             item.description
           )}
