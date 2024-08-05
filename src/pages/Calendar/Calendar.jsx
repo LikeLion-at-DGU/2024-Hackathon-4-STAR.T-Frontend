@@ -10,13 +10,16 @@ export const Calendar = () => {
   const startRef = useRef(null);
   const [status, setStatus] = useRecoilState(todoStatus);
   const [weekPosition, setWeekPosition] = useState(0); // 주의 위치를 저장하는 상태
+  const [boxHeigt, setBoxHeight] = useState(0);
   const [bottomMargin, setBottomMargin] = useState(0);
   useEffect(() => {
     if (weekPosition) {
-      setBottomMargin(startRef.current?.getBoundingClientRect().bottom);
+      setBottomMargin(startRef.current?.getBoundingClientRect().bottom / 2);
       startRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }, [top, weekPosition]);
+    setBoxHeight(startRef.current?.offsetHeight || 0);
+    console.log(startRef.current?.offsetHeight);
+  }, [top, weekPosition, boxHeigt]);
 
   const handleModalClose = (event) => {
     setStatus(false);
@@ -27,7 +30,7 @@ export const Calendar = () => {
     <S.Layout
       $isModalOpen={status}
       style={{
-        marginBottom: bottomMargin / 2,
+        marginBottom: bottomMargin + boxHeigt,
       }}
     >
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
