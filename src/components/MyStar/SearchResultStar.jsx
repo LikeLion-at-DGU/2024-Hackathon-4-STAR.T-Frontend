@@ -1,27 +1,10 @@
 import React from "react";
 import * as S from "./styled";
 import Arrow from "@/assets/Arrow.svg";
-import { useNavigate } from "react-router-dom";
-export const SearchResultStar = ({ src, name, profession, id, type }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    let url = "";
-    switch (type) {
-      case "celeb":
-      case "routine":
-        url = `/star/${id}`;
-        break;
-      case "theme":
-        url = `/theme/${id}`;
-        break;
-      default:
-        break;
-    }
-    navigate(url);
-  };
+export const SearchResultStar = ({ src, name, profession, onClick }) => {
   return (
     <>
-      <S.Container onClick={handleClick}>
+      <S.Container onClick={onClick}>
         <S.StarImg src={src} />
         <S.info>
           <div>{name}</div>
