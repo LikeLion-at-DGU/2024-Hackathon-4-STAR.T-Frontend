@@ -15,7 +15,6 @@ export const Slide = styled.div`
 
 export const SlideContent = styled.div`
   min-width: 260px;
-  margin: 0 5px;
   transition: filter 0.5s ease-in-out;
   filter: ${({ $active }) => ($active ? "none" : "blur(2px)")};
   display: flex;
@@ -30,8 +29,7 @@ export const SlideContent = styled.div`
   .routineTitle {
     display: flex;
     flex-direction: row;
-    width: 80%;
-    overflow: hidden;
+    width: 100%;
   }
 `;
 
@@ -70,7 +68,7 @@ export const SlideRoutineTitle = styled.div`
 export const PrevButton = styled.button`
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
   color: white;
@@ -88,7 +86,7 @@ export const PrevButton = styled.button`
 export const NextButton = styled.button`
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
   color: white;
