@@ -5,10 +5,8 @@ export const Layout = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 30%;
-  /* justify-content: center; */
+  padding-top: 25%;
   flex-direction: column;
-  gap: 1.5rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -60,7 +58,6 @@ export const TitleText = styled.p`
 export const LogoFrame = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
   gap: 4rem;
 `;
 
@@ -113,6 +110,7 @@ export const LoginContainer = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 15%;
   z-index: 2;
 `;
 
