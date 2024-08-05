@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: column;
   justify-content: space-around;
   gap: 5px;

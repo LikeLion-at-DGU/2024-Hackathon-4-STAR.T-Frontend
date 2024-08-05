@@ -16,6 +16,7 @@ export const RoutineBoxImg = styled.img`
   height: 100px;
   align-self: stretch;
   border-radius: 10px;
+  object-fit: cover;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
   background-color: darkgray;
 `;
