@@ -14,6 +14,8 @@ function MainRoutineBox({
       onPlusButtonClick(id);
     }
   };
+
+  const contentArray = content.split("-");
   return (
     <S.BoxContainer>
       <S.RoutineBoxImg src={src} alt={title} />
@@ -31,7 +33,9 @@ function MainRoutineBox({
         <S.SubTitle>{subtitle}</S.SubTitle>
       </S.TitleContainer>
       <S.BoxContent>
-        <div>{content}</div>
+        {contentArray.map((line, index) => (
+          <div key={index}>{line.trim()}</div>
+        ))}
       </S.BoxContent>
     </S.BoxContainer>
   );
