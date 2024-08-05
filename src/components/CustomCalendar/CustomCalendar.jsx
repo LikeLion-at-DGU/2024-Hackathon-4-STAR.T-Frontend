@@ -37,11 +37,12 @@ export const CustomCalendar = ({ setWeekPosition }) => {
 
   useEffect(() => {
     getData();
-    handleDateChange(month);
+    handleDateChange(date);
   }, [month]);
 
   // 새로운 onChange 핸들러
   const handleDateChange = (date) => {
+    console.log(date);
     setValue(date);
     setStatus(true); // 날짜 클릭 시 상태를 true로 설정
     setTimeout(() => {
