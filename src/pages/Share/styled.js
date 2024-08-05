@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   background-size: cover;
   flex-direction: column;
   background-image: url(${Back});
+
+  .Containr {
+    min-height: 100%;
+  }
 `;
 export const Header = styled.div`
   position: relative;
