@@ -33,6 +33,10 @@ const SubCategoryPage = () => {
   const moveOnSearch = () => {
     navigate("/search");
   };
+
+  const moveOnStarP = (id) => {
+    navigate(`/star/${id}`);
+  };
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
@@ -48,7 +52,8 @@ const SubCategoryPage = () => {
                 src={item.image}
                 name={item.title}
                 profession={item.profession}
-                type={"celeb"}
+                type={인물}
+                onClick={() => moveOnStarP(item.url)}
               />
             ))}
           </S.CategoryWrapper>

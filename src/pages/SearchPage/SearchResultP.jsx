@@ -9,6 +9,7 @@ import { Header } from "@/components/common/Header/Header";
 export const SearchResultP = () => {
   const { data } = useParams();
   const [searchData, setSearchData] = useState({});
+  const navigate = useNavigate();
   const getSearchData = async () => {
     const search = await getSearchContent(data);
     setSearchData(search.data);
@@ -18,7 +19,6 @@ export const SearchResultP = () => {
     getSearchData();
   }, [data]);
   console.log("data:", data);
-  const navigate = useNavigate();
 
   const filteredKeys = Object.keys(searchData);
 
@@ -33,11 +33,11 @@ export const SearchResultP = () => {
   const handleClick = (id, type) => {
     let url = "";
     switch (type) {
-      case "celeb":
-      case "routine":
+      case "인물":
+      case "루틴":
         url = `/star/${id}`;
         break;
-      case "theme":
+      case "테마":
         url = `/theme/${id}`;
         break;
       default:
@@ -64,7 +64,7 @@ export const SearchResultP = () => {
                 name={item.title}
                 profession={item.profession}
                 type={key}
-                onClick={handleClick}
+                onClick={() => handleClick(item.id, key)}
               />
             ))}
           </S.CategoryWrapper>
