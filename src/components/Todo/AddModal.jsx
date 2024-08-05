@@ -14,7 +14,7 @@ export const AddModal = ({ day, onClose, refreshData }) => {
 
   const handleShowModal = () => {
     setShowModal(true);
-    setTimeout(() => setShowModal(false), 2000);
+    setTimeout(() => setShowModal(false), 5000);
   };
 
   const handleTaskChange = (e) => {
