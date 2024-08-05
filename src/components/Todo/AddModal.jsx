@@ -1,11 +1,14 @@
 import * as S from "./style";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
 import { postPersonal } from "@/apis/calendar";
+import { starMonth } from "@/stores/calendar";
 
 export const AddModal = ({ day, onClose, refreshData }) => {
   // refreshData를 추가
   const [task, setTask] = useState("");
   const [details, setDetails] = useState("");
+  const [star, setStar] = useRecoilState(starMonth);
 
   const handleTaskChange = (e) => {
     setTask(e.target.value);
@@ -18,7 +21,15 @@ export const AddModal = ({ day, onClose, refreshData }) => {
   const handleSumbit = async () => {
     await postPersonal(task, details, day);
     onClose();
-    refreshData(); // 데이터 갱신을 위해 호출
+    const res = await refreshData(); // 데이터 갱신을 위해 호출
+    console.log(res, "heer");
+    if (res.data.today_completed) {
+      star.add(day);
+      setStar(star);
+    } else {
+      star.delete(day);
+      setStar(star);
+    }
   };
 
   console.log(day);

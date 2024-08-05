@@ -21,6 +21,7 @@ export const useDailyRoutine = (date) => {
       } else {
         setScheduleData([]);
       }
+      return response;
     } catch (error) {
       console.error("데이터 가져오기 오류:", error);
     }

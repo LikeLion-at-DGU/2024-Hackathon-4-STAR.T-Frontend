@@ -114,7 +114,7 @@ export const RandomDice = () => {
   };
 
   const textColor = !showContent ? "black" : "white";
-  const contentArray = data.content.split("-");
+  const contentArray = (data.content || "").split("-");
   console.log("contentArray", contentArray);
   contentArray.shift();
   return (
