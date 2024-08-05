@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { patchPersonal, patchRoutine } from "@/apis/calendar";
 import { nowItems } from "@/stores/todo";
 import { starMonth } from "@/stores/calendar";
+import { Link } from "react-router-dom";
 
 export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useRecoilState(nowItems);
@@ -82,7 +83,11 @@ export const Item = ({ item, isRoutine, date }) => {
       <S.TextFrame>
         <S.TitleView>{isRoutine ? item.routine_title : item.title}</S.TitleView>
         <S.SubTitleView>
-          {isRoutine ? item.celebrity_name : item.description}
+          {isRoutine ? (
+            <Link to={item.celebrity_id}>{item.celebrity_name} </Link>
+          ) : (
+            item.description
+          )}
         </S.SubTitleView>
       </S.TextFrame>
     </S.ListFrame>
