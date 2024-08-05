@@ -94,8 +94,8 @@ export const ClearMain = styled.div`
   }
   .textOverlay {
     position: absolute;
-    top: 54%;
-    left: 49%;
+    top: 50%;
+    left: 50%;
     z-index: 5;
     font-weight: bold;
     text-align: center;

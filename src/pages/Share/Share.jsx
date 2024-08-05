@@ -9,24 +9,11 @@ import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 
 const SharePage = ({ onBack }) => {
   const captureRef = useRef();
-  const { starP } = useMoveonStarP();
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
-
-  useEffect(() => {
-    setIsButtonVisible(true);
-  }, []);
   const handleCapture = async () => {
-    setIsButtonVisible(false);
-
-    try {
-      const canvas = await html2canvas(captureRef.current);
-      await captureScreenshot(canvas);
-    } catch (err) {
-      console.log("캡처 중 오류가 발생했습니다.");
-    } finally {
-      setIsButtonVisible(true);
-    }
+    const canvas = await html2canvas(captureRef.current);
+    await captureScreenshot(canvas);
   };
+
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
@@ -59,19 +46,17 @@ const SharePage = ({ onBack }) => {
           </S.ClearCantainr>
         </S.Wrapper>
         <div id="share-button">
-          {isButtonVisible && (
-            <S.shareContainr>
-              <S.shareBtn onClick={handleCapture}>
-                <div className="ImgSave">
-                  이미지 저장하고 공유하기
-                  <img src={shareIcon} />
-                </div>
-              </S.shareBtn>
-              <button className="backBtn" onClick={onBack}>
-                뒤로가기
-              </button>
-            </S.shareContainr>
-          )}
+          <S.shareContainr>
+            <S.shareBtn onClick={handleCapture}>
+              <div className="ImgSave">
+                이미지 저장하고 공유하기
+                <img src={shareIcon} />
+              </div>
+            </S.shareBtn>
+            <button className="backBtn" onClick={onBack}>
+              뒤로가기
+            </button>
+          </S.shareContainr>
         </div>
       </div>
     </div>
