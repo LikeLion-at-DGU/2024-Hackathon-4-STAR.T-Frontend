@@ -7,7 +7,7 @@ const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const count = ThemeImg.length;
-  const slideWidth = 300 + 10; // px
+  const slideWidth = 260 + 10; // px
   const sliderContainerRef = useRef(null);
 
   useEffect(() => {
@@ -68,7 +68,8 @@ const ImageSlider = ({ ThemeImg }) => {
             <S.SlideTitle>{item.title}</S.SlideTitle>
             <div className="routineTitle">
               <S.SlideRoutineTitle>
-                {item.routine_title.join(",")}
+                {item.routine_title.slice(0, 2).join(", ")}
+                {item.routine_title.length > 2 && "..."}
               </S.SlideRoutineTitle>
             </div>
           </S.SlideContent>
