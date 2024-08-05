@@ -23,11 +23,10 @@ const slideUp = keyframes`
 const ModalContainer = styled.div`
   position: fixed;
   top: 0;
-  left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: 80%;
-  max-width: 400px;
+  width: 70%;
+  max-width: 350px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
