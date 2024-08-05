@@ -5,26 +5,23 @@ import Logo2 from "../../assets/images/loading_logo(2).svg";
 import PrivacyContainer from "../../components/PrivacyContainer/PrivacyContainer";
 import { postSetInfo } from "../../apis/signup";
 import { useNavigate } from "react-router-dom";
-import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
-import { useRecoilState } from "recoil";
-import { pageNumberState } from "../../stores/Privacy";
 import { useCheckUser } from "@/hooks/useCheckUser";
-export const Signup = () => {
+import { useRecoilState } from "recoil";
+import { agree1, agree2 } from "@/stores/signup";
+
+export const SignUp = () => {
   const isSigned = useCheckUser();
   const texts = ["이용약관", "개인정보 처리방침"];
-  const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
+  const [firstCheck, setFirstCheck] = useRecoilState(agree1);
+  const [secondCheck, setSecondCheck] = useRecoilState(agree2);
   const [nickname, setNickname] = useState("");
-  const [isFormVisible, setIsFormVisible] = useState(true);
-  const [selectedText, setSelectedText] = useState(null);
   const navigate = useNavigate();
 
   const handleArrowClick = (text) => {
-    setIsFormVisible(false);
-    setSelectedText(text);
     if (text === "이용약관") {
-      setPageNumber(0);
+      navigate("/agree/0");
     } else {
-      setPageNumber(1);
+      navigate("/agree/1");
     }
   };
 
@@ -43,7 +40,7 @@ export const Signup = () => {
     }
     const isSuccess = await postSetInfo(nickname);
     if (isSuccess) {
-      navigate("/singup/info");
+      navigate("/signup/custom");
     } else {
       console.log("서버 설정 실패");
     }
@@ -56,39 +53,41 @@ export const Signup = () => {
           <img src={Logo1} alt="Logo 1" />
           <img src={Logo2} alt="Logo 2" />
         </S.LogoContainr>
-        {isFormVisible ? (
-          <S.formWrapper method="post">
-            <div className="containr">
-              <div className="userPrivacy">닉네임 설정</div>
-              <input
-                className="Inputform"
-                type="text"
-                placeholder="이름을 입력하세요"
-                value={nickname}
-                onChange={handleNicknameChange}
+        <S.formWrapper
+          method="post"
+          isDisabled={firstCheck && secondCheck ? false : true}
+        >
+          <div className="containr">
+            <div className="userPrivacy">닉네임 설정</div>
+            <input
+              className="Inputform"
+              type="text"
+              placeholder="이름을 입력하세요"
+              value={nickname}
+              onChange={handleNicknameChange}
+            />
+          </div>
+          <div className="containr">
+            <div className="userPrivacy">개인정보 이용약관</div>
+            {texts.map((text, index) => (
+              <PrivacyContainer
+                key={index}
+                index={index}
+                text={text}
+                setFirstCheck={setFirstCheck}
+                setSecondCheck={setSecondCheck}
+                onArrowClick={() => handleArrowClick(text)}
               />
-            </div>
-            <div className="containr">
-              <div className="userPrivacy">개인정보 이용약관</div>
-              {texts.map((text, index) => (
-                <PrivacyContainer
-                  key={index}
-                  text={text}
-                  onArrowClick={handleArrowClick}
-                />
-              ))}
-            </div>
-            <button onClick={handleSubmit} className="confirmBtn">
-              확인
-            </button>
-          </S.formWrapper>
-        ) : (
-          <WrapperContent
-            selectedText={selectedText}
-            onBackBtnClick={handleBackBtnClick}
-            contentsNumber={pageNumber}
-          />
-        )}
+            ))}
+          </div>
+          <button
+            disabled={firstCheck && secondCheck ? false : true}
+            onClick={handleSubmit}
+            className="confirmBtn"
+          >
+            확인
+          </button>
+        </S.formWrapper>
       </S.Layout>
     )
   );

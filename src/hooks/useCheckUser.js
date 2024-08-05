@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const useCheckUser = () => {
   // const [status, setStatus] = useState(null);
-  const [status, setStatus] = useState(true);
+  const [isSigned, setStatus] = useState(true);
 
   const navigate = useNavigate();
 
@@ -26,5 +26,5 @@ export const useCheckUser = () => {
     getData();
   }, []);
 
-  return status;
+  return isSigned;
 };

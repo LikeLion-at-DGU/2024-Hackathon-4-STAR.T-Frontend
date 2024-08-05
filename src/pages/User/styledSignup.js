@@ -65,7 +65,8 @@ export const formWrapper = styled.div`
     gap: 10px;
     flex-shrink: 0;
     border-radius: 15px;
-    background-color: #78a1b5;
+    background-color: ${(props) =>
+      props.isDisabled ? "rgba(196, 217, 226, 0.50)" : "#78a1b5"};
     color: white;
   }
   .containr {

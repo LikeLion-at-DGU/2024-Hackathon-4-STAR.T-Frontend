@@ -4,8 +4,8 @@ import App from "./App";
 import { loader } from "./utils/loader";
 import { Calendar } from "./pages/Calendar/Calendar";
 import { Login } from "./pages/User/Login";
-import { SignUpCustom } from "./pages/User/SignUpCustom";
-import { Signup } from "./pages/User/Signup";
+import { SignUpCustom } from "@/pages/User/SignUpCustom";
+import { SignUp } from "@/pages/User/SignUp";
 import { RandomDice } from "./pages/RandomDice/RandomDice";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import ThemePage from "./pages/ThemePage/ThemePage";
@@ -17,6 +17,7 @@ import SharePage from "@/pages/Share/Share";
 import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
+import { AgreePage } from "./pages/AgreePage/AgreePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: <SignUp />,
+      },
+      {
+        path: "/agree/:num",
+        element: <AgreePage />,
       },
       {
         path: "/signup/custom",

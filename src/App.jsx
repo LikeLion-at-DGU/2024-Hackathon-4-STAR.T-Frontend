@@ -47,7 +47,9 @@ const Layout = () => {
           <Outlet />
           {location.pathname === "/login" ||
           location.pathname === "/signup" ||
-          location.pathname === "/signup/custom" ? (
+          location.pathname === "/signup/custom" ||
+          location.pathname === "/agree/0" ||
+          location.pathname === "/agree/1" ? (
             <></>
           ) : (
             <Footer />
