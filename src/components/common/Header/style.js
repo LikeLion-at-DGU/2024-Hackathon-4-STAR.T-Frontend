@@ -8,7 +8,7 @@ export const Header = styled.div`
   z-index: 2;
   padding: ${(props) => props.$padding};
   margin: ${(props) => props.$margin};
-
+  cursor: pointer;
   color: ${(props) => props.color || "initial"};
 `;
 

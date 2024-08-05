@@ -6,16 +6,13 @@ import { Logout } from "../../components/Logout/Logout";
 import Modal from "../../components/Modal/Modal";
 import LOGO from "../../assets/images/MainLogoImg.svg";
 import { useMyInfo } from "../../hooks/useMyInfo";
-import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
-import { AgreePage } from "@/pages/AgreePage/AgreePage";
 import { useNavigate } from "react-router-dom";
 const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false);
-  const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
-  const [selectedContent, setSelectedContent] = useState(null);
+
   const [routineVisible, setRoutineVisible] = useState(false);
   const navigate = useNavigate();
   const myData = myinfo?.data || null;
@@ -29,18 +26,20 @@ const MyPage = () => {
   const handleCloseModal = () => {
     setIsLogoutVisible(false);
     setIsSubscribeVisible(false);
-    setIsPrivacyVisible(false);
   };
 
   const handleLogoutClick = () => setIsLogoutVisible(true);
   const handleSubscribeClick = () => setIsSubscribeVisible(true);
-  const handlePrivacyClick = () => {
-    return <AgreePage />;
-  };
 
+  const handlePrivacyClick = (text) => {
+    if (text === "이용약관") {
+      navigate("/agree/0");
+    } else {
+      navigate("/agree/1");
+    }
+  };
   const handleRoutineChangeClick = () => setRoutineVisible(true);
 
-  const handleBackBtnClick = () => setIsPrivacyVisible(false);
   const favoriteStars = myData.celebs.filter(
     (item) => item.routines_added_count > 0
   );
@@ -51,13 +50,7 @@ const MyPage = () => {
   };
   return (
     <>
-      {isPrivacyVisible ? (
-        <WrapperContent
-          selectedText={selectedContent}
-          onBackBtnClick={handleBackBtnClick}
-          contentsNumber={selectedContent === "이용약관" ? "0" : "1"}
-        />
-      ) : routineVisible ? (
+      {routineVisible ? (
         <ChangeRoutine onCategoriesUpdate={handleCategoriesUpdate} />
       ) : (
         <>
