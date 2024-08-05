@@ -7,7 +7,7 @@ const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const count = ThemeImg.length;
-  const slideWidth = 356 + 14; // px
+  const slideWidth = 300 + 10; // px
   const sliderContainerRef = useRef(null);
 
   useEffect(() => {
@@ -35,6 +35,14 @@ const ImageSlider = ({ ThemeImg }) => {
     updateTranslateX();
   }, [current]);
 
+  const handleNextSlide = () => {
+    setCurrent((prev) => (prev + 1) % count);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrent((prev) => (prev - 1 + count) % count);
+  };
+
   const handleMoveonTheme = (url) => {
     console.log(`Navigating to theme with theme_id: ${url}`);
     navigate(`/theme/${url}`);
@@ -42,6 +50,8 @@ const ImageSlider = ({ ThemeImg }) => {
 
   return (
     <S.SliderContainer ref={sliderContainerRef}>
+      <S.PrevButton onClick={handlePrevSlide}>{"<"}</S.PrevButton>
+      <S.NextButton onClick={handleNextSlide}>{">"}</S.NextButton>
       <S.Slide
         style={{
           transform: `translateX(${translateX}px)`,
