@@ -11,6 +11,7 @@ export const RoutineBoxContainer = styled.div`
 
   margin-top: 1rem;
   gap: 5px;
+  cursor: pointer;
 `;
 export const RoutineBoxImg = styled.img`
   height: 100px;
