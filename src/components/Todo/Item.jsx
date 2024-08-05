@@ -11,11 +11,11 @@ export const Item = ({ item, isRoutine, date }) => {
     setIsCompletd(!isCompleted);
     try {
       if (isRoutine) {
-        const res = await patchRoutine(id, isCompleted, date);
+        const res = await patchRoutine(id, !isCompleted, date);
         console.log(res);
       } else {
-        const response = await patchPersonal(id, isCompleted, date);
-        console.log(res);
+        const response = await patchPersonal(id, !isCompleted, date);
+        console.log(response);
       }
     } catch (error) {
       console.error("Error updating personal item:", error);
