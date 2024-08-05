@@ -7,7 +7,7 @@ export const Layout = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 15%;
+  gap: 1.5rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
