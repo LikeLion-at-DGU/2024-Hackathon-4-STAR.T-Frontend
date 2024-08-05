@@ -128,7 +128,7 @@ export const RandomDice = () => {
     navigate("");
   };
   const textColor = !showContent ? "black" : "white";
-
+  const contentArray = data.content.split("-");
   return (
     <S.Layout>
       <GradientBackground showContent={showContent} />
@@ -155,7 +155,9 @@ export const RandomDice = () => {
         ) : (
           <div className="content">
             <div className="title">{data.title}</div>
-            <div className="description">{data.content}</div>
+            {contentArray.map((line, index) => (
+              <div key={index}>{line.trim()}</div>
+            ))}
           </div>
         )}
         {!showContent ? (

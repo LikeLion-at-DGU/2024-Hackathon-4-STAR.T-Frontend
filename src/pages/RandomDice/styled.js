@@ -20,16 +20,18 @@ export const Layout = styled.div`
 export const Container = styled.div`
   display: flex;
   height: 100%;
-  flex-grow: 0.5;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
   z-index: 2;
   margin-bottom: 20rem;
+  overflow-y: auto;
+
   .celebrity {
     display: flex;
     font-size: 1.2rem;
+    font-weight: 600;
   }
 
   .coment {
@@ -44,7 +46,7 @@ export const Container = styled.div`
   }
 
   .line {
-    white-space: nowrap; /* 줄바꿈 방지 */
+    white-space: nowrap;
   }
 
   .description {
@@ -59,7 +61,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 19px;
   }
 
