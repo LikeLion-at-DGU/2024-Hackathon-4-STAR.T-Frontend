@@ -69,7 +69,7 @@ const ThemePage = () => {
         <S.BannerTitle>{themeData.theme_title} </S.BannerTitle>
       </S.Header>
       <S.descriptionContainer>
-        <CategoryTitle section={themeData.theme_content} fontSize="15px" />
+        <CategoryTitle section={themeData.theme_content} fontSize="13px" />
       </S.descriptionContainer>
       <S.RoutineBoxContainer>
         {themeData.routine ? (
