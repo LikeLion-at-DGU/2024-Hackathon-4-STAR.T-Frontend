@@ -27,6 +27,6 @@ export const ConfirmButton = styled.button`
   font-size: 1rem;
 
   &:hover {
-    background-color: #328ef0;
+    background-color: #c4d9e2;
   }
 `;
