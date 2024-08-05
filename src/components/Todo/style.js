@@ -4,7 +4,6 @@ export const TodoLayout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
   gap: 1rem;
   margin-bottom: 1rem;
 `;
@@ -72,8 +71,8 @@ export const ModalLayout = styled.div`
 export const ModalTitle = styled.div`
   width: 100%;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
   flex-direction: column;
   gap: 1rem;
 `;
@@ -95,11 +94,8 @@ export const ModalBtn = styled.button`
 `;
 
 export const ModalTitleInput = styled.input`
-  width: 100%;
   text-align: left;
-
   font-family: AppleSDGothicNeoL;
-  height: 30px;
   font-size: 24px;
   color: black;
   &::placeholder {
@@ -108,13 +104,8 @@ export const ModalTitleInput = styled.input`
 `;
 
 export const ModalSubInput = styled.input`
-  width: 100%;
-  /* padding: 1rem; */
   text-align: left;
   font-family: AppleSDGothicNeoL;
-  margin-left: 0.2rem;
-  padding-left: 0.1rem;
-  height: 20px;
   font-size: 16px;
   color: rgba(42, 42, 42, 0.7);
   &::placeholder {
