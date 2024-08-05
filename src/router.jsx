@@ -17,6 +17,7 @@ import SharePage from "@/pages/Share/Share";
 import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
+import { AgreePage } from "./pages/AgreePage/AgreePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/agree/:num",
+        element: <AgreePage />,
       },
       {
         path: "/signup/custom",
