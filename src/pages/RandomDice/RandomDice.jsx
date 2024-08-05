@@ -123,10 +123,6 @@ export const RandomDice = () => {
     setID(data.id);
   };
 
-  const moveOnHome = () => {
-    console.log("홈으로 이동");
-    navigate("");
-  };
   const textColor = !showContent ? "black" : "white";
 
   return (
@@ -171,12 +167,6 @@ export const RandomDice = () => {
             <button className="Again" onClick={handleAgainClick}>
               다시 돌리기
             </button>
-
-            {clickCalendarButton && (
-              <button className="moveOnHome" onClick={moveOnHome}>
-                처음으로
-              </button>
-            )}
           </div>
         )}
       </S.Container>

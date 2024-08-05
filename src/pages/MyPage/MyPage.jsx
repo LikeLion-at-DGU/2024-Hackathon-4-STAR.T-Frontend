@@ -41,7 +41,9 @@ const MyPage = () => {
   const handleRoutineChangeClick = () => setRoutineVisible(true);
 
   const handleBackBtnClick = () => setIsPrivacyVisible(false);
-
+  const favoriteStars = myData.celebs.filter(
+    (item) => item.routines_added_count > 0
+  );
   return (
     <>
       {isPrivacyVisible ? (
@@ -68,10 +70,10 @@ const MyPage = () => {
             </S.MypageWrapper>
             <S.MypageWrapper>
               <div className="MyStar">즐겨찾는 스타</div>
-              {myData.celebs.length === 0 ? (
+              {favoriteStars.length === 0 ? (
                 <div className="emptytext">챌린지를 시작해보세요!</div>
               ) : (
-                myData.celebs.map((item) => (
+                favoriteStars.map((item) => (
                   <MyStar
                     key={item.id}
                     src={item.photo}
