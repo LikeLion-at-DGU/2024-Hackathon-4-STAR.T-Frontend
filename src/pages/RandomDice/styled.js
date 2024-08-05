@@ -5,7 +5,7 @@ export const Layout = styled.div`
   overflow: hidden;
   z-index: 1;
   background-color: transparent;
-  width: 100%;
+  width: 90%;
   min-height: 100vh;
   flex-direction: column;
   transition: background-color 1.8s ease;
@@ -27,6 +27,10 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
   z-index: 2;
+  .celebrity {
+    display: flex;
+    font-size: 1.2rem;
+  }
 
   .coment {
     width: 65%;
@@ -100,6 +104,7 @@ export const Gif = styled.div`
   border-radius: 150px;
   border: 2px solid #78a1b5;
   background: lightgray 50% / cover no-repeat;
+  z-index: 3;
 `;
 export const ThrowButton = styled.button`
   display: flex;
