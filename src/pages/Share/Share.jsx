@@ -10,11 +10,17 @@ import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const { starP } = useMoveonStarP();
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
   const handleCapture = async () => {
-    const canvas = await html2canvas(captureRef.current);
-    await captureScreenshot(canvas);
-  };
+    setIsButtonVisible(false);
 
+    setTimeout(async () => {
+      const canvas = await html2canvas(captureRef.current);
+      await captureScreenshot(canvas);
+
+      setIsButtonVisible(true);
+    }, 500);
+  };
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
     return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
@@ -47,9 +53,9 @@ const SharePage = ({ onBack }) => {
           </S.ClearCantainr>
         </S.Wrapper>
         <div id="share-button">
-          <button onClick={handleCapture}>
+          {isButtonVisible && (
             <S.shareContainr>
-              <S.shareBtn>
+              <S.shareBtn onClick={handleCapture}>
                 <div className="ImgSave">
                   이미지 저장하고 공유하기
                   <img src={shareIcon} />
@@ -59,7 +65,7 @@ const SharePage = ({ onBack }) => {
                 뒤로가기
               </button>
             </S.shareContainr>
-          </button>
+          )}
         </div>
       </div>
     </div>
