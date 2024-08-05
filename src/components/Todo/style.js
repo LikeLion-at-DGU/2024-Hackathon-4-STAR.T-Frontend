@@ -99,6 +99,7 @@ export const ModalTitleInput = styled.input`
   font-family: AppleSDGothicNeoL;
   font-size: 24px;
   color: black;
+  padding: 0;
   &::placeholder {
     color: black;
   }
@@ -106,6 +107,8 @@ export const ModalTitleInput = styled.input`
 
 export const ModalSubInput = styled.input`
   margin: auto 0;
+  padding: 0;
+
   text-align: left;
   font-family: AppleSDGothicNeoL;
   font-size: 16px;
