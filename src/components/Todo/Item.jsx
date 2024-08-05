@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import NON_CHECK_IMG from "@/assets/images/non-check.svg";
-import { useState } from "react";
 import CHECK_IMG from "@/assets/images/check.svg";
 import { patchPersonal, patchRoutine } from "@/apis/calendar";
-// 백에서 갯수 만큼 false true처럼 넣어야 할듯
+
 export const Item = ({ item, isRoutine, date }) => {
-  const [isCompleted, setIsCompletd] = useState(item.completed);
+  const [isCompleted, setIsCompleted] = useState(item.completed);
+
   const handleSubmit = async (isRoutine, id) => {
-    setIsCompletd(!isCompleted);
     try {
+      let res;
       if (isRoutine) {
-        const res = await patchRoutine(id, !isCompleted, date);
-        console.log(res);
+        res = await patchRoutine(id, !isCompleted, date);
       } else {
-        const response = await patchPersonal(id, !isCompleted, date);
-        console.log(response);
+        res = await patchPersonal(id, !isCompleted, date);
       }
+      console.log(res);
+      setIsCompleted(!isCompleted); // 상태 업데이트는 비동기 호출 이후에 수행
     } catch (error) {
-      console.error("Error updating personal item:", error);
+      console.error("Error updating item:", error);
     }
   };
 
