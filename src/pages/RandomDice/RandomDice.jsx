@@ -46,6 +46,7 @@ export const RandomDice = () => {
   });
   const navigate = useNavigate();
   const [clickCalendarButton, setClickCalendarButton] = useState(false);
+  const [showCelebrity, setShowCelebrity] = useState(true);
 
   // 화면 크기 조정에 따른 스타일 변경
   useEffect(() => {
@@ -111,12 +112,12 @@ export const RandomDice = () => {
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
     setIsCheckVisible(false);
-    setClickCalendarButton(true);
   };
 
   const handleAgainClick = () => {
     setRolling(true);
     setShowContent(false);
+    setShowCelebrity(false);
   };
 
   const handleAddCalendar = () => {
@@ -145,8 +146,7 @@ export const RandomDice = () => {
           alignItems: containerStyle.alignItems,
         }}
       >
-        <div className="celebrity">{data.celebrity}</div>
-
+        {showCelebrity && <div className="celebrity">{data.celebrity}</div>}
         <S.Gif style={{ backgroundImage: `url(${currentImage})` }} />
         {!showContent ? (
           <div className="coment">
@@ -191,7 +191,9 @@ export const RandomDice = () => {
             startDay={formatDate(startDay)}
             endDay={formatDate(endDay)}
             term={term}
-            onClose={() => setIsCheckVisible(false)}
+            onClose={
+              (() => setIsCheckVisible(false), setClickCalendarButton(true))
+            }
           />
         </Modal>
       )}
