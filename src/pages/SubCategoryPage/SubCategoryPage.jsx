@@ -39,7 +39,7 @@ const SubCategoryPage = () => {
             {인물.map((item) => (
               <SearchResultStar
                 key={item.id}
-                id={item}
+                id={item.url}
                 src={item.images}
                 name={item.title}
                 profession={item.profession}
