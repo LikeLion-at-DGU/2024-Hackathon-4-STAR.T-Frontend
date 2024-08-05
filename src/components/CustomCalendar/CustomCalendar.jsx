@@ -1,6 +1,6 @@
 import Calendar from "react-calendar";
 import { useSetRecoilState, useRecoilState } from "recoil";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { format, addHours } from "date-fns";
 import * as S from "./style";
 import { getMonthCalendar } from "../../apis/calendar";
@@ -24,20 +24,20 @@ export const CustomCalendar = ({ setWeekPosition }) => {
     try {
       const res = await getMonthCalendar(month);
       if (res.completed_days.length > 0) {
+        const newData = new Set(data);
         res.completed_days.forEach((star) => {
-          data.add(star);
+          newData.add(star);
         });
-        setData(data);
-        console.log(data);
+        setData(newData);
+        console.log(newData);
       }
     } catch (err) {
-      setData([]);
+      setData(new Set());
     }
   };
 
   useEffect(() => {
     getData();
-    handleDateChange(value);
   }, [month]);
 
   // 새로운 onChange 핸들러
@@ -61,6 +61,20 @@ export const CustomCalendar = ({ setWeekPosition }) => {
     setDay(format(date, "yyyy-MM-dd"));
   };
 
+  const tileClassName = useMemo(() => {
+    return ({ date, view }) => {
+      if (view === "month") {
+        // 한국 시간대 적용
+        const zonedDate = addHours(date, 9);
+        const formattedDate = format(zonedDate, "yyyy-MM-dd");
+        if (data.has(formattedDate)) {
+          return "highlight";
+        }
+      }
+      return null;
+    };
+  }, [data]);
+
   return (
     <S.CalendarContainer ref={calendarRef}>
       <Calendar
@@ -79,16 +93,7 @@ export const CustomCalendar = ({ setWeekPosition }) => {
         next2Label={null}
         showNeighboringMonth={false}
         view="month"
-        tileClassName={({ date, view }) => {
-          if (view === "month") {
-            // 한국 시간대 적용
-            const zonedDate = addHours(date, 9);
-            const formattedDate = format(zonedDate, "yyyy-MM-dd");
-            if (data.has(formattedDate)) {
-              return "highlight";
-            }
-          }
-        }}
+        tileClassName={tileClassName}
       />
     </S.CalendarContainer>
   );
