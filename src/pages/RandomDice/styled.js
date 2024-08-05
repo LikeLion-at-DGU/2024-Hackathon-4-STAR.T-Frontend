@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 export const Layout = styled.div`
   display: flex;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
   z-index: 1;
   height: 100vh;
   background-color: transparent;

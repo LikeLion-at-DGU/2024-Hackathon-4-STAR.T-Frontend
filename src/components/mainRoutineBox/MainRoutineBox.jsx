@@ -16,6 +16,7 @@ function MainRoutineBox({
   };
 
   const contentArray = content.split("-");
+  contentArray.shift();
   return (
     <S.BoxContainer>
       <S.RoutineBoxImg src={src} alt={title} />
@@ -34,7 +35,7 @@ function MainRoutineBox({
       </S.TitleContainer>
       <S.BoxContent>
         {contentArray.map((line, index) => (
-          <div key={index}>‣{line.trim()}</div>
+          <div key={index}>‣ {line.trim()}</div>
         ))}
       </S.BoxContent>
     </S.BoxContainer>
