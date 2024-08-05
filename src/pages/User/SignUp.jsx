@@ -43,7 +43,7 @@ export const SignUp = () => {
     }
     const isSuccess = await postSetInfo(nickname);
     if (isSuccess) {
-      navigate("/singup/info");
+      navigate("/signup/custom");
     } else {
       console.log("서버 설정 실패");
     }
