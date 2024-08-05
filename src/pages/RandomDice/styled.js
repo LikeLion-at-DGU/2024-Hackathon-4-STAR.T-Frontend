@@ -4,12 +4,13 @@ export const Layout = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  height: 100vh;
   background-color: transparent;
   width: 100%;
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;
-  margin-bottom: 20rem;
+
   @media (min-height: 720px) {
     justify-content: flex-start;
     gap: 40px;
@@ -25,6 +26,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
   z-index: 2;
+  margin-bottom: 20rem;
   .celebrity {
     display: flex;
     font-size: 1.2rem;
