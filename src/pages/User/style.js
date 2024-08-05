@@ -5,9 +5,8 @@ export const Layout = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-top: 25%;
   flex-direction: column;
-  gap: 3rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -111,6 +110,7 @@ export const LoginContainer = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 15%;
   z-index: 2;
 `;
 
