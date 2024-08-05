@@ -70,7 +70,22 @@ export const Container = styled.div`
   }
 
   .title {
+    color: var(--Font-Color, #2a2a2a);
+    text-align: center;
+    font-family: "AppleSDGothicNeoL";
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .routinecontent {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "AppleSDGothicNeoM";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
   .buttons {
     display: flex;
@@ -83,10 +98,10 @@ export const Container = styled.div`
   }
   .Add {
     display: flex;
-    width: 100%;
+    width: 200px;
     height: 32px;
     padding: 5px;
-
+    color: white;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -97,7 +112,7 @@ export const Container = styled.div`
 
   .Again {
     display: flex;
-    width: 100%;
+    width: 200px;
     height: 32px;
     padding: 5px;
     justify-content: center;
