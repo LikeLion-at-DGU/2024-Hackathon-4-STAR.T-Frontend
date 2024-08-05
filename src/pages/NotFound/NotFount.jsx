@@ -26,9 +26,9 @@ export const NotFound = () => {
                 <p
                   style={{
                     color: "white",
-                    fontSize: "70px",
+                    fontSize: "80px",
                     fontFamily: "AppleSDGothicNeoB",
-                    fontWeight: "400",
+                    fontWeight: "700",
                     lineHeight: "20px",
                   }}
                 >
@@ -47,9 +47,9 @@ export const NotFound = () => {
                 <p
                   style={{
                     color: "white",
-                    fontSize: "20px",
+                    fontSize: "25px",
                     fontFamily: "AppleSDGothicNeoB",
-                    fontWeight: "400",
+                    fontWeight: "700",
                     lineHeight: "20px",
                   }}
                 >
@@ -58,9 +58,9 @@ export const NotFound = () => {
                 <p
                   style={{
                     color: "white",
-                    fontSize: "20px",
+                    fontSize: "25px",
                     fontFamily: "AppleSDGothicNeoB",
-                    fontWeight: "400",
+                    fontWeight: "700",
                     lineHeight: "20px",
                   }}
                 >
@@ -73,7 +73,7 @@ export const NotFound = () => {
                     color: "white",
                     fontSize: "20px",
                     fontFamily: "AppleSDGothicNeoL",
-                    fontWeight: "400",
+                    fontWeight: "200",
                     lineHeight: "20px",
                     marginTop: "1rem",
                   }}
