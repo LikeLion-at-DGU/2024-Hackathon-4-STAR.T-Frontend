@@ -65,38 +65,3 @@ export const SlideRoutineTitle = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
-export const PrevButton = styled.button`
-  position: absolute;
-  left: 10px;
-  top: 40%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const NextButton = styled.button`
-  position: absolute;
-  right: 10px;
-  top: 40%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;

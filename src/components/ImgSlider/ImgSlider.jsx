@@ -35,14 +35,6 @@ const ImageSlider = ({ ThemeImg }) => {
     updateTranslateX();
   }, [current]);
 
-  const handleNextSlide = () => {
-    setCurrent((prev) => (prev + 1) % count);
-  };
-
-  const handlePrevSlide = () => {
-    setCurrent((prev) => (prev - 1 + count) % count);
-  };
-
   const handleMoveonTheme = (url) => {
     console.log(`Navigating to theme with theme_id: ${url}`);
     navigate(`/theme/${url}`);
@@ -50,8 +42,6 @@ const ImageSlider = ({ ThemeImg }) => {
 
   return (
     <S.SliderContainer ref={sliderContainerRef}>
-      <S.PrevButton onClick={handlePrevSlide}>{"<"}</S.PrevButton>
-      <S.NextButton onClick={handleNextSlide}>{">"}</S.NextButton>
       <S.Slide
         style={{
           transform: `translateX(${translateX}px)`,
@@ -67,10 +57,7 @@ const ImageSlider = ({ ThemeImg }) => {
             <S.SlideImage src={item.image} alt={`slide-${index}`} />
             <S.SlideTitle>{item.title}</S.SlideTitle>
             <div className="routineTitle">
-              <S.SlideRoutineTitle>
-                {item.routine_title.slice(0, 2).join(", ")}
-                {item.routine_title.length > 2 && "..."}
-              </S.SlideRoutineTitle>
+              <S.SlideRoutineTitle>{item.routine_title}</S.SlideRoutineTitle>
             </div>
           </S.SlideContent>
         ))}
