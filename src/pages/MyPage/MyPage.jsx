@@ -34,9 +34,8 @@ const MyPage = () => {
 
   const handleLogoutClick = () => setIsLogoutVisible(true);
   const handleSubscribeClick = () => setIsSubscribeVisible(true);
-  const handlePrivacyClick = (content) => {
-    setSelectedContent(content);
-    setIsPrivacyVisible(true);
+  const handlePrivacyClick = () => {
+    return <AgreePage />;
   };
 
   const handleRoutineChangeClick = () => setRoutineVisible(true);
@@ -47,6 +46,7 @@ const MyPage = () => {
   );
 
   const moveOnstarP = (id) => {
+    console.log("id:", id);
     navigate(`/star/${id}`);
   };
   return (
