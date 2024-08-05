@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
 import * as S from "./styled";
