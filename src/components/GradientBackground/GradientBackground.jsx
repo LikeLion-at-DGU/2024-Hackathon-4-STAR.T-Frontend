@@ -19,14 +19,16 @@ const GradientBackgroundContainer = styled.div`
   background: linear-gradient(135deg, #e0f7fa, #a2c9cf);
   transition: opacity 1s ease;
   opacity: ${(props) => (props.$showContent ? 1 : 0)};
-  z-index: 0;
+  z-index: -1;
 `;
 
 const GradientsContainer = styled.div`
   filter: blur(40px);
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const Circle = styled.div`

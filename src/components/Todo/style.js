@@ -94,6 +94,7 @@ export const ModalBtn = styled.button`
 `;
 
 export const ModalTitleInput = styled.input`
+  margin: auto 0;
   text-align: left;
   font-family: AppleSDGothicNeoL;
   font-size: 24px;
@@ -104,6 +105,7 @@ export const ModalTitleInput = styled.input`
 `;
 
 export const ModalSubInput = styled.input`
+  margin: auto 0;
   text-align: left;
   font-family: AppleSDGothicNeoL;
   font-size: 16px;
