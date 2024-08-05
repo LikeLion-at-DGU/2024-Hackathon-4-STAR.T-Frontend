@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AGREE_TEXT } from "@/constants/Text/title";
 import * as S from "./style";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,6 +6,9 @@ export const AgreePage = () => {
   const navigate = useNavigate();
   const params = useParams();
   console.log(params);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <S.Wrapper>
       <>

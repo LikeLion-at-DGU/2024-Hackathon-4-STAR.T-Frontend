@@ -7,6 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
 import ClearStarP from "./ClearStarP";
+import SharePage from "@/pages/Share/Share";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import {
   routineStart,
@@ -62,7 +63,7 @@ const StarPage = () => {
   return (
     <>
       {isClearStarPVisible ? (
-        <ClearStarP onBack={() => setIsClearStarPVisible(false)} />
+        <SharePage onBack={() => setIsClearStarPVisible(false)} />
       ) : (
         <>
           <S.Header>
