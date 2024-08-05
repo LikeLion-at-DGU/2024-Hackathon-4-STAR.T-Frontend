@@ -26,10 +26,15 @@ export const SearchResultP = () => {
     navigate(`/search/data/${data}`);
   };
 
+  const moveOnSearch = () => {
+    console.log("헤더클릭");
+    navigate(`/search`);
+  };
+
   return (
     <S.LayoutResult>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
-        검색
+        <div onClick={moveOnSearch}>검색</div>
       </Header>
       <S.Container>
         <SearchBox onsearchResult={handlesearchClick} />
