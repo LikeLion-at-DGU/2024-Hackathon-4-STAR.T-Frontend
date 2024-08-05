@@ -23,7 +23,7 @@ export const AddModal = ({ day, onClose, refreshData }) => {
     onClose();
     const res = await refreshData(); // 데이터 갱신을 위해 호출
     console.log(res, "heer");
-    if (res.data.today_completed) {
+    if (res.today_completed) {
       star.add(day);
       setStar(star);
     } else {
