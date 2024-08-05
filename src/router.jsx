@@ -18,7 +18,6 @@ import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
 import { AgreePage } from "./pages/AgreePage/AgreePage";
-import SharePage from "@/pages/Share/Share";
 const router = createBrowserRouter([
   {
     path: "/",
