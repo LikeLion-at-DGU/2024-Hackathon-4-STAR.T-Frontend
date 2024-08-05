@@ -46,6 +46,17 @@ const SharePage = ({ onBack }) => {
             </S.ClearMain>
           </S.ClearCantainr>
         </S.Wrapper>
+        <S.shareContainr>
+          <S.shareBtn onClick={handleCapture}>
+            <div className="ImgSave">
+              이미지 저장하고 공유하기
+              <img src={shareIcon} />
+            </div>
+          </S.shareBtn>
+          <button className="backBtn" onClick={onBack}>
+            뒤로가기
+          </button>
+        </S.shareContainr>
         <div id="share-button">
           <S.shareContainr>
             <S.shareBtn onClick={handleCapture}>
