@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
 import * as S from "./style";
 import NON_CHECK_IMG from "@/assets/images/non-check.svg";
 import CHECK_IMG from "@/assets/images/check.svg";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { patchPersonal, patchRoutine } from "@/apis/calendar";
 import { nowItems } from "@/stores/todo";
-import { useRecoilState } from "recoil";
+import { starMonth } from "@/stores/calendar";
 
 export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useRecoilState(nowItems);
-
+  const [star, setStar] = useRecoilState(starMonth);
   // 컴포넌트가 마운트될 때 completed 상태를 Recoil 상태에 반영
   useEffect(() => {
     const isItemChecked = checkItems.some(
@@ -32,7 +33,13 @@ export const Item = ({ item, isRoutine, date }) => {
       } else {
         res = await patchPersonal(id, currentStatus, date);
       }
-
+      if (res.data.today_completed) {
+        star.add(date);
+        setStar(star);
+      } else {
+        star.delete(date);
+        setStar(star);
+      }
       // 상태 업데이트
       setCheckItems((prevItems) => {
         const itemIndex = prevItems.findIndex(

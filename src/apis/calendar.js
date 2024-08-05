@@ -40,6 +40,7 @@ export const patchPersonal = async (personalID, isCompleted, date) => {
       completed: isCompleted,
     });
     console.log(res);
+    return res;
   } catch (err) {
     throw err;
   }
@@ -55,6 +56,7 @@ export const patchRoutine = async (routineID, isCompleted, date) => {
       }
     );
     console.log(res);
+    return res;
   } catch (err) {
     throw err;
   }
