@@ -10,9 +10,12 @@ import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
   const handleCapture = async () => {
+    setIsButtonVisible(false);
     const canvas = await html2canvas(captureRef.current);
     await captureScreenshot(canvas);
+    setIsButtonVisible(true);
   };
 
   const starData = starP && starP.data ? starP.data : null;
@@ -32,32 +35,35 @@ const SharePage = ({ onBack }) => {
               <div className="profession">{starData.profession}</div>
             </S.BannerTitle>
           </S.Header>
-          <S.ClearCantainr>
-            <S.ClearMain>
-              <div className="text">축하합니다!</div>
-              <div className="imgContainr">
-                <img src={ClearStarPIcon1} />
-                <img className="icon2" src={ClearStarPIcon2} />
-                <div className="textOverlay">
-                  {starData.routines_added_count}회
+          <div className="Containr">
+            <S.ClearCantainr>
+              <S.ClearMain>
+                <div className="text">축하합니다!</div>
+                <div className="imgContainr">
+                  <img src={ClearStarPIcon1} />
+                  <img className="icon2" src={ClearStarPIcon2} />
+                  <div className="textOverlay">
+                    {starData.routines_added_count}회
+                  </div>
                 </div>
+                <div className="text">루틴 완료 달성!</div>
+              </S.ClearMain>
+            </S.ClearCantainr>
+            {isButtonVisible && (
+              <div id="share-button">
+                <S.shareContainr>
+                  <S.shareBtn onClick={handleCapture}>
+                    <div className="ImgSave">
+                      이미지 저장하고 공유하기
+                      <img src={shareIcon} />
+                    </div>
+                  </S.shareBtn>
+                  <button className="backBtn" onClick={onBack}>
+                    뒤로가기
+                  </button>
+                </S.shareContainr>
               </div>
-              <div className="text">루틴 완료 달성!</div>
-            </S.ClearMain>
-          </S.ClearCantainr>
-
-          <div id="share-button">
-            <S.shareContainr>
-              <S.shareBtn onClick={handleCapture}>
-                <div className="ImgSave">
-                  이미지 저장하고 공유하기
-                  <img src={shareIcon} />
-                </div>
-              </S.shareBtn>
-              <button className="backBtn" onClick={onBack}>
-                뒤로가기
-              </button>
-            </S.shareContainr>
+            )}
           </div>
         </S.Wrapper>
       </div>
