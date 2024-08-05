@@ -138,6 +138,8 @@ export const RandomDice = () => {
           alignItems: containerStyle.alignItems,
         }}
       >
+        <div className="celebrity">{data.celebrity}</div>
+
         <S.Gif style={{ backgroundImage: `url(${currentImage})` }} />
         {!showContent ? (
           <div className="coment">

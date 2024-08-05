@@ -26,19 +26,20 @@ const SubCategoryPage = () => {
     return <div>Loading...</div>;
   }
 
-  const { celeb } = searchData;
+  const { 인물 } = searchData;
+  console.log(인물);
   return (
     <S.Layout>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
         {`${section} / ${subCategory}`}
       </Header>
       <S.Container>
-        {celeb ? (
+        {인물 ? (
           <S.CategoryWrapper>
-            {celeb.map((item) => (
+            {인물.map((item) => (
               <SearchResultStar
                 key={item.id}
-                id={item.url}
+                id={item}
                 src={item.images}
                 name={item.title}
                 profession={item.profession}
