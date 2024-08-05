@@ -28,7 +28,7 @@ export const categories = [
     ],
   },
   {
-    title: "Entertainment",
+    title: "엔터테인먼트",
     sectionId: "3",
     items: [
       { src: actor, category: "배우", subCategoryId: "1", sectionId: "3" },
