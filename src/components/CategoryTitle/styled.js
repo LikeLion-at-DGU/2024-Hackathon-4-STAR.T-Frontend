@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const CategoryWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 20px 1fr;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
   align-items: center;
 `;
 
 export const CategoryLine = styled.svg`
   width: 20px;
-  height: auto;
+  height: 28px;
   flex-shrink: 0;
   stroke-width: 3px;
   stroke: var(--Main-Color, #78a1b5);

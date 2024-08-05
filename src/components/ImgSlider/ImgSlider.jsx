@@ -7,7 +7,7 @@ const ImageSlider = ({ ThemeImg }) => {
   const [current, setCurrent] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const count = ThemeImg.length;
-  const slideWidth = 260 + 10; // px
+  const slideWidth = 260; // px
   const sliderContainerRef = useRef(null);
 
   useEffect(() => {

@@ -39,7 +39,7 @@ const SubCategoryPage = () => {
               <SearchResultStar
                 key={item.id}
                 id={item.url}
-                src={item.image}
+                src={item.images}
                 name={item.title}
                 profession={item.profession}
                 type={"celeb"}
