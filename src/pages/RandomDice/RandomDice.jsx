@@ -106,7 +106,7 @@ export const RandomDice = () => {
   const handleAgainClick = () => {
     setRolling(true);
     setShowContent(false);
-    clickCalendarButton(false);
+    setClickCalendarButton(false);
   };
 
   const handleAddCalendar = () => {
@@ -116,7 +116,7 @@ export const RandomDice = () => {
 
   const textColor = !showContent ? "black" : "white";
   const contentArray = (data.content || "").split("-");
-  console.log("contentArray", contentArray);
+
   contentArray.shift();
   return (
     <S.Layout>
