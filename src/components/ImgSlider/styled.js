@@ -55,7 +55,7 @@ export const SlideTitle = styled.div`
 
 export const SlideRoutineTitle = styled.div`
   margin-top: 4px;
-  text-align: center;
+
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
 

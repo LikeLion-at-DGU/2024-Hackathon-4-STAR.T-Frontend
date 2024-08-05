@@ -4,14 +4,14 @@ export const Layout = styled.div`
   position: relative;
   overflow-y: auto;
   z-index: 1;
-  height: 100vh;
+  min-height: 100vh;
   background-color: transparent;
   width: 100%;
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;
 
-  @media (min-height: 720px) {
+  @media (min-height: 750px) {
     justify-content: flex-start;
     gap: 40px;
   }
@@ -25,8 +25,11 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
   z-index: 2;
-  margin-bottom: 20rem;
-  overflow-y: auto;
+  margin-bottom: 1rem;
+  @media (min-height: 800px) {
+    justify-content: center;
+    align-items: flex-start;
+  }
 
   .celebrity {
     display: flex;
@@ -61,7 +64,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 19px;
   }
 
@@ -78,23 +81,31 @@ export const Container = styled.div`
     gap: 1rem;
   }
   .Add {
+    display: flex;
+    width: 180px;
+    height: 32px;
+    padding: 6px 108px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: var(--Main-Color, #78a1b5);
     font-size: 1rem;
-    height: 30px;
-    width: 80%;
-    text-align: center;
-    border-radius: 25px;
-    background-color: #fff;
-    color: black;
   }
 
   .Again {
-    font-size: 1rem;
-    height: 30px;
-    width: 80%;
-    text-align: center;
-    border-radius: 25px;
-    background-color: #fff;
-    color: black;
+    display: flex;
+    width: 180px;
+    height: 32px;
+    padding: 6px 108px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #c4d9e2;
+    background: rgba(196, 217, 226, 0.5);
   }
   .moveOnHome {
     font-size: 1rem;
