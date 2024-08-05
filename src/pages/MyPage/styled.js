@@ -25,9 +25,9 @@ export const Layout = styled.div`
     width: 100%;
     font-size: 1.2rem;
     text-align: center;
-
+    padding: 0.5rem 0;
     border-bottom: 1px solid #78a1b5;
-    padding-bottom: 1rem;
+
     color: inherit;
     font: inherit;
     cursor: pointer;
@@ -51,10 +51,16 @@ export const Layout = styled.div`
 
   .emptytext {
     display: flex;
-    font-size: 1.2rem;
-    font-weight: 600;
+    color: #000;
+
+    font-family: "AppleSDGothicNeoL";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     justify-self: center;
     align-self: center;
+    padding: 1rem;
   }
 `;
 
@@ -65,6 +71,7 @@ export const MypageWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
+  margin-bottom: 1rem;
 
   .button {
     background: none;

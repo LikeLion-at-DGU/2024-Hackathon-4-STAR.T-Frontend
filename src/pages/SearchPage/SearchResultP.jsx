@@ -30,7 +30,21 @@ export const SearchResultP = () => {
     console.log("헤더클릭");
     navigate(`/search`);
   };
-
+  const handleClick = (id, type) => {
+    let url = "";
+    switch (type) {
+      case "celeb":
+      case "routine":
+        url = `/star/${id}`;
+        break;
+      case "theme":
+        url = `/theme/${id}`;
+        break;
+      default:
+        break;
+    }
+    navigate(url);
+  };
   return (
     <S.LayoutResult>
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
@@ -50,6 +64,7 @@ export const SearchResultP = () => {
                 name={item.title}
                 profession={item.profession}
                 type={key}
+                onClick={handleClick}
               />
             ))}
           </S.CategoryWrapper>

@@ -7,7 +7,6 @@ import { getRandomRoutine } from "@/apis/random";
 import Modal from "@/components/Modal/Modal";
 import { CheckUp } from "@/components/CheckUp/CheckUp";
 import DateRangeCalendar from "@/components/DateRangeCalendar/DateRangeCalendar";
-import { useNavigate } from "react-router-dom";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
 import {
   routineStart,

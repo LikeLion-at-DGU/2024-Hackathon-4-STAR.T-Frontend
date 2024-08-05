@@ -8,7 +8,8 @@ import LOGO from "../../assets/images/MainLogoImg.svg";
 import { useMyInfo } from "../../hooks/useMyInfo";
 import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
-
+import { AgreePage } from "@/pages/AgreePage/AgreePage";
+import { useNavigate } from "react-router-dom";
 const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
@@ -16,7 +17,7 @@ const MyPage = () => {
   const [isPrivacyVisible, setIsPrivacyVisible] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [routineVisible, setRoutineVisible] = useState(false);
-
+  const navigate = useNavigate();
   const myData = myinfo?.data || null;
 
   if (!myData) {
@@ -44,6 +45,10 @@ const MyPage = () => {
   const favoriteStars = myData.celebs.filter(
     (item) => item.routines_added_count > 0
   );
+
+  const moveOnstarP = (id) => {
+    navigate(`/star/${id}`);
+  };
   return (
     <>
       {isPrivacyVisible ? (
@@ -80,6 +85,7 @@ const MyPage = () => {
                     star={item.name}
                     career={item.profession}
                     count={item.routines_added_count}
+                    onClick={() => moveOnstarP(item.id)}
                   />
                 ))
               )}

@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 100%;
   gap: 20px;
   align-items: center;
+  cursor: pointer;
   .count {
     display: flex;
     margin-right: 1rem;

@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./styled";
 
-export const MyStar = ({ src, star, career, count }) => {
+export const MyStar = ({ src, star, career, count, onClick }) => {
   return (
     <>
-      <S.Container>
+      <S.Container onClick={onClick}>
         <S.StarImg src={src} />
         <S.info>
           <div>{star}</div>
