@@ -6,13 +6,13 @@ function CategoryTitle({ section, fontSize }) {
     <S.CategoryWrapper>
       <S.CategoryLine
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 3 24"
+        viewBox="0 0 2 24"
         fill="none"
       >
         <path
           d="M1.5 2L1.5 22"
           stroke="#78A1B5"
-          strokeWidth="3"
+          strokeWidth="2"
           strokeLinecap="round"
         />
       </S.CategoryLine>
