@@ -8,6 +8,7 @@ import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 
 const SharePage = ({ onBack }) => {
+  const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const handleCapture = async () => {
     const canvas = await html2canvas(captureRef.current);
