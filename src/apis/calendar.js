@@ -25,9 +25,7 @@ export const postPersonal = async (title, description, date) => {
       title,
       description,
     });
-    if (res.status == 201 || res.status == 200) {
-      alert("등록완료!");
-    }
+    return res;
   } catch (err) {
     throw err;
   }

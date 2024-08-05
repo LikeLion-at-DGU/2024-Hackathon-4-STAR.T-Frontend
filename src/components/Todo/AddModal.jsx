@@ -26,11 +26,10 @@ export const AddModal = ({ day, onClose, refreshData }) => {
   };
 
   const handleSumbit = async () => {
-    await postPersonal(task, details, day);
+    const data = await postPersonal(task, details, day);
     onClose();
     handleShowModal();
     const res = await refreshData(); // 데이터 갱신을 위해 호출
-    console.log(res, "heer");
     if (res.today_completed) {
       star.add(day);
       setStar(star);
