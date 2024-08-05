@@ -5,14 +5,15 @@ export const CategoryWrapper = styled.div`
   flex-direction: row;
   align-self: flex-start;
   align-items: center;
+  gap: 1rem;
 `;
 
-export const CategoryLine = styled.svg`
-  width: 20px;
-  height: 28px;
+export const CategoryLine = styled.div`
+  display: flex;
+  width: 2px;
+  background-color: #78a1b5;
+  border-radius: 15px;
   flex-shrink: 0;
-  stroke-width: 3px;
-  stroke: var(--Main-Color, #78a1b5);
 `;
 
 export const CategorySection = styled.div`
