@@ -9,7 +9,7 @@ import { todoStatus, day, starMonth } from "@/stores/calendar";
 export const CustomCalendar = ({ setWeekPosition }) => {
   const [value, setValue] = useState(new Date());
   const [month, setMonth] = useState(format(new Date(), "yyyy-MM"));
-  const [data, setData] = useState(starMonth);
+  const [data, setData] = useRecoilState(starMonth);
   const setDay = useSetRecoilState(day);
   const setStatus = useSetRecoilState(todoStatus);
   const calendarRef = useRef(null);
