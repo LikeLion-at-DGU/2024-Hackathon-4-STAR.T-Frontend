@@ -3,17 +3,21 @@ import * as S from "./style";
 import NON_CHECK_IMG from "@/assets/images/non-check.svg";
 import CHECK_IMG from "@/assets/images/check.svg";
 import { patchPersonal, patchRoutine } from "@/apis/calendar";
+import { nowItems } from "@/stores/todo";
+import { useRecoilState } from "recoil";
 
 export const Item = ({ item, isRoutine, date }) => {
-  const [checkItems, setCheckItems] = useState(new Set());
+  const [checkItems, setCheckItems] = useRecoilState(nowItems);
 
   const handleSubmit = async (isRoutine, id, isChecked) => {
-    const updatedCheckItems = new Set(checkItems);
+    let updatedCheckItems;
 
     if (isChecked) {
-      updatedCheckItems.add(id);
+      updatedCheckItems = [...checkItems, { id, date }];
     } else {
-      updatedCheckItems.delete(id);
+      updatedCheckItems = checkItems.filter(
+        (checkItem) => !(checkItem.id === id && checkItem.date === date)
+      );
     }
 
     setCheckItems(updatedCheckItems);
@@ -31,23 +35,25 @@ export const Item = ({ item, isRoutine, date }) => {
     }
   };
 
+  const isItemChecked = checkItems.some(
+    (checkItem) => checkItem.id === item.id && checkItem.date === date
+  );
+
+  const isChecked = isItemChecked ? true : item.completed;
+
   return (
     <S.ListFrame>
       <S.CheckFrame>
         <S.ButtonView
-          onClick={() =>
-            handleSubmit(isRoutine, item.id, !checkItems.has(item.id))
-          }
+          onClick={() => handleSubmit(isRoutine, item.id, !isChecked)}
         >
-          <S.ImgView
-            src={checkItems.has(item.id) ? CHECK_IMG : NON_CHECK_IMG}
-          />
+          <S.ImgView src={isChecked ? CHECK_IMG : NON_CHECK_IMG} />
         </S.ButtonView>
       </S.CheckFrame>
       <S.TextFrame>
         <S.TitleView>{isRoutine ? item.routine_title : item.title}</S.TitleView>
         <S.SubTitleView>
-          {isRoutine ? item.routine_content : item.description}
+          {isRoutine ? item.celebrity_name : item.description}
         </S.SubTitleView>
       </S.TextFrame>
     </S.ListFrame>

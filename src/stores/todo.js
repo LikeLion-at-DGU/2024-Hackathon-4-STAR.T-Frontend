@@ -9,3 +9,8 @@ export const schedules = atom({
   key: "schedules",
   default: [],
 });
+
+export const nowItems = atom({
+  key: "checkItems",
+  default: [],
+});
