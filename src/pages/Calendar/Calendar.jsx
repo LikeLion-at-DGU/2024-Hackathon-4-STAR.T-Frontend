@@ -22,6 +22,7 @@ export const Calendar = () => {
     setStatus(false);
     event.stopPropagation(); // 여기서 이벤트 전파를 중지
   };
+
   return (
     <S.Layout
       $isModalOpen={status}

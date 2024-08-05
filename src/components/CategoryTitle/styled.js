@@ -10,7 +10,8 @@ export const CategoryWrapper = styled.div`
 
 export const CategoryLine = styled.div`
   display: flex;
-  width: 2px;
+  width: 20px;
+  height: auto;
   background-color: #78a1b5;
   border-radius: 15px;
   flex-shrink: 0;

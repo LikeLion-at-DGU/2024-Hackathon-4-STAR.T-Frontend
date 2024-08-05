@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as S from "./styled";
-
 import { Header } from "../../components/common/Header/Header";
 import { MyStar } from "../../components/MyStar/MyStar";
 import { Logout } from "../../components/Logout/Logout";
