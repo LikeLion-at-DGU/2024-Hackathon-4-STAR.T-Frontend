@@ -5,16 +5,14 @@ export const Layout = styled.div`
   overflow: hidden;
   z-index: 1;
   background-color: transparent;
-  width: 90%;
-  min-height: 100vh;
+  width: 100%;
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;
+  margin-bottom: 5rem;
   @media (min-height: 720px) {
     justify-content: flex-start;
     gap: 40px;
-    height: 100%;
-    flex-grow: 1;
   }
 `;
 
@@ -86,6 +84,15 @@ export const Container = styled.div`
   }
 
   .Again {
+    font-size: 1rem;
+    height: 30px;
+    width: 80%;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #fff;
+    color: black;
+  }
+  .moveOnHome {
     font-size: 1rem;
     height: 30px;
     width: 80%;

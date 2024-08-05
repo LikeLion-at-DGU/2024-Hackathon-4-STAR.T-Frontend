@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
-import DiceBackground from "../../assets/DiceBackground.svg";
-import star1 from "../../assets/star1.svg";
-import GradientBackground from "../../components/GradientBackground/GradientBackground";
-import { getRandomRoutine } from "../../apis/random";
-import Modal from "../../components/Modal/Modal";
-import { CheckUp } from "../../components/CheckUp/CheckUp";
-import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
+import DiceBackground from "@/assets/DiceBackground.svg";
+import star1 from "@/assets/star1.svg";
+import GradientBackground from "@/components/GradientBackground/GradientBackground";
+import { getRandomRoutine } from "@/apis/random";
+import Modal from "@/components/Modal/Modal";
+import { CheckUp } from "@/components/CheckUp/CheckUp";
+import DateRangeCalendar from "@/components/DateRangeCalendar/DateRangeCalendar";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
 import {
   routineStart,
@@ -43,6 +44,8 @@ export const RandomDice = () => {
     justifyContent: "center",
     alignItems: "center",
   });
+  const navigate = useNavigate();
+  const [clickCalendarButton, setClickCalendarButton] = useState(false);
 
   // 화면 크기 조정에 따른 스타일 변경
   useEffect(() => {
@@ -108,6 +111,7 @@ export const RandomDice = () => {
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
     setIsCheckVisible(false);
+    setClickCalendarButton(true);
   };
 
   const handleAgainClick = () => {
@@ -120,6 +124,9 @@ export const RandomDice = () => {
     setID(data.id);
   };
 
+  const moveOnHome = () => {
+    navigate("");
+  };
   const textColor = !showContent ? "black" : "white";
 
   return (
@@ -127,7 +134,7 @@ export const RandomDice = () => {
       <GradientBackground showContent={showContent} />
       <Header
         $margin={"1rem 0 0 0"}
-        $padding={"1rem 1rem 0 1rem"}
+        $padding={"1rem 1rem 0 2rem"}
         color={textColor}
       >
         랜덤 루틴
@@ -156,12 +163,20 @@ export const RandomDice = () => {
           <S.ThrowButton onClick={handleRollClick}>주사위 돌리기</S.ThrowButton>
         ) : (
           <div className="buttons">
-            <button className="Add" onClick={handleAddCalendar}>
-              내 캘린더에 추가
-            </button>
+            {!clickCalendarButton && (
+              <button className="Add" onClick={handleAddCalendar}>
+                내 캘린더에 추가
+              </button>
+            )}
             <button className="Again" onClick={handleAgainClick}>
               다시 돌리기
             </button>
+
+            {clickCalendarButton && (
+              <button className="moveOnHome" onClick={moveOnHome}>
+                처음으로
+              </button>
+            )}
           </div>
         )}
       </S.Container>
