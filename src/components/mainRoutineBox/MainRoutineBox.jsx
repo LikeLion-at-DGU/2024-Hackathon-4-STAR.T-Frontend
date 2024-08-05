@@ -34,7 +34,7 @@ function MainRoutineBox({
       </S.TitleContainer>
       <S.BoxContent>
         {contentArray.map((line, index) => (
-          <div key={index}>{line.trim()}</div>
+          <div key={index}>‣{line.trim()}</div>
         ))}
       </S.BoxContent>
     </S.BoxContainer>
