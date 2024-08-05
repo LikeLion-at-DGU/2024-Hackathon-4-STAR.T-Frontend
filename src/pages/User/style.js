@@ -7,7 +7,7 @@ export const Layout = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 3rem;
+  gap: 15%;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -59,6 +59,7 @@ export const TitleText = styled.p`
 export const LogoFrame = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 5%;
   gap: 4rem;
 `;
 
