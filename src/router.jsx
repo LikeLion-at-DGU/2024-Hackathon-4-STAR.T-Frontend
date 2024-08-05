@@ -4,8 +4,8 @@ import App from "./App";
 import { loader } from "./utils/loader";
 import { Calendar } from "./pages/Calendar/Calendar";
 import { Login } from "./pages/User/Login";
-import { SignUp } from "./pages/User/SignUp";
-import { Loading } from "./pages/Loading/Loading";
+import { SignUpCustom } from "./pages/User/SignUpCustom";
+import { Signup } from "./pages/User/Signup";
 import { RandomDice } from "./pages/RandomDice/RandomDice";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import ThemePage from "./pages/ThemePage/ThemePage";
@@ -28,11 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <SignUp />,
+        element: <Signup />,
       },
       {
-        path: "/info",
-        element: <Loading />,
+        path: "/signup/custom",
+        element: <SignUpCustom />,
       },
       {
         path: "",
