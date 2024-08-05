@@ -30,24 +30,16 @@ export const Item = ({ item, isRoutine, date }) => {
       let res;
       if (isRoutine) {
         res = await patchRoutine(id, currentStatus, date);
-        if (res.data.today_completed) {
-          star.add(date);
-          setStar(star);
-        } else {
-          star.delete(date);
-          setStar(star);
-        }
       } else {
         res = await patchPersonal(id, currentStatus, date);
-        if (res.data.today_completed) {
-          star.add(date);
-          setStar(star);
-        } else {
-          star.delete(date);
-          setStar(star);
-        }
       }
-
+      if (res.data.today_completed) {
+        star.add(date);
+        setStar(star);
+      } else {
+        star.delete(date);
+        setStar(star);
+      }
       // 상태 업데이트
       setCheckItems((prevItems) => {
         const itemIndex = prevItems.findIndex(
