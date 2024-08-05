@@ -9,7 +9,7 @@ export const Layout = styled.div`
   flex-direction: column;
   transition: background-color 1.8s ease;
   gap: 1rem;
-  margin-bottom: 5rem;
+  margin-bottom: 20rem;
   @media (min-height: 720px) {
     justify-content: flex-start;
     gap: 40px;
