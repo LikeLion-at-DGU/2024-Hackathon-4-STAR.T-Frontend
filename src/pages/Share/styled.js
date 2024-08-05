@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   background-size: cover;
   flex-direction: column;
   background-image: url(${Back});
-
+  background-size: cover;
+  margin-bottom: 7.3rem;
   .Containr {
     min-height: 100%;
   }
@@ -54,14 +55,13 @@ export const RoutineBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
 `;
 
 export const ClearCantainr = styled.div`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10rem;
 
   justify-content: center;
   align-items: center;
@@ -155,6 +155,7 @@ export const shareContainr = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: 0.5rem 0;
     color: black;
     flex-shrink: 0;
     text-align: center;
