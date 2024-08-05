@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import { format, addHours } from "date-fns";
 import * as S from "./style";
 import { getMonthCalendar } from "../../apis/calendar";
-import { todoStatus, day } from "@/stores/calendar";
+import { todoStatus, day, starMonth } from "@/stores/calendar";
 
 export const CustomCalendar = ({ setWeekPosition }) => {
   const [value, setValue] = useState(new Date());
   const [month, setMonth] = useState(format(new Date(), "yyyy-MM"));
-  const [data, setData] = useState([]);
+  const [data, setData] = useRecoilState(starMonth);
   const setDay = useSetRecoilState(day);
   const setStatus = useSetRecoilState(todoStatus);
   const calendarRef = useRef(null);
@@ -24,8 +24,11 @@ export const CustomCalendar = ({ setWeekPosition }) => {
     try {
       const res = await getMonthCalendar(month);
       if (res.completed_days.length > 0) {
-        setData(res.completed_days);
-        console.log(res.completed_days);
+        res.completed_days.forEach((star) => {
+          data.add(star);
+        });
+        setData(data);
+        console.log(data);
       }
     } catch (err) {
       setData([]);
@@ -34,10 +37,12 @@ export const CustomCalendar = ({ setWeekPosition }) => {
 
   useEffect(() => {
     getData();
+    handleDateChange(value);
   }, [month]);
 
   // 새로운 onChange 핸들러
   const handleDateChange = (date) => {
+    console.log(date);
     setValue(date);
     setStatus(true); // 날짜 클릭 시 상태를 true로 설정
     setTimeout(() => {
@@ -79,7 +84,7 @@ export const CustomCalendar = ({ setWeekPosition }) => {
             // 한국 시간대 적용
             const zonedDate = addHours(date, 9);
             const formattedDate = format(zonedDate, "yyyy-MM-dd");
-            if (data.includes(formattedDate)) {
+            if (data.has(formattedDate)) {
               return "highlight";
             }
           }
