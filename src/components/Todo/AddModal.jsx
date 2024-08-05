@@ -2,7 +2,8 @@ import * as S from "./style";
 import { useState } from "react";
 import { postPersonal } from "@/apis/calendar";
 
-export const AddModal = ({ day, onClose }) => {
+export const AddModal = ({ day, onClose, refreshData }) => {
+  // refreshData를 추가
   const [task, setTask] = useState("");
   const [details, setDetails] = useState("");
 
@@ -13,11 +14,15 @@ export const AddModal = ({ day, onClose }) => {
   const handleDetailsChange = (e) => {
     setDetails(e.target.value);
   };
+
   const handleSumbit = async () => {
-    onClose();
     await postPersonal(task, details, day);
+    onClose();
+    refreshData(); // 데이터 갱신을 위해 호출
   };
+
   console.log(day);
+
   return (
     <S.ModalLayout>
       <S.ModalTitle>
