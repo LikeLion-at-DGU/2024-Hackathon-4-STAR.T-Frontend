@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import * as S from "./style";
 import NON_CHECK_IMG from "@/assets/images/non-check.svg";
 import CHECK_IMG from "@/assets/images/check.svg";
@@ -8,6 +8,18 @@ import { useRecoilState } from "recoil";
 
 export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useRecoilState(nowItems);
+
+  // item.completed가 true일 때 checkItems에 추가
+  useEffect(() => {
+    if (item.completed) {
+      const updatedCheckItems = checkItems.some(
+        (checkItem) => checkItem.id === item.id && checkItem.date === date
+      )
+        ? checkItems
+        : [...checkItems, { id: item.id, date }];
+      setCheckItems(updatedCheckItems);
+    }
+  }, [item.completed, item.id, date, checkItems, setCheckItems]);
 
   const handleSubmit = async (isRoutine, id, isChecked) => {
     try {
