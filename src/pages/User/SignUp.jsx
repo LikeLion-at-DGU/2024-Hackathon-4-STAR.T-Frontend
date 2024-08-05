@@ -9,7 +9,7 @@ import WrapperContent from "../../components/PrivacyContent/PrivacyContent";
 import { useRecoilState } from "recoil";
 import { pageNumberState } from "../../stores/Privacy";
 import { useCheckUser } from "@/hooks/useCheckUser";
-export const Signup = () => {
+export const SignUp = () => {
   const isSigned = useCheckUser();
   const texts = ["이용약관", "개인정보 처리방침"];
   const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);

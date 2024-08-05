@@ -5,7 +5,7 @@ import { loader } from "./utils/loader";
 import { Calendar } from "./pages/Calendar/Calendar";
 import { Login } from "./pages/User/Login";
 import { SignUpCustom } from "@/pages/User/SignUpCustom";
-import { Signup } from "@/pages/User/Signup";
+import { SignUp } from "@/pages/User/SignUp";
 import { RandomDice } from "./pages/RandomDice/RandomDice";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import ThemePage from "./pages/ThemePage/ThemePage";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: <SignUp />,
       },
       {
         path: "/signup/custom",
