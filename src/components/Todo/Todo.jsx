@@ -10,7 +10,7 @@ import { day } from "@/stores/calendar";
 
 export const Todo = () => {
   const today = useRecoilValue(day);
-  const { routineData, scheduleData } = useDailyRoutine(today);
+  const { routineData, scheduleData, fetchData } = useDailyRoutine(today); // fetchData 추가
   const [modalStatus, setModalStatus] = useState(false);
 
   const onClose = () => {
@@ -40,7 +40,7 @@ export const Todo = () => {
       </S.PlusBtnFrame>
       {modalStatus && (
         <Modal onClose={onClose}>
-          <AddModal day={today} onClose={onClose} />
+          <AddModal day={today} onClose={onClose} refreshData={fetchData} />
         </Modal>
       )}
     </S.TodoLayout>
