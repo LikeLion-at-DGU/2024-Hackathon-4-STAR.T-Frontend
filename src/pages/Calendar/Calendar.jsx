@@ -13,8 +13,9 @@ export const Calendar = () => {
   const [bottomMargin, setBottomMargin] = useState(0);
   useEffect(() => {
     if (weekPosition) {
-      setBottomMargin(startRef.current?.getBoundingClientRect().bottom);
+      // setBottomMargin(startRef.current?.getBoundingClientRect().bottom);
       startRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setBottomMargin(startRef.current?.offsetHeight || 0);
     }
   }, [top, weekPosition]);
 
@@ -27,7 +28,7 @@ export const Calendar = () => {
     <S.Layout
       $isModalOpen={status}
       style={{
-        marginBottom: bottomMargin / 2,
+        marginBottom: bottomMargin,
       }}
     >
       <Header $margin={"1rem 0 0 0"} $padding={"1rem 1rem 0 1rem"}>
