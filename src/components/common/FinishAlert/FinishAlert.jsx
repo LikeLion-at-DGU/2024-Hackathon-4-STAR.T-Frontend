@@ -38,6 +38,8 @@ const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px #78a1b5;
 
   animation: ${(props) => (props.state === "entering" ? slideDown : slideUp)}
     0.5s forwards;
