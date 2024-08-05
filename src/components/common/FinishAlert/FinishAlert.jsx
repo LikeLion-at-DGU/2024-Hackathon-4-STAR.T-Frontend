@@ -20,22 +20,24 @@ const slideUp = keyframes`
   }
 `;
 
-const ModalContainer = styled.div`
+const ModalLayout = styled.div`
   position: fixed;
   top: 0;
-  left: 25%;
+  left: 50%;
   transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 1000;
+`;
+
+const ModalContainer = styled.div`
+  width: fit-content;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  display: flex;
-  width: 25%;
-  height: 32px;
-  padding: 1px 38px;
-  justify-content: center;
-  align-items: center;
+  padding: 8px 16px;
 
   animation: ${(props) => (props.state === "entering" ? slideDown : slideUp)}
     0.5s forwards;
@@ -51,10 +53,10 @@ const ModalContainer = styled.div`
 
 export const AlertModal = ({ show, onClose }) => (
   <CSSTransition in={show} timeout={500} classNames="modal" unmountOnExit>
-    <div>
+    <ModalLayout>
       <ModalContainer state={show ? "entering" : "exiting"}>
         <p>등록 완료 되었습니다.</p>
       </ModalContainer>
-    </div>
+    </ModalLayout>
   </CSSTransition>
 );
