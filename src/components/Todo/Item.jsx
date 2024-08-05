@@ -10,18 +10,6 @@ export const Item = ({ item, isRoutine, date }) => {
   const [checkItems, setCheckItems] = useRecoilState(nowItems);
 
   const handleSubmit = async (isRoutine, id, isChecked) => {
-    let updatedCheckItems;
-
-    if (isChecked) {
-      updatedCheckItems = [...checkItems, { id, date }];
-    } else {
-      updatedCheckItems = checkItems.filter(
-        (checkItem) => !(checkItem.id === id && checkItem.date === date)
-      );
-    }
-
-    setCheckItems(updatedCheckItems);
-
     try {
       let res;
       if (isRoutine) {
@@ -29,6 +17,16 @@ export const Item = ({ item, isRoutine, date }) => {
       } else {
         res = await patchPersonal(id, isChecked, date);
       }
+
+      // 서버 응답이 성공적일 경우 상태 업데이트
+      const updatedCheckItems = isChecked
+        ? [...checkItems, { id, date }]
+        : checkItems.filter(
+            (checkItem) => !(checkItem.id === id && checkItem.date === date)
+          );
+
+      setCheckItems(updatedCheckItems);
+
       console.log(res);
     } catch (error) {
       console.error("Error updating item:", error);
