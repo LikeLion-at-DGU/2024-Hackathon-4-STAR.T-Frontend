@@ -79,21 +79,41 @@ export const ClearMain = styled.div`
     position: relative;
     display: flex;
     width: 100%;
+    margin: 0;
+    padding: 0;
     justify-content: center;
     align-items: center;
+  }
+
+  .icon2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
   }
   .textOverlay {
     position: absolute;
     top: 55%;
     left: 49.5%;
-    z-index: 2;
+    z-index: 5;
     font-weight: bold;
     text-align: center;
     color: white;
     transform: translate(-50%, -50%);
   }
+
+  .text {
+    color: var(--naver-text, #fff);
+    text-align: center;
+    font-family: "AppleSDGothicNeoL";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 `;
-export const shareBtn = styled.div`
+export const shareBtn = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -101,6 +121,7 @@ export const shareBtn = styled.div`
   gap: 12px;
   width: 196.505px;
   height: 39.301px;
+  color: black;
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
   background: rgba(196, 217, 226, 0.5);
@@ -133,6 +154,7 @@ export const shareContainr = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    color: black;
     flex-shrink: 0;
     text-align: center;
     border-radius: 15px;

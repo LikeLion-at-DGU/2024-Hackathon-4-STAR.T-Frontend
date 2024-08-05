@@ -5,7 +5,7 @@ export const Layout = styled.div`
   width: 90%;
   flex-direction: column;
   justify-content: space-around;
-  gap: 5px;
+  gap: 15px;
   margin-bottom: 10rem;
   @media (min-height: 720px) {
     justify-content: flex-start;
