@@ -5,7 +5,8 @@ export const Layout = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-top: 30%;
+  /* justify-content: center; */
   flex-direction: column;
   gap: 1.5rem;
   position: relative;
