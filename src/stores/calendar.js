@@ -19,3 +19,8 @@ export const starMonth = atom({
   key: "starMonth",
   default: new Set(),
 });
+
+export const modalStatus = atom({
+  key: "modalStatus",
+  default: false,
+});
