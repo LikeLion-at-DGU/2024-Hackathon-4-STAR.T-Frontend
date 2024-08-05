@@ -37,7 +37,7 @@ export const CustomCalendar = ({ setWeekPosition }) => {
 
   useEffect(() => {
     getData();
-    handleDateChange(date);
+    handleDateChange(value);
   }, [month]);
 
   // 새로운 onChange 핸들러
