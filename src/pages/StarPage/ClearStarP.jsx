@@ -1,8 +1,8 @@
 import * as S from "./styled";
 import { useMoveonStarP } from "../../hooks/useStar";
 import shareIcon from "../../assets/shareIcon.svg";
-import ClearStarPIcon from "../../assets/ClearStarPIcon.svg";
-
+import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
+import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 const ClearStarP = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const starData = starP && starP.data ? starP.data : null;
@@ -21,20 +21,20 @@ const ClearStarP = ({ onBack }) => {
       </S.Header>
       <S.ClearCantainr>
         <S.ClearMain>
+          <div className="text">축하합니다!</div>
           <div className="imgContainr">
-            <img src={ClearStarPIcon} />
+            <img src={ClearStarPIcon1} />
+            <img className="icon2" src={ClearStarPIcon2} />
             <div className="textOverlay">{starData.routines_added_count}회</div>
           </div>
-          <div>루틴 완료 달성!</div>
+          <div className="text">루틴 완료 달성!</div>
         </S.ClearMain>
         <S.shareContainr>
           <S.shareBtn>
-
-            <button className="ImgSave">
-
+            <div className="ImgSave">
               이미지 저장하고 공유하기
               <img src={shareIcon} />
-            </button>
+            </div>
           </S.shareBtn>
           <button className="backBtn" onClick={onBack}>
             뒤로가기
