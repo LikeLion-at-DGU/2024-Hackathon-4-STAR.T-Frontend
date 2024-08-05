@@ -16,6 +16,6 @@ export const pMonth = atom({
 });
 
 export const starMonth = atom({
-  key: new Set(),
-  default: "",
+  key: starMonth,
+  default: new Set(),
 });
