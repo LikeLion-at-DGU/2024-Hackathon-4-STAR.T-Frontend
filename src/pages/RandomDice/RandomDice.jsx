@@ -122,13 +122,9 @@ export const RandomDice = () => {
     setIsCalendarVisible(true);
     setID(data.id);
   };
-  useEffect(() => {
-    if (!isCheckVisible) {
-      setClickCalendarButton(true);
-    }
-  }, [isCheckVisible]);
 
   const moveOnHome = () => {
+    console.log("홈으로 이동");
     navigate("");
   };
   const textColor = !showContent ? "black" : "white";
@@ -196,7 +192,9 @@ export const RandomDice = () => {
             term={term}
             onClose={() => {
               setIsCheckVisible(false);
-              setClickCalendarButton(true);
+              if (!isCheckVisible) {
+                setClickCalendarButton(true);
+              }
             }}
           />
         </Modal>
