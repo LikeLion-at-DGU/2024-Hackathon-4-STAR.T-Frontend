@@ -18,6 +18,7 @@ import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
 import { AgreePage } from "./pages/AgreePage/AgreePage";
+import { Loading } from "./pages/Loading/Loading";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: "/search/data/:data",
         element: <SearchResultP />,
+      },
+      {
+        path: "/loading",
+        element: <Loading />,
       },
     ],
     errorElement: <NotFound />,
