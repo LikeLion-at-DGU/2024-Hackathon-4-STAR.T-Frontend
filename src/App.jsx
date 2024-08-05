@@ -39,21 +39,18 @@ const Content = styled.div`
 
 const Layout = () => {
   const location = useLocation();
+  const excludePaths = [/^\/login/, /^\/signup/, /^\/agree\/[0-1]/];
+
+  const isExcludedPath = excludePaths.some((regex) =>
+    regex.test(location.pathname)
+  );
 
   return (
     <Frame>
       <Wrapper>
         <Content>
           <Outlet />
-          {location.pathname === "/login" ||
-          location.pathname === "/signup" ||
-          location.pathname === "/signup/custom" ||
-          location.pathname === "/agree/0" ||
-          location.pathname === "/agree/1" ? (
-            <></>
-          ) : (
-            <Footer />
-          )}
+          {isExcludedPath ? <></> : <Footer />}
         </Content>
       </Wrapper>
     </Frame>
