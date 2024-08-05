@@ -84,13 +84,12 @@ export const Container = styled.div`
     display: flex;
     width: 180px;
     height: 32px;
-    padding: 6px 108px;
+
     justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-shrink: 0;
     border-radius: 15px;
-    background: var(--Main-Color, #78a1b5);
+    background-color: #78a1b5;
     font-size: 1rem;
   }
 
@@ -98,10 +97,9 @@ export const Container = styled.div`
     display: flex;
     width: 180px;
     height: 32px;
-    padding: 6px 108px;
+
     justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #c4d9e2;
