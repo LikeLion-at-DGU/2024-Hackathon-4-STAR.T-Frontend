@@ -14,7 +14,7 @@ export const Slide = styled.div`
 `;
 
 export const SlideContent = styled.div`
-  min-width: 300px;
+  min-width: 260px;
   margin: 0 5px;
   transition: filter 0.5s ease-in-out;
   filter: ${({ $active }) => ($active ? "none" : "blur(2px)")};
@@ -37,7 +37,7 @@ export const SlideContent = styled.div`
 
 export const SlideImage = styled.img`
   width: 100%;
-  height: 146px;
+  height: 135px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -56,7 +56,7 @@ export const SlideTitle = styled.div`
 `;
 
 export const SlideRoutineTitle = styled.div`
-  margin-top: 10px;
+  margin-top: 4px;
   text-align: center;
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
