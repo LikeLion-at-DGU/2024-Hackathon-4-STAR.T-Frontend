@@ -119,7 +119,9 @@ const DateRangeCalendar = () => {
           setIsCalendarVisible(false);
           setIsCheckVisible(true);
           setTimeout(() => {
-            window.location.reload();
+            if (window.location.href.includes("theme")) {
+              window.location.reload();
+            }
           }, 2000); //
         } else {
           console.error("Failed to register routine:", response.statusText);

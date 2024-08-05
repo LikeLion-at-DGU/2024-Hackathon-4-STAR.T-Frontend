@@ -24,7 +24,9 @@ export const Layout = styled.div`
     display: flex;
     width: 100%;
     font-size: 1.2rem;
-    border-bottom: 1px solid black;
+    text-align: center;
+
+    border-bottom: 1px solid #78a1b5;
     padding-bottom: 1rem;
     color: inherit;
     font: inherit;
@@ -59,7 +61,7 @@ export const Layout = styled.div`
 export const MypageWrapper = styled.div`
   display: flex;
   width: 100%;
-  gap: 10px;
+  gap: 5px;
   flex-direction: column;
   align-items: flex-start;
   padding: 0 1.5rem;
