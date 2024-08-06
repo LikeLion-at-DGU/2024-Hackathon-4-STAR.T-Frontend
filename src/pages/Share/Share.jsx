@@ -24,7 +24,7 @@ const SharePage = ({ onBack }) => {
       console.log(res);
       setStarP(res);
     } catch (error) {
-      console.error("Error fetching star data:", error);
+      console.log("..");
     }
   };
 
@@ -37,6 +37,10 @@ const SharePage = ({ onBack }) => {
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
+
+    } catch (error) {
+    } finally {
+
       setIsButtonVisible(true);
     }, 100);
   };
