@@ -172,7 +172,7 @@ export const RandomDice = () => {
       </S.Container>
       {isCalendarVisible && (
         <Modal onClose={handleCloseModal}>
-          <DateRangeCalendar />
+          <DateRangeCalendar ref={calendarRef} />
         </Modal>
       )}
       {isCheckVisible && (
