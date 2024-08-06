@@ -33,11 +33,12 @@ const StarPage = () => {
   const starData = starP && starP.data ? starP.data : null;
   const [term, setTerm] = useState(0);
   const loadingStatus = useRecoilValue(isLoading);
+  const navigate = useNavigate();
+
   const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
     setID(routineId);
   };
-  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
@@ -55,17 +56,19 @@ const StarPage = () => {
   }, [startDay, endDay]);
 
   if (!starData || loadingStatus) {
-    return <Loading />; // theme이 null인 경우 처리
+    return <Loading />;
   }
 
   const formatDate = (date) => {
-    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
-    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
+    const zonedDate = addHours(new Date(date), 9);
+    return format(zonedDate, "yyyy.MM.dd");
   };
+
   const moveonShareP = () => {
     const id = starData.id;
     navigate(`/share/${id}`);
   };
+
   return (
     <>
       <S.Header>
