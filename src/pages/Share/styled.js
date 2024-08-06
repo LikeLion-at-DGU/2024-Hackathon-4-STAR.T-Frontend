@@ -29,10 +29,11 @@ export const BannerImage = styled.img`
 
 export const BlurImage = styled.img`
   position: absolute;
-  z-index: 2;
-  bottom: 0;
+  z-index: 5;
+  bottom: 0.1px;
   left: 0;
   width: 100%;
+  height: 90px;
 `;
 export const BannerTitle = styled.div`
   position: absolute;
@@ -102,12 +103,13 @@ export const ClearMain = styled.div`
   }
   .textOverlay {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     z-index: 5;
     font-weight: bold;
     text-align: center;
     color: white;
+    font-size: 2rem;
     transform: translate(-50%, -50%);
   }
 
@@ -126,18 +128,21 @@ export const shareBtn = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  width: 200px;
+  gap: 5px;
+  width: 260px;
   height: 40px;
-  color: black;
+  color: white;
+  background-color: #78a1b5;
+
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
-  background: rgba(196, 217, 226, 0.5);
+
   padding: 6px;
 
   .ImgSave {
     display: flex;
 
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -151,6 +156,7 @@ export const shareContainr = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  font-size: 1rem;
   .backBtn {
     display: flex;
     width: 200px;
@@ -162,6 +168,7 @@ export const shareContainr = styled.div`
     margin: 0.5rem 0;
     color: black;
     flex-shrink: 0;
+    font-size: 1rem;
     text-align: center;
     border-radius: 19px;
     border: 1px solid #c4d9e2;
