@@ -10,7 +10,7 @@ export const captureScreenshot = async (canvas) => {
   if (navigator.share) {
     navigator
       .share({
-        files: [new File([blob], "start.png", { type: "image/png" })],
+        // files: [new File([blob], "start.png", { type: "image/png" })],
         title: "STAR.T",
         text: "likelion-start.site",
       })
