@@ -17,42 +17,47 @@ const SharePage = ({ onBack }) => {
     const images = document.querySelectorAll("img");
     let imagesLoaded = 0;
 
+    const checkAllImagesLoaded = () => {
+      imagesLoaded += 1;
+      if (imagesLoaded === images.length) {
+        setIsImageReady(true);
+      }
+    };
+
     if (images.length === 0) {
-      // 이미지를 로드할 필요가 없으므로 바로 true로 설정
       setIsImageReady(true);
-      return;
+    } else {
+      images.forEach((img) => {
+        img.crossOrigin = "anonymous"; // CORS 설정
+        if (img.complete) {
+          checkAllImagesLoaded();
+        } else {
+          img.addEventListener("load", checkAllImagesLoaded);
+          img.addEventListener("error", checkAllImagesLoaded); // 이미지 로드 실패 시에도 체크
+        }
+      });
     }
 
-    images.forEach((img) => {
-      if (img.complete) {
-        imagesLoaded += 1;
-        if (imagesLoaded === images.length) {
-          setIsImageReady(true);
-        }
-      } else {
-        img.addEventListener("load", () => {
-          imagesLoaded += 1;
-          if (imagesLoaded === images.length) {
-            setIsImageReady(true);
-          }
-        });
-      }
-    });
+    return () => {
+      images.forEach((img) => {
+        img.removeEventListener("load", checkAllImagesLoaded);
+        img.removeEventListener("error", checkAllImagesLoaded);
+      });
+    };
   }, [starP]);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
     setTimeout(async () => {
-      const canvas = await html2canvas(captureRef.current);
+      const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
-
       setIsButtonVisible(true);
     }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
-    return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
+    return <p>데이터를 불러오는 중입니다...</p>;
   }
 
   return (
