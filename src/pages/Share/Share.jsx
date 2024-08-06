@@ -49,7 +49,37 @@ const SharePage = ({ onBack }) => {
   const handleCapture = async () => {
     setIsButtonVisible(false);
     setTimeout(async () => {
-      const canvas = await html2canvas(captureRef.current, { useCORS: true });
+      const canvas = await html2canvas(captureRef.current, {
+        useCORS: true,
+        onclone: (clonedDoc) => {
+          const bannerImage = clonedDoc.querySelector("img[data-mask='true']");
+          if (bannerImage) {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.src = bannerImage.src;
+            img.onload = () => {
+              canvas.width = bannerImage.width;
+              canvas.height = bannerImage.height;
+              ctx.drawImage(img, 0, 0);
+              // Apply mask
+              ctx.fillStyle = "rgba(0, 0, 0, 0)";
+              const gradient = ctx.createLinearGradient(
+                0,
+                0,
+                0,
+                bannerImage.height
+              );
+              gradient.addColorStop(0.6, "rgba(0, 0, 0, 1)");
+              gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+              ctx.fillStyle = gradient;
+              ctx.fillRect(0, 0, bannerImage.width, bannerImage.height);
+              bannerImage.src = canvas.toDataURL();
+            };
+          }
+        },
+      });
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
     }, 100);
@@ -79,7 +109,16 @@ const SharePage = ({ onBack }) => {
             <S.BannerImage
               src={starData.photo}
               alt={starData.name}
-              onLoad={() => setIsImageReady(true)}
+              data-mask="true"
+              style={{
+                display: "block",
+                width: "100%",
+                height: "282px",
+                objectFit: "cover",
+                maskImage:
+                  "linear-gradient(rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)",
+                position: "relative",
+              }}
             />
             <S.BannerTitle>
               <div>{starData.name}</div>
@@ -107,7 +146,7 @@ const SharePage = ({ onBack }) => {
                 <div className="text">루틴 완료 달성!</div>
               </S.ClearMain>
             </S.ClearCantainr>
-            {
+            {isImageReady && isButtonVisible && (
               <div
                 id="share-button"
                 style={{
@@ -129,7 +168,7 @@ const SharePage = ({ onBack }) => {
                   </button>
                 </S.shareContainr>
               </div>
-            }
+            )}
           </div>
         </S.Wrapper>
       </div>
