@@ -12,12 +12,17 @@ export const RoutineLayout = styled.div`
   background-size: cover;
   gap: 4rem;
 `;
-
+export const CategoryWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export const CategoryView = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  width: 280px;
+  justify-content: flex-start;
 `;
 export const CutomTitle = styled.p`
   font-family: "AppleSDGothicNeoSB";
