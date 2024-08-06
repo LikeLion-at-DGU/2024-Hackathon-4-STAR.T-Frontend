@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   background-image: url(${Back});
   background-size: cover;
   margin-bottom: 7.3rem;
-  .Containr {
+  .Container {
     min-height: 100%;
   }
 `;
@@ -79,7 +79,7 @@ export const ClearMain = styled.div`
   gap: 20px;
   color: white;
 
-  .imgContainr {
+  .imgContainer {
     position: relative;
     display: flex;
     width: 100%;
@@ -123,8 +123,8 @@ export const shareBtn = styled.button`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  width: 196.505px;
-  height: 39.301px;
+  width: 200px;
+  height: 40px;
   color: black;
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
@@ -149,8 +149,8 @@ export const shareContainr = styled.div`
   margin-top: 1rem;
   .backBtn {
     display: flex;
-    width: 160px;
-    height: 32px;
+    width: 200px;
+    height: 40px;
     padding: 6px;
     justify-content: center;
     align-items: center;
