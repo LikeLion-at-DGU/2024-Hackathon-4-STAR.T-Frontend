@@ -7,10 +7,10 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   background-size: cover;
   flex-direction: column;
-  background-image: url(${Back});
   background-size: cover;
   margin-bottom: 7.3rem;
   .Container {
+    background-image: url(${Back});
     min-height: 100%;
   }
 `;
