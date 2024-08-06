@@ -8,7 +8,11 @@ import LOGO from "../../assets/images/MainLogoImg.svg";
 import { useMyInfo } from "../../hooks/useMyInfo";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
 import { useNavigate } from "react-router-dom";
+import { isLoading } from "@/stores/loading";
+import { Loading } from "../Loading/Loading";
+
 const MyPage = () => {
+  const loadingStatus = useRecoilValue(isLoading);
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false);
@@ -17,8 +21,8 @@ const MyPage = () => {
   const navigate = useNavigate();
   const myData = myinfo?.data || null;
 
-  if (!myData) {
-    return <p>데이터를 불러오는 중입니다...</p>; // myinfo.data가 null인 경우 처리
+  if (loadingStatus || myData === null) {
+    return <Loading />;
   }
   const handleCategoriesUpdate = () => {
     setRoutineVisible(false);
