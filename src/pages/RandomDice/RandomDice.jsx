@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as S from "./styled";
 import { Header } from "../../components/common/Header/Header";
 import DiceBackground from "@/assets/DiceBackground.svg";
@@ -36,7 +36,7 @@ export const RandomDice = () => {
     alignItems: "center",
   });
   const [clickCalendarButton, setClickCalendarButton] = useState(false);
-
+  const calendarRef = useRef(null);
   // 화면 크기 조정에 따른 스타일 변경
   useEffect(() => {
     const handleResize = () => {
@@ -107,6 +107,9 @@ export const RandomDice = () => {
     setRolling(true);
     setShowContent(false);
     setClickCalendarButton(false);
+    if (calendarRef.current) {
+      calendarRef.current.resetCalendar(); // 캘린더 초기화 함수 호출
+    }
   };
 
   const handleAddCalendar = () => {

@@ -30,7 +30,7 @@ export const BannerImage = styled.img`
 export const BlurImage = styled.img`
   position: absolute;
   z-index: 5;
-  bottom: 2px;
+  bottom: 0.1px;
   left: 0;
   width: 100%;
   height: 90px;
@@ -103,13 +103,13 @@ export const ClearMain = styled.div`
   }
   .textOverlay {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     z-index: 5;
     font-weight: bold;
     text-align: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
     transform: translate(-50%, -50%);
   }
 
@@ -128,19 +128,20 @@ export const shareBtn = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  width: 200px;
+  gap: 5px;
+  width: 260px;
   height: 40px;
-  color: black;
+  color: white;
+  background-color: #78a1b5;
+
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
-  background: rgba(196, 217, 226, 0.5);
+
   padding: 6px;
 
   .ImgSave {
     display: flex;
-    color: white;
-    background-color: #78a1b5;
+
     font-size: 1rem;
     justify-content: center;
     align-items: center;
