@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import * as S from "./styled";
 import {
   routineStart,
@@ -12,7 +12,7 @@ import { postRoutineRegister } from "../../apis/register";
 import { format } from "date-fns";
 import { addHours } from "date-fns";
 
-const DateRangeCalendar = () => {
+const DateRangeCalendar = forwardRef((ref) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedStartDate, setSelectedStartDate] =
     useRecoilState(routineStart);
@@ -20,6 +20,15 @@ const DateRangeCalendar = () => {
   const [, setIsCalendarVisible] = useRecoilState(CalendarVisible);
   const [, setIsCheckVisible] = useRecoilState(CheckVisible);
   const id = useRecoilValue(registerID);
+
+  const resetCalendar = () => {
+    setStartDate(null);
+    setEndDate(null);
+  };
+
+  useImperativeHandle(ref, () => ({
+    resetCalendar,
+  }));
 
   const timeZone = "Asia/Seoul";
   const getZonedDate = (date) => addHours(new Date(date), 9);
@@ -165,6 +174,6 @@ const DateRangeCalendar = () => {
       <S.ConfirmButton onClick={handleConfirm}>확인</S.ConfirmButton>
     </S.CalendarContainer>
   );
-};
+});
 
 export default DateRangeCalendar;
