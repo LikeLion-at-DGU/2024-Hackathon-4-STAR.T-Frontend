@@ -37,8 +37,6 @@ const ThemePage = () => {
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
     setIsCheckVisible(false);
-    setStartDay(null);
-    setEndDay(null);
   };
 
   //객체로 term 계산
@@ -101,7 +99,6 @@ const ThemePage = () => {
             startDay={formatDate(startDay)}
             endDay={formatDate(endDay)}
             term={term}
-            onClose={() => setIsCheckVisible(false)}
           />
         </Modal>
       )}
