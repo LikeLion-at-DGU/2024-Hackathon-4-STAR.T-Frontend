@@ -6,7 +6,7 @@ import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
 import Modal from "../../components/Modal/Modal";
 import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalendar";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
-import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   routineStart,
   routineEnd,
@@ -18,8 +18,8 @@ import { format } from "date-fns";
 import { addHours } from "date-fns";
 
 const ThemePage = () => {
-  const startDay = useRecoilValue(routineStart);
-  const endDay = useRecoilValue(routineEnd);
+  const [startDay, setStartDay] = useRecoilState(routineStart);
+  const [endDay, setEndDay] = useRecoilState(routineEnd);
   const [isCalendarVisible, setIsCalendarVisible] =
     useRecoilState(CalendarVisible);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
@@ -37,6 +37,8 @@ const ThemePage = () => {
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
     setIsCheckVisible(false);
+    setStartDay(null);
+    setEndDay(null);
   };
 
   //객체로 term 계산

@@ -25,8 +25,8 @@ export const RandomDice = () => {
   const [data, setData] = useState({});
   const [showContent, setShowContent] = useState(false);
   const setID = useSetRecoilState(registerID);
-  const startDay = useRecoilValue(routineStart);
-  const endDay = useRecoilValue(routineEnd);
+  const [startDay, setStartDay] = useRecoilState(routineStart);
+  const [endDay, setEndDay] = useRecoilState(routineEnd);
   const [isCheckVisible, setIsCheckVisible] = useRecoilState(CheckVisible);
   const [isCalendarVisible, setIsCalendarVisible] =
     useRecoilState(CalendarVisible);
@@ -101,6 +101,8 @@ export const RandomDice = () => {
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
     setIsCheckVisible(false);
+    setStartDay(null);
+    setEndDay(null);
   };
 
   const handleAgainClick = () => {
@@ -178,8 +180,6 @@ export const RandomDice = () => {
       {isCheckVisible && (
         <Modal onClose={handleCloseModal}>
           <CheckUp
-            startDay={formatDate(startDay)}
-            endDay={formatDate(endDay)}
             term={term}
             onClose={() => {
               setIsCheckVisible(false);

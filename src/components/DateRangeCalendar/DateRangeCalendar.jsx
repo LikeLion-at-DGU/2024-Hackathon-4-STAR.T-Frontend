@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useMemo } from "react";
+import React, { useState, forwardRef } from "react";
 import * as S from "./styled";
 import {
   routineStart,
@@ -21,11 +21,6 @@ const DateRangeCalendar = forwardRef((ref) => {
   const [, setIsCheckVisible] = useRecoilState(CheckVisible);
   const id = useRecoilValue(registerID);
 
-  const resetCalendar = () => {
-    setSelectedStartDate(null);
-    setSelectedEndDate(null);
-  };
-
   const timeZone = "Asia/Seoul";
   const getZonedDate = (date) => addHours(new Date(date), 9);
 
@@ -46,7 +41,7 @@ const DateRangeCalendar = forwardRef((ref) => {
     }
   };
 
-  const renderDays = useMemo(() => {
+  const renderDays = () => {
     const days = [];
     const startOfMonth = new Date(
       currentDate.getFullYear(),
@@ -96,7 +91,7 @@ const DateRangeCalendar = forwardRef((ref) => {
     }
 
     return days;
-  }, [currentDate, selectedStartDate, selectedEndDate]);
+  };
 
   const handleMonthChange = (direction) => {
     const newDate = new Date(currentDate);
@@ -112,7 +107,7 @@ const DateRangeCalendar = forwardRef((ref) => {
       const formattedEndDate = format(selectedEndDate, "yyyy-MM-dd", {
         timeZone,
       });
-
+      console.log("formatted날짜까지 들어옴");
       try {
         const response = await postRoutineRegister(
           formattedStartDate,
@@ -124,12 +119,11 @@ const DateRangeCalendar = forwardRef((ref) => {
           setSelectedEndDate(selectedEndDate);
           setIsCalendarVisible(false);
           setIsCheckVisible(true);
-          resetCalendar();
           setTimeout(() => {
             if (window.location.href.includes("theme")) {
               window.location.reload();
             }
-          }, 2000);
+          }, 2000); //
         } else {
           console.error("Failed to register routine:", response.statusText);
         }
@@ -166,7 +160,7 @@ const DateRangeCalendar = forwardRef((ref) => {
         <S.DayName>목</S.DayName>
         <S.DayName>금</S.DayName>
         <S.DayName style={{ color: "#78A1B5" }}>토</S.DayName>
-        {renderDays}
+        {renderDays()}
       </S.CalendarBody>
       <S.ConfirmButton onClick={handleConfirm}>확인</S.ConfirmButton>
     </S.CalendarContainer>
