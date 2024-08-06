@@ -35,17 +35,19 @@ export const SignUpCustom = () => {
         <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
         <S.CustomP color="white">{TITLE[1]}</S.CustomP>
       </S.TitleView>
-      <S.CategoryView>
-        {ROUTINE_CATEGORY.map((category, index) => (
-          <Box
-            onClick={() => handleClick(index)}
-            $select={categoryStatus[index]}
-            key={index}
-          >
-            {category}
-          </Box>
-        ))}
-      </S.CategoryView>
+      <S.CategoryWrapper>
+        <S.CategoryView>
+          {ROUTINE_CATEGORY.map((category, index) => (
+            <Box
+              onClick={() => handleClick(index)}
+              $select={categoryStatus[index]}
+              key={index}
+            >
+              {category}
+            </Box>
+          ))}
+        </S.CategoryView>
+      </S.CategoryWrapper>
       <S.SelectView>
         <Button
           width="50%"
