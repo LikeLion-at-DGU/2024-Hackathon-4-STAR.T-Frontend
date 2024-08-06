@@ -45,7 +45,7 @@ const SharePage = ({ onBack }) => {
 
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
-    <Loading />;
+    return <Loading />;
   }
   return (
     <div
