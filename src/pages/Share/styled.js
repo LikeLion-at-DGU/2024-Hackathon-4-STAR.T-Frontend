@@ -66,7 +66,6 @@ export const RoutineBoxContainer = styled.div`
 `;
 
 export const ClearCantainr = styled.div`
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
 
@@ -137,7 +136,6 @@ export const shareBtn = styled.button`
   background-color: #78a1b5;
 
   border-radius: 19px;
-  border: 1.228px solid #c4d9e2;
 
   padding: 6px;
 
@@ -161,7 +159,7 @@ export const shareContainr = styled.div`
   font-size: 1rem;
   .backBtn {
     display: flex;
-    width: 200px;
+    width: 260px;
     height: 40px;
     padding: 6px;
     justify-content: center;
