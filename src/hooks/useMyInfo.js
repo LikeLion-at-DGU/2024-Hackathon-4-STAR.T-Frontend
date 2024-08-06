@@ -10,27 +10,21 @@ export const useMyInfo = () => {
   const navigate = useNavigate();
 
   const fetchMyInfo = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const res = await getMyPContent();
       console.log("myinfo:", res);
       setMyinfo(res);
     } catch (err) {
       console.log(err);
-      navigate("/error");
+      // navigate("/error");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/error");
-    }, 10000); // 10초 후 타임아웃 처리
-
-    fetchMyInfo().then(() => clearTimeout(timer)); // 요청 완료 시 타이머 취소
-
-    return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 취소
+    fetchMyInfo();
   }, []);
 
   return { myinfo };

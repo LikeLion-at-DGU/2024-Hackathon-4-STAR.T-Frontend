@@ -8,6 +8,7 @@ import LOGO from "../../assets/images/MainLogoImg.svg";
 import { useMyInfo } from "../../hooks/useMyInfo";
 import ChangeRoutine from "../../components/RoutineChange/RoutineChange";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { isLoading } from "@/stores/loading";
 import { Loading } from "../Loading/Loading";
 
@@ -16,7 +17,6 @@ const MyPage = () => {
   const { myinfo } = useMyInfo();
   const [isLogoutVisible, setIsLogoutVisible] = useState(false);
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false);
-
   const [routineVisible, setRoutineVisible] = useState(false);
   const navigate = useNavigate();
   const myData = myinfo?.data || null;
@@ -24,9 +24,11 @@ const MyPage = () => {
   if (loadingStatus || myData === null) {
     return <Loading />;
   }
+
   const handleCategoriesUpdate = () => {
     setRoutineVisible(false);
   };
+
   const handleCloseModal = () => {
     setIsLogoutVisible(false);
     setIsSubscribeVisible(false);
@@ -42,6 +44,7 @@ const MyPage = () => {
       navigate("/agree/1");
     }
   };
+
   const handleRoutineChangeClick = () => setRoutineVisible(true);
 
   const favoriteStars = myData.celebs.filter(
@@ -52,6 +55,7 @@ const MyPage = () => {
     console.log("id:", id);
     navigate(`/star/${id}`);
   };
+
   return (
     <>
       {routineVisible ? (
