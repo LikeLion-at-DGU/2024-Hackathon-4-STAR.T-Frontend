@@ -7,6 +7,7 @@ import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
 import { useParams } from "react-router-dom";
+import { Loading } from "../Loading/Loading";
 
 const SharePage = ({ onBack }) => {
   const captureRef = useRef();
@@ -16,8 +17,10 @@ const SharePage = ({ onBack }) => {
   const { id } = useParams();
 
   const fetchStarData = async () => {
+    console.log(id);
     try {
       const res = await getStarContent(id);
+      console.log(res);
       setStarP(res);
     } catch (error) {
       console.error("Error fetching star data:", error);
@@ -40,7 +43,9 @@ const SharePage = ({ onBack }) => {
   };
 
   const starData = starP && starP.data ? starP.data : null;
-
+  if (!starData) {
+    <Loading />;
+  }
   return (
     <div
       style={{
