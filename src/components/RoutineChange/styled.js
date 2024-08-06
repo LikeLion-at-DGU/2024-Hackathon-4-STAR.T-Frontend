@@ -14,9 +14,10 @@ export const RoutineLayout = styled.div`
 `;
 
 export const CategoryView = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 `;
 export const CutomTitle = styled.p`
   font-family: "AppleSDGothicNeoSB";
