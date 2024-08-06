@@ -64,7 +64,7 @@ export const SearchResultP = () => {
                 name={item.title}
                 profession={item.profession}
                 type={key}
-                onClick={() => handleClick(item.id, key)}
+                onClick={() => handleClick(item.url, key)}
               />
             ))}
           </S.CategoryWrapper>

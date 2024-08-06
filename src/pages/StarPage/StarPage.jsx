@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styled";
 import { useMoveonStarP } from "../../hooks/useStar";
 import MainRoutineBox from "../../components/mainRoutineBox/MainRoutineBox";
@@ -15,6 +16,7 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
+import SharePage from "@/pages/Share/Share";
 import { format, addHours } from "date-fns";
 import { isLoading } from "@/stores/loading";
 import { Loading } from "../Loading/Loading";
@@ -35,6 +37,7 @@ const StarPage = () => {
     setIsCalendarVisible(true);
     setID(routineId);
   };
+  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
@@ -60,59 +63,56 @@ const StarPage = () => {
     const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
     return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
-
+  const moveonShareP = () => {
+    const id = starData.id;
+    navigate(`/share/${id}`);
+  };
   return (
     <>
-      {isClearStarPVisible ? (
-        <SharePage onBack={() => setIsClearStarPVisible(false)} />
-      ) : (
-        <>
-          <S.Header>
-            <S.BannerImage src={starData.photo} alt={starData.name} />
-            <S.BannerTitle>
-              <div>{starData.name}</div>
-              <div className="profession">{starData.profession}</div>
-            </S.BannerTitle>
-          </S.Header>
-          <StarHeader
-            usercount={starData.routines_count.user_count}
-            totalcount={starData.routines_count.total_count}
-            completecount={starData.routines_added_count}
-            onClick={() => setIsClearStarPVisible(true)}
+      <S.Header>
+        <S.BannerImage src={starData.photo} alt={starData.name} />
+        <S.BannerTitle>
+          <div>{starData.name}</div>
+          <div className="profession">{starData.profession}</div>
+        </S.BannerTitle>
+      </S.Header>
+      <StarHeader
+        usercount={starData.routines_count.user_count}
+        totalcount={starData.routines_count.total_count}
+        completecount={starData.routines_added_count}
+        onClick={moveonShareP}
+      />
+      <S.RoutineBoxContainer>
+        {starData.routines.length > 0 ? (
+          starData.routines.map((item) => (
+            <MainRoutineBox
+              src={item.image || item.video_url}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              subtitle={item.sub_title}
+              content={item.content}
+              onPlusButtonClick={() => handlePlusButtonClick(item.id)}
+            />
+          ))
+        ) : (
+          <p>데이터를 불러오는 중입니다...</p>
+        )}
+      </S.RoutineBoxContainer>
+      {isCalendarVisible && (
+        <Modal onClose={handleCloseModal}>
+          <DateRangeCalendar />
+        </Modal>
+      )}
+      {isCheckVisible && (
+        <Modal onClose={handleCloseModal}>
+          <CheckUp
+            startDay={formatDate(startDay)}
+            endDay={formatDate(endDay)}
+            term={term}
+            onClose={() => setIsCheckVisible(false)}
           />
-          <S.RoutineBoxContainer>
-            {starData.routines.length > 0 ? (
-              starData.routines.map((item) => (
-                <MainRoutineBox
-                  src={item.image || item.video_url}
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  subtitle={item.sub_title}
-                  content={item.content}
-                  onPlusButtonClick={() => handlePlusButtonClick(item.id)}
-                />
-              ))
-            ) : (
-              <p>데이터를 불러오는 중입니다...</p>
-            )}
-          </S.RoutineBoxContainer>
-          {isCalendarVisible && (
-            <Modal onClose={handleCloseModal}>
-              <DateRangeCalendar />
-            </Modal>
-          )}
-          {isCheckVisible && (
-            <Modal onClose={handleCloseModal}>
-              <CheckUp
-                startDay={formatDate(startDay)}
-                endDay={formatDate(endDay)}
-                term={term}
-                onClose={() => setIsCheckVisible(false)}
-              />
-            </Modal>
-          )}
-        </>
+        </Modal>
       )}
     </>
   );
