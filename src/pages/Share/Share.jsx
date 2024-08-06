@@ -6,6 +6,7 @@ import { useMoveonStarP } from "@/hooks/useStar";
 import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
+import blur from "@/assets/blur.svg";
 
 const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
@@ -83,6 +84,7 @@ const SharePage = ({ onBack }) => {
               alt={starData.name}
               onLoad={() => setIsImageReady(true)}
             />
+            <S.BlurImage className="blur" />
             <S.BannerTitle>
               <div>{starData.name}</div>
               <div className="profession">{starData.profession}</div>
