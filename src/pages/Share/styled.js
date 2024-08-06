@@ -129,11 +129,11 @@ export const shareBtn = styled.button`
   border-radius: 19px;
   border: 1.228px solid #c4d9e2;
   background: rgba(196, 217, 226, 0.5);
+  padding: 6px;
 
   .ImgSave {
     display: flex;
 
-    padding: 6px;
     justify-content: center;
     align-items: center;
     gap: 10px;
