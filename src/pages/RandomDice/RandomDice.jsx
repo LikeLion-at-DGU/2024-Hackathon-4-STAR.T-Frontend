@@ -181,13 +181,12 @@ export const RandomDice = () => {
         <Modal onClose={handleCloseModal}>
           <CheckUp
             term={term}
-            onClose={() => {
-              setIsCheckVisible(false);
-              setTimeout(() => {
-                setClickCalendarButton(true);
-                console.log("clickCalendarButton true");
-              }, 0);
-            }}
+            // onClose={() => {
+            //   setTimeout(() => {
+            //     setClickCalendarButton(true);
+            //     console.log("clickCalendarButton true");
+            //   }, 0);
+            // }}
           />
         </Modal>
       )}
