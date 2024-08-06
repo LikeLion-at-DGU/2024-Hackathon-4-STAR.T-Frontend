@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   margin-bottom: 7.3rem;
   .Container {
     min-height: 100%;
+    background-image: url(${Back});
   }
 `;
 export const Header = styled.div`
