@@ -66,23 +66,25 @@ const ChangeRoutine = ({ onCategoriesUpdate }) => {
   return (
     <S.RoutineLayout>
       <S.CutomTitle>{TITLE[0]}</S.CutomTitle>
-      <S.CategoryView>
-        {ROUTINE_CATEGORY.map((category, index) => (
-          <Box
-            onClick={() => handleClick(index)}
-            $select={categoryStatus[index]}
-            key={index}
-          >
-            {category}
-          </Box>
-        ))}
-      </S.CategoryView>
+      <S.CategoryWrapper>
+        <S.CategoryView>
+          {ROUTINE_CATEGORY.map((category, index) => (
+            <Box
+              onClick={() => handleClick(index)}
+              $select={categoryStatus[index]}
+              key={index}
+            >
+              {category}
+            </Box>
+          ))}
+        </S.CategoryView>
+      </S.CategoryWrapper>
       <S.SelectView>
         <Button
           width="50%"
           height="40px"
           $radius="15px"
-          $background="rgba(196, 217, 226, 0.50)"
+          $background="#78A1B5"
           onClick={handleSubmit}
           $isDisabled={!isAnyCategorySelected}
         >

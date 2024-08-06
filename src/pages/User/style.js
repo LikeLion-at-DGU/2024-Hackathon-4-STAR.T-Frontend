@@ -124,10 +124,17 @@ export const ImageFame = styled.img`
   z-index: 2;
 `;
 
+export const CategoryWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const CategoryView = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 `;
 
 export const TitleView = styled.div`
