@@ -30,7 +30,7 @@ export const BannerImage = styled.img`
 export const BlurImage = styled.img`
   position: absolute;
   z-index: 2;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   width: 100%;
 `;
