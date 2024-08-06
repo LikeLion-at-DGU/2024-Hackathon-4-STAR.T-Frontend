@@ -14,13 +14,13 @@ const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [starP, setStarP] = useState(null);
-  const { id } = useParams();
-  console.log(id);
+  const { starid } = useParams();
+  console.log(starid);
 
   const fetchStarData = async () => {
-    console.log(id);
+    console.log(starid);
     try {
-      const res = await getStarContent(id);
+      const res = await getStarContent(starid);
       console.log(res);
       setStarP(res);
     } catch (error) {
