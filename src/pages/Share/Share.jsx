@@ -7,32 +7,22 @@ import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
-import { isLoading } from "@/stores/loading";
-import { Loading } from "../Loading/Loading";
-import { useRecoilState } from "recoil";
 
 const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const [isImageReady, setIsImageReady] = useState(false);
-  const [loading, setLoading] = useRecoilState(isLoading);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
-    setLoading(true); // Set loading before capturing
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
-      setLoading(false); // Set loading after capturing
     }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
-  if (!starData || loading) {
-    return <Loading />;
-  }
 
   return (
     <div
@@ -62,15 +52,8 @@ const SharePage = ({ onBack }) => {
               <S.ClearMain>
                 <div className="text">축하합니다!</div>
                 <div className="imgContainer">
-                  <img
-                    src={ClearStarPIcon1}
-                    onLoad={() => setIsImageReady(true)}
-                  />
-                  <img
-                    className="icon2"
-                    src={ClearStarPIcon2}
-                    onLoad={() => setIsImageReady(true)}
-                  />
+                  <img src={ClearStarPIcon1} />
+                  <img className="icon2" src={ClearStarPIcon2} />
                   <div className="textOverlay">
                     {starData.routines_added_count}회
                   </div>
@@ -82,8 +65,7 @@ const SharePage = ({ onBack }) => {
               <div
                 id="share-button"
                 style={{
-                  visibility:
-                    isImageReady && isButtonVisible ? "visible" : "hidden",
+                  visibility: isButtonVisible ? "visible" : "hidden",
                   width: "100%",
                   height: "100%",
                 }}
