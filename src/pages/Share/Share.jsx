@@ -50,6 +50,8 @@ const SharePage = ({ onBack }) => {
     setIsButtonVisible(false);
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
+      const ctx = canvas.getContext("2d");
+      ctx.filter = "blur(10px)";
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
     }, 100);

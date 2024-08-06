@@ -21,7 +21,7 @@ export const CategoryView = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 280px;
+  width: 270px;
   justify-content: flex-start;
 `;
 export const CutomTitle = styled.p`
