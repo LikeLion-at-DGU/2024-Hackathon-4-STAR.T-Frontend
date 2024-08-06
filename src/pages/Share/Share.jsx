@@ -61,8 +61,18 @@ const SharePage = ({ onBack }) => {
   }
 
   return (
-    <div>
-      <div ref={captureRef}>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100%",
+        }}
+        ref={captureRef}
+      >
         {/* 캡처할 내용 */}
         <S.Wrapper>
           <S.Header>
@@ -76,11 +86,11 @@ const SharePage = ({ onBack }) => {
               <div className="profession">{starData.profession}</div>
             </S.BannerTitle>
           </S.Header>
-          <div className="Containr">
+          <div className="Container">
             <S.ClearCantainr>
               <S.ClearMain>
                 <div className="text">축하합니다!</div>
-                <div className="imgContainr">
+                <div className="imgContainer">
                   <img
                     src={ClearStarPIcon1}
                     onLoad={() => setIsImageReady(true)}
