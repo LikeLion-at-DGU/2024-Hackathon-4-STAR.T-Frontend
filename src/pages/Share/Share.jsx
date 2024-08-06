@@ -28,10 +28,8 @@ const SharePage = () => {
   };
 
   useEffect(() => {
-    if (starid) {
-      fetchStarData();
-    }
-  }, [starid]);
+    fetchStarData();
+  }, []);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
