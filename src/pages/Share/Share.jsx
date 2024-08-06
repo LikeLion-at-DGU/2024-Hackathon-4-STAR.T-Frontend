@@ -15,15 +15,17 @@ const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [isImageReady, setIsImageReady] = useState(false);
   const [loading, setLoading] = useRecoilState(isLoading);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
+    setLoading(true); // Set loading before capturing
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
-      setLoading(false);
+      setLoading(false); // Set loading after capturing
     }, 100);
   };
 
@@ -49,7 +51,6 @@ const SharePage = ({ onBack }) => {
         <S.Wrapper>
           <S.Header>
             <S.BannerImage src={starData.photo} alt={starData.name} />
-
             <S.BannerTitle>
               <div>{starData.name}</div>
               <div className="profession">{starData.profession}</div>
