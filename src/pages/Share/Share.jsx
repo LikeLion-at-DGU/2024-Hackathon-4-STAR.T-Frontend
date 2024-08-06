@@ -3,24 +3,25 @@ import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
 import { getStarContent } from "@/apis/starP";
 import * as S from "./styled";
-import shareIcon from "@/assets/shareIconWhite.svg";
+import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
 import { useParams } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
-import { useNavigate } from "react-router-dom";
 
-const SharePage = () => {
-  const navigate = useNavigate();
+const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [starP, setStarP] = useState(null);
   const { starid } = useParams();
+  console.log(starid);
 
   const fetchStarData = async () => {
+    console.log(starid);
     try {
       const res = await getStarContent(starid);
+      console.log(res);
       setStarP(res);
     } catch (error) {
       console.error("Error fetching star data:", error);
@@ -33,24 +34,35 @@ const SharePage = () => {
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
-    try {
+    setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
+
     } catch (error) {
       console.error("Error capturing screenshot:", error);
     } finally {
+
       setIsButtonVisible(true);
-    }
+    }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
   if (!starData) {
     return <Loading />;
   }
-
   return (
-    <div style={{ width: "100%" }}>
-      <div style={{ width: "100%", minHeight: "100%" }} ref={captureRef}>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100%",
+        }}
+        ref={captureRef}
+      >
         {/* 캡처할 내용 */}
         <S.Wrapper>
           <S.Header>
