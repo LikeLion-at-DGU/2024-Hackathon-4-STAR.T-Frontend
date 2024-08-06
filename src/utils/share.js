@@ -8,14 +8,18 @@ export const captureScreenshot = async (canvas) => {
 
   // Web Share API 사용
   if (navigator.share) {
+    alert("클릭");
     navigator
       .share({
         files: [new File([blob], "start.png", { type: "image/png" })],
         title: "STAR.T",
         text: "likelion-start.site",
       })
-      .then(() => console.log("Share was successful."))
-      .catch((error) => console.log("Sharing failed", error));
+      .then(() => alert("성공"))
+      .catch((error) => {
+        console.log("Sharing failed", error);
+        alert(error);
+      });
   } else {
     alert("모바일 기기에서 실행해주세요!");
   }

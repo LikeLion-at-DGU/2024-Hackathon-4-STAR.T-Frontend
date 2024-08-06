@@ -22,6 +22,7 @@ const SharePage = () => {
     try {
       const res = await getStarContent(starid);
       setStarP(res);
+      console.log(res);
     } catch (error) {
       console.error("Error fetching star data:", error);
     }
@@ -35,14 +36,13 @@ const SharePage = () => {
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
-    try {
+
+    setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
-    } catch (error) {
-      console.error("Error capturing screenshot:", error);
-    } finally {
       setIsButtonVisible(true);
-    }
+      console.log("버튼 true설정 완료");
+    }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
