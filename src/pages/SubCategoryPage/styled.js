@@ -11,6 +11,7 @@ export const Layout = styled.div`
     justify-content: flex-start;
     gap: 40px;
     height: 640px;
+    margin-bottom: 5rem;
   }
 `;
 

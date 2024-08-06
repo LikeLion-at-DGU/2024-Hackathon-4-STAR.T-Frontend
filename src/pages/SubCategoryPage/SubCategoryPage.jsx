@@ -30,7 +30,7 @@ const SubCategoryPage = () => {
     fetchData();
   }, [subCategory, setLoadingStatus]);
 
-  if (loadingStatus) {
+  if (!searchData || loadingStatus) {
     return <Loading />;
   }
 

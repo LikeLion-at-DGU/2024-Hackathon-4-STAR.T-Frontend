@@ -6,7 +6,6 @@ import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalen
 import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
-import ClearStarP from "./ClearStarP";
 import SharePage from "@/pages/Share/Share";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import {
@@ -17,6 +16,8 @@ import {
   registerID,
 } from "../../stores/routineRegister";
 import { format, addHours } from "date-fns";
+import { isLoading } from "@/stores/loading";
+import { Loading } from "../Loading/Loading";
 
 const StarPage = () => {
   const { starP } = useMoveonStarP();
@@ -29,7 +30,7 @@ const StarPage = () => {
   const starData = starP && starP.data ? starP.data : null;
   const [term, setTerm] = useState(0);
   const [isClearStarPVisible, setIsClearStarPVisible] = useState(false);
-
+  const loadingStatus = useRecoilValue(isLoading);
   const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
     setID(routineId);
@@ -51,8 +52,8 @@ const StarPage = () => {
     }
   }, [startDay, endDay]);
 
-  if (!starData) {
-    return <p>데이터를 불러오는 중입니다...</p>; // theme이 null인 경우 처리
+  if (!starData || loadingStatus) {
+    return <Loading />; // theme이 null인 경우 처리
   }
 
   const formatDate = (date) => {
