@@ -1,30 +1,30 @@
 export const captureScreenshot = async (canvas) => {
   const shareButton = document.getElementById("share-button");
 
-  // Capture the canvas image
-  const dataUrl = canvas.toDataURL("image/png");
-  const blob = await fetch(dataUrl).then((res) => res.blob());
-
   // Hide the share button during capture
   if (shareButton) shareButton.style.display = "none";
 
-  // Use the Web Share API if available
-  if (navigator.share) {
-    navigator
-      .share({
+  try {
+    // Capture the canvas image
+    const dataUrl = canvas.toDataURL("image/png");
+    const blob = await fetch(dataUrl).then((res) => res.blob());
+
+    // Use the Web Share API if available
+    if (navigator.share) {
+      await navigator.share({
         files: [new File([blob], "start.png", { type: "image/png" })],
         title: "STAR.T",
         text: "likelion-start.site",
-      })
-      .then(() => console.log("Share was successful."))
-      .catch((error) => console.log("Sharing failed", error))
-      .finally(() => {
-        // Show the share button again after sharing
-        if (shareButton) shareButton.style.display = "block";
       });
-  } else {
-    // Show the share button again if Web Share API is not supported
+      console.log("Share was successful.");
+    } else {
+      alert("Web Share API가 지원되지 않는 환경입니다.");
+    }
+  } catch (error) {
+    console.log("Sharing failed", error);
+    alert("공유에 실패했습니다. 다시 시도해주세요.");
+  } finally {
+    // Show the share button again after sharing
     if (shareButton) shareButton.style.display = "block";
-    alert("모바일 기기에서 실행해주세요!");
   }
 };
