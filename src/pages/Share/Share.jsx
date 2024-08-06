@@ -7,59 +7,29 @@ import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
+import { isLoading } from "@/stores/loading";
+import { Loading } from "../Loading/Loading";
+import { useRecoilState } from "recoil";
 
 const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const [isImageReady, setIsImageReady] = useState(false);
-
-  useEffect(() => {
-    const images = document.querySelectorAll("img");
-    let imagesLoaded = 0;
-
-    const checkAllImagesLoaded = () => {
-      imagesLoaded += 1;
-      if (imagesLoaded === images.length) {
-        setIsImageReady(true);
-      }
-    };
-
-    if (images.length === 0) {
-      setIsImageReady(true);
-    } else {
-      images.forEach((img) => {
-        img.crossOrigin = "anonymous"; // CORS 설정
-        if (img.complete) {
-          checkAllImagesLoaded();
-        } else {
-          img.addEventListener("load", checkAllImagesLoaded);
-          img.addEventListener("error", checkAllImagesLoaded); // 이미지 로드 실패 시에도 체크
-        }
-      });
-    }
-
-    return () => {
-      images.forEach((img) => {
-        img.removeEventListener("load", checkAllImagesLoaded);
-        img.removeEventListener("error", checkAllImagesLoaded);
-      });
-    };
-  }, [starP]);
+  const [loading, setLoading] = useRecoilState(isLoading);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
-
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
+      setLoading(false);
     }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
-  if (!starData) {
-    return <p>데이터를 불러오는 중입니다...</p>;
+  if (!starData || loading) {
+    return <Loading />;
   }
 
   return (
@@ -78,11 +48,7 @@ const SharePage = ({ onBack }) => {
         {/* 캡처할 내용 */}
         <S.Wrapper>
           <S.Header>
-            <S.BannerImage
-              src={starData.photo}
-              alt={starData.name}
-              onLoad={() => setIsImageReady(true)}
-            />
+            <S.BannerImage src={starData.photo} alt={starData.name} />
 
             <S.BannerTitle>
               <div>{starData.name}</div>
