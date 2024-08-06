@@ -13,9 +13,9 @@ import { Loading } from "../Loading/Loading";
 const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-
   const [starP, setStarP] = useState(null);
   const { id } = useParams();
+  console.log(id);
 
   const fetchStarData = async () => {
     console.log(id);
@@ -29,10 +29,8 @@ const SharePage = ({ onBack }) => {
   };
 
   useEffect(() => {
-    if (id) {
-      fetchStarData();
-    }
-  }, [id]);
+    fetchStarData();
+  }, []);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
