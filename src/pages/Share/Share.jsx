@@ -7,15 +7,6 @@ import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 
-const applyMaskToImage = (image, canvas, color) => {
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-  ctx.globalCompositeOperation = "source-in";
-  ctx.fillStyle = color; // 원하는 색상으로 변경
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.globalCompositeOperation = "source-over";
-};
-
 const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
@@ -33,17 +24,6 @@ const SharePage = ({ onBack }) => {
       }
     };
 
-    const processImages = () => {
-      images.forEach((img) => {
-        const canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        applyMaskToImage(img, canvas, "#FF0000"); // 원하는 색상으로 변경
-        img.src = canvas.toDataURL();
-        checkAllImagesLoaded();
-      });
-    };
-
     if (images.length === 0) {
       setIsImageReady(true);
     } else {
@@ -56,9 +36,6 @@ const SharePage = ({ onBack }) => {
           img.addEventListener("error", checkAllImagesLoaded); // 이미지 로드 실패 시에도 체크
         }
       });
-
-      // 이미지 처리
-      processImages();
     }
 
     return () => {
@@ -72,7 +49,34 @@ const SharePage = ({ onBack }) => {
   const handleCapture = async () => {
     setIsButtonVisible(false);
     setTimeout(async () => {
-      const canvas = await html2canvas(captureRef.current, { useCORS: true });
+      const canvas = await html2canvas(captureRef.current, {
+        useCORS: true,
+        onclone: (clonedDoc) => {
+          const bannerImage = clonedDoc.querySelector("img[data-mask='true']");
+          if (bannerImage) {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.src = bannerImage.src;
+            img.onload = () => {
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+
+              // 마스크 그라데이션 생성
+              const gradient = ctx.createLinearGradient(0, 0, 0, img.height);
+              gradient.addColorStop(0.6, "rgba(0, 0, 0, 1)");
+              gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+              ctx.fillStyle = gradient;
+              ctx.fillRect(0, 0, img.width, img.height);
+
+              // 이미지에 마스크 적용
+              bannerImage.src = canvas.toDataURL();
+            };
+          }
+        },
+      });
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
     }, 100);
@@ -84,15 +88,25 @@ const SharePage = ({ onBack }) => {
   }
 
   return (
-    <div style={{ width: "100%" }}>
-      <div style={{ width: "100%", minHeight: "100%" }} ref={captureRef}>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100%",
+        }}
+        ref={captureRef}
+      >
         {/* 캡처할 내용 */}
         <S.Wrapper>
           <S.Header>
             <S.BannerImage
               src={starData.photo}
               alt={starData.name}
-              onLoad={() => setIsImageReady(true)}
+              data-mask="true"
             />
             <S.BannerTitle>
               <div>{starData.name}</div>
@@ -126,6 +140,8 @@ const SharePage = ({ onBack }) => {
                 style={{
                   visibility:
                     isImageReady && isButtonVisible ? "visible" : "hidden",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
                 <S.shareContainr>
