@@ -8,6 +8,7 @@ import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
 import { useParams } from "react-router-dom";
+
 import { Loading } from "../Loading/Loading";
 
 const SharePage = ({ onBack }) => {

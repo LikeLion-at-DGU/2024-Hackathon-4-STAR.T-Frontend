@@ -7,10 +7,11 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   background-size: cover;
   flex-direction: column;
-  background-image: url(${Back});
   background-size: cover;
   margin-bottom: 7.3rem;
   .Container {
+    background-image: url(${Back});
+
     min-height: 100%;
   }
 `;
@@ -30,7 +31,7 @@ export const BannerImage = styled.img`
 export const BlurImage = styled.img`
   position: absolute;
   z-index: 5;
-  bottom: 0.1px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 90px;
