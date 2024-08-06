@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         loader: loader,
       },
       {
-        path: "/share",
+        path: "/share/:starid",
         element: <SharePage />,
         loader: loader,
       },
@@ -102,10 +102,6 @@ const router = createBrowserRouter([
       {
         path: "/error",
         element: <NotFound />,
-      },
-      {
-        path: "/share/:starid",
-        element: <SharePage />,
       },
     ],
     errorElement: <NotFound />,

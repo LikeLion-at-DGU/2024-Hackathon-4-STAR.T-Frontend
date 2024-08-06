@@ -44,7 +44,6 @@ const StarPage = () => {
     setIsCheckVisible(false);
   };
 
-  //객체로 term계산
   useEffect(() => {
     if (startDay && endDay) {
       const startDate = new Date(startDay);
