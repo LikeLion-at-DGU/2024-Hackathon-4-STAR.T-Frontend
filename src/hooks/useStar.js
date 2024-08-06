@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getStarContent } from "../apis/starP";
+import { useSetRecoilState } from "recoil";
+import { isLoading } from "@/stores/loading";
 
 export const useMoveonStarP = () => {
   const [starP, setStarP] = useState(null);
   const { id } = useParams();
+  const setLoading = useSetRecoilState(isLoading);
 
   const fetchStarData = async () => {
     setLoading(true);
