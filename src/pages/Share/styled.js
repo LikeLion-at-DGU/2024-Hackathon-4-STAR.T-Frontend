@@ -29,10 +29,11 @@ export const BannerImage = styled.img`
 
 export const BlurImage = styled.img`
   position: absolute;
-  z-index: 2;
-  bottom: 10px;
+  z-index: 5;
+  bottom: 2px;
   left: 0;
   width: 100%;
+  height: 90px;
 `;
 export const BannerTitle = styled.div`
   position: absolute;
@@ -108,7 +109,7 @@ export const ClearMain = styled.div`
     font-weight: bold;
     text-align: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transform: translate(-50%, -50%);
   }
 
