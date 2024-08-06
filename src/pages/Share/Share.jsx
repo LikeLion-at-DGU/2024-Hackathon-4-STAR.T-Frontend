@@ -1,22 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
+import { getStarContent } from "@/apis/starP";
 import * as S from "./styled";
 import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
+import { useParams } from "react-router-dom";
+
+import { Loading } from "../Loading/Loading";
 
 const SharePage = ({ onBack }) => {
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-
   const [starP, setStarP] = useState(null);
-  const { id } = useParams();
+  const { starid } = useParams();
+  console.log(starid);
 
   const fetchStarData = async () => {
+    console.log(starid);
     try {
-      const res = await getStarContent(id);
+      const res = await getStarContent(starid);
+      console.log(res);
       setStarP(res);
     } catch (error) {
       console.error("Error fetching star data:", error);
@@ -24,10 +30,8 @@ const SharePage = ({ onBack }) => {
   };
 
   useEffect(() => {
-    if (id) {
-      fetchStarData();
-    }
-  }, [id]);
+    fetchStarData();
+  }, []);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
@@ -39,7 +43,9 @@ const SharePage = ({ onBack }) => {
   };
 
   const starData = starP && starP.data ? starP.data : null;
-
+  if (!starData) {
+    return <Loading />;
+  }
   return (
     <div
       style={{
