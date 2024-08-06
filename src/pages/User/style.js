@@ -134,8 +134,7 @@ export const CategoryView = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 270px;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 export const TitleView = styled.div`
