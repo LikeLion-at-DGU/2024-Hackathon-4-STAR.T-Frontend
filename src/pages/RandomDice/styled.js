@@ -118,7 +118,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     color: black;
-
+    font-size: 1rem;
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #c4d9e2;

@@ -30,7 +30,7 @@ export const BannerImage = styled.img`
 export const BlurImage = styled.img`
   position: absolute;
   z-index: 2;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   width: 100%;
 `;
@@ -108,6 +108,7 @@ export const ClearMain = styled.div`
     font-weight: bold;
     text-align: center;
     color: white;
+    font-size: 1.2rem;
     transform: translate(-50%, -50%);
   }
 
@@ -137,7 +138,9 @@ export const shareBtn = styled.button`
 
   .ImgSave {
     display: flex;
-
+    color: white;
+    background-color: #78a1b5;
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -151,6 +154,7 @@ export const shareContainr = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  font-size: 1rem;
   .backBtn {
     display: flex;
     width: 200px;
@@ -162,6 +166,7 @@ export const shareContainr = styled.div`
     margin: 0.5rem 0;
     color: black;
     flex-shrink: 0;
+    font-size: 1rem;
     text-align: center;
     border-radius: 19px;
     border: 1px solid #c4d9e2;
