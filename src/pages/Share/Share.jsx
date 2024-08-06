@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
+import { getStarContent } from "@/apis/starP";
 import * as S from "./styled";
 import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
