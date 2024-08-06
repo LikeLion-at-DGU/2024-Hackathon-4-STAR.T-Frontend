@@ -84,7 +84,7 @@ const SharePage = ({ onBack }) => {
               alt={starData.name}
               onLoad={() => setIsImageReady(true)}
             />
-            <S.BlurImage className="blur" />
+            <S.BlurImage className="blur" src={blur} />
             <S.BannerTitle>
               <div>{starData.name}</div>
               <div className="profession">{starData.profession}</div>
