@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BACKGROUND from "../../assets/background.svg";
 
 export const RoutineLayout = styled.div`
   width: 100%;
@@ -7,10 +6,9 @@ export const RoutineLayout = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url(${BACKGROUND});
   background-repeat: none;
   background-size: cover;
-  gap: 4rem;
+  gap: 3rem;
 `;
 export const CategoryWrapper = styled.div`
   display: flex;
@@ -21,8 +19,8 @@ export const CategoryView = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 270px;
-  justify-content: flex-start;
+
+  justify-content: center;
 `;
 export const CutomTitle = styled.p`
   font-family: "AppleSDGothicNeoSB";
@@ -32,6 +30,8 @@ export const CutomTitle = styled.p`
   line-height: normal;
   color: black;
   padding: 2rem;
+  display: flex;
+  align-self: flex-start;
 `;
 export const SelectView = styled.div`
   width: 100%;
