@@ -10,8 +10,6 @@ export const Wrapper = styled.div`
   background-size: cover;
   margin-bottom: 7.3rem;
   .Container {
-    background-image: url(${Back});
-
     min-height: 100%;
   }
 `;
