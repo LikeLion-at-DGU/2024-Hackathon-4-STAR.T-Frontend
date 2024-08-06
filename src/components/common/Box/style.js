@@ -17,4 +17,5 @@ export const Box = styled.div`
   font-weight: 400;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 `;
