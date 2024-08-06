@@ -8,7 +8,6 @@ import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
 import { useParams } from "react-router-dom";
-
 import { Loading } from "../Loading/Loading";
 
 const SharePage = ({ onBack }) => {
@@ -34,12 +33,13 @@ const SharePage = ({ onBack }) => {
   }, []);
 
   const handleCapture = async () => {
+    console.log("capture check1");
     setIsButtonVisible(false);
-    setTimeout(async () => {
-      const canvas = await html2canvas(captureRef.current, { useCORS: true });
-      await captureScreenshot(canvas);
-      setIsButtonVisible(true);
-    }, 100);
+    const canvas = await html2canvas(captureRef.current, { useCORS: true });
+    console.log("capture check2");
+    const data = await captureScreenshot(canvas);
+    console.log(data);
+    setIsButtonVisible(true);
   };
 
   const starData = starP && starP.data ? starP.data : null;
