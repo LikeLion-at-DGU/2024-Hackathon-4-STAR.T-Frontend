@@ -19,6 +19,7 @@ import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
 import { AgreePage } from "./pages/AgreePage/AgreePage";
 import { Loading } from "./pages/Loading/Loading";
+import SharePage from "@/pages/Share/Share";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "/error",
         element: <NotFound />,
+      },
+      {
+        path: "/share/:starid",
+        element: <SharePage />,
       },
     ],
     errorElement: <NotFound />,
