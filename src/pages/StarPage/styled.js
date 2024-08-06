@@ -29,7 +29,7 @@ export const BannerTitle = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-
+  margin-left: 1rem;
   bottom: 70px;
   left: 10px;
   z-index: 2;
