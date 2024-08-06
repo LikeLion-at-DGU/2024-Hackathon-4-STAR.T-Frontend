@@ -159,7 +159,7 @@ export const shareContainr = styled.div`
     color: black;
     flex-shrink: 0;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 19px;
     border: 1px solid #c4d9e2;
     background: rgba(196, 217, 226, 0.5);
   }

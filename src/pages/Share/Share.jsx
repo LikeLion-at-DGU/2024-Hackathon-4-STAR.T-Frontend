@@ -109,8 +109,16 @@ const SharePage = ({ onBack }) => {
                 <div className="text">루틴 완료 달성!</div>
               </S.ClearMain>
             </S.ClearCantainr>
-            {isImageReady && isButtonVisible && (
-              <div id="share-button">
+            {
+              <div
+                id="share-button"
+                style={{
+                  visibility:
+                    isImageReady && isButtonVisible ? "visible" : "hidden",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
                 <S.shareContainr>
                   <S.shareBtn onClick={handleCapture}>
                     <div className="ImgSave">
@@ -123,7 +131,7 @@ const SharePage = ({ onBack }) => {
                   </button>
                 </S.shareContainr>
               </div>
-            )}
+            }
           </div>
         </S.Wrapper>
       </div>
