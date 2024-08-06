@@ -5,6 +5,8 @@ import { theme } from "./style/theme.js";
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "./components/common/Footer/Footer.jsx";
 import { RecoilRoot } from "recoil";
+import { useRecoilValue } from "recoil";
+import { isLoading } from "./stores/loading";
 
 const Frame = styled.div`
   width: 100vw;
@@ -38,8 +40,9 @@ const Content = styled.div`
 `;
 
 const Layout = () => {
+  const loadingStaus = useRecoilValue(isLoading);
   const location = useLocation();
-  const excludePaths = [/^\/login/, /^\/signup/, /^\/agree\/[0-1]/];
+  const excludePaths = [/^\/login/, /^\/signup/, /^\/error/, /^\/agree\/[0-1]/];
 
   const isExcludedPath = excludePaths.some((regex) =>
     regex.test(location.pathname)
@@ -50,7 +53,7 @@ const Layout = () => {
       <Wrapper>
         <Content>
           <Outlet />
-          {isExcludedPath ? <></> : <Footer />}
+          {isExcludedPath || loadingStaus ? <></> : <Footer />}
         </Content>
       </Wrapper>
     </Frame>
