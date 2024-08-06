@@ -1,3 +1,4 @@
+// src/pages/Mainpage/Mainpage.js
 import React from "react";
 import RoutineBox from "../../components/SubRoutineBox/SubRoutineBox";
 import CategoryTitle from "../../components/CategoryTitle/CategoryTitle";
@@ -6,23 +7,29 @@ import * as S from "./styled";
 import Logo1 from "../../assets/images/MainLogoImg.svg";
 import Logo2 from "../../assets/images/MainLogoImg(2).svg";
 import { useMainData } from "@/hooks/useMain";
+import { useRecoilValue } from "recoil";
+import { isLoading } from "@/stores/loading";
+import { Loading } from "../Loading/Loading";
 
 function Mainpage() {
+  const loadingStatus = useRecoilValue(isLoading);
   const { mainData } = useMainData();
+  const themeData = mainData?.theme; // mainData가 존재하는지 확인
+  const filteredKeys = mainData
+    ? Object.keys(mainData).filter((key) => key !== "theme")
+    : [];
 
-  if (!mainData) {
-    return <div>Loading...</div>;
+  if (loadingStatus) {
+    return <Loading />;
   }
 
-  const themeData = mainData.theme;
-  const filteredKeys = Object.keys(mainData).filter((key) => key !== "theme");
   return (
     <>
       <S.MainTitle>
         <S.ImageFame src={Logo1} />
         <S.ImageFame src={Logo2} />
       </S.MainTitle>
-      <ImageSlider ThemeImg={themeData} />
+      {themeData && <ImageSlider ThemeImg={themeData} />}
       <S.MainContainer>
         {filteredKeys.map((key, index) => (
           <div key={index}>
