@@ -22,13 +22,9 @@ const DateRangeCalendar = forwardRef((ref) => {
   const id = useRecoilValue(registerID);
 
   const resetCalendar = () => {
-    setStartDate(null);
-    setEndDate(null);
+    setSelectedStartDate(null);
+    setSelectedEndDate(null);
   };
-
-  useImperativeHandle(ref, () => ({
-    resetCalendar,
-  }));
 
   const timeZone = "Asia/Seoul";
   const getZonedDate = (date) => addHours(new Date(date), 9);
@@ -128,6 +124,7 @@ const DateRangeCalendar = forwardRef((ref) => {
           setSelectedEndDate(selectedEndDate);
           setIsCalendarVisible(false);
           setIsCheckVisible(true);
+          resetCalendar();
           setTimeout(() => {
             if (window.location.href.includes("theme")) {
               window.location.reload();
