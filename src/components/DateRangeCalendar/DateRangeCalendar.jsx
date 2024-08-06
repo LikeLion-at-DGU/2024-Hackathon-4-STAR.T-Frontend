@@ -115,6 +115,8 @@ const DateRangeCalendar = forwardRef((ref) => {
       const formattedEndDate = format(selectedEndDate, "yyyy-MM-dd", {
         timeZone,
       });
+      console(formattedStartDate);
+      console(formattedEndDate);
 
       try {
         const response = await postRoutineRegister(
