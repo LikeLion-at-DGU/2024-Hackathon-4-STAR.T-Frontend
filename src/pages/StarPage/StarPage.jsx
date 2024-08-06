@@ -8,8 +8,6 @@ import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
-import { ErrorAlert } from "@/components/common/ErorrAlert/ErrorAlert";
-import { modalStatus } from "@/stores/calendar";
 import {
   routineStart,
   routineEnd,
@@ -23,7 +21,6 @@ import { Loading } from "../Loading/Loading";
 
 const StarPage = () => {
   const { starP } = useMoveonStarP();
-  const showModal = useRecoilValue(modalStatus);
   const startDay = useRecoilValue(routineStart);
   const endDay = useRecoilValue(routineEnd);
   const [isCalendarVisible, setIsCalendarVisible] =
@@ -33,12 +30,11 @@ const StarPage = () => {
   const starData = starP && starP.data ? starP.data : null;
   const [term, setTerm] = useState(0);
   const loadingStatus = useRecoilValue(isLoading);
-  const navigate = useNavigate();
-
   const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
     setID(routineId);
   };
+  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     setIsCalendarVisible(false);
@@ -56,23 +52,20 @@ const StarPage = () => {
   }, [startDay, endDay]);
 
   if (!starData || loadingStatus) {
-    return <Loading />;
+    return <Loading />; // theme이 null인 경우 처리
   }
 
   const formatDate = (date) => {
-    const zonedDate = addHours(new Date(date), 9);
-    return format(zonedDate, "yyyy.MM.dd");
+    const zonedDate = addHours(new Date(date), 9); // 한국 시간으로 변환
+    return format(zonedDate, "yyyy.MM.dd"); // 포맷팅
   };
-
   const moveonShareP = () => {
     const id = starData.id;
     navigate(`/share/${id}`);
   };
-
   return (
     <>
       <S.Header>
-        <ErrorAlert show={showModal} />
         <S.BannerImage src={starData.photo} alt={starData.name} />
         <S.BannerTitle>
           <div>{starData.name}</div>
@@ -99,7 +92,7 @@ const StarPage = () => {
             />
           ))
         ) : (
-          <Loading />
+          <p>데이터를 불러오는 중입니다...</p>
         )}
       </S.RoutineBoxContainer>
       {isCalendarVisible && (
@@ -113,10 +106,7 @@ const StarPage = () => {
             startDay={formatDate(startDay)}
             endDay={formatDate(endDay)}
             term={term}
-            onClose={() => {
-              setIsCheckVisible(false);
-              window.location.reload();
-            }}
+            onClose={() => setIsCheckVisible(false)}
           />
         </Modal>
       )}
