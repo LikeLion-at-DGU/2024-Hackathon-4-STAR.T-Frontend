@@ -13,9 +13,12 @@ const SharePage = ({ onBack }) => {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const handleCapture = async () => {
     setIsButtonVisible(false);
-    const canvas = await html2canvas(captureRef.current);
-    await captureScreenshot(canvas);
-    setIsButtonVisible(true);
+    setTimeout(async () => {
+      const canvas = await html2canvas(captureRef.current);
+      await captureScreenshot(canvas);
+
+      setIsButtonVisible(true);
+    }, 100);
   };
 
   const starData = starP && starP.data ? starP.data : null;
