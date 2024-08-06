@@ -7,7 +7,6 @@ import DateRangeCalendar from "../../components/DateRangeCalendar/DateRangeCalen
 import Modal from "../../components/Modal/Modal";
 import { CheckUp } from "../../components/CheckUp/CheckUp";
 import { StarHeader } from "../../components/StarHeader/StarHeader";
-import SharePage from "@/pages/Share/Share";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import {
   routineStart,
@@ -16,7 +15,6 @@ import {
   CheckVisible,
   registerID,
 } from "../../stores/routineRegister";
-import SharePage from "@/pages/Share/Share";
 import { format, addHours } from "date-fns";
 import { isLoading } from "@/stores/loading";
 import { Loading } from "../Loading/Loading";
@@ -31,7 +29,6 @@ const StarPage = () => {
   const setID = useSetRecoilState(registerID);
   const starData = starP && starP.data ? starP.data : null;
   const [term, setTerm] = useState(0);
-  const [isClearStarPVisible, setIsClearStarPVisible] = useState(false);
   const loadingStatus = useRecoilValue(isLoading);
   const handlePlusButtonClick = (routineId) => {
     setIsCalendarVisible(true);
