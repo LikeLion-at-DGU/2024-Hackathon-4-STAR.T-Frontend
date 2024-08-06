@@ -13,7 +13,6 @@ import StarPage from "./pages/StarPage/StarPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPage from "./pages/MyPage/MyPage";
 import SubCategoryPage from "./pages/SubCategoryPage/SubCategoryPage";
-import SharePage from "@/pages/Share/Share";
 import { SearchResultP } from "./pages/SearchPage/SearchResultP";
 import { Test } from "./pages/TestPage/Test";
 import { NotFound } from "./pages/NotFound/NotFount";
