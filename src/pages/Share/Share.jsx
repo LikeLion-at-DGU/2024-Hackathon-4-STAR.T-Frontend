@@ -11,6 +11,35 @@ const SharePage = ({ onBack }) => {
   const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [isImageReady, setIsImageReady] = useState(false);
+
+  useEffect(() => {
+    const images = document.querySelectorAll("img");
+    let imagesLoaded = 0;
+
+    if (images.length === 0) {
+      // 이미지를 로드할 필요가 없으므로 바로 true로 설정
+      setIsImageReady(true);
+      return;
+    }
+
+    images.forEach((img) => {
+      if (img.complete) {
+        imagesLoaded += 1;
+        if (imagesLoaded === images.length) {
+          setIsImageReady(true);
+        }
+      } else {
+        img.addEventListener("load", () => {
+          imagesLoaded += 1;
+          if (imagesLoaded === images.length) {
+            setIsImageReady(true);
+          }
+        });
+      }
+    });
+  }, [starP]);
+
   const handleCapture = async () => {
     setIsButtonVisible(false);
     setTimeout(async () => {
@@ -32,7 +61,11 @@ const SharePage = ({ onBack }) => {
         {/* 캡처할 내용 */}
         <S.Wrapper>
           <S.Header>
-            <S.BannerImage src={starData.photo} alt={starData.name} />
+            <S.BannerImage
+              src={starData.photo}
+              alt={starData.name}
+              onLoad={() => setIsImageReady(true)}
+            />
             <S.BannerTitle>
               <div>{starData.name}</div>
               <div className="profession">{starData.profession}</div>
@@ -43,8 +76,15 @@ const SharePage = ({ onBack }) => {
               <S.ClearMain>
                 <div className="text">축하합니다!</div>
                 <div className="imgContainr">
-                  <img src={ClearStarPIcon1} />
-                  <img className="icon2" src={ClearStarPIcon2} />
+                  <img
+                    src={ClearStarPIcon1}
+                    onLoad={() => setIsImageReady(true)}
+                  />
+                  <img
+                    className="icon2"
+                    src={ClearStarPIcon2}
+                    onLoad={() => setIsImageReady(true)}
+                  />
                   <div className="textOverlay">
                     {starData.routines_added_count}회
                   </div>
@@ -52,7 +92,7 @@ const SharePage = ({ onBack }) => {
                 <div className="text">루틴 완료 달성!</div>
               </S.ClearMain>
             </S.ClearCantainr>
-            {isButtonVisible && (
+            {isImageReady && isButtonVisible && (
               <div id="share-button">
                 <S.shareContainr>
                   <S.shareBtn onClick={handleCapture}>
