@@ -23,13 +23,13 @@ const SharePage = () => {
       const res = await getStarContent(starid);
       setStarP(res);
     } catch (error) {
-      console.log("..");
+      console.error("Error fetching star data:", error);
     }
   };
 
   useEffect(() => {
     fetchStarData();
-  }, []);
+  }, [starid]);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);
@@ -37,7 +37,7 @@ const SharePage = () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
     } catch (error) {
-      console.log(error);
+      console.error("Error capturing screenshot:", error);
     } finally {
       setIsButtonVisible(true);
     }
@@ -66,8 +66,12 @@ const SharePage = () => {
               <S.ClearMain>
                 <div className="text">축하합니다!</div>
                 <div className="imgContainer">
-                  <img src={ClearStarPIcon1} />
-                  <img className="icon2" src={ClearStarPIcon2} />
+                  <img src={ClearStarPIcon1} alt="Clear Star Icon 1" />
+                  <img
+                    className="icon2"
+                    src={ClearStarPIcon2}
+                    alt="Clear Star Icon 2"
+                  />
                   <div className="textOverlay">
                     {starData.routines_added_count}회
                   </div>
@@ -87,7 +91,7 @@ const SharePage = () => {
                 <S.shareBtn onClick={handleCapture}>
                   <div className="ImgSave">
                     이미지 저장하고 공유하기
-                    <img src={shareIcon} />
+                    <img src={shareIcon} alt="Share Icon" />
                   </div>
                 </S.shareBtn>
                 <button className="backBtn" onClick={() => navigate(-1)}>
