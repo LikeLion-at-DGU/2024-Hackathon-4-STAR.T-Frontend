@@ -23,12 +23,16 @@ export const BannerImage = styled.img`
   width: 100%;
   height: 282px;
   object-fit: cover;
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
+
   position: relative;
+`;
+
+export const BlurImage = styled.img`
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 `;
 export const BannerTitle = styled.div`
   position: absolute;
@@ -37,7 +41,7 @@ export const BannerTitle = styled.div`
 
   bottom: 70px;
   left: 10px;
-  z-index: 2;
+  z-index: 3;
   font-size: 1.8rem;
   color: white;
   font-weight: 600;
