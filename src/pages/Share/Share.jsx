@@ -64,7 +64,6 @@ const SharePage = ({ onBack }) => {
               canvas.height = bannerImage.height;
               ctx.drawImage(img, 0, 0);
               // Apply mask
-              ctx.fillStyle = "rgba(0, 0, 0, 0)";
               const gradient = ctx.createLinearGradient(
                 0,
                 0,
@@ -110,15 +109,6 @@ const SharePage = ({ onBack }) => {
               src={starData.photo}
               alt={starData.name}
               data-mask="true"
-              style={{
-                display: "block",
-                width: "100%",
-                height: "282px",
-                objectFit: "cover",
-                maskImage:
-                  "linear-gradient(rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)",
-                position: "relative",
-              }}
             />
             <S.BannerTitle>
               <div>{starData.name}</div>
