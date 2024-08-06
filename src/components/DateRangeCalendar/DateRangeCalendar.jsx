@@ -27,7 +27,10 @@ const DateRangeCalendar = forwardRef((ref) => {
   };
 
   const timeZone = "Asia/Seoul";
-  const getZonedDate = (date) => addHours(new Date(date), 9);
+  const getZonedDate = (date) => {
+    const newDate = new Date(date);
+    return addHours(newDate, 9);
+  };
 
   const handleDateClick = (date) => {
     const zonedDate = getZonedDate(date);
