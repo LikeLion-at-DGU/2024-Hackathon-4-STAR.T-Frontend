@@ -9,10 +9,10 @@ export const captureScreenshot = async (canvas) => {
     const dataUrl = canvas.toDataURL("image/png");
     const blob = await fetch(dataUrl).then((res) => res.blob());
 
-    // Use the Web Share API if available
+    // Web Share API 사용
     if (navigator.share) {
-      await navigator.share({
-        files: [new File([blob], "start.png", { type: "image/png" })],
+      navigator.share({
+        // files: [new File([blob], "start.png", { type: "image/png" })],
         title: "STAR.T",
         text: "likelion-start.site",
       });
