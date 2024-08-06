@@ -37,6 +37,7 @@ const SharePage = () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
       await captureScreenshot(canvas);
     } catch (error) {
+      console.log(error);
     } finally {
       setIsButtonVisible(true);
     }
