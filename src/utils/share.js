@@ -12,7 +12,7 @@ export const captureScreenshot = async (canvas) => {
       .share({
         files: [new File([blob], "start.png", { type: "image/png" })],
         title: "STAR.T",
-        text: "당신의 스타와 함께하는 건강한 습관. likelion-start.site",
+        text: "likelion-start.site",
       })
       .then(() => console.log("Share was successful."))
       .catch((error) => console.log("Sharing failed", error));
