@@ -51,8 +51,7 @@ const SharePage = ({ onBack }) => {
     setIsButtonVisible(false);
     setTimeout(async () => {
       const canvas = await html2canvas(captureRef.current, { useCORS: true });
-      const ctx = canvas.getContext("2d");
-      ctx.filter = "blur(10px)";
+
       await captureScreenshot(canvas);
       setIsButtonVisible(true);
     }, 100);
@@ -84,11 +83,12 @@ const SharePage = ({ onBack }) => {
               alt={starData.name}
               onLoad={() => setIsImageReady(true)}
             />
-            <S.BlurImage className="blur" src={blur} />
+
             <S.BannerTitle>
               <div>{starData.name}</div>
               <div className="profession">{starData.profession}</div>
             </S.BannerTitle>
+            <S.BlurImage className="blur" src={blur} />
           </S.Header>
           <div className="Container">
             <S.ClearCantainr>
