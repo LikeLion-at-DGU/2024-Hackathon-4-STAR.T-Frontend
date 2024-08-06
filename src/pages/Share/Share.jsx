@@ -2,16 +2,32 @@ import React, { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { captureScreenshot } from "@/utils/share";
 import * as S from "./styled";
-import { useMoveonStarP } from "@/hooks/useStar";
 import shareIcon from "@/assets/shareIcon.svg";
 import ClearStarPIcon1 from "@/assets/starclearPicon1.svg";
 import ClearStarPIcon2 from "@/assets/starclearPicon2.svg";
 import blur from "@/assets/blur.svg";
 
 const SharePage = ({ onBack }) => {
-  const { starP } = useMoveonStarP();
   const captureRef = useRef();
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const [starP, setStarP] = useState(null);
+  const { id } = useParams();
+
+  const fetchStarData = async () => {
+    try {
+      const res = await getStarContent(id);
+      setStarP(res);
+    } catch (error) {
+      console.error("Error fetching star data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchStarData();
+    }
+  }, [id]);
 
   const handleCapture = async () => {
     setIsButtonVisible(false);

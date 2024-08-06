@@ -34,6 +34,7 @@ export const BlurImage = styled.img`
   left: 0;
   width: 100%;
   height: 90px;
+  object-fit: cover;
 `;
 export const BannerTitle = styled.div`
   position: absolute;
