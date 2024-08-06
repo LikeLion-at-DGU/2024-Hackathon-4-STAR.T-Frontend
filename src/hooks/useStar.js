@@ -6,7 +6,7 @@ import { isLoading } from "@/stores/loading";
 
 export const useMoveonStarP = () => {
   const [starP, setStarP] = useState(null);
-  let { params } = useParams();
+  let { id } = useParams();
   const setLoading = useSetRecoilState(isLoading);
 
   const fetchStarData = async () => {
